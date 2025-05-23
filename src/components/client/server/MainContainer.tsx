@@ -1,10 +1,7 @@
-import React, { ReactNode } from 'react'
-import { SquarPlusIcon } from '../icons/dynamicForm/AllDynamicFormIcons'
 import { ChevronRight } from 'lucide-react'
 import ThemeSwitcher from '../ThemeToggle'
-import DataTableContainer from '../table/DataTableContainer'
 
-const MainContainer = () => {
+const MainContainer = ({children}: { children: React.ReactNode }) => {
   return (
     <div className="flex-1 relative items-center grid grid-rows-[50px_1fr] overflow-auto">
       <div className="flex justify-between items-center pr-[10px] h-full ">
@@ -26,7 +23,7 @@ const MainContainer = () => {
         </div>
       </div>
       <div className="md:pb-[11px] sm:pl-[21px] md:pl-0 sm:pr-[21px] h-full ">
-        <DataTableContainer />
+        {children}
       </div>
     </div>
 

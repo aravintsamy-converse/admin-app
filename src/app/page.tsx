@@ -1,13 +1,8 @@
-import DynamicLayout from "@/components/client/dynamicForm/DynamicLayout";
-import ThemeSwitcher from "@/components/client/ThemeToggle";
-import { Button } from "@/components/ui/button";
-import ChildComponent from "@/components/ui/testing/ChildComponent";
-import LoginForm from "@/components/ui/testing/LoginForm";
-
 export default function Home() {
   return (
     <>
-
+      <h1 className="text-2xl font-bold">Welcome to the Admin App</h1>
+      <p>This is the homepage content.</p>
     </>
   );
 }
