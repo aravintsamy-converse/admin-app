@@ -22,7 +22,7 @@ const MainContainer = ({children}: { children: React.ReactNode }) => {
           </div>
         </div>
       </div>
-      <div className="md:pb-[11px] sm:pl-[21px] md:pl-0 sm:pr-[21px] h-full ">
+      <div className="md:pb-[11px] sm:pl-[21px] md:pl-0 sm:pr-[21px] h-full overflow-x-hidden">
         {children}
       </div>
     </div>

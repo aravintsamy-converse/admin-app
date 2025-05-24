@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Providers } from "./providers";
-import { ScreenPreferencesProvider } from "./context/ScreenPreferencesContext";
 import DynamicLayout from "@/components/client/dynamicForm/DynamicLayout";
 import MainContainer from "@/components/client/server/MainContainer";
+import ReduxProvider from "@/Store/ReduxProvider";
+import { GlobalPreferencesProvider } from "./context/GlobalPreferencesContext";
 
 export const metadata: Metadata = {
   title: "Admin APP",
@@ -17,16 +17,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased">
-        <Providers>
-          <ScreenPreferencesProvider>
+        <ReduxProvider>
+          <GlobalPreferencesProvider>
             <div className="flex">
               <DynamicLayout />
               <MainContainer>
                 {children}
               </MainContainer>
             </div>
-          </ScreenPreferencesProvider>
-        </Providers>
+          </GlobalPreferencesProvider>
+        </ReduxProvider>
       </body>
     </html>
   );

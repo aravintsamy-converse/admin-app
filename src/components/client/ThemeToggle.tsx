@@ -41,10 +41,10 @@ const ThemeSwitcher = () => {
 
     if (baseTheme === 'dark') {
       root.classList.add('dark')
-      root.style.colorScheme = 'dark'
+      // root.style.colorScheme = 'dark'
     } else {
       root.classList.remove('dark')
-      root.style.colorScheme = 'light'
+      // root.style.colorScheme = 'light'
     }
 
     if (colorTheme) {
