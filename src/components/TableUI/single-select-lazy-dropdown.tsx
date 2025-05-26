@@ -17,7 +17,7 @@ interface SingleSelectProps {
 }
 
 export function SingleSelectLazyDropdown({
-  placeholder = "Select an option",
+  placeholder = "Select option",
   onChange,
   value = null,
 }: SingleSelectProps) {
@@ -74,35 +74,69 @@ export function SingleSelectLazyDropdown({
       setPage(1)
       fetchOptions("", 1, false)
     }
-  }, [open, fetchOptions])
+  }, [open])
 
   React.useEffect(() => {
     setPage(1)
     fetchOptions(debouncedQuery, 1, false)
   }, [debouncedQuery, fetchOptions])
 
-  React.useEffect(() => {
-    if (!open || !commandListRef.current) return
+  // Scroll handler
+  const handleScroll = React.useCallback(() => {
+    if (!commandListRef.current || loading || !hasMore) return
 
-    const el = commandListRef.current
-    const handleScroll = () => {
-      if (loading || !hasMore) return
-      const { scrollTop, scrollHeight, clientHeight } = el
-      if (scrollHeight - scrollTop - clientHeight < 50) {
-        const nextPage = page + 1
-        setPage(nextPage)
-        fetchOptions(debouncedQuery, nextPage, true)
+    const { scrollTop, scrollHeight, clientHeight } = commandListRef.current
+    const isNearBottom = scrollHeight - scrollTop - clientHeight < 50
+
+    if (isNearBottom) {
+      const nextPage = page + 1
+      setPage(nextPage)
+      fetchOptions(debouncedQuery, nextPage, true)
+    }
+  }, [page, loading, hasMore, debouncedQuery, fetchOptions])
+
+  // Attach scroll listener once dropdown is open and ref is available
+  React.useEffect(() => {
+    if (!open) return
+
+    let observer: MutationObserver | null = null
+
+    const attachScrollListener = () => {
+      const el = commandListRef.current
+      if (el) {
+        el.removeEventListener("scroll", handleScroll) // Clean before re-adding
+        el.addEventListener("scroll", handleScroll)
+        return true
+      }
+      return false
+    }
+
+    // Try attaching immediately if the ref is already available
+    const isAttached = attachScrollListener()
+
+    // If not available yet, observe the DOM
+    if (!isAttached) {
+      observer = new MutationObserver(() => {
+        if (attachScrollListener() && observer) {
+          observer.disconnect()
+        }
+      })
+      observer.observe(document.body, { childList: true, subtree: true })
+    }
+
+    return () => {
+      if (observer) observer.disconnect()
+      const el = commandListRef.current
+      if (el) {
+        el.removeEventListener("scroll", handleScroll)
       }
     }
-    el.addEventListener("scroll", handleScroll)
-    return () => el.removeEventListener("scroll", handleScroll)
-  }, [open, page, loading, hasMore, debouncedQuery, fetchOptions])
+  }, [open, handleScroll])
 
   const handleSearchChange = (val: string) => setQuery(val)
 
   const handleSelect = (option: Option) => {
     onChange(option)
-    setOpen(false) // Close dropdown after selection
   }
 
 
