@@ -1,13 +1,12 @@
 "use client"
 
-import { Check, ChevronsUpDown, Search, X } from "lucide-react"
+import { Check, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command"
 import { Popover, PopoverContent, PopoverTrigger } from "./popover"
 import { Button } from "@/components/ui/button"
 import { Badge } from "./badge"
 import * as React from "react"
-import { RxChevronDown } from "react-icons/rx";
 import { BiSolidChevronDown } from "react-icons/bi"
 
 
@@ -32,7 +31,6 @@ interface MultiSelectDropdownUIProps {
 
 export function MultiSelectDropdownUI({
   placeholder = "Select options",
-  className,
   value = [],
   options,
   loading,

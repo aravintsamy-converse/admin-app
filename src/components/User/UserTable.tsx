@@ -7,6 +7,7 @@ import { ColumnData, TableMetadata } from "@/Types/Table/tableTypes";
 
 export default function UserTable() {
   const [columnData, setColumnData] = useState<ColumnData[]>([]);
+  console.log("🚀 ~ UserTable ~ columnData:", columnData)
   const [metadata, setMetadata] = useState<TableMetadata | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);

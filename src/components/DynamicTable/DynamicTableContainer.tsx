@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState, useEffect, Key } from "react";
+import { useMemo, useState, useEffect} from "react";
 import type { ColumnDef } from "@tanstack/react-table";
 import { MdDeleteOutline, MdOutlineEdit } from "react-icons/md";
 import { DataTable } from "@/components/DynamicTable/DataTable";

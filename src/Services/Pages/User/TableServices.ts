@@ -13,8 +13,6 @@ export async function fetchTableData(url: string, params: ApiQueryParams): Promi
   if (params.perPage) payloadObj.perPage = params.perPage;
   if (params.quickSearch) payloadObj.quickSearch = params.quickSearch;
 
-  const payloadStr = encodeURIComponent(JSON.stringify(payloadObj));
-
   try {
     // const response = await api.get<ApiResponse<TableData>>(`${url}?payload=${payloadStr}`);
     return tableData as ApiResponse<TableData>;

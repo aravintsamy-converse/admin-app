@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { Checkbox } from "./checkbox";
-import { Button } from "./button";
+import { Button } from "@/components/ui/button";
 import {
   Command,
   CommandEmpty,

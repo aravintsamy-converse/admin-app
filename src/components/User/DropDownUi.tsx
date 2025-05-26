@@ -10,7 +10,7 @@ const DropDownUi = () => {
   console.log("🚀 ~ DropDownUi ~ options:", options)
 
   const fetchOptions =
-    async (searchQuery: string, pageNum: number, append = false) => {
+    async (searchQuery: string, pageNum: number) => {
       try {
         const params: any = {
           search: searchQuery,
@@ -29,7 +29,7 @@ const DropDownUi = () => {
     }
   // Initial fetch and search updates
   useEffect(() => {
-    fetchOptions("", 1, false)
+    fetchOptions("", 1);
   }, []);
 
 

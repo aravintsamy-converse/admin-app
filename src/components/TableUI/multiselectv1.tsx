@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Checkbox } from "./checkbox";
-import { Button } from "./button";
+import { Button } from "@/components/ui/button";
 import {
   Command,
   CommandEmpty,
@@ -43,7 +43,6 @@ export const MultiSelectDropdown = React.forwardRef<HTMLDivElement, MultiSelectD
       iconMap = {},
       commandGroupRef,
     },
-    ref
   ) => {
     const [open, setOpen] = React.useState(false);
     const labelMap = new Map(options.map((option) => [option.value, option.label]));

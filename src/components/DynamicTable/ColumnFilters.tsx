@@ -138,7 +138,8 @@ export default function ColumnFilters({ columnType, column_name, options }: Cust
         if (Array.isArray(formattedValue)) {
           formattedValue = formattedValue.map(v => v);
         } else {
-          formattedValue
+          // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+          formattedValue;
         }
       }
 

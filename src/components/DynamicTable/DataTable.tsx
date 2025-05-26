@@ -30,7 +30,6 @@ import type {
   ApiQueryParams,
   BulkAction,
   BulkActionApi,
-  CustomColumnMeta,
   CustomTableMeta,
   DataTableProps,
   SortingParams,
@@ -95,19 +94,19 @@ const staticTableData = [
 ]
 
 
-// Helper function to access nested properties and arrays
-const getNestedValue = (obj: any, path: string) => {
+// // Helper function to access nested properties and arrays
+// const getNestedValue = (obj: any, path: string) => {
 
-  const keys = path.split(".");
-  let value = obj;
-  for (const key of keys) {
-    value = value?.[key];
-    if (value === undefined || value === null) {
-      return undefined;
-    }
-  }
-  return value;
-};
+//   const keys = path.split(".");
+//   let value = obj;
+//   for (const key of keys) {
+//     value = value?.[key];
+//     if (value === undefined || value === null) {
+//       return undefined;
+//     }
+//   }
+//   return value;
+// };
 
 export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, fetchDataFn, onRefetch }: DataTableProps<TData, TValue>) {
 
@@ -343,7 +342,7 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
 
   return (
     <div className="w-full h-full bg-[#FFFFFF]">
-      <div className="w-full bg-[#FFFFFF] h-[120px] md:h-[75px] border-b border-[#E6E9F2] grid md:grid-cols-[35%,1fr] items-center px-2">
+      <div className="w-full bg-[#FFFFFF] h-[120px] md:h-[50px] border-b border-[#E6E9F2] grid md:grid-cols-[35%,1fr] items-center px-2">
         <div className="flex items-center gap-2 font-lato">
           <Select
             value={selectedView || ""}
