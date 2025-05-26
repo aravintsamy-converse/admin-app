@@ -12,7 +12,6 @@ interface Option {
 export default function Home() {
   const [selectedOptions, setSelectedOptions] = useState<Option[]>([])
   const [selectedOption, setSelectedOption] = useState<Option | null>(null)
-  console.log("🚀 ~ Home ~ selectedOption:", selectedOption)
 
   return (
     <div className="flex  w-full flex-col justify-center   p-4">

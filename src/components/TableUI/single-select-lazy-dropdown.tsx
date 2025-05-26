@@ -50,11 +50,15 @@ export function SingleSelectLazyDropdown({
           label: item.label,
         }))
 
-        setOptions((prev) => {
-          const existing = new Set(prev.map((o) => o.value))
-          const unique = newOptions.filter((opt: Option) => !existing.has(opt.value))
-          return append ? [...prev, ...unique] : newOptions
-        })
+        if (append) {
+          setOptions((prev) => {
+            const existing = new Set(prev.map((o) => o.value))
+            const unique = newOptions.filter((opt: Option) => !existing.has(opt.value))
+            return [...prev, ...unique]
+          })
+        } else {
+          setOptions(newOptions)
+        }
 
         if (pageNum === 1) {
           setTotalRecords(response.total_records)
@@ -69,7 +73,7 @@ export function SingleSelectLazyDropdown({
   )
 
   React.useEffect(() => {
-    if (open) {
+    if (open && query !== "") {
       setQuery("")
       setPage(1)
       fetchOptions("", 1, false)
