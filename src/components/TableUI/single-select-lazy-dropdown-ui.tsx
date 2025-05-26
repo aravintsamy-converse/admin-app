@@ -1,12 +1,9 @@
 "use client"
 
-import { cn } from "@/lib/utils"
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
 import * as React from "react"
-import { BiSolidChevronDown } from "react-icons/bi"
 import { ChevronDown } from "lucide-react"
 
 interface Option {

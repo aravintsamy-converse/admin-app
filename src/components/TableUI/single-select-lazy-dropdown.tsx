@@ -12,14 +12,12 @@ interface Option {
 
 interface SingleSelectProps {
   placeholder?: string
-  className?: string
   onChange: (value: Option | null) => void
   value: Option | null
 }
 
 export function SingleSelectLazyDropdown({
   placeholder = "Select an option",
-  className,
   onChange,
   value = null,
 }: SingleSelectProps) {
