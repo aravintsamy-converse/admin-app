@@ -39,7 +39,7 @@ export function SingleSelectLazyDropdownUI({
       <PopoverTrigger asChild>
         <Button
           variant="outline"
-          className={`w-full  text-selectedValue outline-none    justify-between rounded-[6px]  transition-all placeholder:font-light   font-normal text-sm border input-container  hover:bg-background ${open ? "" : "border-border"} `}
+          className={`w-full  text-selectedValue outline-none    justify-between rounded-[6px]  transition-all placeholder:font-light   font-normal text-sm border input-container  hover:bg-background `}
         >
           {value ? (
             <span className="text-selectedValue ">
