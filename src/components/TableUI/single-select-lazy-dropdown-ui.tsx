@@ -78,10 +78,12 @@ export function SingleSelectLazyDropdownUI({
                     key={option.value}
                     value={option.value}
                     onSelect={() => onSelect(option)}
-                    className={cn(
-                      "cursor-pointer",
-                      isSelected && "bg-[#1D57C712] text-[#1D57C7]"
-                    )}
+                    className={`py-2 rounded-none hover:!bg-accent  text-selectedValue hover:!text-accent-foreground  hover:font-medium 
+                      data-[state=checked]:!bg-accent  data-[state=checked]:!text-accent-foreground  ${
+                        isSelected
+                          ? ' text-accent-foreground bg-accent '
+                          : ''
+                      }`}
                   >
                     <span>{option.label}</span>
                   </CommandItem>
