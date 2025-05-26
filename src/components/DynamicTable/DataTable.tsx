@@ -535,7 +535,7 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
                       <SelectItem
                         key={action.value}
                         value={action.value}
-                        className="text-[#81868C] text-[16px] hover:bg-[#F8F9FC] cursor-pointer font-lato"
+                        className="text-muted-foreground text-[16px] hover:bg-accent cursor-pointer font-lato"
                       >
                         {action.label}
                       </SelectItem>
