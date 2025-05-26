@@ -527,7 +527,7 @@ body {
 
 
 .simplebar-scrollbar::before {
-  background-color: #1d57c7 !important;
+  background-color: hsl(var(--primary)) !important;
   opacity: 1 !important; /* Ensure full color */
   width: 5px !important; /* Width of the scrollbar */
 }
@@ -537,7 +537,7 @@ body {
 }
 
 .simplebar-track {
-  background: #1D57C71F !important;
+  background: hsl(var(--background)) !important;
   border-radius: 6px;
   width: 7px !important;
 }
@@ -586,4 +586,89 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%23889ABC' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: center;
+}
+
+/* tanstack table css */
+.table-sticky tr.stick {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: #EFF3F6;
+}
+
+.table-sticky th.stick,
+.table-sticky td.stick {
+  position: sticky;
+  left: 0px;
+  background-color: #EFF3F6;
+}
+
+.table-sticky td.stick{
+  background-color: #fff;
+}
+
+/* Hide number input arrows for Chrome, Safari, Edge, and Opera */
+.tanstack-table input[type="number"]::-webkit-inner-spin-button,
+.tanstack-table input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Hide number input arrows for Firefox */
+.tanstack-table input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Fix for the subpixel rendering issue */
+.tanstack-table table{
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Add box shadow instead of border for sticky elements to avoid the gap */
+.tanstack-table .sticky-header {
+  box-shadow: 0 1px 0 0 #eeeeee;
+}
+
+.tanstack-table .sticky-column {
+  box-shadow: 1px 0 0 0 #eeeeee;
+}
+
+.tanstack-table .sticky-header.sticky-column {
+  box-shadow: 1px 1px 0 0 #eeeeee;
+}
+
+.data-\[selected\=true\]\:bg-accent[data-selected="true"] {
+  background-color: #1D57C712 !important;
+  ;
+}
+
+
+/* this below is for the custom dropdown border animation */
+.input-container {
+  position: relative;
+}
+
+.input-container::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 4px;
+  right: 4px;
+  background-color: transparent; /* Default state: no border */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition for color and scaling */
+  transform: scaleY(0); /* Start with the border scaled to 0 width */
+  transform-origin: center;
+}
+
+.input-container:hover::after {
+  background-color: #1D57C7;
+  height: 1px;
+  transform: scaleY(1); /* Expand to full width on hover */
+}
+
+.input-container:focus::after {
+  background-color: #1D57C7;
+  height: 2px;
+  transform: scaleY(1); /* Expand to full width on focus */
 }

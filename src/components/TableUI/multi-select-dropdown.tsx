@@ -30,7 +30,7 @@ export function MultiSelectDropdown({
   const [debouncedQuery] = useDebounce(query, 700)
   const [page, setPage] = React.useState(1)
   const [totalRecords, setTotalRecords] = React.useState(0)
-  const commandListRef = React.useRef<HTMLDivElement>(null)
+  const commandListRef = React.useRef<HTMLDivElement | null>(null)
 
   const recordLimit = 10
   const hasMore = page < Math.ceil(totalRecords / recordLimit)

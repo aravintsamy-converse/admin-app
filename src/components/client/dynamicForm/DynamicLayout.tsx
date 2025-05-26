@@ -1,16 +1,12 @@
 'use client'
 
-
 import { useState } from 'react'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-
 import { AppSidebar } from './Sidebar'
 import { defaultLayout } from '@/mockData/DynamicNav'
 import { SidebarProvider } from '@/components/ui/sidebar'
-
-
 
 
 export default function DynamicLayout() {
@@ -30,9 +26,6 @@ export default function DynamicLayout() {
     setTimeout(() => 500)
   }
 
-
-
-
   return (
     <>
       <div className="flex h-screen overflow-hidden bg-[#eff3f6] ">
@@ -48,8 +41,6 @@ export default function DynamicLayout() {
             navSettings={layout.sideNav}
             toggle={toggleNav}
           />
-
-
         </SidebarProvider>
         {/* Main Content */}
       </div>

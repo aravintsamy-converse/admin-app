@@ -9,7 +9,6 @@ import { Badge } from "./badge"
 import * as React from "react"
 import { BiSolidChevronDown } from "react-icons/bi"
 
-
 interface Option {
   value: string
   label: string
@@ -21,7 +20,7 @@ interface MultiSelectDropdownUIProps {
   value: Option[]
   options: Option[]
   loading: boolean
-  commandListRef: React.RefObject<HTMLDivElement>
+  commandListRef: React.RefObject<HTMLDivElement | null>
   onSearchChange: (value: string) => void
   onSelect: (option: Option) => void
   onRemove: (option: Option) => void
@@ -95,7 +94,7 @@ export function MultiSelectDropdownUI({
             </div>
             <CommandList
               ref={commandListRef}
-              className="max-h-[200px] overflow-y-auto"
+              className="custom-scrollbar max-h-[200px] overflow-y-auto"
             >
               <CommandEmpty>
                 {loading ? 'Loading...' : 'No results found'}
