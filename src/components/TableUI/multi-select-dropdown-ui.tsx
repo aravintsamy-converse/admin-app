@@ -1,13 +1,12 @@
 "use client"
 
-import { Check, X } from "lucide-react"
+import { Check, ChevronDown, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import * as React from "react"
-import { BiSolidChevronDown } from "react-icons/bi"
 
 interface Option {
   value: string
@@ -82,7 +81,10 @@ export function MultiSelectDropdownUI({
           ) : (
             <span>{placeholder}</span>
           )}
-          <BiSolidChevronDown className="text-[#42526E99] h-3 w-3" />
+          <ChevronDown
+            className={`transition-transform duration-200 text-selectedValue 
+              }`}
+          />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[var(--radix-popover-trigger-width)] p-0" align="start">

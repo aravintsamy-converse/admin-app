@@ -648,6 +648,9 @@ body {
 .input-container {
   position: relative;
 }
+.input-container-select {
+  position: relative;
+}
 
 .input-container::after {
   content: '';
@@ -671,4 +674,16 @@ body {
   background-color: #1D57C7;
   height: 2px;
   transform: scaleY(1); /* Expand to full width on focus */
+}
+
+.input-container-select::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 4px;
+  right: 4px;
+  background-color: #1D57C7;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition for color and scaling */
+  transform: scaleY(1); /* Start with the border scaled to 0 width */
+  transform-origin: center;
 }

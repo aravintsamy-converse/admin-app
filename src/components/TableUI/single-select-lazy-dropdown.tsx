@@ -103,24 +103,20 @@ export function SingleSelectLazyDropdown({
   const handleSearchChange = (val: string) => setQuery(val)
 
   const handleSelect = (option: Option) => {
-    onChange(value?.value === option.value ? null : option)
+    onChange(option)
+    setOpen(false) // Close dropdown after selection
   }
 
-  const handleRemove = () => {
-    onChange(null)
-  }
 
   return (
     <SingleSelectLazyDropdownUI
       placeholder={placeholder}
-      className={className}
       value={value}
       options={options}
       loading={loading}
       commandListRef={commandListRef}
       onSearchChange={handleSearchChange}
       onSelect={handleSelect}
-      onRemove={handleRemove}
       open={open}
       onOpenChange={setOpen}
     />

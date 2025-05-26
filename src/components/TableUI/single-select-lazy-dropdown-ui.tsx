@@ -16,28 +16,24 @@ interface Option {
 
 interface SingleSelectLazyDropdownUIProps {
   placeholder?: string
-  className?: string
   value: Option | null
   options: Option[]
   loading: boolean
   commandListRef: React.RefObject<HTMLDivElement | null>
   onSearchChange: (value: string) => void
   onSelect: (option: Option) => void
-  onRemove: () => void
   open: boolean
   onOpenChange: (open: boolean) => void
 }
 
 export function SingleSelectLazyDropdownUI({
   placeholder = "Select an option",
-  className,
   value,
   options,
   loading,
   commandListRef,
   onSearchChange,
   onSelect,
-  onRemove,
   open,
   onOpenChange,
 }: SingleSelectLazyDropdownUIProps) {
@@ -46,7 +42,7 @@ export function SingleSelectLazyDropdownUI({
       <PopoverTrigger asChild>
         <Button
           variant="outline"
-          className={`w-full  text-selectedValue outline-none    justify-between rounded-[6px]  transition-all placeholder:font-light   font-normal text-sm border input-container  hover:bg-background  `}
+          className={`w-full  text-selectedValue outline-none    justify-between rounded-[6px]  transition-all placeholder:font-light   font-normal text-sm border input-container  hover:bg-background ${open ? "" : "border-border"} `}
         >
           {value ? (
             <span className="text-selectedValue ">
@@ -58,7 +54,7 @@ export function SingleSelectLazyDropdownUI({
             </span>
           )}
           <ChevronDown
-            className={`transition-transform duration-200 text-selectedValue ${open ? 'rotate-180' : 'rotate-0'
+            className={`transition-transform duration-200 text-selectedValue 
               }`}
           />
         </Button>
