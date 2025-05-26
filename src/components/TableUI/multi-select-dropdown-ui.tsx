@@ -52,7 +52,7 @@ export function MultiSelectDropdownUI({
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-full justify-between text-left font-normal input-container"          >
+          className="w-full justify-between text-left rounded-[6px] font-normal input-container"          >
           {value.length > 0 ? (
             <div className="flex flex-wrap gap-1 items-center ">
               {displayedBadges.map((option) => (

@@ -17,7 +17,7 @@ interface MultiSelectProps {
   value: Option[]
 }
 
-export function MultiSelectDropdown({
+export function MultiSelectLazyDropdown({
   placeholder = "Select options",
   className,
   onChange,
