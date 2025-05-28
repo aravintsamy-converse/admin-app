@@ -26,8 +26,8 @@ import { MoreActionCell } from "@/components/DynamicTable/MoreActionCell";
 import useScreenSize from "@/components/TableUI/screenSize";
 
 type ItemType = {
-  id: string;
-  [key: string]: string; // Allows any string-valued property
+  associated_id: string;
+  associated_value: string; // Allows any string-valued property
 };
 
 const columnData: ColumnData[] = [
@@ -326,7 +326,8 @@ export default function DynamicTableContainer({
             ...baseColumn,
             cell: ({ row }) => {
               const isEditing = editState?.rowId === row.id && editState?.columnName === col.columnName;
-              const items = row.getValue(col.columnName) as ItemType[];
+              const items = row.getValue(col.columnName) as ItemType;
+              console.log("🚀 ~ filteredColumnData?.map ~ items:", items.associated_value)
               const associatedKey = col.associatedKey as keyof ItemType;
 
               if (isEditing && col.inLineEditing) {
@@ -347,10 +348,10 @@ export default function DynamicTableContainer({
               }
               return (
                 <div
-                  onClick={() => col.inLineEditing && setEditState({ rowId: row.id, columnName: col.columnName, value: items.map((item : ItemType) => item.id) })}
+                  onClick={() => col.inLineEditing && setEditState({ rowId: row.id, columnName: col.columnName, value: items.associated_value })}
                   className="cursor-pointer rounded-[4px] px-2 text-nowrap w-[200px] truncate  hover:border hover:border-[#E5E7EB] hover:px-2 hover:py-1"
                 >
-                  {Array.isArray(items) ? items.map((item) => item[associatedKey]).join(", ") : "-"}
+                  {items.associated_value}
                 </div>
               );
             }
@@ -373,7 +374,7 @@ export default function DynamicTableContainer({
                     editState={editState}
                     setEditState={setEditState}
                     onSubmit={(currentEditState: EditState) => {
-                      handleSaveEdit(row.original.id, associatedKey as string, currentEditState.value, col.tableName, value["id"]);
+                      handleSaveEdit(row.original.id, associatedKey as string, currentEditState.value, col.tableName, value.associated_id);
                     }}
                     onClose={() => setEditState(null)}
                     options={col.options}
