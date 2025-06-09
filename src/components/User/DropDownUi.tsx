@@ -7,7 +7,6 @@ import { fetchDropDownData } from "@/Services/Pages/User/TableServices"
 
 const DropDownUi = () => {
   const [options, setOptions] = useState([]);
-  console.log("🚀 ~ DropDownUi ~ options:", options)
 
   const fetchOptions =
     async (searchQuery: string, pageNum: number) => {

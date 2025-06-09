@@ -11,6 +11,7 @@ interface Option {
 
 export default function Home() {
   const [selectedOptions, setSelectedOptions] = useState<Option[]>([])
+  console.log("🚀 ~ Home ~ selectedOptions:", selectedOptions)
   const [selectedOption, setSelectedOption] = useState<Option | null>(null)
 
   return (

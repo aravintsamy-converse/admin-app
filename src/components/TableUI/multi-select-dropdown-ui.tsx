@@ -62,6 +62,7 @@ export function MultiSelectDropdownUI({
                 >
                   {option.label}
                   <button
+                    aria-label={`Remove ${option.label}`}
                     className="rounded-full hover:bg-gray-200"
                     onClick={(e) => {
                       e.stopPropagation()
@@ -112,6 +113,7 @@ export function MultiSelectDropdownUI({
                     key={option.value}
                     value={option.value}
                     onSelect={() => onSelect(option)}
+                    data-testid={`option-${option.value}`}
                   >
                     <div className="flex items-center">
                       <div

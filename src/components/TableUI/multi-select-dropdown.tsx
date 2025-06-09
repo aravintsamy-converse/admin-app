@@ -145,6 +145,7 @@ export function MultiSelectLazyDropdown({
   const handleSearchChange = (val: string) => setQuery(val)
 
   const handleSelect = (option: Option) => {
+    console.log("🚀 ~ handleSelect ~ Option:", Option)
     onChange(
       value.some((item) => item.value === option.value)
         ? value.filter((item) => item.value !== option.value)
