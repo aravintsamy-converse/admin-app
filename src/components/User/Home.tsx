@@ -19,9 +19,8 @@ export default function Home() {
       <p className="mb-4">Select multiple options from the dropdown below:</p>
       <div className="w-full grid grid-cols-4 gap-4">
       <MultiSelectLazyDropdown placeholder="Select options" value={selectedOptions} onChange={setSelectedOptions} />
-      <SingleSelectLazyDropdown placeholder="Select option" value={selectedOption} onChange={setSelectedOption} />
+      {/* <SingleSelectLazyDropdown placeholder="Select option" value={selectedOption} onChange={setSelectedOption} /> */}
     </div>
     </div>
-
   )
 }
