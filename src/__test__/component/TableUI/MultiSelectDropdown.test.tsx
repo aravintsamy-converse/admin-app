@@ -15,6 +15,19 @@ global.ResizeObserver = jest.fn().mockImplementation(() => ({
   disconnect: jest.fn(),
 }))
 
+    const handleChange = jest.fn()
+
+
+const renderComponent=()=>{
+  return render(
+    <MultiSelectLazyDropdown
+      value={[]}
+      placeholder="Select options"
+      onChange={handleChange}
+    />
+  )
+}
+
 window.HTMLElement.prototype.scrollIntoView = jest.fn()
 
 const mockOptionsPage1 = {
@@ -46,13 +59,7 @@ describe("MultiSelectLazyDropdown", () => {
   })
 
   it("renders with default placeholder", () => {
-    render(
-      <MultiSelectLazyDropdown
-        value={[]}
-        placeholder="Select options"
-        onChange={jest.fn()}
-      />
-    )
+  renderComponent()
     expect(screen.getByText("Select options")).toBeInTheDocument()
   })
 
@@ -71,49 +78,32 @@ describe("MultiSelectLazyDropdown", () => {
     (fetchDropDownData as jest.Mock).mockResolvedValueOnce(mockOptionsPage1)
 
     const handleChange = jest.fn()
-    render(
-      <MultiSelectLazyDropdown
-        value={[]}
-        onChange={handleChange}
-      />
-    )
+      renderComponent()
 
-    // Open dropdown
     userEvent.click(screen.getByText("Select options"))
 
-    // Wait for options to load
     await waitFor(() => {
       expect(screen.getByText("aarthi")).toBeInTheDocument()
       expect(screen.getByText("akhsay")).toBeInTheDocument()
     })
 
-    // Verify API call
     expect(fetchDropDownData).toHaveBeenCalledWith("search=&page=1&record_limit=10")
   })
 
   it("handles search functionality with debounce", async () => {
     (fetchDropDownData as jest.Mock).mockResolvedValue(mockOptionsPage1)
 
-    render(
-      <MultiSelectLazyDropdown
-        value={[]}
-        onChange={jest.fn()}
-      />
-    )
+   renderComponent()
 
-    // Open dropdown
     userEvent.click(screen.getByText("Select options"))
 
-    // Find search input and type
     const searchInput = await screen.findByPlaceholderText("Search")
     userEvent.type(searchInput, "test")
 
-    // Verify debounce works - initial call with empty query
     await waitFor(() => {
       expect(fetchDropDownData).toHaveBeenCalledWith("search=&page=1&record_limit=10")
     })
 
-    // After debounce, call with search query
     await waitFor(() => {
       expect(fetchDropDownData).toHaveBeenCalledWith("search=test&page=1&record_limit=10")
     }, { timeout: 1000 })
@@ -124,32 +114,22 @@ describe("MultiSelectLazyDropdown", () => {
       .mockResolvedValueOnce(mockOptionsPage1) // Initial load
       .mockResolvedValueOnce(mockOptionsPage2) // Second page load
 
-    render(
-      <MultiSelectLazyDropdown
-        value={[]}
-        onChange={jest.fn()}
-      />
-    )
+  renderComponent()
 
-    // Open dropdown
     userEvent.click(screen.getByText("Select options"))
 
-    // Wait for initial options
     await waitFor(() => {
       expect(screen.getByText("aarthi")).toBeInTheDocument()
     })
 
-    // Simulate scroll to bottom
     const dropdownContent = await screen.findByRole("listbox")
     fireEvent.scroll(dropdownContent, { target: { scrollTop: dropdownContent.scrollHeight } })
 
-    // Wait for second page to load
     await waitFor(() => {
       expect(screen.getByText("john")).toBeInTheDocument()
       expect(screen.getByText("jane")).toBeInTheDocument()
     })
 
-    // Verify second API call was made
     expect(fetchDropDownData).toHaveBeenCalledWith("search=&page=2&record_limit=10")
   })
 
@@ -159,26 +139,17 @@ describe("MultiSelectLazyDropdown", () => {
       total_records: 1, // Only 1 record total
     })
 
-    render(
-      <MultiSelectLazyDropdown
-        value={[]}
-        onChange={jest.fn()}
-      />
-    )
+    renderComponent()
 
-    // Open dropdown
     userEvent.click(screen.getByText("Select options"))
 
-    // Wait for initial options
     await waitFor(() => {
       expect(screen.getByText("aarthi")).toBeInTheDocument()
     })
 
-    // Simulate scroll to bottom
     const dropdownContent = await screen.findByRole("listbox")
     fireEvent.scroll(dropdownContent, { target: { scrollTop: dropdownContent.scrollHeight } })
 
-    // Verify only one API call was made
     expect(fetchDropDownData).toHaveBeenCalledTimes(1)
   })
 
@@ -187,49 +158,31 @@ describe("MultiSelectLazyDropdown", () => {
 
     console.error = jest.fn() // Suppress error logs
 
-    render(
-      <MultiSelectLazyDropdown
-        value={[]}
-        onChange={jest.fn()}
-      />
-    )
+    renderComponent()
 
-    // Open dropdown
     userEvent.click(screen.getByText("Select options"))
 
-    // Verify loading disappears
     await waitFor(() => {
       expect(screen.queryByRole("progressbar")).not.toBeInTheDocument()
     })
 
-    // Verify error was logged
     expect(console.error).toHaveBeenCalledWith("Dropdown fetch error:", expect.any(Error))
   })
 
   it("resets search when dropdown is closed and reopened", async () => {
     (fetchDropDownData as jest.Mock).mockResolvedValue(mockOptionsPage1)
 
-    render(
-      <MultiSelectLazyDropdown
-        value={[]}
-        onChange={jest.fn()}
-      />
-    )
+   renderComponent()
 
-    // Open dropdown
     userEvent.click(screen.getByText("Select options"))
 
-    // Type in search
     const searchInput = await screen.findByPlaceholderText("Search")
     userEvent.type(searchInput, "test")
 
-    // Close dropdown
     userEvent.click(document.body)
 
-    // Reopen dropdown
     userEvent.click(screen.getByText("Select options"))
 
-    // Verify search was reset
     await waitFor(() => {
       expect(fetchDropDownData).toHaveBeenCalledWith("search=&page=1&record_limit=10")
     })
@@ -265,10 +218,8 @@ describe("MultiSelectLazyDropdown", () => {
       />
     )
 
-    // Open dropdown
     userEvent.click(screen.getByText("Select options"))
 
-    // Verify empty state
     await waitFor(() => {
       expect(screen.getByText("No results found")).toBeInTheDocument()
     })
@@ -279,29 +230,19 @@ describe("MultiSelectLazyDropdown", () => {
   it("handles option selection", async () => {
     (fetchDropDownData as jest.Mock).mockResolvedValueOnce(mockOptionsPage1)
 
-    const handleChange = jest.fn()
-    render(
-      <MultiSelectLazyDropdown
-        value={[]}
-        onChange={handleChange}
-      />
-    )
+    renderComponent()
 
-    // Open dropdown
+
     await userEvent.click(screen.getByText("Select options"))
 
-    // Select an option
     await waitFor(() => {
       expect(screen.getByText("aarthi")).toBeInTheDocument()
     })
 
-    // Select an option
     await userEvent.click(screen.getByText("aarthi"))
 
-    // Verify onChange was called with the selected option
     expect(handleChange).toHaveBeenCalledWith([{ label: "aarthi", value: "U030" }])
 
-    //verify onChange was deselected option 
     await userEvent.click(screen.getByText("aarthi"))
     expect(handleChange).toHaveBeenCalledWith([{ label: "aarthi", value: "U030" }])
 
@@ -321,15 +262,12 @@ describe("MultiSelectLazyDropdown", () => {
       />
     )
 
-    // Find all remove buttons 
     const removeButtons = screen.getAllByRole("button", {
       name: /remove/i
     })
 
-    // Click the first remove button
     await userEvent.click(removeButtons[0])
 
-    // Verify onChange was called with remaining option
     expect(handleChange).toHaveBeenCalledWith([{ label: "akhsay", value: "U029" }])
   })
 
@@ -343,15 +281,12 @@ describe("MultiSelectLazyDropdown", () => {
       />
     );
 
-    // Open dropdown
     await userEvent.click(screen.getByText("Select options"));
 
-    // Select first option
     const option1 = await screen.findByTestId("option-U030");
     await userEvent.click(option1);
     expect(handleChange).toHaveBeenCalledWith([{ label: "aarthi", value: "U030" }]);
 
-    // Rerender with first option selected
     rerender(
       <MultiSelectLazyDropdown
         value={[{ label: "aarthi", value: "U030" }]}
@@ -359,7 +294,6 @@ describe("MultiSelectLazyDropdown", () => {
       />
     );
 
-    // Select second option
     const option2 = await screen.findByTestId("option-U029");
     await userEvent.click(option2);
     expect(handleChange).toHaveBeenCalledWith([
@@ -367,7 +301,6 @@ describe("MultiSelectLazyDropdown", () => {
       { label: "akhsay", value: "U029" }
     ]);
 
-    // Rerender with both options selected
     rerender(
       <MultiSelectLazyDropdown
         value={[
@@ -378,9 +311,34 @@ describe("MultiSelectLazyDropdown", () => {
       />
     );
 
-    // Deselect first option
     await userEvent.click(await screen.findByTestId("option-U030"));
     expect(handleChange).toHaveBeenCalledWith([{ label: "akhsay", value: "U029" }]);
   });
+
+  it("reset search and call fetch on reopen", async () => {
+    (fetchDropDownData as jest.Mock).mockResolvedValueOnce(mockOptionsPage1)
+
+    renderComponent()
+
+    await userEvent.click(screen.getByText("Select options"))
+
+    const searchInput = await screen.findByPlaceholderText("Search")
+    await userEvent.type(searchInput, "test");
+
+    expect(searchInput).toHaveValue("test");
+
+    await userEvent.click(document.body) // Close dropdown
+
+    await userEvent.click(screen.getByText("Select options")) // Reopen dropdown
+
+    const newSearchInput = await screen.findByPlaceholderText("Search");
+
+
+    await waitFor(() => {
+       expect(newSearchInput).toHaveValue("");
+    })
+     expect(fetchDropDownData).toHaveBeenCalledWith("search=&page=1&record_limit=10");
+  }
+  )
 
 })

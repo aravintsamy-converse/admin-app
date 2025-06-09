@@ -14,11 +14,11 @@ interface MultiSelectProps {
   placeholder?: string
   className?: string
   onChange: (values: Option[]) => void
-  value: Option[]
+  value?: Option[]
 }
 
 export function MultiSelectLazyDropdown({
-  placeholder = "Select options",
+  placeholder ,
   className,
   onChange,
   value = [],
@@ -74,6 +74,7 @@ export function MultiSelectLazyDropdown({
     },
     []
   )
+  
   React.useEffect(() => {
     if (open && query !== "") {
       setQuery("") // Reset search input
@@ -145,7 +146,6 @@ export function MultiSelectLazyDropdown({
   const handleSearchChange = (val: string) => setQuery(val)
 
   const handleSelect = (option: Option) => {
-    console.log("🚀 ~ handleSelect ~ Option:", Option)
     onChange(
       value.some((item) => item.value === option.value)
         ? value.filter((item) => item.value !== option.value)

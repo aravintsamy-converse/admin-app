@@ -9,8 +9,8 @@ import { SingleSelectLazyDropdown } from '@/components/TableUI/single-select-laz
 
 // // Optionally mock the dropdown components
 jest.mock('@/components/TableUI/multi-select-dropdown', () => ({
-  MultiSelectLazyDropdown: () => (
-    <div data-testid="multi-select"></div>
+  MultiSelectLazyDropdown:  ({ placeholder, value}: any) => (
+    <div data-testid="multi-select">{placeholder}</div>
   ),
 }));
 
