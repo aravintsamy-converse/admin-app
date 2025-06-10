@@ -5,7 +5,6 @@ import { fetchDropDownData } from "@/Services/Pages/User/TableServices";
 import userEvent from "@testing-library/user-event";
 import { MultiSelectDropdownUI } from '@/components/TableUI/multi-select-dropdown-ui';
 
-
 jest.mock("@/Services/Pages/User/TableServices", () => ({
   fetchDropDownData: jest.fn(),
 }));
@@ -48,6 +47,7 @@ const mockOptions: { value: string; label: string }[] = [
   { value: '4', label: 'Option 4' },
 ];
 
+//those below are for MultiSelectDropdownUI
 const defaultProps = {
   placeholder: 'Select options',
   value: [],
@@ -80,16 +80,16 @@ describe("MultiSelectLazyDropdown", () => {
   });
 
   // Existing tests (abridged for brevity)
-  it("renders with default value prop when not provided", () => {
-    render(<MultiSelectLazyDropdown onChange={handleChange} />);
-    expect(screen.getByText("Select options")).toBeInTheDocument();
+  it("renders with default value prop when not provided", async() => {
+    render(<MultiSelectLazyDropdown onChange={handleChange}/>);
+    expect( screen.getByText("Select options")).toBeInTheDocument();
     expect(screen.queryByRole("button", { name: /remove/i })).not.toBeInTheDocument();
   });
 
-  it("renders with default placeholder", async () => {
-    renderComponent();
-    expect(await screen.findByText("Select options")).toBeInTheDocument();
-  });
+  // it("renders with default placeholder", async () => {
+  //   renderComponent();
+  //   expect(await screen.findByText("Select options")).toBeInTheDocument();
+  // });
 
   it("opens dropdown and loads initial options", async () => {
     (fetchDropDownData as jest.Mock).mockResolvedValueOnce(mockOptionsPage1);
