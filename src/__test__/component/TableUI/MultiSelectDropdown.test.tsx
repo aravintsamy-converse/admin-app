@@ -1,4 +1,4 @@
-import React from "react";
+import React, { act } from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { MultiSelectLazyDropdown } from "@/components/TableUI/multi-select-dropdown";
 import { fetchDropDownData } from "@/Services/Pages/User/TableServices";
@@ -41,17 +41,37 @@ const mockEmptyOptions = {
   total_records: 0,
 };
 
+const mockOptions: { value: string; label: string }[] = [
+  { value: '1', label: 'Option 1' },
+  { value: '2', label: 'Option 2' },
+  { value: '3', label: 'Option 3' },
+  { value: '4', label: 'Option 4' },
+];
+
+const defaultProps = {
+  placeholder: 'Select options',
+  value: [],
+  options: mockOptions,
+  loading: false,
+  commandListRef: { current: null },
+  onSearchChange: jest.fn(),
+  onSelect: jest.fn(),
+  onRemove: jest.fn(),
+  open: false,
+  onOpenChange: jest.fn(),
+};
+
 const handleChange = jest.fn();
 
-const renderComponent = (props = {}) => {
-  return render(
+const renderComponent = async (props = {}) => {
+  return await act(async () => render(
     <MultiSelectLazyDropdown
       value={[]}
       placeholder="Select options"
       onChange={handleChange}
       {...props}
     />
-  );
+  ));
 };
 
 describe("MultiSelectLazyDropdown", () => {
@@ -66,16 +86,16 @@ describe("MultiSelectLazyDropdown", () => {
     expect(screen.queryByRole("button", { name: /remove/i })).not.toBeInTheDocument();
   });
 
-  it("renders with default placeholder", () => {
+  it("renders with default placeholder", async () => {
     renderComponent();
-    expect(screen.getByText("Select options")).toBeInTheDocument();
+    expect(await screen.findByText("Select options")).toBeInTheDocument();
   });
 
   it("opens dropdown and loads initial options", async () => {
     (fetchDropDownData as jest.Mock).mockResolvedValueOnce(mockOptionsPage1);
     renderComponent();
 
-    await userEvent.click(screen.getByText("Select options"));
+    await userEvent.click(await screen.findByText("Select options"));
 
     await waitFor(() => {
       expect(screen.getByText("aarthi")).toBeInTheDocument();
@@ -90,7 +110,7 @@ describe("MultiSelectLazyDropdown", () => {
     (fetchDropDownData as jest.Mock).mockResolvedValueOnce(mockOptionsPage1);
     renderComponent();
 
-    await userEvent.click(screen.getByText("Select options"));
+    await userEvent.click(await screen.findByText("Select options"));
 
     await waitFor(() => {
       expect(screen.getByText("aarthi")).toBeInTheDocument();
@@ -104,7 +124,7 @@ describe("MultiSelectLazyDropdown", () => {
     (fetchDropDownData as jest.Mock).mockResolvedValue(mockOptionsPage1);
     renderComponent();
 
-    await userEvent.click(screen.getByText("Select options"));
+    await userEvent.click(await screen.findByText("Select options"));
 
     const searchInput = await screen.findByPlaceholderText("Search");
     await userEvent.type(searchInput, "test");
@@ -123,7 +143,7 @@ describe("MultiSelectLazyDropdown", () => {
       .mockResolvedValueOnce(mockOptionsPage2); // Second page load (append = true)
     renderComponent();
 
-    await userEvent.click(screen.getByText("Select options"));
+    await userEvent.click(await screen.findByText("Select options"));
 
     await waitFor(() => {
       expect(screen.getByText("aarthi")).toBeInTheDocument();
@@ -147,7 +167,7 @@ describe("MultiSelectLazyDropdown", () => {
     });
     renderComponent();
 
-    await userEvent.click(screen.getByText("Select options"));
+    await userEvent.click(await screen.findByText("Select options"));
 
     await waitFor(() => {
       expect(screen.getByText("aarthi")).toBeInTheDocument();
@@ -166,7 +186,7 @@ describe("MultiSelectLazyDropdown", () => {
     console.error = jest.fn();
     renderComponent();
 
-    await userEvent.click(screen.getByText("Select options"));
+    await userEvent.click(await screen.findByText("Select options"));
 
     await waitFor(() => {
       expect(screen.queryByRole("progressbar")).not.toBeInTheDocument();
@@ -179,13 +199,13 @@ describe("MultiSelectLazyDropdown", () => {
     (fetchDropDownData as jest.Mock).mockResolvedValue(mockOptionsPage1);
     renderComponent();
 
-    await userEvent.click(screen.getByText("Select options"));
+    await userEvent.click(await screen.findByText("Select options"));
 
     const searchInput = await screen.findByPlaceholderText("Search");
     await userEvent.type(searchInput, "test");
 
     await userEvent.click(document.body);
-    await userEvent.click(screen.getByText("Select options"));
+    await userEvent.click(await screen.findByText("Select options"));
 
     await waitFor(() => {
       expect(fetchDropDownData).toHaveBeenCalledWith("search=&page=1&record_limit=10");
@@ -207,18 +227,16 @@ describe("MultiSelectLazyDropdown", () => {
     (fetchDropDownData as jest.Mock).mockResolvedValue(mockEmptyOptions);
     renderComponent();
 
-    await userEvent.click(screen.getByText("Select options"));
+    await userEvent.click(await screen.findByText("Select options"));
 
-    await waitFor(() => {
-      expect(screen.getByText("No results found")).toBeInTheDocument();
-    });
+    expect(await screen.findByText("No results found")).toBeInTheDocument();
   });
 
   it("handles option selection", async () => {
     (fetchDropDownData as jest.Mock).mockResolvedValueOnce(mockOptionsPage1);
     renderComponent();
 
-    await userEvent.click(screen.getByText("Select options"));
+    await userEvent.click(await screen.findByText("Select options"));
 
     await waitFor(() => {
       expect(screen.getByText("aarthi")).toBeInTheDocument();
@@ -246,7 +264,7 @@ describe("MultiSelectLazyDropdown", () => {
     (fetchDropDownData as jest.Mock).mockResolvedValueOnce(mockOptionsPage1);
     const { rerender } = render(<MultiSelectLazyDropdown value={[]} onChange={handleChange} />);
 
-    await userEvent.click(screen.getByText("Select options"));
+    await userEvent.click(await screen.findByText("Select options"));
 
     const option1 = await screen.findByTestId("option-U030");
     await userEvent.click(option1);
@@ -279,14 +297,14 @@ describe("MultiSelectLazyDropdown", () => {
     (fetchDropDownData as jest.Mock).mockResolvedValueOnce(mockOptionsPage1);
     renderComponent();
 
-    await userEvent.click(screen.getByText("Select options"));
+    await userEvent.click(await screen.findByText("Select options"));
 
     const searchInput = await screen.findByPlaceholderText("Search");
     await userEvent.type(searchInput, "test");
     expect(searchInput).toHaveValue("test");
 
     await userEvent.click(document.body);
-    await userEvent.click(screen.getByText("Select options"));
+    await userEvent.click(await screen.findByText("Select options"));
 
     const newSearchInput = await screen.findByPlaceholderText("Search");
     await waitFor(() => {
@@ -298,25 +316,7 @@ describe("MultiSelectLazyDropdown", () => {
 });
 
 describe("MultiSelectDropdownUI", () => {
-  const mockOptions: { value: string; label: string }[] = [
-    { value: '1', label: 'Option 1' },
-    { value: '2', label: 'Option 2' },
-    { value: '3', label: 'Option 3' },
-    { value: '4', label: 'Option 4' },
-  ];
 
- const defaultProps = {
-    placeholder: 'Select options',
-    value: [],
-    options: mockOptions,
-    loading: false,
-    commandListRef: { current: null },
-    onSearchChange: jest.fn(),
-    onSelect: jest.fn(),
-    onRemove: jest.fn(),
-    open: false,
-    onOpenChange: jest.fn(),
-  };
   it("renders correctly with default props", () => {
     render(<MultiSelectDropdownUI {...defaultProps} />);
     // Placeholder text
@@ -325,51 +325,31 @@ describe("MultiSelectDropdownUI", () => {
 });
 
 describe('MultiSelectDropdownUI default props', () => {
-  const mockOptions: { value: string; label: string }[] = [
-    { value: '1', label: 'Option 1' },
-    { value: '2', label: 'Option 2' },
-    { value: '3', label: 'Option 3' },
-    { value: '4', label: 'Option 4' },
-  ];
 
- const defaultProps = {
-    placeholder: 'Select options',
-    value: [],
-    options: mockOptions,
-    loading: false,
-    commandListRef: { current: null },
-    onSearchChange: jest.fn(),
-    onSelect: jest.fn(),
-    onRemove: jest.fn(),
-    open: false,
-    onOpenChange: jest.fn(),
-  };
   it('uses default value when `value` is not provided', () => {
-    const {  value, ...defaultPropswithoutvalue } = defaultProps
+    const { value, ...defaultPropswithoutvalue } = defaultProps
 
     render(<MultiSelectDropdownUI {...defaultPropswithoutvalue} />);
 
     // No selected badges should be rendered because default `value` is []
     expect(screen.queryByTestId('selected-badge')).toBeNull();
-    
+
   });
 
   it('uses default placeholder when `placeholder` is not provided', () => {
     const { placeholder, ...defaultPropsWithoutPlaceholder } = defaultProps;
 
     render(<MultiSelectDropdownUI {...defaultPropsWithoutPlaceholder} />);
-    
+
     expect(screen.getByText('Select options')).toBeInTheDocument();
   });
 
   it('shows "+X more" badge when more than maxBadgesToShow options are selected', () => {
-      const selectedOptions = mockOptions;
-      render(<MultiSelectDropdownUI {...defaultProps} value={selectedOptions} />);
-      expect(screen.getByText('Option 1')).toBeInTheDocument();
-      expect(screen.getByText('Option 2')).toBeInTheDocument();
-      expect(screen.getByText('Option 3')).toBeInTheDocument();
-      expect(screen.getByText('+1 more')).toBeInTheDocument();
-    });
-
-  
+    const selectedOptions = mockOptions;
+    render(<MultiSelectDropdownUI {...defaultProps} value={selectedOptions} />);
+    expect(screen.getByText('Option 1')).toBeInTheDocument();
+    expect(screen.getByText('Option 2')).toBeInTheDocument();
+    expect(screen.getByText('Option 3')).toBeInTheDocument();
+    expect(screen.getByText('+1 more')).toBeInTheDocument();
+  });
 });

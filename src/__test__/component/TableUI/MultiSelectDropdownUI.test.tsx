@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, fireEvent, within, waitFor } from '@testing-library/react';
+import { render, screen} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MultiSelectDropdownUI } from '@/components/TableUI/multi-select-dropdown-ui';
 
@@ -25,7 +25,6 @@ const defaultProps = {
 
 describe('MultiSelectDropdownUI', () => {
 
-
   // Mock ResizeObserver and scrollIntoView for dropdown libraries
   global.ResizeObserver = jest.fn().mockImplementation(() => ({
     observe: jest.fn(),
@@ -34,8 +33,6 @@ describe('MultiSelectDropdownUI', () => {
   }));
 
   window.HTMLElement.prototype.scrollIntoView = jest.fn();
-
-
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -98,15 +95,6 @@ describe('MultiSelectDropdownUI', () => {
     mockOptions.forEach(option => {
       expect(screen.getByText(option.label)).toBeInTheDocument();
     });
-  });
-
-  it('shows checkmark for selected options', () => {
-    const selectedOptions = [{ value: '1', label: 'Option 1' }];
-    render(<MultiSelectDropdownUI {...defaultProps} open={true} value={selectedOptions} />);
-
-    const option1 = screen.getByTestId('option-1');
-    // const checkmark = within(option1).getByRole('img', { hidden: true });
-    // expect(checkmark).toBeInTheDocument();
   });
 
   it('calls onSelect when an option is clicked', async () => {
