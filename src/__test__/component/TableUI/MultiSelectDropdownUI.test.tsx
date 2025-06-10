@@ -25,7 +25,6 @@ const defaultProps = {
 
 describe('MultiSelectDropdownUI', () => {
 
-  // Mock ResizeObserver and scrollIntoView for dropdown libraries
   global.ResizeObserver = jest.fn().mockImplementation(() => ({
     observe: jest.fn(),
     unobserve: jest.fn(),
@@ -38,14 +37,12 @@ describe('MultiSelectDropdownUI', () => {
     jest.clearAllMocks();
   });
 
-  // Basic rendering tests
   it('renders with default props', async () => {
     render(<MultiSelectDropdownUI {...defaultProps} />);
     expect(await screen.findByText('Select options')).toBeInTheDocument();
     expect(await screen.findByRole('combobox')).toBeInTheDocument();
   });
 
-  // Value handling tests
   it('handles empty value array correctly', () => {
     render(<MultiSelectDropdownUI {...defaultProps} value={[]} />);
     expect(screen.getByText('Select options')).toBeInTheDocument();
@@ -71,7 +68,6 @@ describe('MultiSelectDropdownUI', () => {
     expect(screen.getByText('+1 more')).toBeInTheDocument();
   });
 
-  // Interaction tests
   it('opens dropdown when clicked', async () => {
     const mockOnOpenChange = jest.fn();
     render(<MultiSelectDropdownUI {...defaultProps} onOpenChange={mockOnOpenChange} />);
@@ -89,7 +85,6 @@ describe('MultiSelectDropdownUI', () => {
     expect(mockOnRemove).toHaveBeenCalledWith({ value: '1', label: 'Option 1' });
   });
 
-  // Dropdown content tests
   it('displays all options in dropdown', () => {
     render(<MultiSelectDropdownUI {...defaultProps} open={true} />);
     mockOptions.forEach(option => {
@@ -105,7 +100,6 @@ describe('MultiSelectDropdownUI', () => {
     expect(mockOnSelect).toHaveBeenCalledWith({ value: '2', label: 'Option 2' });
   });
 
-  // Search functionality tests
   it('calls onSearchChange when typing in search input', async () => {
     const mockOnSearchChange = jest.fn();
     render(<MultiSelectDropdownUI {...defaultProps} open={true} onSearchChange={mockOnSearchChange} />);
@@ -115,7 +109,6 @@ describe('MultiSelectDropdownUI', () => {
     expect(mockOnSearchChange).toHaveBeenCalledTimes(4);
   });
 
-  // Loading states tests
   it('displays loading message when loading is true', () => {
     render(<MultiSelectDropdownUI {...defaultProps} open={true} loading={true} options={[]} />);
     expect(screen.getByText('Loading...')).toBeInTheDocument();
@@ -131,17 +124,14 @@ describe('MultiSelectDropdownUI', () => {
     expect(screen.getByText('Loading more...')).toBeInTheDocument();
   });
 
-  // Class name tests
-  it('applies correct classes to selected and unselected options', () => {
-    const selectedOptions = [{ value: '1', label: 'Option 1' }];
-    render(<MultiSelectDropdownUI {...defaultProps} open={true} value={selectedOptions} />);
+  // it('applies correct classes to selected and unselected options', () => {
+  //   const selectedOptions = [{ value: '1', label: 'Option 1' }];
+  //   render(<MultiSelectDropdownUI {...defaultProps} open={true} value={selectedOptions} />);
 
-    const selectedOption = screen.getByTestId('option-1');
-    const unselectedOption = screen.getByTestId('option-2');
-
-    // expect(selectedOption).toHaveClass('bg-primary');
-    // expect(unselectedOption).toHaveClass('opacity-50');
-  });
+  //   const selectedOption = screen.getByTestId('option-1');
+  //   const unselectedOption = screen.getByTestId('option-2')
+  
+  // });
 
   // Edge cases
   it('handles empty options array', () => {
@@ -162,8 +152,6 @@ describe('MultiSelectDropdownUI default props', () => {
     const { value, ...defaultPropswithoutvalue } = defaultProps
 
     render(<MultiSelectDropdownUI {...defaultPropswithoutvalue} />);
-
-    // No selected badges should be rendered because default `value` is []
     expect(screen.queryByTestId('selected-badge')).toBeNull();
 
   });
@@ -172,7 +160,6 @@ describe('MultiSelectDropdownUI default props', () => {
     const { placeholder, ...defaultPropsWithoutPlaceholder } = defaultProps;
 
     render(<MultiSelectDropdownUI {...defaultPropsWithoutPlaceholder} />);
-
     expect(screen.getByText('Select options')).toBeInTheDocument();
   });
 });

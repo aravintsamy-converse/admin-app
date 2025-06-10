@@ -9,7 +9,6 @@ jest.mock("@/Services/Pages/User/TableServices", () => ({
   fetchDropDownData: jest.fn(),
 }));
 
-// Mock ResizeObserver and scrollIntoView for dropdown libraries
 global.ResizeObserver = jest.fn().mockImplementation(() => ({
   observe: jest.fn(),
   unobserve: jest.fn(),
@@ -47,7 +46,7 @@ const mockOptions: { value: string; label: string }[] = [
   { value: '4', label: 'Option 4' },
 ];
 
-//those below are for MultiSelectDropdownUI
+//those below mocks are used for MultiSelectDropdownUI
 const defaultProps = {
   placeholder: 'Select options',
   value: [],
@@ -79,17 +78,11 @@ describe("MultiSelectLazyDropdown", () => {
     jest.clearAllMocks();
   });
 
-  // Existing tests (abridged for brevity)
   it("renders with default value prop when not provided", async() => {
     render(<MultiSelectLazyDropdown onChange={handleChange}/>);
     expect( screen.getByText("Select options")).toBeInTheDocument();
     expect(screen.queryByRole("button", { name: /remove/i })).not.toBeInTheDocument();
   });
-
-  // it("renders with default placeholder", async () => {
-  //   renderComponent();
-  //   expect(await screen.findByText("Select options")).toBeInTheDocument();
-  // });
 
   it("opens dropdown and loads initial options", async () => {
     (fetchDropDownData as jest.Mock).mockResolvedValueOnce(mockOptionsPage1);
@@ -105,7 +98,6 @@ describe("MultiSelectLazyDropdown", () => {
     expect(fetchDropDownData).toHaveBeenCalledWith("search=&page=1&record_limit=10");
   });
 
-  // New test to explicitly cover fetchOptions with default append = false
   it("calls fetchOptions with default append parameter", async () => {
     (fetchDropDownData as jest.Mock).mockResolvedValueOnce(mockOptionsPage1);
     renderComponent();
@@ -116,7 +108,6 @@ describe("MultiSelectLazyDropdown", () => {
       expect(screen.getByText("aarthi")).toBeInTheDocument();
     });
 
-    // Explicitly verify that fetchOptions was called with append = false (default)
     expect(fetchDropDownData).toHaveBeenCalledWith("search=&page=1&record_limit=10");
   });
 
@@ -163,7 +154,7 @@ describe("MultiSelectLazyDropdown", () => {
   it("does not load more when totalRecords equals recordLimit", async () => {
     (fetchDropDownData as jest.Mock).mockResolvedValueOnce({
       options: [{ label: "aarthi", value: "U030" }],
-      total_records: 10, // Equal to recordLimit
+      total_records: 10,
     });
     renderComponent();
 
@@ -319,7 +310,6 @@ describe("MultiSelectDropdownUI", () => {
 
   it("renders correctly with default props", () => {
     render(<MultiSelectDropdownUI {...defaultProps} />);
-    // Placeholder text
     expect(screen.getByText("Select options")).toBeInTheDocument();
   });
 });
@@ -331,7 +321,6 @@ describe('MultiSelectDropdownUI default props', () => {
 
     render(<MultiSelectDropdownUI {...defaultPropswithoutvalue} />);
 
-    // No selected badges should be rendered because default `value` is []
     expect(screen.queryByTestId('selected-badge')).toBeNull();
 
   });
