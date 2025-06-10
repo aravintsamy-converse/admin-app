@@ -15,7 +15,7 @@ interface Option {
 interface MultiSelectDropdownUIProps {
   placeholder?: string
   className?: string
-  value: Option[]
+  value?: Option[]
   options: Option[]
   loading: boolean
   commandListRef: React.RefObject<HTMLDivElement | null>

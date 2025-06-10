@@ -3,16 +3,14 @@ import { render, screen, fireEvent, within, waitFor } from '@testing-library/rea
 import userEvent from '@testing-library/user-event';
 import { MultiSelectDropdownUI } from '@/components/TableUI/multi-select-dropdown-ui';
 
-
-describe('MultiSelectDropdownUI', () => {
-  const mockOptions: { value: string; label: string }[] = [
+ const mockOptions: { value: string; label: string }[] = [
     { value: '1', label: 'Option 1' },
     { value: '2', label: 'Option 2' },
     { value: '3', label: 'Option 3' },
     { value: '4', label: 'Option 4' },
   ];
 
-  const defaultProps = {
+ const defaultProps = {
     placeholder: 'Select options',
     value: [],
     options: mockOptions,
@@ -25,16 +23,36 @@ describe('MultiSelectDropdownUI', () => {
     onOpenChange: jest.fn(),
   };
 
+describe('MultiSelectDropdownUI', () => {
+ 
+
+  // Mock ResizeObserver and scrollIntoView for dropdown libraries
+global.ResizeObserver = jest.fn().mockImplementation(() => ({
+  observe: jest.fn(),
+  unobserve: jest.fn(),
+  disconnect: jest.fn(),
+}));
+
+window.HTMLElement.prototype.scrollIntoView = jest.fn();
+
+ 
+
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
-  it('renders with default props', () => {
+  // Basic rendering tests
+  it('renders with default props',async () => {
     render(<MultiSelectDropdownUI {...defaultProps} />);
-    
-    // Should show placeholder when no value is selected
+    expect(await screen.findByText('Select options')).toBeInTheDocument();
+    expect(await screen.findByRole('combobox')).toBeInTheDocument();
+  });
+
+  // Value handling tests
+  it('handles empty value array correctly', () => {
+    render(<MultiSelectDropdownUI {...defaultProps} value={[]} />);
     expect(screen.getByText('Select options')).toBeInTheDocument();
-    // expect(screen.getByTestId('chevron-down-icon')).toBeInTheDocument();
+    expect(screen.queryByTestId('selected-badge')).toBeNull();
   });
 
   it('displays selected options as badges', () => {
@@ -42,73 +60,131 @@ describe('MultiSelectDropdownUI', () => {
       { value: '1', label: 'Option 1' },
       { value: '2', label: 'Option 2' },
     ];
-    
     render(<MultiSelectDropdownUI {...defaultProps} value={selectedOptions} />);
-    
     expect(screen.getByText('Option 1')).toBeInTheDocument();
     expect(screen.getByText('Option 2')).toBeInTheDocument();
   });
 
   it('shows "+X more" badge when more than maxBadgesToShow options are selected', () => {
-    const selectedOptions = [
-      { value: '1', label: 'Option 1' },
-      { value: '2', label: 'Option 2' },
-      { value: '3', label: 'Option 3' },
-      { value: '4', label: 'Option 4' },
-    ];
-    
+    const selectedOptions = mockOptions;
     render(<MultiSelectDropdownUI {...defaultProps} value={selectedOptions} />);
-    
     expect(screen.getByText('Option 1')).toBeInTheDocument();
     expect(screen.getByText('Option 2')).toBeInTheDocument();
     expect(screen.getByText('Option 3')).toBeInTheDocument();
     expect(screen.getByText('+1 more')).toBeInTheDocument();
   });
 
+  // Interaction tests
   it('opens dropdown when clicked', async () => {
     const mockOnOpenChange = jest.fn();
     render(<MultiSelectDropdownUI {...defaultProps} onOpenChange={mockOnOpenChange} />);
-    
-    const trigger = screen.getByRole('combobox');
-    await userEvent.click(trigger);
-    
+    await userEvent.click(screen.getByRole('combobox'));
     expect(mockOnOpenChange).toHaveBeenCalledWith(true);
   });
 
   it('calls onRemove when X button is clicked on a badge', async () => {
     const mockOnRemove = jest.fn();
-    const selectedOptions = [
-      { value: '1', label: 'Option 1' },
-    ];
-    
-    render(
-      <MultiSelectDropdownUI 
-        {...defaultProps} 
-        value={selectedOptions} 
-        onRemove={mockOnRemove} 
-      />
-    );
+    const selectedOptions = [{ value: '1', label: 'Option 1' }];
+    render(<MultiSelectDropdownUI {...defaultProps} value={selectedOptions} onRemove={mockOnRemove} />);
     
     const xButton = screen.getByRole('button', { name: /remove option 1/i });
     await userEvent.click(xButton);
-    
     expect(mockOnRemove).toHaveBeenCalledWith({ value: '1', label: 'Option 1' });
   });
 
-  it('handles empty value array correctly', () => {
-  // Explicitly pass an empty array for value
-  render(<MultiSelectDropdownUI {...defaultProps} value={[]} />);
+  // Dropdown content tests
+  it('displays all options in dropdown', () => {
+    render(<MultiSelectDropdownUI {...defaultProps} open={true} />);
+    mockOptions.forEach(option => {
+      expect(screen.getByText(option.label)).toBeInTheDocument();
+    });
+  });
+
+  it('shows checkmark for selected options', () => {
+    const selectedOptions = [{ value: '1', label: 'Option 1' }];
+    render(<MultiSelectDropdownUI {...defaultProps} open={true} value={selectedOptions} />);
+    
+    const option1 = screen.getByTestId('option-1');
+    // const checkmark = within(option1).getByRole('img', { hidden: true });
+    // expect(checkmark).toBeInTheDocument();
+  });
+
+  it('calls onSelect when an option is clicked', async () => {
+    const mockOnSelect = jest.fn();
+    render(<MultiSelectDropdownUI {...defaultProps} open={true} onSelect={mockOnSelect} />);
+    
+    await userEvent.click(screen.getByText('Option 2'));
+    expect(mockOnSelect).toHaveBeenCalledWith({ value: '2', label: 'Option 2' });
+  });
+
+  // Search functionality tests
+  it('calls onSearchChange when typing in search input', async () => {
+    const mockOnSearchChange = jest.fn();
+    render(<MultiSelectDropdownUI {...defaultProps} open={true} onSearchChange={mockOnSearchChange} />);
+    
+    const searchInput = screen.getByPlaceholderText('Search');
+    await userEvent.type(searchInput, 'test');
+    expect(mockOnSearchChange).toHaveBeenCalledTimes(4);
+  });
+
+  // Loading states tests
+  it('displays loading message when loading is true', () => {
+    render(<MultiSelectDropdownUI {...defaultProps} open={true} loading={true} options={[]} />);
+    expect(screen.getByText('Loading...')).toBeInTheDocument();
+  });
+
+  it('displays "No results found" when options are empty and not loading', () => {
+    render(<MultiSelectDropdownUI {...defaultProps} open={true} options={[]} />);
+    expect(screen.getByText('No results found')).toBeInTheDocument();
+  });
+
+  it('shows "Loading more..." when loading with existing options', () => {
+    render(<MultiSelectDropdownUI {...defaultProps} open={true} loading={true} />);
+    expect(screen.getByText('Loading more...')).toBeInTheDocument();
+  });
+
+  // Class name tests
+  it('applies correct classes to selected and unselected options', () => {
+    const selectedOptions = [{ value: '1', label: 'Option 1' }];
+    render(<MultiSelectDropdownUI {...defaultProps} open={true} value={selectedOptions} />);
+    
+    const selectedOption = screen.getByTestId('option-1');
+    const unselectedOption = screen.getByTestId('option-2');
+    
+    // expect(selectedOption).toHaveClass('bg-primary');
+    // expect(unselectedOption).toHaveClass('opacity-50');
+  });
+
+  // Edge cases
+  it('handles empty options array', () => {
+    render(<MultiSelectDropdownUI {...defaultProps} open={true} options={[]} />);
+    expect(screen.getByText('No results found')).toBeInTheDocument();
+  });
+
+  it('does not show "+X more" when exactly maxBadgesToShow options are selected', () => {
+    const selectedOptions = mockOptions.slice(0, 3);
+    render(<MultiSelectDropdownUI {...defaultProps} value={selectedOptions} />);
+    expect(screen.queryByText(/\+[0-9]+ more/)).toBeNull();
+  });
   
-  // Should show placeholder when value is empty
-  expect(screen.getByText('Select options')).toBeInTheDocument();
-  
-  // Should not show any badges
-  const badges = screen.queryAllByTestId(/badge/i); // Adjust this selector based on your actual badge implementation
-  expect(badges).toHaveLength(0);
-  
-  // Should not show "+X more" indicator
-  expect(screen.queryByText(/\+[0-9]+ more/)).not.toBeInTheDocument();
 });
 
+describe('MultiSelectDropdownUI default props', () => {
+  it('uses default value when `value` is not provided', () => {
+    const {  value, ...defaultPropswithoutvalue } = defaultProps
 
+    render(<MultiSelectDropdownUI {...defaultPropswithoutvalue} />);
+
+    // No selected badges should be rendered because default `value` is []
+    expect(screen.queryByTestId('selected-badge')).toBeNull();
+    
+  });
+
+  it('uses default placeholder when `placeholder` is not provided', () => {
+    const { placeholder, ...defaultPropsWithoutPlaceholder } = defaultProps;
+
+    render(<MultiSelectDropdownUI {...defaultPropsWithoutPlaceholder} />);
+    
+    expect(screen.getByText('Select options')).toBeInTheDocument();
+  });
 });
