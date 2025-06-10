@@ -98,19 +98,6 @@ describe("MultiSelectLazyDropdown", () => {
     expect(fetchDropDownData).toHaveBeenCalledWith("search=&page=1&record_limit=10");
   });
 
-  it("calls fetchOptions with default append parameter", async () => {
-    (fetchDropDownData as jest.Mock).mockResolvedValueOnce(mockOptionsPage1);
-    renderComponent();
-
-    await userEvent.click(await screen.findByText("Select options"));
-
-    await waitFor(() => {
-      expect(screen.getByText("aarthi")).toBeInTheDocument();
-    });
-
-    expect(fetchDropDownData).toHaveBeenCalledWith("search=&page=1&record_limit=10");
-  });
-
   it("handles search functionality with debounce", async () => {
     (fetchDropDownData as jest.Mock).mockResolvedValue(mockOptionsPage1);
     renderComponent();
