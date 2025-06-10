@@ -3,6 +3,8 @@ import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { MultiSelectLazyDropdown } from "@/components/TableUI/multi-select-dropdown";
 import { fetchDropDownData } from "@/Services/Pages/User/TableServices";
 import userEvent from "@testing-library/user-event";
+import { MultiSelectDropdownUI } from '@/components/TableUI/multi-select-dropdown-ui';
+
 
 jest.mock("@/Services/Pages/User/TableServices", () => ({
   fetchDropDownData: jest.fn(),
@@ -293,4 +295,81 @@ describe("MultiSelectLazyDropdown", () => {
     expect(fetchDropDownData).toHaveBeenCalledWith("search=&page=1&record_limit=10");
   });
 
+});
+
+describe("MultiSelectDropdownUI", () => {
+  const mockOptions: { value: string; label: string }[] = [
+    { value: '1', label: 'Option 1' },
+    { value: '2', label: 'Option 2' },
+    { value: '3', label: 'Option 3' },
+    { value: '4', label: 'Option 4' },
+  ];
+
+ const defaultProps = {
+    placeholder: 'Select options',
+    value: [],
+    options: mockOptions,
+    loading: false,
+    commandListRef: { current: null },
+    onSearchChange: jest.fn(),
+    onSelect: jest.fn(),
+    onRemove: jest.fn(),
+    open: false,
+    onOpenChange: jest.fn(),
+  };
+  it("renders correctly with default props", () => {
+    render(<MultiSelectDropdownUI {...defaultProps} />);
+    // Placeholder text
+    expect(screen.getByText("Select options")).toBeInTheDocument();
+  });
+});
+
+describe('MultiSelectDropdownUI default props', () => {
+  const mockOptions: { value: string; label: string }[] = [
+    { value: '1', label: 'Option 1' },
+    { value: '2', label: 'Option 2' },
+    { value: '3', label: 'Option 3' },
+    { value: '4', label: 'Option 4' },
+  ];
+
+ const defaultProps = {
+    placeholder: 'Select options',
+    value: [],
+    options: mockOptions,
+    loading: false,
+    commandListRef: { current: null },
+    onSearchChange: jest.fn(),
+    onSelect: jest.fn(),
+    onRemove: jest.fn(),
+    open: false,
+    onOpenChange: jest.fn(),
+  };
+  it('uses default value when `value` is not provided', () => {
+    const {  value, ...defaultPropswithoutvalue } = defaultProps
+
+    render(<MultiSelectDropdownUI {...defaultPropswithoutvalue} />);
+
+    // No selected badges should be rendered because default `value` is []
+    expect(screen.queryByTestId('selected-badge')).toBeNull();
+    
+  });
+
+  it('uses default placeholder when `placeholder` is not provided', () => {
+    const { placeholder, ...defaultPropsWithoutPlaceholder } = defaultProps;
+
+    render(<MultiSelectDropdownUI {...defaultPropsWithoutPlaceholder} />);
+    
+    expect(screen.getByText('Select options')).toBeInTheDocument();
+  });
+
+  it('shows "+X more" badge when more than maxBadgesToShow options are selected', () => {
+      const selectedOptions = mockOptions;
+      render(<MultiSelectDropdownUI {...defaultProps} value={selectedOptions} />);
+      expect(screen.getByText('Option 1')).toBeInTheDocument();
+      expect(screen.getByText('Option 2')).toBeInTheDocument();
+      expect(screen.getByText('Option 3')).toBeInTheDocument();
+      expect(screen.getByText('+1 more')).toBeInTheDocument();
+    });
+
+  
 });

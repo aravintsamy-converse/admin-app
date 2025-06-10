@@ -3,46 +3,46 @@ import { render, screen, fireEvent, within, waitFor } from '@testing-library/rea
 import userEvent from '@testing-library/user-event';
 import { MultiSelectDropdownUI } from '@/components/TableUI/multi-select-dropdown-ui';
 
- const mockOptions: { value: string; label: string }[] = [
-    { value: '1', label: 'Option 1' },
-    { value: '2', label: 'Option 2' },
-    { value: '3', label: 'Option 3' },
-    { value: '4', label: 'Option 4' },
-  ];
+const mockOptions: { value: string; label: string }[] = [
+  { value: '1', label: 'Option 1' },
+  { value: '2', label: 'Option 2' },
+  { value: '3', label: 'Option 3' },
+  { value: '4', label: 'Option 4' },
+];
 
- const defaultProps = {
-    placeholder: 'Select options',
-    value: [],
-    options: mockOptions,
-    loading: false,
-    commandListRef: { current: null },
-    onSearchChange: jest.fn(),
-    onSelect: jest.fn(),
-    onRemove: jest.fn(),
-    open: false,
-    onOpenChange: jest.fn(),
-  };
+const defaultProps = {
+  placeholder: 'Select options',
+  value: [],
+  options: mockOptions,
+  loading: false,
+  commandListRef: { current: null },
+  onSearchChange: jest.fn(),
+  onSelect: jest.fn(),
+  onRemove: jest.fn(),
+  open: false,
+  onOpenChange: jest.fn(),
+};
 
 describe('MultiSelectDropdownUI', () => {
- 
+
 
   // Mock ResizeObserver and scrollIntoView for dropdown libraries
-global.ResizeObserver = jest.fn().mockImplementation(() => ({
-  observe: jest.fn(),
-  unobserve: jest.fn(),
-  disconnect: jest.fn(),
-}));
+  global.ResizeObserver = jest.fn().mockImplementation(() => ({
+    observe: jest.fn(),
+    unobserve: jest.fn(),
+    disconnect: jest.fn(),
+  }));
 
-window.HTMLElement.prototype.scrollIntoView = jest.fn();
+  window.HTMLElement.prototype.scrollIntoView = jest.fn();
 
- 
+
 
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
   // Basic rendering tests
-  it('renders with default props',async () => {
+  it('renders with default props', async () => {
     render(<MultiSelectDropdownUI {...defaultProps} />);
     expect(await screen.findByText('Select options')).toBeInTheDocument();
     expect(await screen.findByRole('combobox')).toBeInTheDocument();
@@ -86,7 +86,7 @@ window.HTMLElement.prototype.scrollIntoView = jest.fn();
     const mockOnRemove = jest.fn();
     const selectedOptions = [{ value: '1', label: 'Option 1' }];
     render(<MultiSelectDropdownUI {...defaultProps} value={selectedOptions} onRemove={mockOnRemove} />);
-    
+
     const xButton = screen.getByRole('button', { name: /remove option 1/i });
     await userEvent.click(xButton);
     expect(mockOnRemove).toHaveBeenCalledWith({ value: '1', label: 'Option 1' });
@@ -103,7 +103,7 @@ window.HTMLElement.prototype.scrollIntoView = jest.fn();
   it('shows checkmark for selected options', () => {
     const selectedOptions = [{ value: '1', label: 'Option 1' }];
     render(<MultiSelectDropdownUI {...defaultProps} open={true} value={selectedOptions} />);
-    
+
     const option1 = screen.getByTestId('option-1');
     // const checkmark = within(option1).getByRole('img', { hidden: true });
     // expect(checkmark).toBeInTheDocument();
@@ -112,7 +112,7 @@ window.HTMLElement.prototype.scrollIntoView = jest.fn();
   it('calls onSelect when an option is clicked', async () => {
     const mockOnSelect = jest.fn();
     render(<MultiSelectDropdownUI {...defaultProps} open={true} onSelect={mockOnSelect} />);
-    
+
     await userEvent.click(screen.getByText('Option 2'));
     expect(mockOnSelect).toHaveBeenCalledWith({ value: '2', label: 'Option 2' });
   });
@@ -121,7 +121,7 @@ window.HTMLElement.prototype.scrollIntoView = jest.fn();
   it('calls onSearchChange when typing in search input', async () => {
     const mockOnSearchChange = jest.fn();
     render(<MultiSelectDropdownUI {...defaultProps} open={true} onSearchChange={mockOnSearchChange} />);
-    
+
     const searchInput = screen.getByPlaceholderText('Search');
     await userEvent.type(searchInput, 'test');
     expect(mockOnSearchChange).toHaveBeenCalledTimes(4);
@@ -147,10 +147,10 @@ window.HTMLElement.prototype.scrollIntoView = jest.fn();
   it('applies correct classes to selected and unselected options', () => {
     const selectedOptions = [{ value: '1', label: 'Option 1' }];
     render(<MultiSelectDropdownUI {...defaultProps} open={true} value={selectedOptions} />);
-    
+
     const selectedOption = screen.getByTestId('option-1');
     const unselectedOption = screen.getByTestId('option-2');
-    
+
     // expect(selectedOption).toHaveClass('bg-primary');
     // expect(unselectedOption).toHaveClass('opacity-50');
   });
@@ -166,25 +166,25 @@ window.HTMLElement.prototype.scrollIntoView = jest.fn();
     render(<MultiSelectDropdownUI {...defaultProps} value={selectedOptions} />);
     expect(screen.queryByText(/\+[0-9]+ more/)).toBeNull();
   });
-  
+
 });
 
 describe('MultiSelectDropdownUI default props', () => {
   it('uses default value when `value` is not provided', () => {
-    const {  value, ...defaultPropswithoutvalue } = defaultProps
+    const { value, ...defaultPropswithoutvalue } = defaultProps
 
     render(<MultiSelectDropdownUI {...defaultPropswithoutvalue} />);
 
     // No selected badges should be rendered because default `value` is []
     expect(screen.queryByTestId('selected-badge')).toBeNull();
-    
+
   });
 
   it('uses default placeholder when `placeholder` is not provided', () => {
     const { placeholder, ...defaultPropsWithoutPlaceholder } = defaultProps;
 
     render(<MultiSelectDropdownUI {...defaultPropsWithoutPlaceholder} />);
-    
+
     expect(screen.getByText('Select options')).toBeInTheDocument();
   });
 });
