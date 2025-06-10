@@ -5,7 +5,6 @@ import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, Command
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import * as React from "react"
 import { cn } from "@/lib/utils"
 
 interface Option {
@@ -39,7 +38,6 @@ export function MultiSelectDropdownUI({
   open,
   onOpenChange,
 }: MultiSelectDropdownUIProps) {
-  // Optional: Limit the number of badges shown in the button
   const maxBadgesToShow = 3
   const displayedBadges = value.slice(0, maxBadgesToShow)
   const extraCount = value.length > maxBadgesToShow ? value.length - maxBadgesToShow : 0

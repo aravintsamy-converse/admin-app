@@ -37,7 +37,7 @@ export function MultiSelectLazyDropdown({
 
   // Fetch API function
   const fetchOptions = React.useCallback(
-    async (searchQuery: string, pageNum: number, append = false) => {
+    async (searchQuery: string, pageNum: number, append?: boolean) => {
       try {
         setLoading(true)
         const params: any = {
