@@ -546,7 +546,7 @@ export default function DynamicTableContainer({
   };
 
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-full rounded-2xl">
       <TableProvider>
         <DataTable
           columns={columns}

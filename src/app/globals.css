@@ -40,7 +40,7 @@ body {
     --selected-value: 221, 10%, 41%, 1;  /* cutome text selected value  color */
     --shadow-color: 219, 85%, 57%, 0.22;  /* cuatome shadow for poover select,popover,other seclect oiption dropdown compobox color */
     --shadow-active: 220, 75%, 45%, 0.04;  /* custome shadow for calender buttons  color */
-    --sidebar-background: 0 0% 98%;  /* side bar background color */
+    --sidebar-background:60, 89%, 42%;  /* side bar background color */
     --sidebar-foreground: 240 5.3% 26.1%;  /* side bar  text color */
     --sidebar-primary: 240 5.9% 10%;  /* side bar button  color */
     --sidebar-primary-foreground: 0 0% 98%;  /* side bar button text color */
