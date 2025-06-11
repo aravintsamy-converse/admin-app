@@ -60,7 +60,7 @@ export function FilterRenderer({ filter, fieldName, inputFields, filterValues, o
         onValueChange={(value) => onFilterChange(fieldName, value)}
       >
         <SelectTrigger
-          className={`w-full bg-white font-lato rounded-[8px] font-[600] border ${filterValues[fieldName] ? "text-[#7B8190] text-[15px]" : "text-[#7B8190] text-[13px]"}`}
+          className={`w-full bg-white  rounded-[8px] font-[600] border ${filterValues[fieldName] ? "text-[#7B8190] text-[15px]" : "text-[#7B8190] text-[13px]"}`}
         >
           <SelectValue placeholder={inputField.placeholder} />
           <ChevronDown className="h-4 w-4" />

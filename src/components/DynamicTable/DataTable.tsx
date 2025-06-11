@@ -35,6 +35,8 @@ import type {
   SortingParams,
   TableData,
 } from "@/Types/Table/tableTypes";
+import { MetricIcon, SquarHamburgerIcon, SquarPlusIcon } from "../client/icons/dynamicForm/AllDynamicFormIcons";
+import CustomPreferencePopup from "./CustomPreferencePopup";
 
 const staticTableData = [
   {
@@ -341,47 +343,61 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
   };
 
   return (
-    <div className="w-full h-full bg-[#FFFFFF]">
-      <div className="w-full bg-[#FFFFFF] h-[120px] md:h-[50px] border-b border-[#E6E9F2] grid md:grid-cols-[35%,1fr] items-center px-2">
-        <div className="flex items-center gap-2 font-lato">
-          <Select
-            value={selectedView || ""}
-            onValueChange={(value) => {
-              setSelectedView(value);
-              setPageIndex(0);
-              handleViewChange(value);
-            }}
-          >
-            <SelectTrigger
-              className={`bg-white uppercase w-[170px] no-underline hover:underline hover:underline-offset-4 focus-visible:ring-0 font-[700] border-0 ${selectedView ? "text-[#31363F] text-[18px]" : "text-[#31363F] text-[18px]"}`}
-            >
-              <SelectValue placeholder="Role Type" />
-              <ChevronDown className="h-3.5 w-3.5 text-[#889ABC]" />
-            </SelectTrigger>
-            <SelectContent className="w-[340px] border-0 bg-white shadow-[0px_0px_20px_0px_#C2D1EF]">
-              {metadata.views.options.map((option) => (
-                <SelectItem
-                  key={option.value}
-                  value={option.value}
-                  className="text-[#81868C] text-[15px] font-[600] font-lato hover:bg-[#F8F9FC]"
+    <div className="h-full rounded-lg relative p-[2px] 2xl:ml-2 bg-background">
+
+      <div className="grid md:grid-cols-2 items-center bg-mainbackground rounded-tl-sm">
+        <div className="flex ">
+          <div className=" p-[20px] bg-formcardbackground  rounded-tl-sm flex items-center justify-center ">
+            <SquarHamburgerIcon />
+          </div>
+          <div className="rounded-tr-md items-center flex  w-full">
+            <div className="flex items-center gap-2 p-4">
+              <Select
+                value={selectedView || ""}
+                onValueChange={(value) => {
+                  setSelectedView(value);
+                  setPageIndex(0);
+                  handleViewChange(value);
+                }}
+              >
+                <SelectTrigger
+                  className={`bg-background uppercase w-[170px] no-underline hover:underline hover:underline-offset-4 focus-visible:ring-0 font-[700] border-0 ${selectedView ? "text-[#31363F] text-[18px]" : "text-[#31363F] text-[18px]"}`}
                 >
-                  <div className="flex items-center gap-2">{option.label}</div>
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-          <CurrentViewFilterDetails metadata={metadata} />
+                  <SelectValue placeholder="Role Type" />
+                  <ChevronDown className="h-3.5 w-3.5 text-[#889ABC]" />
+                </SelectTrigger>
+                <SelectContent className="w-[340px] border-0 bg-white shadow-[0px_0px_20px_0px_#C2D1EF]">
+                  {metadata.views.options.map((option) => (
+                    <SelectItem
+                      key={option.value}
+                      value={option.value}
+                      className="text-[#81868C] text-[15px] font-[600]  hover:bg-[#F8F9FC]"
+                    >
+                      <div className="flex items-center gap-2">{option.label}</div>
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <CurrentViewFilterDetails metadata={metadata} />
+            </div>
+          </div>
         </div>
-        <div className="px-2 grid grid-cols-[1fr,1fr] md:grid-cols-[1fr,auto] gap-4 place-content-start md:place-items-end">
-          <button className="px-3 py-2 flex items-center gap-2 justify-center text-nowrap bg-white text-primary hover:text-white hover:bg-primary text-[15px] font-[600] rounded-[4px] cursor-pointer transition-all duration-300 shadow-[2px_2px_5px_0px_#1D57C747]">
-            <ImportExportIcon /> Export & Import
+        <div className="flex items-center justify-end pr-4">
+          <button className="p-2 flex items-center justify-center mr-3 text-nowrap bg-white text-primary hover:text-white hover:bg-primary text-[18px] font-[600] rounded-[4px] cursor-pointer transition-all duration-300 shadow-[2px_2px_5px_0px_#1D57C747]">
+            <MetricIcon />
           </button>
-          <button className="px-5 py-2 flex items-center gap-2 justify-center bg-white text-primary hover:text-white hover:bg-primary text-[15px] font-[600] rounded-[4px] cursor-pointer transition-all duration-300 shadow-[2px_2px_5px_0px_#1D57C747]">
+          <button className="px-5 py-2 flex items-center  justify-center mr-1 bg-white text-primary hover:text-white hover:bg-primary text-[15px] font-[600] rounded-[4px] cursor-pointer transition-all duration-300 shadow-[2px_2px_5px_0px_#1D57C747]">
             <CreateIcon />Create
           </button>
+          <div>
+            <CustomPreferencePopup />
+          </div>
         </div>
+
       </div>
-      <div className="w-full tanstack-table px-3">
+
+
+      {/* <div className="w-full tanstack-table px-3">
         <div className="w-full h-full rounded-sm bg-white">
           <div className="w-full bg-white py-4 grid grid-cols-2 md:grid-cols-1 gap-y-1 lg:grid-cols-[50%,50%] items-center">
             <CurrentColumnFilters />
@@ -440,8 +456,8 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
                                     onMouseEnter={() => setHoveredHeaderId(header.id)}
                                     onMouseLeave={() => setHoveredHeaderId(null)}
                                     className={`absolute right-0 top-0 h-full w-2 cursor-col-resize select-none touch-none ${header.column.getIsResizing()
-                                        ? "border-r border-primary hover:border-primary"
-                                        : "border-r border-[#E6E9F2] hover:border-primary"
+                                      ? "border-r border-primary hover:border-primary"
+                                      : "border-r border-[#E6E9F2] hover:border-primary"
                                       }`}
                                   >
                                     {(header.column.getIsResizing() || hoveredHeaderId === header.id) && (
@@ -505,7 +521,7 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
               </div>
             </div>
             <div className="flex flex-col border border-[#F0F0F0] rounded-bl-[5px] rounded-br-[5px] xl:flex-row justify-between xl:items-center md:items-start lg:px-3.5">
-              <div className="flex items-center gap-3 w-full sm:w-auto mt-2 md:mt-0 md:mb-0 font-lato">
+              <div className="flex items-center gap-3 w-full sm:w-auto mt-2 md:mt-0 md:mb-0 ">
                 <Select
                   value={seletedBulkAction || ""}
                   onValueChange={(value) => {
@@ -514,11 +530,11 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
                   onOpenChange={setIsBulkSelectOpen}
                 >
                   <SelectTrigger
-                    className={`w-full h-9 font-lato sm:w-[200px] rounded-sm md:w-[300px] bg-white font-[600] border ${seletedBulkAction ? "text-[#81868C] text-[15px]" : "text-[#ADADAD] text-[16px]"
+                    className={`w-full h-9  sm:w-[200px] rounded-sm md:w-[300px] bg-white font-[600] border ${seletedBulkAction ? "text-[#81868C] text-[15px]" : "text-[#ADADAD] text-[16px]"
                       }`}
                   >
                     <div className="flex items-center justify-between w-full">
-                      <SelectValue placeholder="Bulk actions" className="font-lato" />
+                      <SelectValue placeholder="Bulk actions" className="" />
                       {isBulkSelectOpen ? (
                         <ChevronUp className="h-4 w-4 text-[#81868C]" />
                       ) : (
@@ -528,13 +544,13 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
                   </SelectTrigger>
                   <SelectContent
                     side="top"
-                    className="border-0 bg-white shadow-[0px_0px_20px_0px_#C2D1EF] min-w-[200px] sm:min-w-[300px] text-[16px] font-lato font-[600]"
+                    className="border-0 bg-white shadow-[0px_0px_20px_0px_#C2D1EF] min-w-[200px] sm:min-w-[300px] text-[16px]  font-[600]"
                   >
                     {bulkActionsData.map((action) => (
                       <SelectItem
                         key={action.value}
                         value={action.value}
-                        className="text-muted-foreground text-[16px] hover:bg-accent cursor-pointer font-lato"
+                        className="text-muted-foreground text-[16px] hover:bg-accent cursor-pointer "
                       >
                         {action.label}
                       </SelectItem>
@@ -543,8 +559,8 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
                 </Select>
                 <button
                   className={`${!seletedBulkAction || selectedRowIds.length === 0
-                      ? "pointer-events-none opacity-50"
-                      : "hover:shadow-[0px_4px_6px_rgba(29,87,199,0.28)]"
+                    ? "pointer-events-none opacity-50"
+                    : "hover:shadow-[0px_4px_6px_rgba(29,87,199,0.28)]"
                     } px-5 py-1.5 flex items-center gap-2 justify-center text-primary bg-white text-[15px] font-[600] rounded-[4px] cursor-pointer transition-all duration-300`}
                   onClick={() => {
                     if (seletedBulkAction && selectedRowIds.length > 0) {
@@ -556,7 +572,7 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
                   Apply
                 </button>
               </div>
-              <div className="flex flex-col sm:flex-row items-center font-lato justify-end space-y-4 sm:space-y-0 sm:space-x-2 py-4 sm:px-7 xl:px-4 text-[#889ABC] text-[16px]">
+              <div className="flex flex-col sm:flex-row items-center  justify-end space-y-4 sm:space-y-0 sm:space-x-2 py-4 sm:px-7 xl:px-4 text-[#889ABC] text-[16px]">
                 <div className="flex items-center gap-2 w-full sm:w-auto justify-center sm:justify-start">
                   <p className="text-[16px] font-[600] text-[#889ABC] hidden lg:flex">Per page</p>
                   <Select
@@ -569,7 +585,7 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
                   >
                     <SelectTrigger
                       className={`rounded-[4px] ${isPageSelectOpen ? "text-[#ffffff] bg-primary" : "text-primary bg-white"
-                        } h-[32px] font-lato font-[500] w-[60px] text-[15px] border-none shadow-[2px_2px_5px_0px_#1D57C747] hover:shadow-[2px_2px_5px_0px_#1D57C747] border border-[#1D57C747]`}
+                        } h-[32px]  font-[500] w-[60px] text-[15px] border-none shadow-[2px_2px_5px_0px_#1D57C747] hover:shadow-[2px_2px_5px_0px_#1D57C747] border border-[#1D57C747]`}
                     >
                       <div className="flex items-center justify-between w-full">
                         <SelectValue placeholder={pageSize} />
@@ -667,7 +683,7 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 } 

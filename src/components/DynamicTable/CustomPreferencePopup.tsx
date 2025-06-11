@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { BsThreeDots } from 'react-icons/bs';
 import { Label } from "@/components/TableUI/label";
 import { RadioGroup, RadioGroupItem } from "@/components/TableUI/radioGroup";
 import { FrameIcon, StandardResposiveIcon } from '@/TableIcon/commonIcons/columnRezing';
 import { DisableIcon, EnableIcon } from '@/TableIcon/commonIcons/dataWrap';
 import { CompactDensityIcon, ComfortableDensityIcon, StandardtDensityIcon } from '@/TableIcon/commonIcons/rowDensity';
 import { useGlobalPreferencesContext } from '@/app/context/GlobalPreferencesContext';
+import { ThreeDotIconMenu } from '../client/icons/dynamicForm/AllDynamicFormIcons';
 
 const CustomPreferencePopup = () => {
   const { preferences, updatePreferences } = useGlobalPreferencesContext();
@@ -30,12 +30,12 @@ const CustomPreferencePopup = () => {
   };
 
   return (
-    <div className="flex items-center font-lato" ref={customPopupRef}>
+    <div className="flex items-center " ref={customPopupRef}>
       <button
         className="relative"
         onClick={() => setIsTableCustomPopup(!isTableCustomPopup)}
       >
-        <BsThreeDots className={` ${isTableCustomPopup ? "text-[#1D57C7]" : "text-[#889ABC] "} text-[16px]`} />
+        <ThreeDotIconMenu color={`${isTableCustomPopup ? "text-[#1D57C7]" : "text-[#889ABC]"} text-[16px]`} />
       </button>
       {isTableCustomPopup && (
         <div className="absolute right-[18px] h-[342px] w-[214px] top-10 text-[#7B8190] mt-1 bg-white rounded-md shadow-[0px_0px_20px_0px_#C2D1EF]">

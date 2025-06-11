@@ -10,6 +10,7 @@ body {
   :root {
     --background: 0 0% 100%; /* background */
     --foreground: 240 10% 3.9%;  /* text color */
+    --form-card-background: 210, 49%, 92%, 1; /* form card background color */
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;  /* text color */         
     --popover: 0 0% 100%;  /* background */
@@ -34,7 +35,7 @@ body {
     --chart-4: 43 74% 66%;  /* chart color */
     --chart-5: 27 87% 67%;  /* chart color */
 
-    --mainbackground: 0 0% 100%;  /* custome background for perticular color */
+    --mainbackground: 210, 33%, 98%;  /* custome background for perticular color */
     --parentbackground: 206, 28%, 95%, 1;  /* custome background for perticular  color */
     --accordion-trigger-bg: #fbfcfd;  /* custome background for perticular according shacn Component  color */
     --selected-value: 221, 10%, 41%, 1;  /* cutome text selected value  color */
@@ -52,6 +53,7 @@ body {
   .dark {
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
+    --form-card-background: 210, 17%, 18%, 1; /* form card background color */
     --card: 240 10% 3.9%;
     --card-foreground: 0 0% 98%;
     --popover: 240 10% 3.9%;
@@ -75,7 +77,7 @@ body {
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
 
-    --mainbackground: 240 10% 3.9%;
+    --mainbackground: 210, 9%, 14%;
     --parentbackground: 210, 13%, 15%, 1;
     --accordion-trigger-bg: #09090b;
     --selected-value: 216, 14%, 93%;

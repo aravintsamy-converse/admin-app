@@ -546,7 +546,6 @@ export default function DynamicTableContainer({
   };
 
   return (
-    <div className="w-full h-full rounded-2xl">
       <TableProvider>
         <DataTable
           columns={columns}
@@ -556,6 +555,5 @@ export default function DynamicTableContainer({
           onRefetch={onRefetch}
         />
       </TableProvider>
-    </div>
   );
 }
