@@ -25,14 +25,6 @@ const defaultProps = {
 
 describe('MultiSelectDropdownUI', () => {
 
-  global.ResizeObserver = jest.fn().mockImplementation(() => ({
-    observe: jest.fn(),
-    unobserve: jest.fn(),
-    disconnect: jest.fn(),
-  }));
-
-  window.HTMLElement.prototype.scrollIntoView = jest.fn();
-
   beforeEach(() => {
     jest.clearAllMocks();
   });
@@ -123,15 +115,6 @@ describe('MultiSelectDropdownUI', () => {
     render(<MultiSelectDropdownUI {...defaultProps} open={true} loading={true} />);
     expect(screen.getByText('Loading more...')).toBeInTheDocument();
   });
-
-  // it('applies correct classes to selected and unselected options', () => {
-  //   const selectedOptions = [{ value: '1', label: 'Option 1' }];
-  //   render(<MultiSelectDropdownUI {...defaultProps} open={true} value={selectedOptions} />);
-
-  //   const selectedOption = screen.getByTestId('option-1');
-  //   const unselectedOption = screen.getByTestId('option-2')
-  
-  // });
 
   // Edge cases
   it('handles empty options array', () => {

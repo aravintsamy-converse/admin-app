@@ -19,7 +19,7 @@ const customJestConfig = {
   },
   coveragePathIgnorePatterns: [
     '<rootDir>/src/components/ui/', // Ignore button.tsx from coverage
-    '<rootDir>/src/components/ui/', // Ignore button.tsx from coverage
+    '<rootDir>/src/hooks/', // Ignore button.tsx from coverage
   ],
 }
  
