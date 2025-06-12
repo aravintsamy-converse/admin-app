@@ -85,6 +85,7 @@
     --popover-radio-foreground: 220, 5%, 22%, 1; /* secondery text color */
     --form-header-border: 210, 4%, 11%, 1; /* form header border color */
     --metric-border: 220, 75%, 45%, 0.76; /* metric border color */
+    --select-secondary-foreground: 0, 0%, 76%, 1; /* select secondary text d color */
 
 
 

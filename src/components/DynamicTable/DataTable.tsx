@@ -369,7 +369,7 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
                   <SelectValue placeholder="Role Type" />
                   <ChevronDown className="h-3.5 w-3.5 mb-[1px] text-[#889ABC]" />
                 </SelectTrigger>
-                <SelectContent className="w-[295px] border-0 rounded-[2px] bg-background shadow-custom">
+                <SelectContent className="w-[295px] left-3 top-[-2px] border-0 rounded-[2px] bg-background shadow-custom">
                   {metadata.views.options.map((option) => (
                     <div
                       key={option.value}
@@ -377,11 +377,11 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
                     >
                       <SelectItem
                         value={option.value}
-                        className="text-foreground text-[14px] font-[400] w-full group-hover:text-primary focus:bg-transparent focus:text-[#1D4ED8] focus:font-[400]"
+                        className="text-foreground text-[14px] font-[400] w-full group-hover:text-primary focus:bg-transparent focus:font-[400]"
                       >
                         <div className="w-full">{option.label}</div>
                       </SelectItem>
-                     <div  onClick={() => setOpen(true)}  className={`transition-opacity ${selectedView === option.value ? 'opacity-100' : 'opacity-0'} ${selectedView === String(option.value) ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}>
+                     <div  onClick={() => setOpen(true)}  className={`transition-opacity hover:text-primary  ${selectedView === String(option.value) ? 'opacity-100 text-primary' : 'opacity-0 group-hover:opacity-100 text-infoIcon'}`}>
                        <PinIcon
                       />
                      </div>
