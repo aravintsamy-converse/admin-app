@@ -23,13 +23,13 @@ const CurrentViewFilterDetails = ({ metadata }: { metadata: TableMetadata }) => 
 
     return (
         <div className="relative" ref={ViewDetailsPopupRef}>
-            <div className={`${isViewDetailsOpen ? 'text-primary' : 'text-infoIcon'} hidden md:flex text-[24px] hover:text-[#1D57C7] cursor-pointer`}
+            <div className={`${isViewDetailsOpen ? 'text-primary' : 'text-infoIcon'} hidden md:flex text-[24px] hover:text-primary cursor-pointer`}
                 onClick={() => setIsViewDetailsOpen(!isViewDetailsOpen)}>
                 <InfoIcon />
             </div>
             {isViewDetailsOpen && (
-                <div className="absolute top-10 -left-40 md:-left-3  py-1 px-4 z-50 w-[374px] bg-white rounded-[4px] shadow-[0px_0px_20px_0px_#C2D1EF]">
-                    <div className="absolute -top-3 left-40 md:left-3 border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent  border-r-[20px] rotate-90 border-r-white"></div>
+                <div className="absolute top-10 -left-40 md:-left-3  py-1 px-4 z-50 w-[374px] bg-background rounded-[4px] shadow-primaryButtonActive">
+                    <div className="absolute -top-3 left-40 md:left-3 border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent  border-r-[20px] rotate-90 border-r-background"></div>
                     <h3 className="text-[15px] font-[600] text-[#31363F]">Filters Applied</h3>
                     <div className="list-disc py-2">
                         {metadata.views?.current_view_details?.map((item, index) => (

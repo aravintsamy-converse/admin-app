@@ -10,7 +10,7 @@ import { FavoriteIcon, UnFavoriteIcon } from '@/TableIcon/commonIcons/manageFavo
 
 const CustomPreferencePopup = () => {
   const { preferences, updatePreferences } = useGlobalPreferencesContext();
-  const [isTableCustomPopup, setIsTableCustomPopup] = useState(true);
+  const [isTableCustomPopup, setIsTableCustomPopup] = useState(false);
   const customPopupRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const CustomPreferencePopup = () => {
         className="relative"
         onClick={() => setIsTableCustomPopup(!isTableCustomPopup)}
       >
-        <ThreeDotIconMenu color={`${isTableCustomPopup ? "text-primary" : "text-dotMenuDeselected"} text-[16px]`} />
+        <ThreeDotIconMenu color={`${isTableCustomPopup ? "text-primary text-[20px]" : "text-dotMenuDeselected"}`} />
       </button>
       {isTableCustomPopup && (
         <div className="absolute right-[7px] h-[428px] w-[219px] top-[59px] text-popoverheaderforeground mt-1 bg-background rounded-[4px] shadow-custom">

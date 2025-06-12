@@ -381,11 +381,10 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
                       >
                         <div className="w-full">{option.label}</div>
                       </SelectItem>
-                     <div  onClick={() => setOpen(true)}  className={`transition-opacity hover:text-primary  ${selectedView === String(option.value) ? 'opacity-100 text-primary' : 'opacity-0 group-hover:opacity-100 text-infoIcon'}`}>
-                       <PinIcon
-                      />
-                     </div>
-                      
+                      <div onClick={() => setOpen(true)} className={`transition-opacity hover:text-primary  ${selectedView === String(option.value) ? 'opacity-100 text-primary' : 'opacity-0 group-hover:opacity-100 text-infoIcon'}`}>
+                        <PinIcon
+                        />
+                      </div>
                     </div>
                   ))}
                 </SelectContent>
@@ -410,7 +409,7 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
       </div>
 
 
-      {/* <div className="w-full tanstack-table px-3">
+       {/* <div className="w-full tanstack-table px-3">
         <div className="w-full h-full rounded-sm bg-white">
           <div className="w-full bg-white py-4 grid grid-cols-2 md:grid-cols-1 gap-y-1 lg:grid-cols-[50%,50%] items-center">
             <CurrentColumnFilters />
@@ -696,7 +695,7 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
             </div>
           </div>
         </div>
-      </div> */}
+      </div>  */}
     </div>
   );
 } 
