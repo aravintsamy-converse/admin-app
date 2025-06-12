@@ -55,6 +55,8 @@ export default {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
+        metricborder: 'hsla(var(--metric-border))',
+        formheaderborder: 'hsla(var(--form-header-border))',
         popoverradioforground: 'hsla(var(--popover-radio-foreground))',
         popoverheaderforeground: 'hsla(var(--popover-header-foreground))',
         popoversecondaryforground: 'hsla(var(--popover-secondary-forground))',
@@ -94,7 +96,7 @@ export default {
         sm: 'calc(var(--radius) - 4px)',
       },
       boxShadow: {
-        primaryButtonActive: '2px 2px 5px 0px hsl(var(--shadow-active))',
+        primaryButtonActive: '2px 2px 5px 0px hsla(var(--shadow-active))',
         custom: '0px 2px 10px 0px hsl(var(--shadow-color))',
 
         customhover: '2px 2px 5px 0px hsl(var(--shadow-color))',

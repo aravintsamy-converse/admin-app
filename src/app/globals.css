@@ -23,10 +23,11 @@
     --popover-header-foreground: 223, 9%, 52%, 1; /* const header gary*/
     --popover-secondary-forground: 221, 10%, 41%, 1; /* secondery text color */
     --popover-radio-foreground: 218, 15%, 86%, 1; /* secondery text color */
-    
+    --form-header-border: 0, 0%, 100%, 1; /* form header border color */
     
     --dropdown-hover-background: 0, 0%, 5%, 1; /* hover background color */
     --default-view-text: 218, 23%, 38%, 1;   /* default view text color */
+    --metric-border: 0, 0%, 100%, 1; /* metric border color */
     
     
     --secondary: 240 4.8% 95.9%;  /* secondary gary  background color */
@@ -82,6 +83,8 @@
     --popover-header-foreground: 223, 9%, 52%, 1; /* const header gary*/
     --popover-secondary-forground: 0, 0%, 75%, 1; /* secondery text color */
     --popover-radio-foreground: 220, 5%, 22%, 1; /* secondery text color */
+    --form-header-border: 210, 4%, 11%, 1; /* form header border color */
+    --metric-border: 220, 75%, 45%, 0.76; /* metric border color */
 
 
 

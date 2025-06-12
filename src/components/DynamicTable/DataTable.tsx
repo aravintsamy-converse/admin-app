@@ -348,9 +348,9 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
   return (
     <div className="h-full rounded-lg relative p-[2px] 2xl:ml-2 bg-background">
 
-      <div className="grid md:grid-cols-2 items-center bg-mainbackground rounded-tl-sm">
+      <div className="grid grid-cols-2 items-center border-b border-formheaderborder bg-mainbackground rounded-tl-sm">
         <div className="flex ">
-          <div className=" pl-[21px] pr-[20px] py-[27px] !bg-formHeaderCardBackground  rounded-tl-sm flex items-center justify-center ">
+          <div className="p-3 md:pl-[21px] md:pr-[20px] py-[27px] !bg-formHeaderCardBackground  rounded-tl-sm flex items-center justify-center ">
             <SquarHamburgerIcon />
           </div>
           <div className="rounded-tr-md items-center flex  w-full">
@@ -364,7 +364,7 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
                 }}
               >
                 <SelectTrigger
-                  className={`${open ? "!underline decoration-[2px] decoration-selectsecondaryforeground !underline-offset-4" : ""} bg-transparent focus:ring-0 uppercase w-[181px] no-underline shadow-none hover:underline decoration-[2px] hover:decoration-[2px] hover:decoration-selectsecondaryforeground hover:underline-offset-4  focus-visible:ring-0 font-[700] border-0 ${selectedView ? "text-selectsecondaryforeground text-[18px]" : "text-selectsecondaryforeground text-[18px]"}`}
+                  className={`${open ? "!underline decoration-[2px] decoration-selectsecondaryforeground !underline-offset-4" : ""} bg-transparent focus:ring-0 uppercase w-[160px] md:w-[182px] no-underline shadow-none hover:underline decoration-[2px] hover:decoration-[2px] hover:decoration-selectsecondaryforeground hover:underline-offset-4  focus-visible:ring-0 font-[700] border-0 ${selectedView ? "text-selectsecondaryforeground text-[18px]" : "text-selectsecondaryforeground text-[18px]"}`}
                 >
                   <SelectValue placeholder="Role Type" />
                   <ChevronDown className="h-3.5 w-3.5 mb-[1px] text-[#889ABC]" />
@@ -396,10 +396,10 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
           </div>
         </div>
         <div className="flex items-center justify-end pr-[15px]">
-          <button className="py-[7px] pl-[7px] pr-[5px]  flex items-center justify-center mr-3 text-nowrap bg-background text-primary hover:text-primary-foreground hover:bg-primary text-[18px] font-[600] rounded-[4px] cursor-pointer transition-all duration-300 shadow-[2px_2px_5px_0px_#1D57C747]">
+          <button className="pb-[6px] pt-[7px] pl-[6px] pr-[4px]  flex items-center justify-center mr-3 text-nowrap bg-mainbackground text-primary hover:text-primary-foreground hover:bg-primary text-[18px] font-[600] rounded-[4px] cursor-pointer transition-all duration-300 shadow-primaryButtonActive border border-metricborder hover:border-transparent">
             <MetricIcon />
           </button>
-          <button className="pl-[22px] pr-[27px] py-[7px]  flex items-center  justify-center mr-[6px] bg-primary text-primary-foreground hover:text-primary hover:bg-background text-[14px] font-[500] rounded-[4px] cursor-pointer transition-all duration-300 !shadow-primaryButtonActive hover:shadow-primaryButtonActive">
+          <button className="p-2 md:pl-[22px] md:pr-[27px] py-[7px]  flex items-center  justify-center mr-[6px] bg-primary text-primary-foreground hover:text-primary hover:bg-background text-[14px] font-[500] rounded-[4px] cursor-pointer transition-all duration-300 !shadow-primaryButtonActive hover:shadow-primaryButtonActive">
             <CreateIcon /><span className="ml-2">Create</span>
           </button>
           <div>

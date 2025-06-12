@@ -23,7 +23,7 @@ const CurrentViewFilterDetails = ({ metadata }: { metadata: TableMetadata }) => 
 
     return (
         <div className="relative" ref={ViewDetailsPopupRef}>
-            <div className={`${isViewDetailsOpen ? 'text-primary' : 'text-infoIcon'} text-[24px] hover:text-[#1D57C7] cursor-pointer`}
+            <div className={`${isViewDetailsOpen ? 'text-primary' : 'text-infoIcon'} hidden md:flex text-[24px] hover:text-[#1D57C7] cursor-pointer`}
                 onClick={() => setIsViewDetailsOpen(!isViewDetailsOpen)}>
                 <InfoIcon />
             </div>
