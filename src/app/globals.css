@@ -3,26 +3,39 @@
 @tailwind utilities;
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter);
 }
 
 @layer base {
   :root {
     --background: 0 0% 100%; /* background */
+    --form-card-background: 210 49% 92% 1; /* form card background color */
+    --form-layout-background: 0 0% 100%, 1; /* form layout background color */
+    --dot-menu-deselected: 0, 0%, 37%, 1; /* dot menu deselected color */
+    --primary: 220, 75%, 45%, 1;  /* button background and text color */
+    --button-drop-shadow: 220, 75%, 45%, 0.28;  /* button drop shadow color */
+    --const-header-text: 223, 9%, 52%, 1; /* const header gary*/
+    --secondery-text: 221, 10%, 41%, 1; /* secondery text color */
+    /* --dropdown-background: 0, 0%, 9%, 1; /* dropdown background color */
+    /* --dropdown-hover-text: 220, 75%, 45%, 1; hover background color */ 
+    --accent: 220, 75%, 45%, 1; /* hover background color */
+    --accent-foreground: 220, 75%, 45%;  /*Hover  text color */
+    --dropdown-hover-background: 0, 0%, 5%, 1; /* hover background color */
+    --default-view-text: 218, 23%, 38%, 1;   /* default view text color */
+
+    
     --foreground: 240 10% 3.9%;  /* text color */
-    --form-card-background: 210, 49%, 92%, 1; /* form card background color */
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;  /* text color */         
-    --popover: 0 0% 100%;  /* background */
-    --popover-foreground: 240 10% 3.9%;  /* text color */
-    --primary: 220, 75%, 45%, 1;  /* button background */
+    --popover: 220, 75%, 45%, 1;  /* background */
+    --popover-foreground: 220, 75%, 45%;  /* text color */
     --primary-foreground: 0 0% 98%;  /*button text color */
     --secondary: 240 4.8% 95.9%;  /* secondary gary  background color */
     --secondary-foreground: 240 5.9% 10%;  /* t secondary ext color */
     --muted: 240, 100%, 99%;  /*Placeholder  Background  color */
     --muted-foreground: 0, 0%, 68%, 1;  /* placholder  text color */
-    --accent: 220, 75%, 45%, 0.04;  /* Hover baground color */
-    --accent-foreground: 220, 75%, 45%;  /*Hover  text color */
+    /* --accent: 220, 75%, 45%, 0.04;  Hover baground color */
+    /* --accent-foreground: 220, 75%, 45%;  Hover  text color */
     --destructive: 0 84.2% 60.2%;  /* Error Button  text color */
     --destructive-foreground: 0 0% 98%;  /* Error Button text color */
     --border: 240 5.9% 90%;  /* Border  color */
@@ -51,9 +64,26 @@ body {
     --sidebar-ring: 217.2 91.2% 59.8%;  /*side bar foucs Visible outline color */
   }
   .dark {
+    --background: 0 0% 100%; /* background */
+    --form-card-background: 210, 17%, 18%, 1; /* form card background color */
+    --form-layout-background: 210, 9%, 14%; /* form layout background color */
+    --dot-menu-deselected: 0, 0%, 37%, 1; /* dot menu deselected color */
+    --primary: 0, 0%, 74%, 1;  /* button background and text color */
+    --button-drop-shadow: 210, 4%, 11%, 1;  /* button drop shadow color */
+    --dropdown-background: 0, 0%, 9%, 1; /* dropdown background color */
+    --const-header-text: 223, 9%, 52%, 1; /* const header gary*/
+    /* --dropdown-background: 0, 0%, 9%, 1; dropdown background color */
+    /* --dropdown-hover-text: 220, 75%, 45%, 1; hover background color */
+    --accent: 0, 0%, 9%, 1; /* hover background color */
+    --accent-foreground:  220, 75%, 45%, 1;  /*Hover  text color */
+    --dropdown-hover-background: 0, 0%, 5%, 1; /* hover background color */
+    --default-view-text: 218, 23%, 38%, 1;   /* default view text color */
+    --default-view-text: 0, 0%, 76%, 1;   /* default view text color */
+
+
+
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
-    --form-card-background: 210, 17%, 18%, 1; /* form card background color */
     --card: 240 10% 3.9%;
     --card-foreground: 0 0% 98%;
     --popover: 240 10% 3.9%;
@@ -64,8 +94,8 @@ body {
     --secondary-foreground: 0 0% 98%;
     --muted: 240 3.7% 15.9%;
     --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
+    /* --accent: 240 3.7% 15.9%; */
+    /* --accent-foreground: 0 0% 98%; */
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
     --border: 240 3.7% 15.9%;

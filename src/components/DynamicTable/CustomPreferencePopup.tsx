@@ -6,10 +6,11 @@ import { DisableIcon, EnableIcon } from '@/TableIcon/commonIcons/dataWrap';
 import { CompactDensityIcon, ComfortableDensityIcon, StandardtDensityIcon } from '@/TableIcon/commonIcons/rowDensity';
 import { useGlobalPreferencesContext } from '@/app/context/GlobalPreferencesContext';
 import { ThreeDotIconMenu } from '../client/icons/dynamicForm/AllDynamicFormIcons';
+import { FavoriteIcon, UnFavoriteIcon } from '@/TableIcon/commonIcons/manageFavorite';
 
 const CustomPreferencePopup = () => {
   const { preferences, updatePreferences } = useGlobalPreferencesContext();
-  const [isTableCustomPopup, setIsTableCustomPopup] = useState(false);
+  const [isTableCustomPopup, setIsTableCustomPopup] = useState(true);
   const customPopupRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -35,12 +36,12 @@ const CustomPreferencePopup = () => {
         className="relative"
         onClick={() => setIsTableCustomPopup(!isTableCustomPopup)}
       >
-        <ThreeDotIconMenu color={`${isTableCustomPopup ? "text-[#1D57C7]" : "text-[#889ABC]"} text-[16px]`} />
+        <ThreeDotIconMenu color={`${isTableCustomPopup ? "text-primary" : "text-dotMenuDeselected"} text-[16px]`} />
       </button>
       {isTableCustomPopup && (
-        <div className="absolute right-[18px] h-[342px] w-[214px] top-10 text-[#7B8190] mt-1 bg-white rounded-md shadow-[0px_0px_20px_0px_#C2D1EF]">
-          <div className="absolute -top-4 right-2 border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent border-r-[20px] rotate-90 border-r-white"></div>
-          <div className="py-3 px-4 text-[#7B8190] bg-white space-y-4">
+        <div className="absolute right-[7px] h-[428px] w-[214px] top-[60px] text-[#7B8190] mt-1 bg-background rounded-[8px] shadow-[0px_0px_20px_0px_#C2D1EF]">
+          <div className="absolute -top-2 right-2 border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent border-r-[20px] rotate-90 border-r-background"></div>
+          <div className="py-3 px-4 text-[#7B8190]  space-y-4">
             {/* Column Scaling */}
             <div>
               <h2 className="text-[16px] font-[700] text-[#7B8190] mb-2">Column Scaling</h2>
@@ -143,6 +144,37 @@ const CustomPreferencePopup = () => {
                   <Label htmlFor="disable" className="flex items-center space-x-2 text-[14px] text-[#7B8190] font-[500] cursor-pointer">
                     <DisableIcon />
                     <span>Disable</span>
+                  </Label>
+                </div>
+              </RadioGroup>
+            </div>
+             {/* favorites */}
+            <div>
+              <h2 className="text-[16px] font-[700] text-[#7B8190] mb-2">Mark as Favorite</h2>
+              <RadioGroup
+                value={preferences.dataWrap ? "true" : "false"}
+                onValueChange={(value) => handleUpdatePreferences({ dataWrap: value === "true" })}
+              >
+                <div className="flex items-center space-x-3">
+                  <RadioGroupItem
+                    value="true"
+                    id="enable"
+                    className="h-[18px] w-[18px] border border-[#FFFFFF] shadow-[0px_0px_2.5px_0px_#1D57C7] data-[state=checked]:border-[#1D57C7]"
+                  />
+                  <Label htmlFor="enable" className="flex items-center space-x-2 text-[14px] text-[#7B8190] font-[500] cursor-pointer">
+                    <FavoriteIcon />
+                    <span>Yes</span>
+                  </Label>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <RadioGroupItem
+                    value="false"
+                    id="disable"
+                    className="h-[18px] w-[18px] border border-[#FFFFFF] shadow-[0px_0px_2.5px_0px_#1D57C7] data-[state=checked]:border-[#1D57C7]"
+                  />
+                  <Label htmlFor="disable" className="flex items-center space-x-2 text-[14px] text-[#7B8190] font-[500] cursor-pointer">
+                    <UnFavoriteIcon />
+                    <span>No</span>
                   </Label>
                 </div>
               </RadioGroup>

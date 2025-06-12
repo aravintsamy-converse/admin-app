@@ -35,8 +35,9 @@ import type {
   SortingParams,
   TableData,
 } from "@/Types/Table/tableTypes";
-import { MetricIcon, SquarHamburgerIcon, SquarPlusIcon } from "../client/icons/dynamicForm/AllDynamicFormIcons";
+import { MetricIcon, PinIcon, SquarHamburgerIcon, SquarPlusIcon } from "../client/icons/dynamicForm/AllDynamicFormIcons";
 import CustomPreferencePopup from "./CustomPreferencePopup";
+import { VscPinned } from "react-icons/vsc";
 
 const staticTableData = [
   {
@@ -141,6 +142,8 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
   const [filterValues, setFilterValues] = useState<Record<string, string>>({});
   const [appliedFilterValues, setAppliedFilterValues] = useState<Record<string, string>>({});
   const [hoveredHeaderId, setHoveredHeaderId] = useState<string | null>(null);
+  const [open, setOpen] = useState(false);
+
 
   const handleDeleteRowId = async (rowId: string) => {
     try {
@@ -347,12 +350,12 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
 
       <div className="grid md:grid-cols-2 items-center bg-mainbackground rounded-tl-sm">
         <div className="flex ">
-          <div className=" p-[20px] bg-formcardbackground  rounded-tl-sm flex items-center justify-center ">
+          <div className=" px-[21px] py-[27px] bg-formcardbackground  rounded-tl-sm flex items-center justify-center ">
             <SquarHamburgerIcon />
           </div>
           <div className="rounded-tr-md items-center flex  w-full">
             <div className="flex items-center gap-2 p-4">
-              <Select
+              <Select open={open} onOpenChange={setOpen}
                 value={selectedView || ""}
                 onValueChange={(value) => {
                   setSelectedView(value);
@@ -361,22 +364,32 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
                 }}
               >
                 <SelectTrigger
-                  className={`bg-background uppercase w-[170px] no-underline hover:underline hover:underline-offset-4 focus-visible:ring-0 font-[700] border-0 ${selectedView ? "text-[#31363F] text-[18px]" : "text-[#31363F] text-[18px]"}`}
+                  className={`${open ? "!underline decoration-[2px] decoration-[#1D4ED8] !underline-offset-4  !border-[#1D4ED8]" : ""} bg-transparent uppercase w-[170px] no-underline shadow-none hover:underline decoration-[2px] hover:decoration-[2px] hover:decoration-[#1D4ED8] hover:underline-offset-4  focus-visible:ring-0 font-[700] border-0 ${selectedView ? "text-[#31363F] text-[18px]" : "text-[#31363F] text-[18px]"}`}
                 >
                   <SelectValue placeholder="Role Type" />
                   <ChevronDown className="h-3.5 w-3.5 text-[#889ABC]" />
                 </SelectTrigger>
                 <SelectContent className="w-[340px] border-0 bg-white shadow-[0px_0px_20px_0px_#C2D1EF]">
                   {metadata.views.options.map((option) => (
-                    <SelectItem
+                    <div
                       key={option.value}
-                      value={option.value}
-                      className="text-[#81868C] text-[15px] font-[600]  hover:bg-[#F8F9FC]"
+                      className="group flex w-full items-center justify-between px-2 py-1 rounded-[4px] cursor-pointer hover:bg-[#F8F9FC]"
                     >
-                      <div className="flex items-center gap-2">{option.label}</div>
-                    </SelectItem>
+                      <SelectItem
+                        value={option.value}
+                        className="text-[#81868C] text-[15px] font-[600] w-full group-hover:text-[#1D4ED8] focus:bg-transparent focus:text-[#1D4ED8] focus:font-[700]"
+                      >
+                        <div className="w-full">{option.label}</div>
+                      </SelectItem>
+                     <div  onClick={() => setOpen(true)} className="opacity-50 group-hover:opacity-100 transition-opacity">
+                       <PinIcon
+                      />
+                     </div>
+                      
+                    </div>
                   ))}
                 </SelectContent>
+
               </Select>
               <CurrentViewFilterDetails metadata={metadata} />
             </div>
@@ -387,7 +400,7 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
             <MetricIcon />
           </button>
           <button className="px-5 py-2 flex items-center  justify-center mr-1 bg-white text-primary hover:text-white hover:bg-primary text-[15px] font-[600] rounded-[4px] cursor-pointer transition-all duration-300 shadow-[2px_2px_5px_0px_#1D57C747]">
-            <CreateIcon />Create
+            <CreateIcon /><span className="ml-2">Create</span>
           </button>
           <div>
             <CustomPreferencePopup />
