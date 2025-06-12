@@ -350,7 +350,7 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
 
       <div className="grid md:grid-cols-2 items-center bg-mainbackground rounded-tl-sm">
         <div className="flex ">
-          <div className=" px-[21px] py-[27px] bg-formcardbackground  rounded-tl-sm flex items-center justify-center ">
+          <div className=" px-[21px] py-[27px] !bg-formHeaderCardBackground  rounded-tl-sm flex items-center justify-center ">
             <SquarHamburgerIcon />
           </div>
           <div className="rounded-tr-md items-center flex  w-full">
@@ -369,15 +369,15 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
                   <SelectValue placeholder="Role Type" />
                   <ChevronDown className="h-3.5 w-3.5 text-[#889ABC]" />
                 </SelectTrigger>
-                <SelectContent className="w-[295px] border-0 rounded-[2px] bg-white shadow-[0px_0px_20px_0px_#C2D1EF]">
+                <SelectContent className="w-[295px] border-0 rounded-[2px] bg-background shadow-custom">
                   {metadata.views.options.map((option) => (
                     <div
                       key={option.value}
-                      className="group flex w-full items-center justify-between px-2  rounded-[4px] cursor-pointer hover:bg-[#F8F9FC]"
+                      className="group flex w-full items-center justify-between px-2  rounded-[4px] cursor-pointer hover:bg-accent"
                     >
                       <SelectItem
                         value={option.value}
-                        className="text-[#81868C] text-[14px] font-[400] w-full group-hover:text-[#1D4ED8] focus:bg-transparent focus:text-[#1D4ED8] focus:font-[400]"
+                        className="text-foreground text-[14px] font-[400] w-full group-hover:text-primary focus:bg-transparent focus:text-[#1D4ED8] focus:font-[400]"
                       >
                         <div className="w-full">{option.label}</div>
                       </SelectItem>
@@ -396,10 +396,10 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
           </div>
         </div>
         <div className="flex items-center justify-end pr-4">
-          <button className="p-2 flex items-center justify-center mr-3 text-nowrap bg-white text-primary hover:text-white hover:bg-primary text-[18px] font-[600] rounded-[4px] cursor-pointer transition-all duration-300 shadow-[2px_2px_5px_0px_#1D57C747]">
+          <button className="p-2 flex items-center justify-center mr-3 text-nowrap bg-background text-primary hover:text-primary-foreground hover:bg-primary text-[18px] font-[600] rounded-[4px] cursor-pointer transition-all duration-300 shadow-[2px_2px_5px_0px_#1D57C747]">
             <MetricIcon />
           </button>
-          <button className="px-5 py-2 flex items-center  justify-center mr-1 bg-white text-primary hover:text-white hover:bg-primary text-[15px] font-[600] rounded-[4px] cursor-pointer transition-all duration-300 shadow-[2px_2px_5px_0px_#1D57C747]">
+          <button className="px-5 py-2 flex items-center  justify-center mr-1 bg-primary text-primary-foreground hover:text-primary hover:bg-background text-[15px] font-[600] rounded-[4px] cursor-pointer transition-all duration-300 !shadow-primaryButtonActiveShadow hover:shadow-primaryButtonActive">
             <CreateIcon /><span className="ml-2">Create</span>
           </button>
           <div>

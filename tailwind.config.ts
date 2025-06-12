@@ -55,6 +55,7 @@ export default {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
+        formHeaderCardBackground: 'hsl(var(--form-header-card-background))',
         dotMenuDeselected: 'hsl(var(--dot-menu-deselected))',
         formcardbackground: 'hsl(var(--form-card-background))',
         accordionTriggerBg: 'var(--accordion-trigger-bg)',
@@ -88,7 +89,9 @@ export default {
         sm: 'calc(var(--radius) - 4px)',
       },
       boxShadow: {
+        primaryButtonActive: '2px 2px 5px 0px hsl(var(--shadow-active))',
         custom: '0px 2px 10px 0px hsl(var(--shadow-color))',
+        
         customhover: '2px 2px 5px 0px hsl(var(--shadow-color))',
         sheetShadow: '3px 0px 10px 0px hsl(var(--shadow-color))',
       },

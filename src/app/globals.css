@@ -9,16 +9,18 @@
 @layer base {
   :root {
     --background: 0 0% 100%; /* background */
-    --form-card-background: 210 49% 92% 1; /* form card background color */
-    --form-layout-background: 0 0% 100%, 1; /* form layout background color */
-    --dot-menu-deselected: 0, 0%, 37%, 1; /* dot menu deselected color */
+    --form-header-background: 0, 0%, 100%, 50%; /* form layout background color */
+    --form-header-card-background: 210 49% 92% ; /* form card background color */
+    --transpirant-border: 0 0% 100%; /* form card background color */
     --primary: 220, 75%, 45%, 1;  /* button background and text color */
+    --primary-foreground: 0 0% 98%;  /*button text color */
+    --shadow-active: 220, 75%, 45%, 0.4;  /* custome shadow for calender buttons ans create button color */
+
+    --dot-menu-deselected: 0, 0%, 37%, 1; /* dot menu deselected color */
     --button-drop-shadow: 220, 75%, 45%, 0.28;  /* button drop shadow color */
     --const-header-text: 223, 9%, 52%, 1; /* const header gary*/
     --secondery-text: 221, 10%, 41%, 1; /* secondery text color */
-    /* --dropdown-background: 0, 0%, 9%, 1; /* dropdown background color */
-    /* --dropdown-hover-text: 220, 75%, 45%, 1; hover background color */ 
-    --accent: 220, 75%, 45%, 1; /* hover background color */
+    --accent: 220, 75%, 45%, 0.04; /* hover background color */
     --accent-foreground: 220, 75%, 45%;  /*Hover  text color */
     --dropdown-hover-background: 0, 0%, 5%, 1; /* hover background color */
     --default-view-text: 218, 23%, 38%, 1;   /* default view text color */
@@ -29,7 +31,6 @@
     --card-foreground: 240 10% 3.9%;  /* text color */         
     --popover: 220, 75%, 45%, 1;  /* background */
     --popover-foreground: 220, 75%, 45%;  /* text color */
-    --primary-foreground: 0 0% 98%;  /*button text color */
     --secondary: 240 4.8% 95.9%;  /* secondary gary  background color */
     --secondary-foreground: 240 5.9% 10%;  /* t secondary ext color */
     --muted: 240, 100%, 99%;  /*Placeholder  Background  color */
@@ -53,7 +54,6 @@
     --accordion-trigger-bg: #fbfcfd;  /* custome background for perticular according shacn Component  color */
     --selected-value: 221, 10%, 41%, 1;  /* cutome text selected value  color */
     --shadow-color: 219, 85%, 57%, 0.22;  /* cuatome shadow for poover select,popover,other seclect oiption dropdown compobox color */
-    --shadow-active: 220, 75%, 45%, 0.04;  /* custome shadow for calender buttons  color */
     --sidebar-background:60, 89%, 42%;  /* side bar background color */
     --sidebar-foreground: 240 5.3% 26.1%;  /* side bar  text color */
     --sidebar-primary: 240 5.9% 10%;  /* side bar button  color */
@@ -64,12 +64,13 @@
     --sidebar-ring: 217.2 91.2% 59.8%;  /*side bar foucs Visible outline color */
   }
   .dark {
-    --background: 0 0% 100%; /* background */
-    --form-card-background: 210, 17%, 18%, 1; /* form card background color */
+    --background: 240 10% 3.9%; /* background */
+    --form-header-card-background: 210, 17%, 18%, 1; /* form card background color */
     --form-layout-background: 210, 9%, 14%; /* form layout background color */
     --dot-menu-deselected: 0, 0%, 37%, 1; /* dot menu deselected color */
-    --primary: 0, 0%, 74%, 1;  /* button background and text color */
-    --button-drop-shadow: 210, 4%, 11%, 1;  /* button drop shadow color */
+    --primary: 220, 75%, 45%, 1;  /* button background and text color */
+    --primary-foreground: 0 0% 98%;  /*button text color */
+    --shadow-active:: 210, 4%, 11%, 1;  /* button drop shadow color */
     --dropdown-background: 0, 0%, 9%, 1; /* dropdown background color */
     --const-header-text: 223, 9%, 52%, 1; /* const header gary*/
     /* --dropdown-background: 0, 0%, 9%, 1; dropdown background color */
@@ -82,14 +83,14 @@
 
 
 
-    --background: 240 10% 3.9%;
+    /* --background: 240 10% 3.9%; */
     --foreground: 0 0% 98%;
     --card: 240 10% 3.9%;
     --card-foreground: 0 0% 98%;
     --popover: 240 10% 3.9%;
     --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
+    /* --primary: 0 0% 98%; */
+    /* --primary-foreground: 240 5.9% 10%; */
     --secondary: 240 3.7% 15.9%;
     --secondary-foreground: 0 0% 98%;
     --muted: 240 3.7% 15.9%;

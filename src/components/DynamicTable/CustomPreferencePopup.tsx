@@ -39,7 +39,7 @@ const CustomPreferencePopup = () => {
         <ThreeDotIconMenu color={`${isTableCustomPopup ? "text-primary" : "text-dotMenuDeselected"} text-[16px]`} />
       </button>
       {isTableCustomPopup && (
-        <div className="absolute right-[7px] h-[428px] w-[214px] top-[60px] text-[#7B8190] mt-1 bg-background rounded-[8px] shadow-[0px_0px_20px_0px_#C2D1EF]">
+        <div className="absolute right-[7px] h-[428px] w-[214px] top-[60px] text-[#7B8190] mt-1 bg-background rounded-[8px] shadow-custom">
           <div className="absolute -top-2 right-2 border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent border-r-[20px] rotate-90 border-r-background"></div>
           <div className="py-3 px-4 text-[#7B8190]  space-y-4">
             {/* Column Scaling */}
