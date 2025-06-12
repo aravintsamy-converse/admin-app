@@ -354,7 +354,7 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
             <SquarHamburgerIcon />
           </div>
           <div className="rounded-tr-md items-center flex  w-full">
-            <div className="flex items-center gap-2 p-4">
+            <div className="flex items-center p-3">
               <Select open={open} onOpenChange={setOpen}
                 value={selectedView || ""}
                 onValueChange={(value) => {
@@ -364,20 +364,20 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
                 }}
               >
                 <SelectTrigger
-                  className={`${open ? "!underline decoration-[2px] decoration-[#1D4ED8] !underline-offset-4  !border-[#1D4ED8]" : ""} bg-transparent uppercase w-[170px] no-underline shadow-none hover:underline decoration-[2px] hover:decoration-[2px] hover:decoration-[#1D4ED8] hover:underline-offset-4  focus-visible:ring-0 font-[700] border-0 ${selectedView ? "text-[#31363F] text-[18px]" : "text-[#31363F] text-[18px]"}`}
+                  className={`${open ? "!underline decoration-[2px] decoration-[#1D4ED8] !underline-offset-4  !border-[#1D4ED8]" : ""} bg-transparent focus:ring-0 uppercase w-[170px] no-underline shadow-none hover:underline decoration-[2px] hover:decoration-[2px] hover:decoration-[#1D4ED8] hover:underline-offset-4  focus-visible:ring-0 font-[700] border-0 ${selectedView ? "text-[#31363F] text-[18px]" : "text-[#31363F] text-[18px]"}`}
                 >
                   <SelectValue placeholder="Role Type" />
                   <ChevronDown className="h-3.5 w-3.5 text-[#889ABC]" />
                 </SelectTrigger>
-                <SelectContent className="w-[340px] border-0 bg-white shadow-[0px_0px_20px_0px_#C2D1EF]">
+                <SelectContent className="w-[295px] border-0 rounded-[2px] bg-white shadow-[0px_0px_20px_0px_#C2D1EF]">
                   {metadata.views.options.map((option) => (
                     <div
                       key={option.value}
-                      className="group flex w-full items-center justify-between px-2 py-1 rounded-[4px] cursor-pointer hover:bg-[#F8F9FC]"
+                      className="group flex w-full items-center justify-between px-2  rounded-[4px] cursor-pointer hover:bg-[#F8F9FC]"
                     >
                       <SelectItem
                         value={option.value}
-                        className="text-[#81868C] text-[15px] font-[600] w-full group-hover:text-[#1D4ED8] focus:bg-transparent focus:text-[#1D4ED8] focus:font-[700]"
+                        className="text-[#81868C] text-[14px] font-[400] w-full group-hover:text-[#1D4ED8] focus:bg-transparent focus:text-[#1D4ED8] focus:font-[400]"
                       >
                         <div className="w-full">{option.label}</div>
                       </SelectItem>
