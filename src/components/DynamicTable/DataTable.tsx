@@ -350,11 +350,11 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
 
       <div className="grid md:grid-cols-2 items-center bg-mainbackground rounded-tl-sm">
         <div className="flex ">
-          <div className=" px-[21px] py-[27px] !bg-formHeaderCardBackground  rounded-tl-sm flex items-center justify-center ">
+          <div className=" pl-[21px] pr-[20px] py-[27px] !bg-formHeaderCardBackground  rounded-tl-sm flex items-center justify-center ">
             <SquarHamburgerIcon />
           </div>
           <div className="rounded-tr-md items-center flex  w-full">
-            <div className="flex items-center p-3">
+            <div className="flex items-center p-1">
               <Select open={open} onOpenChange={setOpen}
                 value={selectedView || ""}
                 onValueChange={(value) => {
@@ -364,10 +364,10 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
                 }}
               >
                 <SelectTrigger
-                  className={`${open ? "!underline decoration-[2px] decoration-[#1D4ED8] !underline-offset-4  !border-[#1D4ED8]" : ""} bg-transparent focus:ring-0 uppercase w-[170px] no-underline shadow-none hover:underline decoration-[2px] hover:decoration-[2px] hover:decoration-[#1D4ED8] hover:underline-offset-4  focus-visible:ring-0 font-[700] border-0 ${selectedView ? "text-[#31363F] text-[18px]" : "text-[#31363F] text-[18px]"}`}
+                  className={`${open ? "!underline decoration-[2px] decoration-selectsecondaryforeground !underline-offset-4" : ""} bg-transparent focus:ring-0 uppercase w-[181px] no-underline shadow-none hover:underline decoration-[2px] hover:decoration-[2px] hover:decoration-selectsecondaryforeground hover:underline-offset-4  focus-visible:ring-0 font-[700] border-0 ${selectedView ? "text-selectsecondaryforeground text-[18px]" : "text-selectsecondaryforeground text-[18px]"}`}
                 >
                   <SelectValue placeholder="Role Type" />
-                  <ChevronDown className="h-3.5 w-3.5 text-[#889ABC]" />
+                  <ChevronDown className="h-3.5 w-3.5 mb-[1px] text-[#889ABC]" />
                 </SelectTrigger>
                 <SelectContent className="w-[295px] border-0 rounded-[2px] bg-background shadow-custom">
                   {metadata.views.options.map((option) => (
@@ -395,11 +395,11 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
             </div>
           </div>
         </div>
-        <div className="flex items-center justify-end pr-4">
-          <button className="p-2 flex items-center justify-center mr-3 text-nowrap bg-background text-primary hover:text-primary-foreground hover:bg-primary text-[18px] font-[600] rounded-[4px] cursor-pointer transition-all duration-300 shadow-[2px_2px_5px_0px_#1D57C747]">
+        <div className="flex items-center justify-end pr-[15px]">
+          <button className="py-[7px] pl-[7px] pr-[5px]  flex items-center justify-center mr-3 text-nowrap bg-background text-primary hover:text-primary-foreground hover:bg-primary text-[18px] font-[600] rounded-[4px] cursor-pointer transition-all duration-300 shadow-[2px_2px_5px_0px_#1D57C747]">
             <MetricIcon />
           </button>
-          <button className="px-5 py-2 flex items-center  justify-center mr-1 bg-primary text-primary-foreground hover:text-primary hover:bg-background text-[15px] font-[600] rounded-[4px] cursor-pointer transition-all duration-300 !shadow-primaryButtonActiveShadow hover:shadow-primaryButtonActive">
+          <button className="pl-[22px] pr-[27px] py-[7px]  flex items-center  justify-center mr-[6px] bg-primary text-primary-foreground hover:text-primary hover:bg-background text-[14px] font-[500] rounded-[4px] cursor-pointer transition-all duration-300 !shadow-primaryButtonActive hover:shadow-primaryButtonActive">
             <CreateIcon /><span className="ml-2">Create</span>
           </button>
           <div>

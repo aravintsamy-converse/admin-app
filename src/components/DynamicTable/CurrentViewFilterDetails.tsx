@@ -3,6 +3,7 @@ import { TableMetadata } from '@/Types/Table/tableTypes';
 import React, { useEffect, useRef, useState } from 'react';
 import { CgInfo } from 'react-icons/cg';
 import { LuCalendarDays } from 'react-icons/lu';
+import { InfoIcon } from '../client/icons/dynamicForm/AllDynamicFormIcons';
 
 const CurrentViewFilterDetails = ({ metadata }: { metadata: TableMetadata }) => {
     const [isViewDetailsOpen, setIsViewDetailsOpen] = useState(false);
@@ -22,9 +23,10 @@ const CurrentViewFilterDetails = ({ metadata }: { metadata: TableMetadata }) => 
 
     return (
         <div className="relative" ref={ViewDetailsPopupRef}>
-            <CgInfo className={`${isViewDetailsOpen ? 'text-[#1D57C7]' : 'text-[#889ABC]'} text-[24px] hover:text-[#1D57C7] cursor-pointer`}
-                onClick={() => setIsViewDetailsOpen(!isViewDetailsOpen)}
-            />
+            <div className={`${isViewDetailsOpen ? 'text-primary' : 'text-infoIcon'} text-[24px] hover:text-[#1D57C7] cursor-pointer`}
+                onClick={() => setIsViewDetailsOpen(!isViewDetailsOpen)}>
+                <InfoIcon />
+            </div>
             {isViewDetailsOpen && (
                 <div className="absolute top-10 -left-40 md:-left-3  py-1 px-4 z-50 w-[374px] bg-white rounded-[4px] shadow-[0px_0px_20px_0px_#C2D1EF]">
                     <div className="absolute -top-3 left-40 md:left-3 border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent  border-r-[20px] rotate-90 border-r-white"></div>
