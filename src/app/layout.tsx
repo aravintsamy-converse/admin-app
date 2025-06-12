@@ -8,12 +8,12 @@ import ReduxProvider from "@/Store/ReduxProvider";
 import { GlobalPreferencesProvider } from "./context/GlobalPreferencesContext";
 
 // Load Inter font with required weights
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
-  variable: "--font-inter",
-  display: "swap", // Optional for better rendering
-});
+// const inter = Inter({
+//   subsets: ["latin"],
+//   weight: ["400", "500", "700"],
+//   variable: "--font-inter",
+//   display: "swap", // Optional for better rendering
+// });
 
 export const metadata: Metadata = {
   title: "Admin APP",
@@ -26,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={"font-inter"}>
       <body className={`antialiased font-sans`}>
         <ReduxProvider>
           <GlobalPreferencesProvider>

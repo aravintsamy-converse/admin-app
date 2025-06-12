@@ -381,7 +381,7 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
                       >
                         <div className="w-full">{option.label}</div>
                       </SelectItem>
-                     <div  onClick={() => setOpen(true)} className="opacity-50 group-hover:opacity-100 transition-opacity">
+                     <div  onClick={() => setOpen(true)}  className={`transition-opacity ${selectedView === option.value ? 'opacity-100' : 'opacity-0'} ${selectedView === String(option.value) ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}>
                        <PinIcon
                       />
                      </div>

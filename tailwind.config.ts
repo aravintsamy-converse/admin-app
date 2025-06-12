@@ -9,8 +9,8 @@ export default {
   ],
   theme: {
     extend: {
-       fontFamily: {
-        sans: ['var(--font-inter)', 'sans-serif'],
+      fontFamily: {
+        sans: `"Inter var"`,
       },
       transitionProperty: {
         theme: 'background-color, color',
