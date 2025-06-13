@@ -67,7 +67,7 @@
     --sidebar-ring: 217.2 91.2% 59.8%;  /*side bar foucs Visible outline color */
   }
   .dark {
-    --background: 240 10% 3.9%; /* background */
+    --background: 210, 4%, 11%, 1; /* background */
     --form-header-card-background: 210, 17%, 18%, 1; /* form card background color */
     --form-layout-background: 210, 9%, 14%; /* form layout background color */
     --primary: 220, 75%, 45%, 1;  /* button background and text color */

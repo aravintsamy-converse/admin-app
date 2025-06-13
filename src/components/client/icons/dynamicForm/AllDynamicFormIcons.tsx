@@ -537,11 +537,11 @@ export const SquarPlusIcon = () => (
 
 export const SquarHamburgerIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
-    <path d="M18 12V17C18 17.5304 17.7893 18.0391 17.4142 18.4142C17.0391 18.7893 16.5304 19 16 19H2C1.46957 19 0.960859 18.7893 0.585786 18.4142C0.210714 18.0391 0 17.5304 0 17V3C0 2.46957 0.210714 1.96086 0.585786 1.58579C0.960859 1.21071 1.46957 1 2 1H7V3H2V17H16V12H18Z" fill="#42526E" />
-    <rect x="8" y="3" width="11" height="1.5" fill="#42526E" />
-    <rect x="8" y="9" width="11" height="1.5" fill="#42526E" />
-    <rect x="8" y="6" width="11" height="1.5" fill="#42526E" />
-    <rect x="8" width="11" height="1.5" fill="#42526E" />
+    <path d="M18 12V17C18 17.5304 17.7893 18.0391 17.4142 18.4142C17.0391 18.7893 16.5304 19 16 19H2C1.46957 19 0.960859 18.7893 0.585786 18.4142C0.210714 18.0391 0 17.5304 0 17V3C0 2.46957 0.210714 1.96086 0.585786 1.58579C0.960859 1.21071 1.46957 1 2 1H7V3H2V17H16V12H18Z" fill="currentColor" />
+    <rect x="8" y="3" width="11" height="1.5" fill="currentColor" />
+    <rect x="8" y="9" width="11" height="1.5" fill="currentColor" />
+    <rect x="8" y="6" width="11" height="1.5" fill="currentColor" />
+    <rect x="8" width="11" height="1.5" fill="currentColor" />
   </svg>
 
 )

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Home from '@/components/User/Home'; // adjust the import based on your path
+import Home from '@/components/User/Home';
 import '@testing-library/jest-dom';
 
 // // Optionally mock the dropdown components
