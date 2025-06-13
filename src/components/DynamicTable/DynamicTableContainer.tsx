@@ -23,6 +23,7 @@ export default function DynamicTableContainer({
 
   useEffect(() => {
     const fetchData = async () => {
+
       try {
         const data = await fetchMetaData(selectedView ?? undefined); // 🆕 use selectedView
         setMetadata({
@@ -69,10 +70,10 @@ export default function DynamicTableContainer({
       open={open}
       onOpenChange={setOpen}
       />
-      {/* <DynamicTableBody
+      <DynamicTableBody
         metadata={metadata}
         onRefetch={handleRefetch}
-      /> */}
+      />
     </div>
 
   );

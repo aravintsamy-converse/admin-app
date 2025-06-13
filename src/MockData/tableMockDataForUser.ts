@@ -9,7 +9,7 @@ export const metaData = {
           "order": 3
         },
         {
-          "label": "Product View Based in Hand on Region",
+          "label": "ProductViewBasedinHand on Region ProductViewBasedinHand on Region",
           "value": "view_102",
           "default": false,
           "order": 2
