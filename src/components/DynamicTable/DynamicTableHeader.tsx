@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { MetricIcon, SquarHamburgerIcon } from '../client/icons/dynamicForm/AllDynamicFormIcons'
 import CurrentViewFilterDetails from './CurrentViewFilterDetails'
 import CreateIcon from '@/TableIcon/commonIcons/create'
@@ -7,20 +7,20 @@ import { updateView } from '@/Services/Pages/User/TableServices'
 import { DynamicTableBodyProps } from '@/Types/Table/tableTypes'
 import { ViewSelect } from "@/components/DynamicTable/ViewSelect";
 
+type Props = DynamicTableBodyProps & {
+  onViewChange: (view: string) => void; // 🆕 Add prop
+};
 
-const DynamicTableHeader = ({
-  metadata,
-  onRefetch
-}: DynamicTableBodyProps) => {
-
+const DynamicTableHeader = ({ metadata, onRefetch, onViewChange }: Props)=> {
+  const [defaultView, setDefaultView] = useState(metadata.views.options.find((option: any) => option.default)?.value || "");
+  const [open, setOpen] = useState(false);
+  
     const handleViewChange = async (view: string) => {
       try {
         await updateView(metadata.table_actions_url.view_filter, view || "");
       } catch (error) {
         console.error("Error updating view:", error);
-      } finally {
-        onRefetch();
-      }
+      } 
     };
 
   return (

@@ -1,4 +1,4 @@
-import { ApiQueryParams, ApiResponse, BulkActionApi, TableData } from "@/Types/Table/tableTypes";
+import { ApiQueryParams, ApiResponse, BulkActionApi, TableData, TableMetadata } from "@/Types/Table/tableTypes";
 import { api } from "@/Services/Api";
 import { metaData } from "@/MockData/tableMockDataForUser";
 import { tableData } from "@/MockData/tableData";
@@ -93,7 +93,8 @@ export const updateView = async (url: string, view: string) => {
 //   }
 // }
 
-export async function fetchMetaData() {
+export async function fetchMetaData(view?: string): Promise<TableMetadata> {
+  console.log("🚀 ~ fetchMetaData ~ view:", view)
   try {
     // Simulating an API response using the mock data
     return metaData.data;

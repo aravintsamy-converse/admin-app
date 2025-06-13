@@ -17,11 +17,15 @@ export default function DynamicTableContainer({
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [fetchTrigger, setFetchTrigger] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [defaultView, setDefaultView] = useState(metadata?.views.options.find((option: any) => option.default)?.value || "");
+  const [selectedView, setSelectedView] = useState(defaultView);
+
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await fetchMetaData();
+        const data = await fetchMetaData(selectedView ?? undefined); // 🆕 use selectedView
         setMetadata({
           views: data.views,
           form_action_url: data.form_action_url,
@@ -30,7 +34,7 @@ export default function DynamicTableContainer({
           QuickFilters: data.QuickFilters,
           bulk_actions: data.bulk_actions,
           more_actions: data.more_actions,
-          columnData: data.columnData
+          columnData: data.columnData,
         });
       } catch (err) {
         setError((err as Error).message);
@@ -40,10 +44,15 @@ export default function DynamicTableContainer({
     };
 
     fetchData();
-  }, [fetchTrigger]);
+  }, [fetchTrigger, selectedView]); // 🆕 depend on selectedView
 
   const handleRefetch = () => {
     setFetchTrigger(prev => !prev);
+  };
+
+
+  const handleViewChange = (view: string) => {
+    setSelectedView(view); // 🆕 trigger fetch with new view
   };
 
   if (loading) return <div>Loading column definitions...</div>;
@@ -54,6 +63,7 @@ export default function DynamicTableContainer({
     <div className="h-full rounded-lg relative p-[2px] 2xl:ml-2 bg-background">
       <DynamicTableHeader
         metadata={metadata}
+        onViewChange={handleViewChange}
         onRefetch={handleRefetch}
       />
       <DynamicTableBody

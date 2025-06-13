@@ -14,6 +14,7 @@ interface ViewSelectProps {
 
 export function ViewSelect({ metadata, onViewChange, initialView = "" }: ViewSelectProps) {
   const [selectedView, setSelectedView] = useState(initialView);
+  console.log("🚀 ~ ViewSelect ~ selectedView:", selectedView)
   const [open, setOpen] = useState(false);
 
   const handleViewChange = async (value: string) => {

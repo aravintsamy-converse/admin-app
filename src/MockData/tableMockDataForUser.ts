@@ -3,22 +3,22 @@ export const metaData = {
     "views": {
       "options": [
         {
-          "id": "view_101",
           "label": "View Name 1",
-          "value": "view name 1",
-          "default": true
+          "value": "view_101",
+          "default": true,
+          "order": 3
         },
         {
-          "id": "view_102",
           "label": "View Name 2",
-          "value": "view name 2",
-          "default": false
+          "value": "view_102",
+          "default": false,
+          "order": 2
         },
         {
-          "id": "view_103",
           "label": "View Name 3",
-          "value": "view name 3",
-          "default": false
+          "value": "view_103",
+          "default": false,
+          "order": 1
         }
       ],
       "current_view_details": [
