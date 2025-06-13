@@ -330,41 +330,9 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
   };
 
   return (
-    <div className="h-full rounded-lg relative p-[2px] 2xl:ml-2 bg-background">
-
-      <div className="grid grid-cols-2 items-center border-b border-formheaderborder bg-mainbackground rounded-tl-sm">
-        <div className="flex ">
-          <div className="p-3 md:pl-[21px] md:pr-[20px] py-[27px] !bg-formHeaderCardBackground text-selectsecondaryforeground rounded-tl-sm flex items-center justify-center ">
-            <SquarHamburgerIcon />
-          </div>
-          <div className="rounded-tr-md items-center flex  w-full">
-            <div className="flex items-center p-1">
-          <ViewSelect
-                metadata={metadata}
-                setPageIndex={setPageIndex}
-                onViewChange={handleViewChange}
-                initialView={metadata.views.options.find((option) => option.default)?.value || ""}
-              />
-              <CurrentViewFilterDetails metadata={metadata} />
-            </div>
-          </div>
-        </div>
-        <div className="flex items-center justify-end pr-[15px]">
-          <button className="pb-[6px] pt-[7px] pl-[6px] pr-[4px]  flex items-center justify-center mr-3 text-nowrap bg-mainbackground text-primary hover:text-primary-foreground hover:bg-primary text-[18px] font-[600] rounded-[4px] cursor-pointer transition-all duration-300 shadow-primaryButtonActive border border-metricborder hover:border-transparent">
-            <MetricIcon />
-          </button>
-          <button className="p-2 md:pl-[22px] md:pr-[27px] py-[7px]  flex items-center  justify-center mr-[6px] bg-primary text-primary-foreground hover:text-primary hover:bg-background text-[14px] font-[500] rounded-[4px] cursor-pointer transition-all duration-300 !shadow-primaryButtonActive hover:shadow-primaryButtonActive">
-            <CreateIcon /><span className="ml-2">Create</span>
-          </button>
-          <div>
-            <CustomPreferencePopup />
-          </div>
-        </div>
-
-      </div>
 
 
-       {/* <div className="w-full tanstack-table px-3">
+       <div className="w-full tanstack-table px-3">
         <div className="w-full h-full rounded-sm bg-white">
           <div className="w-full bg-white py-4 grid grid-cols-2 md:grid-cols-1 gap-y-1 lg:grid-cols-[50%,50%] items-center">
             <CurrentColumnFilters />
@@ -650,7 +618,7 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
             </div>
           </div>
         </div>
-      </div>  */}
-    </div>
+      </div> 
+    
   );
 } 

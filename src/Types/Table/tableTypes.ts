@@ -2,7 +2,7 @@ import { ColumnDef, ColumnMeta } from "@tanstack/react-table"
 import { TableMeta } from "@tanstack/react-table";
 import { Row, Table } from "@tanstack/react-table";
 
-export interface DynamicTableContainerProps {
+export interface DynamicTableBodyProps {
   metadata: TableData;
   onRefetch: () => void;
 }
@@ -74,6 +74,22 @@ export interface IconProps {
   style?: React.CSSProperties;
 }
 
+export interface ColumnData {
+  column_data_id: string;
+  columnName: string;
+  columnType: string ;
+  type?: string;
+  headerName: string;
+  associatedKey?: string;
+  tableName?: string;
+  columnFilter: boolean;
+  sortable: boolean;
+  isResizing: boolean;
+  size: number;
+  inLineEditing: boolean;
+  options?:{ label: string; value: string }[]
+}
+
 export type TableMetadata = {
   views: {
     options: Array<{ id: string; label: string; value: string; default: boolean }>;
@@ -98,6 +114,7 @@ export type TableMetadata = {
   QuickFilters: QuickFiltersType;
   bulk_actions: Array<{ label: string; value: string }>;
   more_actions: Array<{ label: string; value: string }>;
+  columnData: any
 };
 
 export type TableData = any;
@@ -178,21 +195,6 @@ export interface NonSortableHeaderProps {
   title: string
 }
 
-export interface ColumnData {
-  column_data_id: string;
-  columnName: string;
-  columnType: string;
-  type?: string;
-  headerName: string;
-  associatedKey?: string;
-  tableName?: string;
-  columnFilter: boolean;
-  sortable: boolean;
-  isResizing: boolean;
-  size: number;
-  inLineEditing: boolean;
-  options?:{ label: string; value: string }[]
-}
  export interface TableContextType {
   pageIndex: number;
   setPageIndex: (index: number) => void;

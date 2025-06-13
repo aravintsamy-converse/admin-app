@@ -8,18 +8,16 @@ import type { TableMetadata } from "@/Types/Table/tableTypes";
 
 interface ViewSelectProps {
   metadata: TableMetadata;
-  setPageIndex: (index: number) => void;
   onViewChange: (view: string) => Promise<void>;
   initialView?: string;
 }
 
-export function ViewSelect({ metadata, setPageIndex, onViewChange, initialView = "" }: ViewSelectProps) {
+export function ViewSelect({ metadata, onViewChange, initialView = "" }: ViewSelectProps) {
   const [selectedView, setSelectedView] = useState(initialView);
   const [open, setOpen] = useState(false);
 
   const handleViewChange = async (value: string) => {
     setSelectedView(value);
-    setPageIndex(0);
     await onViewChange(value);
   };
 
