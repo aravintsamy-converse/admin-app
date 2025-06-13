@@ -18,9 +18,8 @@ export default function DynamicTableContainer({
   const [error, setError] = useState<string | null>(null);
   const [fetchTrigger, setFetchTrigger] = useState(false);
   const [open, setOpen] = useState(false);
-  const [defaultView, setDefaultView] = useState(metadata?.views.options.find((option: any) => option.default)?.value || "");
+  const [defaultView, setDefaultView] = useState(metavalue?.views.options.find((option: any) => option.default)?.value || "");
   const [selectedView, setSelectedView] = useState(defaultView);
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -62,14 +61,18 @@ export default function DynamicTableContainer({
   return (
     <div className="h-full rounded-lg relative p-[2px] 2xl:ml-2 bg-background">
       <DynamicTableHeader
-        metadata={metadata}
-        onViewChange={handleViewChange}
-        onRefetch={handleRefetch}
+      metadata={metadata}
+      selectedView={selectedView}      
+      onSelectedViewChange={setSelectedView}
+      defaultView={defaultView}
+      onDefaultViewChange={setDefaultView}
+      open={open}
+      onOpenChange={setOpen}
       />
-      <DynamicTableBody
+      {/* <DynamicTableBody
         metadata={metadata}
         onRefetch={handleRefetch}
-      />
+      /> */}
     </div>
 
   );
