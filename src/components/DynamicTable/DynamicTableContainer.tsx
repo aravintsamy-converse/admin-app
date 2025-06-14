@@ -76,6 +76,7 @@ export default function DynamicTableContainer({
         open={open}
         onOpenChange={setOpen}
       />
+       
       {/* <DynamicTableBody
         metadata={metadata}
         onRefetch={handleRefetch}

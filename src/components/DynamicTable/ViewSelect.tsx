@@ -47,14 +47,21 @@ export function ViewSelect({ metadata, selectedView, onSelectedViewChange, defau
           <Tooltip>
             <TooltipTrigger asChild>
               <SelectTrigger
-                className={`${open ? "!underline decoration-[2px] decoration-selectsecondaryforeground !underline-offset-4" : ""
-                  } bg-transparent focus:ring-0 uppercase w-[160px] md:w-[182px] shadow-none border-0 font-[700] text-selectsecondaryforeground text-[14px] md:text-[18px] overflow-hidden whitespace-nowrap truncate
-                hover:underline hover:decoration-[2px]  hover:decoration-selectsecondaryforeground hover:underline-offset-4
-                focus-visible:ring-0`}
+                className={`${open ? "!underline decoration-[2px] decoration-selectsecondaryforeground !underline-offset-4" : ""}
+    bg-transparent focus:ring-0 uppercase w-[160px] md:w-[182px] shadow-none border-0 font-[700]
+    text-selectsecondaryforeground text-[14px] md:text-[18px] overflow-hidden whitespace-nowrap truncate
+    hover:underline hover:decoration-[2px] hover:decoration-selectsecondaryforeground hover:underline-offset-4 focus-visible:ring-0 flex items-center justify-between`}
               >
-                <SelectValue className="w-[50px] overflow-hidden whitespace-nowrap truncate text-selectsecondaryforeground" placeholder="Role Type" />
-                <ChevronDown className="h-3.5 w-3.5 mb-[1px] text-[#889ABC]" />
+                <SelectValue className="flex-1 text-start text-selectsecondaryforeground">
+                  <span className="block text-start overflow-hidden text-ellipsis whitespace-nowrap w-[150px]">
+                    {selectedViewLabel || "Role Type"}
+                  </span>
+                </SelectValue>
+                <span className="">
+                  <ChevronDown className="h-3.5 w-3.5  text-[#889ABC]" />
+                </span>
               </SelectTrigger>
+
             </TooltipTrigger>
             <TooltipContent>
               <p>{selectedViewLabel}</p>
@@ -69,9 +76,9 @@ export function ViewSelect({ metadata, selectedView, onSelectedViewChange, defau
               >
                 <SelectItem
                   value={option.value}
-                  className={`${selectedView === String(option.value) ? "text-primary" : "text-foreground"}  text-[14px]  font-[400] w-full group-hover:text-primary text-nowrap truncate focus:bg-transparent focus:font-[400]`}
+                  className={`${selectedView === String(option.value) ? "text-primary" : "text-accent-foreground"}  text-[14px]  font-[400] w-full group-hover:text-primary text-nowrap truncate focus:bg-transparent focus:font-[400]`}
                 >
-                  <div className="w-full">{option.label}</div>
+                  <div className="max-w-[250px] block text-start overflow-hidden text-ellipsis whitespace-nowrap">{option.label}</div>
                 </SelectItem>
                 <Tooltip>
                   <TooltipTrigger asChild>

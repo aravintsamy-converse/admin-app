@@ -5,13 +5,13 @@ export const metaData = {
         {
           "label": "View Name 1",
           "value": "view_101",
-          "default": true,
+          "default": false,
           "order": 3
         },
         {
           "label": "ProductViewBasedinHand on Region ProductViewBasedinHand on Region",
           "value": "view_102",
-          "default": false,
+          "default": true,
           "order": 2
         },
         {

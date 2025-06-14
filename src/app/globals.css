@@ -8,6 +8,7 @@
 
 @layer base {
   :root {
+    --foreground: 240 10% 3.9%;  /* text color */
     --background: 0 0% 100%; /* background */
     --form-header-background: 0, 0%, 100%, 50%; /* form layout background color */
     --form-header-card-background: 210 49% 92% ; /* form card background color */
@@ -16,8 +17,7 @@
     --primary-foreground: 0 0% 98%;  /*button text color */
     --shadow-active: 220, 75%, 45%, 0.28;  /* custome shadow for calender buttons ans create button color */
     --accent: 220, 75%, 45%, 0.04; /* hover background color */
-    --accent-foreground: 220, 75%, 45%;  /*Hover  text color */
-    --foreground: 240 10% 3.9%;  /* text color */
+    --accent-foreground: 221, 10%, 41%, 1;  /*Hover  text color */
     --select-secondary-foreground: 218, 23%, 38%, 1; /* select secondary text d color */
     --info-icon: 218, 25%, 35%, 0.6; /* info icon color */
     --popover-header-foreground: 223, 9%, 52%, 1; /* const header gary*/
@@ -74,10 +74,8 @@
     --primary: 220, 75%, 45%, 1;  /* button background and text color */
     --primary-foreground: 0 0% 98%;  /*button text color */
     --shadow-active:: 210, 4%, 11%, 1;  /* button drop shadow color */
-    --dropdown-background: 0, 0%, 9%, 1; /* dropdown background color */
     --accent: 0, 0%, 9%, 1; /* hover background color */
-    --accent-foreground:  220, 75%, 45%, 1;  /*Hover  text color */
-    --dropdown-hover-background: 0, 0%, 5%, 1; /* hover background color */
+    --accent-foreground:  0, 0%, 94%, 1;  /*Hover  text color */
     --default-view-text: 218, 23%, 38%, 1;   /* default view text color */
     --default-view-text: 0, 0%, 76%, 1;   /* default view text color */
     --info-icon: 218, 25%, 35%, 0.6; /* info icon color */
@@ -87,9 +85,11 @@
     --form-header-border: 210, 4%, 11%, 1; /* form header border color */
     --metric-border: 220, 75%, 45%, 0.76; /* metric border color */
     --select-secondary-foreground: 0, 0%, 76%, 1; /* select secondary text d color */
-
-
-
+    
+    
+    
+    --dropdown-hover-background: 0, 0%, 5%, 1; /* hover background color */
+    --dropdown-background: 0, 0%, 9%, 1; /* dropdown background color */
 
     /* --background: 240 10% 3.9%; */
     --card: 240 10% 3.9%;
