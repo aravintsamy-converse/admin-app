@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { TableMetadata } from "@/Types/Table/tableTypes";
 import DynamicTableBody from "./DynamicTableBody";
 import { fetchMetaData } from "@/Services/Pages/User/TableServices";
@@ -20,60 +20,66 @@ export default function DynamicTableContainer({
   const [open, setOpen] = useState(false);
   const [defaultView, setDefaultView] = useState(metavalue?.views.options.find((option: any) => option.default)?.value || "");
   const [selectedView, setSelectedView] = useState(defaultView);
+  const didMountRef = useRef(false);
+
+  const fetchData = async () => {
+  console.log("🚀 ~ fetchData ~ fetchData is called:",)
+
+    try {
+      const data = await fetchMetaData(selectedView ?? undefined); // 🆕 use selectedView
+      setMetadata({
+        views: data.views,
+        form_action_url: data.form_action_url,
+        table_actions_url: data.table_actions_url,
+        favorite_screens: data.favorite_screens,
+        QuickFilters: data.QuickFilters,
+        bulk_actions: data.bulk_actions,
+        more_actions: data.more_actions,
+        columnData: data.columnData,
+      });
+    } catch (err) {
+      setError((err as Error).message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
+    if (didMountRef.current) {
+      // Call your API here
+      fetchData();
+    } else {
+      // Skip the first render
+      didMountRef.current = true;
+    }
+  }, [selectedView]); // 🆕 depend on selectedView
 
-      try {
-        const data = await fetchMetaData(selectedView ?? undefined); // 🆕 use selectedView
-        setMetadata({
-          views: data.views,
-          form_action_url: data.form_action_url,
-          table_actions_url: data.table_actions_url,
-          favorite_screens: data.favorite_screens,
-          QuickFilters: data.QuickFilters,
-          bulk_actions: data.bulk_actions,
-          more_actions: data.more_actions,
-          columnData: data.columnData,
-        });
-      } catch (err) {
-        setError((err as Error).message);
-      } finally {
-        setLoading(false);
-      }
-    };
 
-    fetchData();
-  }, [fetchTrigger, selectedView]); // 🆕 depend on selectedView
 
   const handleRefetch = () => {
     setFetchTrigger(prev => !prev);
   };
 
 
-  const handleViewChange = (view: string) => {
-    setSelectedView(view); // 🆕 trigger fetch with new view
-  };
-
-  if (loading) return <div>Loading column definitions...</div>;
+  // if (loading) return <div>Loading column definitions...</div>;
   if (error) return <div>Error: {error}</div>;
   if (!metadata) return <div>No metadata available</div>;
 
   return (
     <div className="h-full rounded-lg relative p-[2px] 2xl:ml-2 bg-background">
       <DynamicTableHeader
-      metadata={metadata}
-      selectedView={selectedView}      
-      onSelectedViewChange={setSelectedView}
-      defaultView={defaultView}
-      onDefaultViewChange={setDefaultView}
-      open={open}
-      onOpenChange={setOpen}
+        metadata={metadata}
+        selectedView={selectedView}
+        onSelectedViewChange={setSelectedView}
+        defaultView={defaultView}
+        onDefaultViewChange={setDefaultView}
+        open={open}
+        onOpenChange={setOpen}
       />
-      <DynamicTableBody
+      {/* <DynamicTableBody
         metadata={metadata}
         onRefetch={handleRefetch}
-      />
+      /> */}
     </div>
 
   );

@@ -52,7 +52,7 @@ export function ViewSelect({ metadata, selectedView, onSelectedViewChange, defau
                 hover:underline hover:decoration-[2px]  hover:decoration-selectsecondaryforeground hover:underline-offset-4
                 focus-visible:ring-0`}
               >
-                <SelectValue className="text-selectsecondaryforeground truncate" placeholder="Role Type" />
+                <SelectValue className="w-[50px] overflow-hidden whitespace-nowrap truncate text-selectsecondaryforeground" placeholder="Role Type" />
                 <ChevronDown className="h-3.5 w-3.5 mb-[1px] text-[#889ABC]" />
               </SelectTrigger>
             </TooltipTrigger>

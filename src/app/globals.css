@@ -68,6 +68,7 @@
   }
   .dark {
     --background: 210, 4%, 11%, 1; /* background */
+    --foreground: 0 0% 98%;
     --form-header-card-background: 210, 17%, 18%, 1; /* form card background color */
     --form-layout-background: 210, 9%, 14%; /* form layout background color */
     --primary: 220, 75%, 45%, 1;  /* button background and text color */
@@ -91,7 +92,6 @@
 
 
     /* --background: 240 10% 3.9%; */
-    --foreground: 0 0% 98%;
     --card: 240 10% 3.9%;
     --card-foreground: 0 0% 98%;
     --popover: 240 10% 3.9%;
