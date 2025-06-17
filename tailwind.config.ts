@@ -98,7 +98,7 @@ export default {
       boxShadow: {
         primaryButtonActive: '2px 2px 5px 0px hsla(var(--shadow-active))',
         custom: '0px 2px 10px 0px hsl(var(--shadow-color))',
-
+        viewboxshadow: '0px 2px 10px 0px hsla(var(--view-box-shadow))',
         customhover: '2px 2px 5px 0px hsl(var(--shadow-color))',
         sheetShadow: '3px 0px 10px 0px hsl(var(--shadow-color))',
       },

@@ -72,7 +72,7 @@ export function ViewSelect({
             </span>
  
           </SelectTrigger>
-          <SelectContent className="min-w-[160px] max-w-[280px] md:min-w-[295px] md:max-w-[395px] left-3 top-[-2px] border-0 rounded-[2px] bg-background shadow-custom">
+          <SelectContent className="min-w-[160px] max-w-[280px] md:min-w-[295px] md:max-w-[395px] left-3 top-[-2px] border-0 rounded-[2px] bg-background shadow-viewboxshadow">
             {metadata.views.options.map((option) => (
               <div
                 key={option.value}
