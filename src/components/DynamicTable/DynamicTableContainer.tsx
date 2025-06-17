@@ -66,7 +66,7 @@ export default function DynamicTableContainer({
   if (!metadata) return <div>No metadata available</div>;
 
   return (
-    <div className="h-full overflow-y-hidden rounded-lg relative p-[2px] 2xl:ml-2 bg-background">
+    <div className="h-full overflow-y-hidden rounded-lg relative px-[2px] py-[3px] 2xl:ml-2 bg-background">
       <DynamicTableHeader
         metadata={metadata}
         selectedView={selectedView}
@@ -77,14 +77,14 @@ export default function DynamicTableContainer({
         onOpenChange={setOpen}
       />
      <div className=" bg-slate-500">
-       <div className="overflow-x-auto w-full h-[100px]">
+       {/* <div className="overflow-x-auto w-full h-[100px]">
         dfsdfsd
-        </div>
+        </div> */}
        
-      <DynamicTableBody
+      {/* <DynamicTableBody
         metadata={metadata}
         onRefetch={handleRefetch}
-      />
+      /> */}
       </div>
     </div>
 

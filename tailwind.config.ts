@@ -63,7 +63,7 @@ export default {
         infoIcon: 'hsla(var(--info-icon))',
         formHeaderCardBackground: 'hsla(var(--form-header-card-background))',
         selectsecondaryforeground: 'hsl(var(--select-secondary-foreground))',
-        dotMenuDeselected: 'hsl(var(--dot-menu-deselected))',
+        dotMenuDeselected: 'hsla(var(--dot-menu-deselected))',
         formcardbackground: 'hsl(var(--form-card-background))',
         accordionTriggerBg: 'var(--accordion-trigger-bg)',
         mainbackground: 'hsl(var(--mainbackground))',

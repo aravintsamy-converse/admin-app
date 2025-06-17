@@ -28,7 +28,8 @@
     --dropdown-hover-background: 0, 0%, 5%, 1; /* hover background color */
     --default-view-text: 218, 23%, 38%, 1;   /* default view text color */
     --metric-border: 0, 0%, 100%, 1; /* metric border color */
-    
+    --dot-menu-deselected: 0, 0%, 37%, 1;
+
     
     --secondary: 240 4.8% 95.9%;  /* secondary gary  background color */
     --card: 0 0% 100%;
@@ -85,7 +86,8 @@
     --form-header-border: 210, 4%, 11%, 1; /* form header border color */
     --metric-border: 220, 75%, 45%, 0.76; /* metric border color */
     --select-secondary-foreground: 0, 0%, 76%, 1; /* select secondary text d color */
-    
+    --dot-menu-deselected: 0, 0%, 37%, 1;
+
     
     
     --dropdown-hover-background: 0, 0%, 5%, 1; /* hover background color */
