@@ -6,6 +6,7 @@ import CustomPreferencePopup from './CustomPreferencePopup'
 import { ViewSelect } from "@/components/DynamicTable/ViewSelect";
 import { TableData } from '@/Types/Table/tableTypes'
 
+
 interface DynamicTableBodyProps {
   metadata: TableData;
   selectedView: string;
@@ -14,6 +15,7 @@ interface DynamicTableBodyProps {
   onDefaultViewChange: (view: string) => void;
   open: boolean;
   onOpenChange: (open: boolean) => void;
+
 }
 
 const DynamicTableHeader = ({ metadata, selectedView, onSelectedViewChange, defaultView, onDefaultViewChange, open, onOpenChange }: DynamicTableBodyProps) => {
@@ -40,7 +42,7 @@ const DynamicTableHeader = ({ metadata, selectedView, onSelectedViewChange, defa
           </div>
         </div>
       </div>
-      <div className="flex items-center justify-end  md:pr-[15px]">
+      <div className="flex items-center justify-end  pr-2 md:pr-[15px]">
         <button className="pb-[6px] pt-[7px] hidden md:flex pl-[6px] pr-[4px]  items-center justify-center mr-3 text-nowrap bg-background text-primary hover:text-primary-foreground hover:bg-primary text-[18px] font-[600] rounded-[4px] cursor-pointer transition-all duration-300 shadow-primaryButtonActive border border-metricborder hover:border-transparent">
           <MetricIcon />
         </button>

@@ -5,7 +5,7 @@ import { FrameIcon, StandardResposiveIcon } from '@/TableIcon/commonIcons/column
 import { DisableIcon, EnableIcon } from '@/TableIcon/commonIcons/dataWrap';
 import { CompactDensityIcon, ComfortableDensityIcon, StandardtDensityIcon } from '@/TableIcon/commonIcons/rowDensity';
 import { useGlobalPreferencesContext } from '@/app/context/GlobalPreferencesContext';
-import { ThreeDotIconMenu } from '../client/icons/dynamicForm/AllDynamicFormIcons';
+import { MetricIcon, ThreeDotIconMenu } from '../client/icons/dynamicForm/AllDynamicFormIcons';
 import { FavoriteIcon, UnFavoriteIcon } from '@/TableIcon/commonIcons/manageFavorite';
 
 const CustomPreferencePopup = () => {
@@ -39,9 +39,14 @@ const CustomPreferencePopup = () => {
         <ThreeDotIconMenu color={`${isTableCustomPopup ? "text-primary text-[20px]" : "text-dotMenuDeselected"}`} />
       </button>
       {isTableCustomPopup && (
-        <div className="absolute z-20 right-[7px] h-[428px] w-[219px] top-[59px] text-popoverheaderforeground mt-1 bg-background rounded-[4px] shadow-viewboxshadow">
-          <div className="absolute -top-2 right-2 border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent border-r-[20px] rotate-90 border-r-background"></div>
-          <div className="py-3 px-4 text-popoverheaderforeground  space-y-2">
+        <div className="absolute z-20 right-[7px]  w-[219px] top-[59px] text-popoverheaderforeground mt-1 bg-background rounded-[4px] shadow-viewboxshadow">
+          <div className="absolute -top-2 right-0 md:right-2 border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent border-r-[20px] rotate-90 border-r-background"></div>
+          <div className="py-3 px-4 text-popoverheaderforeground">
+            <div>
+              <button className="pb-[6px] pt-[7px] md:hidden pl-[6px] pr-[4px]  items-center justify-center mr-3 text-nowrap bg-background text-primary hover:text-primary-foreground hover:bg-primary text-[18px] font-[600] rounded-[4px] cursor-pointer transition-all duration-300 shadow-primaryButtonActive border border-metricborder hover:border-transparent">
+                <MetricIcon />
+              </button>
+            </div>
             {/* Column Scaling */}
             <div>
               <h2 className="text-[16px] font-[700] text-popoverheaderforeground mb-2">Column Scaling</h2>
@@ -148,7 +153,7 @@ const CustomPreferencePopup = () => {
                 </div>
               </RadioGroup>
             </div>
-             {/* favorites */}
+            {/* favorites */}
             <div>
               <h2 className="text-[16px] font-[700] text-popoverheaderforeground mb-2">Mark as Favorite</h2>
               <RadioGroup
