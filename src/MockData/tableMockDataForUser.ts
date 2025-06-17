@@ -3,15 +3,15 @@ export const metaData = {
     "views": {
       "options": [
         {
-          "label": "View Name 1",
+          "label": "DEFAULT",
           "value": "view_101",
-          "default": false,
+          "default": true,
           "order": 3
         },
         {
           "label": "ProductViewBasedinHand on Region ProductViewBasedinHand on Region",
           "value": "view_102",
-          "default": true,
+          "default": false,
           "order": 2
         },
         {

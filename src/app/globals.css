@@ -2,9 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-/* body {
-  font-family: var(--font-inter);
-} */
+body {
+-webkit-font-smoothing: antialiased;
+/* -moz-osx-font-smoothing: grayscale; */
+}
+
+:host,html {
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    -moz-tab-size: 4;
+    tab-size: 4;
+    font-family: Inter var;
+    font-feature-settings: normal;
+    font-variation-settings: normal;
+    -webkit-tap-highlight-color: transparent
+}
 
 @layer base {
   :root {
@@ -14,6 +26,7 @@
     --form-header-card-background: 210 49% 92% ; /* form card background color */
     --transpirant-border: 0 0% 100%; /* form card background color */
     --primary: 220, 75%, 45%, 1;  /* button background and text color */
+    --primary-muted: 220, 75%, 45%, 0.76; /* button muted text color */
     --primary-foreground: 0 0% 98%;  /*button text color */
     --shadow-active: 220, 75%, 45%, 0.28;  /* custome shadow for calender buttons ans create button color */
     --accent: 220, 75%, 45%, 0.04; /* hover background color */
@@ -36,7 +49,7 @@
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;  /* text color */         
     --popover: 220, 75%, 45%, 1;  /* background */
-    --popover-foreground: 220, 75%, 45%;  /* text color */
+    --popover-foreground: 210, 5%, 53%, 1;  /* text color */
     --secondary-foreground: 240 5.9% 10%;  /* t secondary ext color */
     --muted: 240, 100%, 99%;  /*Placeholder  Background  color */
     --muted-foreground: 0, 0%, 68%, 1;  /* placholder  text color */
@@ -74,6 +87,7 @@
     --form-header-card-background: 210, 17%, 18%, 1; /* form card background color */
     --form-layout-background: 210, 9%, 14%; /* form layout background color */
     --primary: 220, 75%, 45%, 1;  /* button background and text color */
+    --primary-muted: 220, 75%, 45%, 0.76; /* button muted text color */
     --primary-foreground: 0 0% 98%;  /*button text color */
     --shadow-active:: 210, 4%, 11%, 1;  /* button drop shadow color */
     --accent: 0, 0%, 9%, 1; /* hover background color */

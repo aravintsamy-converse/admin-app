@@ -1,15 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { MetricIcon, SquarHamburgerIcon } from '../client/icons/dynamicForm/AllDynamicFormIcons'
 import CurrentViewFilterDetails from './CurrentViewFilterDetails'
 import CreateIcon from '@/TableIcon/commonIcons/create'
 import CustomPreferencePopup from './CustomPreferencePopup'
-import { updateView } from '@/Services/Pages/User/TableServices'
 import { ViewSelect } from "@/components/DynamicTable/ViewSelect";
 import { TableData } from '@/Types/Table/tableTypes'
-
-// type Props = DynamicTableBodyProps & {
-//   onViewChange: (view: string) => void; // 🆕 Add prop
-// };
 
 interface DynamicTableBodyProps {
   metadata: TableData;
@@ -19,7 +14,6 @@ interface DynamicTableBodyProps {
   onDefaultViewChange: (view: string) => void;
   open: boolean;
   onOpenChange: (open: boolean) => void;
-
 }
 
 const DynamicTableHeader = ({ metadata, selectedView, onSelectedViewChange, defaultView, onDefaultViewChange, open, onOpenChange }: DynamicTableBodyProps) => {
@@ -50,7 +44,7 @@ const DynamicTableHeader = ({ metadata, selectedView, onSelectedViewChange, defa
         <button className="pb-[6px] pt-[7px] hidden md:flex pl-[6px] pr-[4px]  items-center justify-center mr-3 text-nowrap bg-background text-primary hover:text-primary-foreground hover:bg-primary text-[18px] font-[600] rounded-[4px] cursor-pointer transition-all duration-300 shadow-primaryButtonActive border border-metricborder hover:border-transparent">
           <MetricIcon />
         </button>
-        <button className="w-[116px] h-[35px]  flex items-center  justify-center mr-[6px] bg-primary text-primary-foreground hover:text-primary hover:bg-background text-[14px] font-[500] rounded-[4px] cursor-pointer transition-all duration-300 !shadow-primaryButtonActive hover:shadow-primaryButtonActive">
+        <button className="w-[116px] h-[35px]  flex items-center  justify-center mr-[6px] bg-primary text-[#ffffff] hover:text-primary hover:bg-background text-[14px] font-[500] leading-[21.6px] rounded-[4px] cursor-pointer transition-all duration-300 !shadow-primaryButtonActive hover:shadow-primaryButtonActive">
           <CreateIcon /><span className="ml-2">Create</span>
         </button>
         <div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, X } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { PinIcon } from "../client/icons/dynamicForm/AllDynamicFormIcons";
 import type { TableMetadata } from "@/Types/Table/tableTypes";
@@ -11,6 +11,10 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tootipWrapper';
 import { TruncateTooltip } from "@/components/DynamicTable/TruncateTooltip";
+import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import Image from "next/image";
 
 interface ViewSelectProps {
   metadata: TableMetadata;
@@ -31,18 +35,37 @@ export function ViewSelect({
   open,
   onOpenChange,
 }: ViewSelectProps) {
+  const [dialogOpen, setDialogOpen] = useState(true);
+  const [pendingDefaultView, setPendingDefaultView] = useState<string | null>(null);
+  console.log("🚀 ~ pendingDefaultView:", pendingDefaultView)
 
   const handleViewChange = async (value: string) => {
     onSelectedViewChange(value);
   };
 
   const handlePinChange = async (value: string) => {
-    onOpenChange(true);
-    onDefaultViewChange(value);
+    setPendingDefaultView(value);
+    setDialogOpen(true);
+  };
+
+  const handleConfirmDefault = () => {
+    if (pendingDefaultView) {
+      onDefaultViewChange(pendingDefaultView);
+    }
+    setDialogOpen(false);
+    setPendingDefaultView(null);
+  };
+
+  const handleCancelDefault = () => {
+    setDialogOpen(false);
+    setPendingDefaultView(null);
   };
 
   const selectedViewLabel =
     metadata.views.options.find(option => option.value === selectedView)?.label || selectedView;
+
+  const pendingViewLabel =
+    metadata.views.options.find(option => option.value === pendingDefaultView)?.label || pendingDefaultView;
 
   return (
     <TooltipProvider>
@@ -60,23 +83,21 @@ export function ViewSelect({
              hover:underline hover:decoration-[2px] hover:decoration-selectsecondaryforeground hover:underline-offset-4
              focus-visible:ring-0 flex items-center justify-between`}
           >
-     
             <div className="flex flex-1 justify-center items-center text-start text-selectsecondaryforeground">
               <TruncateTooltip
                 text={selectedViewLabel || "Role Type"}
-                className=" text-start w-[120px] md:min-w-[145px] md:max-w-[150px] text-nowrap truncate"
+                className="text-start w-[120px] md:min-w-[145px] md:max-w-[150px] text-nowrap truncate"
               />
             </div>
             <span>
               <ChevronDown className="h-3.5 w-3.5 text-[#889ABC]" />
             </span>
- 
           </SelectTrigger>
           <SelectContent className="min-w-[160px] max-w-[280px] md:min-w-[295px] md:max-w-[395px] left-3 top-[-2px] border-0 rounded-[2px] bg-background shadow-viewboxshadow">
             {metadata.views.options.map((option) => (
               <div
                 key={option.value}
-                className={`group flex w-full items-center justify-between px-2 rounded-[4px] cursor-pointer ${selectedView === String(option.value)
+                className={`group flex w-full items-center justify-between pl-2 pr-3.5 rounded-[4px] cursor-pointer ${selectedView === String(option.value)
                   ? "hover:bg-transparent"
                   : "hover:bg-accent"
                   }`}
@@ -86,10 +107,9 @@ export function ViewSelect({
                   className={`${selectedView === String(option.value)
                     ? "text-primary"
                     : "text-accent-foreground"
-                    } text-[14px] font-[400] w-full group-hover:text-primary text-nowrap truncate focus:bg-transparent focus:font-[400]`}
+                    } text-[14px] font-[400] w-full py-[3px] group-hover:text-primary text-nowrap truncate focus:bg-transparent focus:font-[400]`}
                 >
-                  <TruncateTooltip text={option.label} className=" w-[180px] md:min-w-[150px] md:max-w-[250px] text-start" >
-                  </TruncateTooltip>
+                  <TruncateTooltip text={option.label} className="w-[180px] md:min-w-[150px] md:max-w-[250px] text-start" />
                 </SelectItem>
 
                 <Tooltip>
@@ -117,6 +137,34 @@ export function ViewSelect({
           </SelectContent>
         </Select>
       </div>
+
+      <Dialog open={dialogOpen} onOpenChange={setDialogOpen} >
+        <DialogContent className=" max-w-[620px] px-[36px] pt-[17px] pb-5 !rounded-[12px] shadow-none">
+          <DialogHeader className="text-center">
+            <DialogTitle className="!text-[18px] font-[600] text-primary">Default List Change</DialogTitle>
+            <div className="flex items-center gap-x-5 pt-3">
+
+              <Image
+                src="/Default.svg"
+                alt="Default List Change"
+                width={39}
+                height={39}
+              />
+              <div className="text-[16px] font-[500] text-popover-foreground">
+                Do you really want to change your default list to <br />“{pendingViewLabel}”?
+              </div>
+            </div>
+          </DialogHeader>
+          <DialogFooter>
+            <Button variant="outline" className="border-0 focus-visible:outline-none text-[14px] font-[500] rounded-[4px] focus-visible:ring-0  shadow-none hover:bg-transparent  text-primary-muted hover:text-primary" onClick={handleCancelDefault}>
+              Cancel
+            </Button>
+            <Button  onClick={handleConfirmDefault} className="text-[14px] font-[500] rounded-[4px] px-5 hover:text-primary border hover:bg-background hover:border-primary shadow-none ">
+              Set Default
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </TooltipProvider>
   );
 }

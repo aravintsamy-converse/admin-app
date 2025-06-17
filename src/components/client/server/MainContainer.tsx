@@ -13,7 +13,7 @@ const MainContainer = ({children}: { children: React.ReactNode }) => {
           <div>
             <ChevronRight className="w-[15px] text-muted-foreground" />
           </div>
-          <div className="font-medium text-sm text-[#3374ef]">
+          <div className="font-500 text-[14px] text-[#3374EF]">
             Create Employee Details
           </div>
           </div>

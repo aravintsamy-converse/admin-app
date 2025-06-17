@@ -2,6 +2,7 @@
 import { Inter } from "next/font/google";
 import type { Metadata } from "next";
 import "./globals.css";
+import '@/assets/fonts/inter/inter.css'
 import DynamicLayout from "@/components/client/dynamicForm/DynamicLayout";
 import MainContainer from "@/components/client/server/MainContainer";
 import ReduxProvider from "@/Store/ReduxProvider";
