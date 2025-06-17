@@ -332,7 +332,7 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
   return (
 
 
-       <div className="w-full tanstack-table px-3">
+       <div className="w-full tanstack-table">
         <div className="w-full h-full rounded-sm bg-white">
           <div className="w-full bg-white py-4 grid grid-cols-2 md:grid-cols-1 gap-y-1 lg:grid-cols-[50%,50%] items-center">
             <CurrentColumnFilters />

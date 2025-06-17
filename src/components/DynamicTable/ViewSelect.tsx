@@ -9,7 +9,8 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '@/components/ui/tootipWrapper'
+} from '@/components/ui/tootipWrapper';
+import { TruncateTooltip } from "@/components/DynamicTable/TruncateTooltip";
 
 interface ViewSelectProps {
   metadata: TableMetadata;
@@ -21,7 +22,15 @@ interface ViewSelectProps {
   onOpenChange: (open: boolean) => void;
 }
 
-export function ViewSelect({ metadata, selectedView, onSelectedViewChange, defaultView, onDefaultViewChange, open, onOpenChange }: ViewSelectProps) {
+export function ViewSelect({
+  metadata,
+  selectedView,
+  onSelectedViewChange,
+  defaultView,
+  onDefaultViewChange,
+  open,
+  onOpenChange,
+}: ViewSelectProps) {
 
   const handleViewChange = async (value: string) => {
     onSelectedViewChange(value);
@@ -32,8 +41,8 @@ export function ViewSelect({ metadata, selectedView, onSelectedViewChange, defau
     onDefaultViewChange(value);
   };
 
-  // Find the label for the selected view
-  const selectedViewLabel = metadata.views.options.find(option => option.value === selectedView)?.label || selectedView;
+  const selectedViewLabel =
+    metadata.views.options.find(option => option.value === selectedView)?.label || selectedView;
 
   return (
     <TooltipProvider>
@@ -44,54 +53,62 @@ export function ViewSelect({ metadata, selectedView, onSelectedViewChange, defau
           value={selectedView || ""}
           onValueChange={handleViewChange}
         >
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <SelectTrigger
-                className={`${open ? "!underline decoration-[2px] decoration-selectsecondaryforeground !underline-offset-4" : ""}
-    bg-transparent focus:ring-0 uppercase w-[160px] md:w-[182px] shadow-none border-0 font-[700]
-    text-selectsecondaryforeground text-[14px] md:text-[18px] overflow-hidden whitespace-nowrap truncate
-    hover:underline hover:decoration-[2px] hover:decoration-selectsecondaryforeground hover:underline-offset-4 focus-visible:ring-0 flex items-center justify-between`}
-              >
-                <SelectValue className="flex-1 text-start text-selectsecondaryforeground">
-                  <span className="block text-start overflow-hidden text-ellipsis whitespace-nowrap w-[150px]">
-                    {selectedViewLabel || "Role Type"}
-                  </span>
-                </SelectValue>
-                <span className="">
-                  <ChevronDown className="h-3.5 w-3.5  text-[#889ABC]" />
-                </span>
-              </SelectTrigger>
-
-            </TooltipTrigger>
-            <TooltipContent>
-              <p>{selectedViewLabel}</p>
-            </TooltipContent>
-          </Tooltip>
+          <SelectTrigger
+            className={`${open ? "!underline decoration-[2px] decoration-selectsecondaryforeground !underline-offset-4" : ""}
+              bg-transparent focus:ring-0 uppercase w-[160px] md:w-[182px] shadow-none border-0 font-[700]
+              text-selectsecondaryforeground text-[14px] md:text-[18px] overflow-hidden whitespace-nowrap truncate
+              hover:underline hover:decoration-[2px] hover:decoration-selectsecondaryforeground hover:underline-offset-4
+              focus-visible:ring-0 flex items-center justify-between`}
+          >
+            <SelectValue className="flex-1 text-start text-selectsecondaryforeground">
+              <TruncateTooltip
+                text={selectedViewLabel || "Role Type"}
+                className="w-[150px] text-start max-w-[150px] md:max-w-[182px] text-nowrap truncate"
+              />
+            </SelectValue>
+            <span>
+              <ChevronDown className="h-3.5 w-3.5 text-[#889ABC]" />
+            </span>
+          </SelectTrigger>
 
           <SelectContent className="min-w-[160px] max-w-[280px] md:min-w-[295px] md:max-w-[395px] left-3 top-[-2px] border-0 rounded-[2px] bg-background shadow-custom">
             {metadata.views.options.map((option) => (
               <div
                 key={option.value}
-                className={`group flex w-full items-center justify-between px-2 rounded-[4px] cursor-pointer ${selectedView === String(option.value) ? "hover:bg-transparent" : "hover:bg-accent"}`}
+                className={`group flex w-full items-center justify-between px-2 rounded-[4px] cursor-pointer ${selectedView === String(option.value)
+                    ? "hover:bg-transparent"
+                    : "hover:bg-accent"
+                  }`}
               >
                 <SelectItem
                   value={option.value}
-                  className={`${selectedView === String(option.value) ? "text-primary" : "text-accent-foreground"}  text-[14px]  font-[400] w-full group-hover:text-primary text-nowrap truncate focus:bg-transparent focus:font-[400]`}
+                  className={`${selectedView === String(option.value)
+                      ? "text-primary"
+                      : "text-accent-foreground"
+                    } text-[14px] font-[400] w-full group-hover:text-primary text-nowrap truncate focus:bg-transparent focus:font-[400]`}
                 >
-                  <div className="max-w-[250px] block text-start overflow-hidden text-ellipsis whitespace-nowrap">{option.label}</div>
+                  <TruncateTooltip text={option.label} className="max-w-[250px] text-start" >
+                  </TruncateTooltip>
                 </SelectItem>
+
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <div
                       onClick={() => handlePinChange(String(option.value))}
-                      className={`transition-opacity hover:text-primary ml-8 ${defaultView === String(option.value) ? "opacity-100 text-primary" : "opacity-0 group-hover:opacity-100 text-infoIcon"
+                      className={`transition-opacity hover:text-primary ml-8 ${defaultView === String(option.value)
+                          ? "opacity-100 text-primary"
+                          : "opacity-0 group-hover:opacity-100 text-infoIcon"
                         }`}
                     >
                       <PinIcon />
                     </div>
                   </TooltipTrigger>
                   <TooltipContent>
-                    <p>{defaultView === String(option.value) ? "Default List" : "Set as Default"}</p>
+                    <p>
+                      {defaultView === String(option.value)
+                        ? "Default List"
+                        : "Set as Default"}
+                    </p>
                   </TooltipContent>
                 </Tooltip>
               </div>
