@@ -1,9 +1,6 @@
 "use client"
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import { DollarSign, Users, Eye, TrendingUp, CreditCard, Activity, Download, UserPlus } from "lucide-react"
 
 const metrics = [
@@ -66,7 +63,6 @@ const metrics = [
 ]
 
 export default function DashboardCards() {
-  const [isOpen, setIsOpen] = useState(false)
 
   return (
     <div >

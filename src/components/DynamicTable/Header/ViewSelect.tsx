@@ -1,8 +1,7 @@
 "use client";
 
-import { ChevronDown, X } from "lucide-react";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { PinIcon } from "../client/icons/dynamicForm/AllDynamicFormIcons";
+import { ChevronDown } from "lucide-react";
+import { Select, SelectContent, SelectItem, SelectTrigger } from "@/components/ui/select";
 import type { TableMetadata } from "@/Types/Table/tableTypes";
 import {
   Tooltip,
@@ -15,6 +14,7 @@ import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import Image from "next/image";
+import { PinIcon } from "@/components/client/icons/dynamicForm/AllDynamicFormIcons";
 
 interface ViewSelectProps {
   metadata: TableMetadata;
@@ -122,7 +122,7 @@ export function ViewSelect({
                         : "opacity-0 group-hover:opacity-100 text-infoIcon"
                         }`}
                     >
-                      <PinIcon />
+                      <PinIcon/>
                     </div>
                   </TooltipTrigger>
                   <TooltipContent>
@@ -138,7 +138,6 @@ export function ViewSelect({
           </SelectContent>
         </Select>
       </div>
-
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen} >
         <DialogContent className=" max-w-[620px]  px-[36px] pt-[17px] pb-[20px] !rounded-[12px] bg-background !shadow-none">
           <DialogHeader className="text-center">

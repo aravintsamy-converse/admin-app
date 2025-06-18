@@ -15,13 +15,10 @@ import {
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableHeaderRow, TableRow } from "@/components/DynamicTable/Table";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { bulkActionsApi, deleteApi, fetchTableData, moreActionApi, updateView } from "@/Services/Pages/User/TableServices";
-import CreateIcon from "@/TableIcon/commonIcons/create";
+import { bulkActionsApi, deleteApi, fetchTableData, moreActionApi } from "@/Services/Pages/User/TableServices";
 import { useSelector } from "react-redux";
 import { RootState } from "@/Store/Store";
 import { useGlobalPreferencesContext } from "@/app/context/GlobalPreferencesContext";
-import ImportExportIcon from "@/TableIcon/commonIcons/importExport";
-import CurrentViewFilterDetails from "@/components/DynamicTable/CurrentViewFilterDetails";
 import { QuickFilters } from "@/components/DynamicTable/QuickFilters";
 import CurrentColumnFilters from "@/components/DynamicTable/CurrentColumnFilters";
 import { useTableContext } from "@/app/context/TableContext";
@@ -35,9 +32,6 @@ import type {
   SortingParams,
   TableData,
 } from "@/Types/Table/tableTypes";
-import { MetricIcon, PinIcon, SquarHamburgerIcon, SquarPlusIcon } from "../client/icons/dynamicForm/AllDynamicFormIcons";
-import CustomPreferencePopup from "./CustomPreferencePopup";
-import { ViewSelect } from "./ViewSelect";
 
 const staticTableData = [
   {
@@ -97,7 +91,7 @@ const staticTableData = [
 ]
 
 
-export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, fetchDataFn, onRefetch }: DataTableProps<TData, TValue>) {
+export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, fetchDataFn}: DataTableProps<TData, TValue>) {
 
   const [data, setData] = useState<TData[]>(staticTableData as TData[]);
   const bulkActionsData: BulkAction[] = metadata.bulk_actions;
@@ -300,15 +294,15 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
     }
   };
 
-  const handleViewChange = async (view: string) => {
-    try {
-      await updateView(actionUrl.view_filter, view || "");
-    } catch (error) {
-      console.error("Error updating view:", error);
-    } finally {
-      onRefetch();
-    }
-  };
+  // const handleViewChange = async (view: string) => {
+  //   try {
+  //     await updateView(actionUrl.view_filter, view || "");
+  //   } catch (error) {
+  //     console.error("Error updating view:", error);
+  //   } finally {
+  //     onRefetch();
+  //   }
+  // };
 
   const handleFilterChange = (fieldName: string, value: string) => {
     setFilterValues((prev) => ({ ...prev, [fieldName]: value }));

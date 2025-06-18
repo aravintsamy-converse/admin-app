@@ -2,12 +2,11 @@
 
 import { useState, useEffect, useRef } from "react";
 import { TableMetadata } from "@/Types/Table/tableTypes";
-import DynamicTableBody from "./DynamicTableBody";
 import { fetchMetaData } from "@/Services/Pages/User/TableServices";
-import DynamicTableHeader from "./DynamicTableHeader";
 import { useSelector } from "react-redux";
 import { RootState } from "@/Store/Store";
 import DashboardCards from "./dashboard-cards";
+import DynamicTableHeader from "./Header/DynamicTableHeader";
 
 type DynamicTableContainerProps = {
   metavalue: TableMetadata;
@@ -17,9 +16,7 @@ export default function DynamicTableContainer({
   metavalue,
 }: DynamicTableContainerProps) {
   const [metadata, setMetadata] = useState<TableMetadata | null>(metavalue);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [fetchTrigger, setFetchTrigger] = useState(false);
   const [open, setOpen] = useState(false);
   const [defaultView, setDefaultView] = useState(
     metavalue?.views.options.find((option: any) => option.default)?.value || ""
@@ -29,7 +26,6 @@ export default function DynamicTableContainer({
   const metricPopOverOpen = useSelector((state: RootState) => state.popover.isOpen);
 
   const fetchData = async () => {
-    console.log("🚀 ~ fetchData ~ fetchData is called:");
 
     try {
       const data = await fetchMetaData(selectedView ?? undefined);
@@ -45,9 +41,7 @@ export default function DynamicTableContainer({
       });
     } catch (err) {
       setError((err as Error).message);
-    } finally {
-      setLoading(false);
-    }
+    } 
   };
 
   useEffect(() => {
@@ -58,9 +52,6 @@ export default function DynamicTableContainer({
     }
   }, [selectedView]);
 
-  const handleRefetch = () => {
-    setFetchTrigger((prev) => !prev);
-  };
 
   if (error) return <div>Error: {error}</div>;
   if (!metadata) return <div>No metadata available</div>;
@@ -110,9 +101,9 @@ export default function DynamicTableContainer({
         />
 
         {/* Dynamic Table Body */}
-        <div className="relative z-10">
+        {/* <div className="relative z-10">
           <DynamicTableBody metadata={metadata} onRefetch={handleRefetch} />
-        </div>
+        </div> */}
       </div>
     </div>
   );

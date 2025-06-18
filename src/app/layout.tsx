@@ -1,5 +1,4 @@
 // src/app/layout.tsx
-import { Inter } from "next/font/google";
 import type { Metadata } from "next";
 import "./globals.css";
 import '@/assets/fonts/inter/inter.css'
@@ -7,14 +6,6 @@ import DynamicLayout from "@/components/client/dynamicForm/DynamicLayout";
 import MainContainer from "@/components/client/server/MainContainer";
 import ReduxProvider from "@/Store/ReduxProvider";
 import { GlobalPreferencesProvider } from "./context/GlobalPreferencesContext";
-
-// Load Inter font with required weights
-// const inter = Inter({
-//   subsets: ["latin"],
-//   weight: ["400", "500", "700"],
-//   variable: "--font-inter",
-//   display: "swap", // Optional for better rendering
-// });
 
 export const metadata: Metadata = {
   title: "Admin APP",

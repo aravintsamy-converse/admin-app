@@ -7,7 +7,7 @@ import '@testing-library/jest-dom';
 
 // // Optionally mock the dropdown components
 jest.mock('@/components/TableUI/multi-select-dropdown', () => ({
-  MultiSelectLazyDropdown:  ({ placeholder, value}: any) => (
+  MultiSelectLazyDropdown:  ({ placeholder}: any) => (
     <div data-testid="multi-select">{placeholder}</div>
   ),
 }));

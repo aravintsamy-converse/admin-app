@@ -5,7 +5,7 @@ import { FrameIcon, StandardResposiveIcon } from '@/TableIcon/commonIcons/column
 import { DisableIcon, EnableIcon } from '@/TableIcon/commonIcons/dataWrap';
 import { CompactDensityIcon, ComfortableDensityIcon, StandardtDensityIcon } from '@/TableIcon/commonIcons/rowDensity';
 import { useGlobalPreferencesContext } from '@/app/context/GlobalPreferencesContext';
-import { MetricIcon, ThreeDotIconMenu } from '../client/icons/dynamicForm/AllDynamicFormIcons';
+import { MetricIcon, ThreeDotIconMenu } from '@/components/client/icons/dynamicForm/AllDynamicFormIcons';
 import { FavoriteIcon, UnFavoriteIcon } from '@/TableIcon/commonIcons/manageFavorite';
 import { useDispatch, useSelector } from 'react-redux';
 import type { RootState } from '@/Store/Store';

@@ -295,6 +295,7 @@ describe("MultiSelectDropdownUI", () => {
 
 describe('MultiSelectDropdownUI default props', () => {
 
+  /* eslint-disable @typescript-eslint/no-unused-vars */
   it('uses default value when `value` is not provided', () => {
     const { value, ...defaultPropswithoutvalue } = defaultProps
 
@@ -304,6 +305,7 @@ describe('MultiSelectDropdownUI default props', () => {
 
   });
 
+/* eslint-disable @typescript-eslint/no-unused-vars */
   it('uses default placeholder when `placeholder` is not provided', () => {
     const { placeholder, ...defaultPropsWithoutPlaceholder } = defaultProps;
 

@@ -1,13 +1,13 @@
 import React from 'react'
-import { MetricIcon, SquarHamburgerIcon } from '../client/icons/dynamicForm/AllDynamicFormIcons'
-import CurrentViewFilterDetails from './CurrentViewFilterDetails'
+import { MetricIcon, SquarHamburgerIcon } from '@/components/client/icons/dynamicForm/AllDynamicFormIcons'
+import CurrentViewFilterDetails from '@/components/DynamicTable/CurrentViewFilterDetails'
 import CreateIcon from '@/TableIcon/commonIcons/create'
-import CustomPreferencePopup from './CustomPreferencePopup'
-import { ViewSelect } from "@/components/DynamicTable/ViewSelect";
+import CustomPreferencePopup from '@/components/DynamicTable/Header/CustomPreferencePopup'
 import { TableData } from '@/Types/Table/tableTypes'
 import { useDispatch, useSelector } from 'react-redux';
 import type { RootState } from '@/Store/Store';
 import { togglePopover } from '@/Store/Slices/metricPopoverSlice';
+import { ViewSelect } from '@/components/DynamicTable/Header/ViewSelect'
 
 
 interface DynamicTableBodyProps {

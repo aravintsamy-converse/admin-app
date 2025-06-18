@@ -1,7 +1,6 @@
 import FilterIcon from '@/TableIcon/commonIcons/filterIcon';
 import { TableMetadata } from '@/Types/Table/tableTypes';
 import React, { useEffect, useRef, useState } from 'react';
-import { CgInfo } from 'react-icons/cg';
 import { LuCalendarDays } from 'react-icons/lu';
 import { InfoIcon } from '../client/icons/dynamicForm/AllDynamicFormIcons';
 

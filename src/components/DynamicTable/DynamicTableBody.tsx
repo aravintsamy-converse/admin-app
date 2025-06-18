@@ -18,7 +18,7 @@ import { updateFavoriteStatus, updateCellData } from "@/Services/Pages/User/Tabl
 import { formateDateTime } from "@/Services/Pages/dateTimeFormater";
 import { TableData } from "@/Types/Table/tableTypes";
 import NonSortableHeader from "@/components/DynamicTable/NonSortableHeader";
-import CustomPreferencePopup from "@/components/DynamicTable/CustomPreferencePopup";
+import CustomPreferencePopup from "@/components/DynamicTable/Header/CustomPreferencePopup";
 import { TableProvider } from "@/app/context/TableContext";
 import { Checkbox } from "@/components/TableUI/checkbox";
 import { InlineEditInput } from "@/components/DynamicTable/InlineEditInputs";

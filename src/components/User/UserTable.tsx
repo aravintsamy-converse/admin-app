@@ -11,6 +11,7 @@ export default async function UserTablePage() {
   try {
     metavalue = await fetchMetaData(); // ✅ server-side fetch
   } catch (error) {
+    console.error("Error fetching metadata:", error);
     return <div>Error loading metadata</div>;
   }
 
