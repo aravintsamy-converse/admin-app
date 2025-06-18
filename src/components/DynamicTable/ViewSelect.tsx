@@ -94,7 +94,7 @@ export function ViewSelect({
             </span>
           </SelectTrigger>
           <SelectContent className="min-w-[160px] max-w-[280px] md:min-w-[295px] md:max-w-[395px] left-3 top-[-2px] border-0 rounded-[2px] bg-background shadow-viewboxshadow">
-            {metadata.views.options.map((option) => (
+            {metadata.views.options?.sort((a, b) => a.order - b.order).map((option) => (
               <div
                 key={option.value}
                 className={`group flex w-full items-center justify-between pl-2 pr-3.5 rounded-[4px] cursor-pointer ${selectedView === String(option.value)
@@ -139,10 +139,10 @@ export function ViewSelect({
       </div>
 
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen} >
-        <DialogContent className=" max-w-[620px] px-[36px] pt-[17px] pb-5 !rounded-[12px] shadow-none">
+        <DialogContent className=" max-w-[620px]  px-[36px] pt-[17px] pb-[20px] !rounded-[12px] bg-background !shadow-none">
           <DialogHeader className="text-center">
-            <DialogTitle className="!text-[18px] font-[600] text-primary">Default List Change</DialogTitle>
-            <div className="flex items-center gap-x-5 pt-3">
+            <DialogTitle className="!text-[18px] font-[600] text-primary leading-[21.6px] tracking-[0]">Default List Change</DialogTitle>
+            <div className="flex items-center gap-x-5 pt-[9px] pl-[1px]">
 
               <Image
                 src="/Default.svg"
@@ -150,16 +150,16 @@ export function ViewSelect({
                 width={39}
                 height={39}
               />
-              <div className="text-[16px] font-[500] text-popover-foreground">
+              <div className="text-[16px] font-[500] text-popover-foreground leading-[21.6px] tracking-[0]">
                 Do you really want to change your default list to <br />“{pendingViewLabel}”?
               </div>
             </div>
           </DialogHeader>
-          <DialogFooter>
-            <Button variant="outline" className="border-0 focus-visible:outline-none text-[14px] font-[500] rounded-[4px] focus-visible:ring-0  shadow-none hover:bg-transparent  text-primary-muted hover:text-primary" onClick={handleCancelDefault}>
+          <DialogFooter className="pt-[5px] pr-[1px]">
+            <Button variant="outline" className="border-0 leading-[21.6px] tracking-[0] focus-visible:outline-none text-[14px] font-[500] rounded-[4px] focus-visible:ring-0  shadow-none hover:bg-transparent  text-primary hover:text-primary hover:font-[600]" onClick={handleCancelDefault}>
               Cancel
             </Button>
-            <Button  onClick={handleConfirmDefault} className="text-[14px] font-[500] rounded-[4px] px-5 hover:text-primary border hover:bg-background hover:border-primary shadow-none ">
+            <Button  onClick={handleConfirmDefault} className=" flex items-center justify-center  leading-[21.6px] tracking-[0] text-[14px] font-[500] rounded-[4px] w-[119px] h-[36px] hover:text-primary border hover:bg-background hover:border-primary shadow-none ">
               Set Default
             </Button>
           </DialogFooter>

@@ -41,7 +41,7 @@ const CustomPreferencePopup = () => {
       {isTableCustomPopup && (
         <div className="absolute z-20 right-[7px]  w-[219px] top-[59px] text-popoverheaderforeground mt-1 bg-background rounded-[4px] shadow-viewboxshadow">
           <div className="absolute -top-2 right-0 md:right-2 border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent border-r-[20px] rotate-90 border-r-background"></div>
-          <div className="py-3 px-4 text-popoverheaderforeground">
+          <div className="pt-1 pb-3.5 px-4 text-popoverheaderforeground space-y-2">
             <div>
               <button className="pb-[6px] pt-[7px] md:hidden pl-[6px] pr-[4px]  items-center justify-center mr-3 text-nowrap bg-background text-primary hover:text-primary-foreground hover:bg-primary text-[18px] font-[600] rounded-[4px] cursor-pointer transition-all duration-300 shadow-primaryButtonActive border border-metricborder hover:border-transparent">
                 <MetricIcon />
