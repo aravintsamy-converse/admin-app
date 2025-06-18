@@ -78,15 +78,15 @@ export function ViewSelect({
         >
           <SelectTrigger
             className={`${open ? "!underline decoration-[2px] decoration-selectsecondaryforeground !underline-offset-4" : ""}
-             bg-transparent focus:ring-0 uppercase w-[160px] md:w-[182px] shadow-none border-0 font-[700]
+             bg-transparent focus:ring-0 uppercase w-[160px] md:w-[180px] shadow-none border-0 font-[700]
              text-selectsecondaryforeground text-[14px] md:text-[18px] overflow-hidden whitespace-nowrap truncate
              hover:underline hover:decoration-[2px] hover:decoration-selectsecondaryforeground hover:underline-offset-4
              focus-visible:ring-0 flex items-center justify-between`}
           >
-            <div className="flex flex-1 justify-center items-center text-start text-selectsecondaryforeground">
+            <div className="flex flex-1 justify-center items-center text-start text-selectsecondaryforeground pl-[1px]">
               <TruncateTooltip
                 text={selectedViewLabel || "Role Type"}
-                className="text-start w-[120px] md:min-w-[145px] md:max-w-[150px] text-nowrap truncate"
+                className="text-start w-[120px] md:min-w-[143px] md:max-w-[150px] text-nowrap truncate"
               />
             </div>
             <span>
