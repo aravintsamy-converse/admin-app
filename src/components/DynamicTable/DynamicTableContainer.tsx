@@ -83,20 +83,37 @@ export default function DynamicTableContainer({
         />
       </div>
 
-      <div
-        className={`bg-formHeaderCardBackground ml-3 mt-2 transition-opacity duration-700 ease-in-out `}
-      >
+      {/* Main Container with Relative Positioning for Layered Animation */}
+      <div className="relative bg-formHeaderCardBackground ml-3 mt-2  overflow-visible">
+        {/* Dashboard Cards - Floating Overlay */}
         <div
-          className={`overflow-y-hidden w-full  transition-all duration-700 ease-in-out ${
+          className={`absolute inset-x-0 pl-2 top-4 z-30 transition-all duration-700 ease-in-out transform-gpu ${
             metricPopOverOpen
-              ? "opacity-100 translate-y-0 h-[200px]"
-              : "opacity-50 translate-y-4 h-0 overflow-hidden"
+              ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
+              : "opacity-0 -translate-y-8 scale-100 pointer-events-none"
           }`}
+          style={{
+            transitionProperty: "opacity, transform",
+            transitionTimingFunction: "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+          }}
         >
-           <DashboardCards />
+          <div className="bg-white/95  rounded-xl  border border-gray-200/60 p-1">
+            <DashboardCards />
+          </div>
         </div>
 
-        <DynamicTableBody metadata={metadata} onRefetch={handleRefetch} />
+        {/* Spacer div to push table down when dashboard is open */}
+        <div
+          className={`transition-all duration-700 ease-in-out ${metricPopOverOpen ? "h-[240px]" : "h-0"}`}
+          style={{
+            transitionTimingFunction: "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+          }}
+        />
+
+        {/* Dynamic Table Body */}
+        <div className="relative z-10">
+          <DynamicTableBody metadata={metadata} onRefetch={handleRefetch} />
+        </div>
       </div>
     </div>
   );
