@@ -20,17 +20,18 @@ export default function DynamicTableContainer({
   const [error, setError] = useState<string | null>(null);
   const [fetchTrigger, setFetchTrigger] = useState(false);
   const [open, setOpen] = useState(false);
-  const [defaultView, setDefaultView] = useState(metavalue?.views.options.find((option: any) => option.default)?.value || "");
+  const [defaultView, setDefaultView] = useState(
+    metavalue?.views.options.find((option: any) => option.default)?.value || ""
+  );
   const [selectedView, setSelectedView] = useState(defaultView);
   const didMountRef = useRef(false);
-  const metricPopOverOpen = useSelector((state: RootState) => state.popover.isOpen); // 🆕 use popover state from Redux store
-
+  const metricPopOverOpen = useSelector((state: RootState) => state.popover.isOpen);
 
   const fetchData = async () => {
-  console.log("🚀 ~ fetchData ~ fetchData is called:",)
+    console.log("🚀 ~ fetchData ~ fetchData is called:");
 
     try {
-      const data = await fetchMetaData(selectedView ?? undefined); // 🆕 use selectedView
+      const data = await fetchMetaData(selectedView ?? undefined);
       setMetadata({
         views: data.views,
         form_action_url: data.form_action_url,
@@ -50,50 +51,52 @@ export default function DynamicTableContainer({
 
   useEffect(() => {
     if (didMountRef.current) {
-      // Call your API here
       fetchData();
     } else {
-      // Skip the first render
       didMountRef.current = true;
     }
-  }, [selectedView]); // 🆕 depend on selectedView
-
-
+  }, [selectedView]);
 
   const handleRefetch = () => {
-    setFetchTrigger(prev => !prev);
+    setFetchTrigger((prev) => !prev);
   };
 
-
-  // if (loading) return <div>Loading column definitions...</div>;
   if (error) return <div>Error: {error}</div>;
   if (!metadata) return <div>No metadata available</div>;
 
   return (
-    <div className="h-full overflow-y-hidden rounded-lg relative  2xl:ml-2 bg-background">
-      <div className={`px-[2px] py-[2px] ${ metricPopOverOpen  ? 'h-[56px]' : 'h-[77px]'}`}>
+    <div className="h-full overflow-y-hidden rounded-lg relative 2xl:ml-2 bg-background">
+      <div
+        className={`px-[2px] py-[2px] transition-all duration-700 ease-in-out ${
+          metricPopOverOpen ? "h-[56px]" : "h-[77px]"
+        }`}
+      >
         <DynamicTableHeader
-        metadata={metadata}
-        selectedView={selectedView}
-        onSelectedViewChange={setSelectedView}
-        defaultView={defaultView}
-        onDefaultViewChange={setDefaultView}
-        open={open}
-        onOpenChange={setOpen}
-      />
+          metadata={metadata}
+          selectedView={selectedView}
+          onSelectedViewChange={setSelectedView}
+          defaultView={defaultView}
+          onDefaultViewChange={setDefaultView}
+          open={open}
+          onOpenChange={setOpen}
+        />
       </div>
-     
-     <div className=" bg-slate-500 ml-3 mt-2">
-       <div className="overflow-x-auto w-full h-[100px]">
-        dfsdfsd
+
+      <div
+        className={`bg-formHeaderCardBackground ml-3 mt-2 transition-opacity duration-700 ease-in-out `}
+      >
+        <div
+          className={`overflow-x-auto w-full h-[100px] transition-all duration-700 ease-in-out ${
+            metricPopOverOpen
+              ? "opacity-100 translate-y-0"
+              : "opacity-50 translate-y-4 h-0 overflow-hidden"
+          }`}
+        >
+          dfsdfsd
         </div>
-       
-      <DynamicTableBody
-        metadata={metadata}
-        onRefetch={handleRefetch}
-      />
+
+        <DynamicTableBody metadata={metadata} onRefetch={handleRefetch} />
       </div>
     </div>
-
   );
 }
