@@ -35,9 +35,8 @@ export function ViewSelect({
   open,
   onOpenChange,
 }: ViewSelectProps) {
-  const [dialogOpen, setDialogOpen] = useState(true);
+  const [dialogOpen, setDialogOpen] = useState(false);
   const [pendingDefaultView, setPendingDefaultView] = useState<string | null>(null);
-  console.log("🚀 ~ pendingDefaultView:", pendingDefaultView)
 
   const handleViewChange = async (value: string) => {
     onSelectedViewChange(value);

@@ -5,6 +5,8 @@ import { TableMetadata } from "@/Types/Table/tableTypes";
 import DynamicTableBody from "./DynamicTableBody";
 import { fetchMetaData } from "@/Services/Pages/User/TableServices";
 import DynamicTableHeader from "./DynamicTableHeader";
+import { useSelector } from "react-redux";
+import { RootState } from "@/Store/Store";
 
 type DynamicTableContainerProps = {
   metavalue: TableMetadata;
@@ -21,6 +23,8 @@ export default function DynamicTableContainer({
   const [defaultView, setDefaultView] = useState(metavalue?.views.options.find((option: any) => option.default)?.value || "");
   const [selectedView, setSelectedView] = useState(defaultView);
   const didMountRef = useRef(false);
+  const metricPopOverOpen = useSelector((state: RootState) => state.popover.isOpen); // 🆕 use popover state from Redux store
+
 
   const fetchData = async () => {
   console.log("🚀 ~ fetchData ~ fetchData is called:",)
@@ -67,7 +71,7 @@ export default function DynamicTableContainer({
 
   return (
     <div className="h-full overflow-y-hidden rounded-lg relative  2xl:ml-2 bg-background">
-      <div className="px-[2px] py-[2px]">
+      <div className={`px-[2px] py-[2px] ${ metricPopOverOpen  ? 'h-[56px]' : 'h-[77px]'}`}>
         <DynamicTableHeader
         metadata={metadata}
         selectedView={selectedView}
@@ -84,10 +88,10 @@ export default function DynamicTableContainer({
         dfsdfsd
         </div>
        
-      {/* <DynamicTableBody
+      <DynamicTableBody
         metadata={metadata}
         onRefetch={handleRefetch}
-      /> */}
+      />
       </div>
     </div>
 
