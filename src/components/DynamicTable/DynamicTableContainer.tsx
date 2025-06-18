@@ -7,6 +7,7 @@ import { fetchMetaData } from "@/Services/Pages/User/TableServices";
 import DynamicTableHeader from "./DynamicTableHeader";
 import { useSelector } from "react-redux";
 import { RootState } from "@/Store/Store";
+import DashboardCards from "./dashboard-cards";
 
 type DynamicTableContainerProps = {
   metavalue: TableMetadata;
@@ -86,13 +87,13 @@ export default function DynamicTableContainer({
         className={`bg-formHeaderCardBackground ml-3 mt-2 transition-opacity duration-700 ease-in-out `}
       >
         <div
-          className={`overflow-x-auto w-full h-[100px] transition-all duration-700 ease-in-out ${
+          className={`overflow-y-hidden w-full  transition-all duration-700 ease-in-out ${
             metricPopOverOpen
-              ? "opacity-100 translate-y-0"
+              ? "opacity-100 translate-y-0 h-[200px]"
               : "opacity-50 translate-y-4 h-0 overflow-hidden"
           }`}
         >
-          dfsdfsd
+           <DashboardCards />
         </div>
 
         <DynamicTableBody metadata={metadata} onRefetch={handleRefetch} />

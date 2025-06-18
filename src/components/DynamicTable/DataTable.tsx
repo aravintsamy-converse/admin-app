@@ -360,7 +360,7 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
             <div className="relative">
               <div className="overflow-x-auto"> 
                 {/* default old table min-h-[680px] max-h-[680px] */}
-                <div className={`${metricPopOverOpen ? "min-h-[400px] max-h-[400px]" : "min-h-[480px] max-h-[480px]"} custom-scrollbar overflow-y-auto  font-[600] border rounded-tl-[4px] rounded-tr-[4px] bg-[#FDFDFF] border-1 border-[#EEEEEE]`}>
+                <div className={`${metricPopOverOpen ? "min-h-[300px] max-h-[300px]" : "min-h-[300px] max-h-[300px]"} custom-scrollbar overflow-y-auto  font-[600] border rounded-tl-[4px] rounded-tr-[4px] bg-[#FDFDFF] border-1 border-[#EEEEEE]`}>
                   <Table style={{ width: table.getTotalSize() }} className="w-full border-b border-r bg-[#FDFDFF] border-[#EEEEEE]">
                     <TableHeader className="sticky top-0 bg-white z-10 font-[600]">
                       {table.getHeaderGroups().map((headerGroup) => (
