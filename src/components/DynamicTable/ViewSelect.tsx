@@ -11,7 +11,7 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tootipWrapper';
 import { TruncateTooltip } from "@/components/DynamicTable/TruncateTooltip";
-import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import Image from "next/image";
@@ -43,6 +43,8 @@ export function ViewSelect({
   };
 
   const handlePinChange = async (value: string) => {
+    if (defaultView === value) return;
+    
     setPendingDefaultView(value);
     setDialogOpen(true);
   };
@@ -142,7 +144,6 @@ export function ViewSelect({
           <DialogHeader className="text-center">
             <DialogTitle className="!text-[18px] font-[600] text-primary leading-[21.6px] tracking-[0]">Default List Change</DialogTitle>
             <div className="flex items-center gap-x-5 pt-[9px] pl-[1px]">
-
               <Image
                 src="/Default.svg"
                 alt="Default List Change"

@@ -87,7 +87,7 @@ export default function DynamicTableContainer({
       <div className="relative bg-formHeaderCardBackground ml-3 mt-2  overflow-visible">
         {/* Dashboard Cards - Floating Overlay */}
         <div
-          className={`absolute inset-x-0 pl-2 top-4 z-30 transition-all duration-700 ease-in-out transform-gpu ${
+          className={`absolute inset-x-0  top-2 z-30 transition-all duration-700 ease-in-out transform-gpu ${
             metricPopOverOpen
               ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
               : "opacity-0 -translate-y-8 scale-100 pointer-events-none"
@@ -97,14 +97,13 @@ export default function DynamicTableContainer({
             transitionTimingFunction: "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
           }}
         >
-          <div className="bg-white/95  rounded-xl  border border-gray-200/60 p-1">
+          
             <DashboardCards />
-          </div>
         </div>
 
         {/* Spacer div to push table down when dashboard is open */}
         <div
-          className={`transition-all duration-700 ease-in-out ${metricPopOverOpen ? "h-[240px]" : "h-0"}`}
+          className={`transition-all duration-700 ease-in-out ${metricPopOverOpen ? "h-[180px]" : "h-0"}`}
           style={{
             transitionTimingFunction: "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
           }}

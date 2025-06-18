@@ -56,7 +56,7 @@ const DynamicTableHeader = ({ metadata, selectedView, onSelectedViewChange, defa
           `}>
           <MetricIcon />
         </button>
-        <button className="w-[116px] h-[35px]  flex items-center  justify-center mr-[6px] bg-primary text-[#ffffff] hover:text-primary hover:bg-background text-[14px] font-[500] leading-[21.6px] rounded-[4px] cursor-pointer transition-all duration-300 !shadow-primaryButtonActive hover:shadow-primaryButtonActive">
+        <button className="w-[117px] h-[35px]  flex items-center  justify-center mr-[6px] bg-primary text-[#ffffff] hover:text-primary hover:bg-background text-[14px] font-[500] leading-[21.6px] rounded-[4px] cursor-pointer transition-all duration-300 !shadow-primaryButtonActive hover:shadow-primaryButtonActive">
           <CreateIcon /><span className="ml-2">Create</span>
         </button>
         <div>

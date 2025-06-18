@@ -69,7 +69,7 @@ export default function DashboardCards() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <div className="p-6">
+    <div >
       {/* <Sheet open={isOpen} onOpenChange={setIsOpen}>
         <SheetTrigger asChild>
           <Button className="mb-6">View Dashboard Metrics</Button>
