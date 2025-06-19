@@ -50,10 +50,7 @@ describe("useIsMobile", () => {
   act(() => {
     setScreenWidth(500)
   })
-  // await waitFor(() => {
-  //   expect(screen.getByTestId("device")).toHaveTextContent("Mobile")
-  // })
-
+  
   act(() => {
     setScreenWidth(800)
   })

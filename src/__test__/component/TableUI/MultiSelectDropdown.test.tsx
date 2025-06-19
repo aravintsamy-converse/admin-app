@@ -70,7 +70,7 @@ describe("MultiSelectLazyDropdown", () => {
     jest.clearAllMocks();
   });
 
-  it("renders with default value prop when not provided", async() => {
+  it("renders with default value prop when not provided", () => {
     render(<MultiSelectLazyDropdown onChange={handleChange}/>);
     expect( screen.getByText("Select options")).toBeInTheDocument();
     expect(screen.queryByRole("button", { name: /remove/i })).not.toBeInTheDocument();
