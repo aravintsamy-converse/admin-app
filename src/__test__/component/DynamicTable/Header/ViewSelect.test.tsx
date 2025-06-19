@@ -46,6 +46,13 @@ const setup = (overrides = {}) => {
   };
 };
 
+jest.mock('@/components/DynamicTable/TruncateTooltip', () => ({
+  TruncateTooltip:  ({ text}: any) => (
+    <div data-testid="tooltip">{text}</div>
+  ),
+}));
+
+
 describe('ViewSelect Component', () => {
   it('renders correctly with selected view label', () => {
     setup({ open: false });
@@ -94,4 +101,11 @@ describe('ViewSelect Component', () => {
     setup({ selectedView: unknownView, open: false });
     expect(screen.getByText('Select a view')).toBeInTheDocument();
   });
+  
+  it('renders TruncateTooltip with selected view label', () => {
+  setup({ open: false });
+  const tooltip = screen.getByTestId('tooltip');
+  expect(tooltip).toBeInTheDocument();
+  expect(tooltip).toHaveTextContent('Default');
+});
 });
