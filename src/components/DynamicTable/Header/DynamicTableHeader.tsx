@@ -46,7 +46,7 @@ const DynamicTableHeader = ({ metadata, selectedView, onSelectedViewChange, defa
               open={open}
               onOpenChange={onOpenChange}
             />
-            <CurrentViewFilterDetails metadata={metadata} />
+            <CurrentViewFilterDetails />
           </div>
         </div>
       </div>

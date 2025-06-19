@@ -91,11 +91,8 @@ export interface ColumnData {
 }
 
 export type TableMetadata = {
-  views: {
-    options: Array<{ label: string; value: string; default: boolean; order: number }>;
-    current_view_details: Array<{ field_name: string; filter_type: string; condition: string; value: string }>;
-    example_filters: string[];
-  };
+  view_options: 
+    Array<{ label: string; value: string; default: boolean; order: number }>;
   form_action_url: Array<{
     create?: formActionUrlType;
     edit?: formActionUrlType;

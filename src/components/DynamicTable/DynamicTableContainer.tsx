@@ -19,7 +19,7 @@ export default function DynamicTableContainer({
   const [error, setError] = useState<string | null>(null);
   const [open, setOpen] = useState(false);
   const [defaultView, setDefaultView] = useState(
-    metavalue?.views.options.find((option: any) => option.default)?.value || ""
+    metavalue?.view_options.find((option: any) => option.is_default)?.value || ""
   );
   const [selectedView, setSelectedView] = useState(defaultView);
   const didMountRef = useRef(false);
@@ -30,7 +30,7 @@ export default function DynamicTableContainer({
     try {
       const data = await fetchMetaData(selectedView ?? undefined);
       setMetadata({
-        views: data.views,
+        view_options: data.view_options,
         form_action_url: data.form_action_url,
         table_actions_url: data.table_actions_url,
         favorite_screens: data.favorite_screens,

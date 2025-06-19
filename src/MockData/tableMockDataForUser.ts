@@ -1,42 +1,25 @@
 export const metaData = {
   "data" :{
-    "views": {
-      "options": [
-        {
-          "label": "DEFAULT",
-          "value": "view_101",
-          "default": true,
-          "order": 3
-        },
-        {
-          "label": "ProductViewBasedinHand on Region ProductViewBasedinHand on Region",
-          "value": "view_102",
-          "default": false,
-          "order": 2
-        },
-        {
-          "label": "View Name 3",
-          "value": "view_103",
-          "default": false,
-          "order": 1
-        }
-      ],
-      "current_view_details": [
-        {
-          "field_name": "User",
-          "filter_type": "String",
-          "condition": "is",
-          "value": "John Doe"
-        },
-        {
-          "field_name": "Last Login",
-          "filter_type": "Date",
-          "condition": "is",
-          "value": "12/12/2020"
-        }
-      ],
-      "example_filters": ["Date Range: Last 30 days","Revenue: > $10,000 AND < $50,000", "Status: Active AND (Region: NA OR EU)"]
-    },
+    "view_options": [
+      {
+        "value": "f5ad065e-92a2-4725-b626-6d44bbb2f58f",
+        "label": "Stock products",
+        "order": 1,
+        "is_default": true
+      },
+      {
+        "value": "45dfd65e-92a2-4725-b626-6d44bbb2f445f",
+        "label": "Out of Stock products",
+        "order": 3,
+        "is_default": false
+      },
+      {
+        "value": "er434-92a2-4725-b626-6d44bbb2f58f",
+        "label": "Non-Experied products",
+        "order": 2,
+        "is_default": false
+      }
+    ],
     "form_action_url": [
       {
         "create": {
