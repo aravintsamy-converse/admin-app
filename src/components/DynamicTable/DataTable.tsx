@@ -90,7 +90,6 @@ const staticTableData = [
   }
 ]
 
-
 export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, fetchDataFn}: DataTableProps<TData, TValue>) {
 
   const [data, setData] = useState<TData[]>(staticTableData as TData[]);
@@ -116,14 +115,12 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
   const rowHeightClass = rowHeight[preferences.density] || rowHeight.standard;
   const [isFavorite, setIsFavorite] = useState(metadata.favorite_screens);
   const actionUrl = metadata.table_actions_url;
-  const [selectedView, setSelectedView] = useState(
-    metadata.views.options.find((option) => option.default)?.value || ""
-  );
+  
   const [filterValues, setFilterValues] = useState<Record<string, string>>({});
   const [appliedFilterValues, setAppliedFilterValues] = useState<Record<string, string>>({});
   const [hoveredHeaderId, setHoveredHeaderId] = useState<string | null>(null);
   const metricPopOverOpen = useSelector((state: RootState) => state.popover.isOpen);
-  
+  const selectedView = '';
 
   const handleDeleteRowId = async (rowId: string) => {
     try {
@@ -185,10 +182,6 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
     }));
   }, []);
 
-  useEffect(() => {
-    const defaultView = metadata.views.options.find((option) => option.default)?.value || "";
-    setSelectedView(defaultView);
-  }, [metadata.views.options]);
 
   useEffect(() => {
     setIsFavorite(metadata.favorite_screens);
@@ -293,16 +286,6 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
       setSelectedBulkAction(null);
     }
   };
-
-  // const handleViewChange = async (view: string) => {
-  //   try {
-  //     await updateView(actionUrl.view_filter, view || "");
-  //   } catch (error) {
-  //     console.error("Error updating view:", error);
-  //   } finally {
-  //     onRefetch();
-  //   }
-  // };
 
   const handleFilterChange = (fieldName: string, value: string) => {
     setFilterValues((prev) => ({ ...prev, [fieldName]: value }));

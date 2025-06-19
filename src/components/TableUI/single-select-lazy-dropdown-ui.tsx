@@ -5,23 +5,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Button } from "@/components/ui/button"
 import * as React from "react"
 import { ChevronDown } from "lucide-react"
-
-interface Option {
-  value: string
-  label: string
-}
-
-interface SingleSelectLazyDropdownUIProps {
-  placeholder?: string
-  value: Option | null
-  options: Option[]
-  loading: boolean
-  commandListRef: React.RefObject<HTMLDivElement | null>
-  onSearchChange: (value: string) => void
-  onSelect: (option: Option) => void
-  open: boolean
-  onOpenChange: (open: boolean) => void
-}
+import { SingleSelectLazyDropdownUIProps } from "@/Types/Table/lazyLoadDropDown"
 
 export function SingleSelectLazyDropdownUI({
   placeholder = "Select an option",

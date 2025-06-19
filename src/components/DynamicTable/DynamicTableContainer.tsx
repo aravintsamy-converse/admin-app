@@ -1,19 +1,16 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { TableMetadata } from "@/Types/Table/tableTypes";
+import { DynamicTableContainerProps, TableMetadata } from "@/Types/Table/tableTypes";
 import { fetchMetaData } from "@/Services/Pages/User/TableServices";
 import { useSelector } from "react-redux";
 import { RootState } from "@/Store/Store";
 import MetricCards from "@/components/DynamicTable/Header/MetricCards";
 import DynamicTableHeader from "./Header/DynamicTableHeader";
-
-type DynamicTableContainerProps = {
-  metavalue: TableMetadata;
-};
+import DynamicTableBody from "./DynamicTableBody";
 
 export default function DynamicTableContainer({
-  metavalue,
+  metavalue
 }: DynamicTableContainerProps) {
   const [metadata, setMetadata] = useState<TableMetadata | null>(metavalue);
   const [error, setError] = useState<string | null>(null);
@@ -100,9 +97,9 @@ export default function DynamicTableContainer({
         />
 
         {/* Dynamic Table Body */}
-        {/* <div className="relative z-10">
-          <DynamicTableBody metadata={metadata} onRefetch={handleRefetch} />
-        </div> */}
+        <div className="relative z-10">
+          <DynamicTableBody metadata={metadata} />
+        </div>
       </div>
     </div>
   );

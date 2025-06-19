@@ -15,26 +15,22 @@ export const GlobalPreferencesProvider = ({ children }: { children: React.ReactN
   const dispatch = useDispatch<AppDispatch>();
   const filterData = useSelector((state: RootState) => state.filterData.data);
 
-  // Manage preferences state separately, initialized with screenPreferences.preferences
   const [preferences, setPreferences] = useState<
     { density: string; columnResizable: boolean; dataWrap: boolean; theme: string; per_page: number } | null
   >(null);
 
-  // Initialize preferences when screenPreferences is available
   useEffect(() => {
     if (screenPreferences) {
       setPreferences(screenPreferences.preferences);
     }
   }, [screenPreferences]);
 
-  // Fetch filter data if not already loaded
   useEffect(() => {
     if (filterData.length === 0) {
       dispatch(fetchFilterData());
     }
   }, [filterData, dispatch]);
 
-  // Function to update preferences with partial updates
   const updatePreferences = (
     newPreferences: Partial<{
       density: string;
@@ -47,12 +43,10 @@ export const GlobalPreferencesProvider = ({ children }: { children: React.ReactN
     setPreferences((prev) => (prev ? { ...prev, ...newPreferences } : null));
   };
 
-  // Wait until all required data is loaded
   if (!screenPreferences || !preferences || !filterData) {
     return <div>Loading preferences...</div>;
   }
 
-  // Construct the context value
   const contextValue: GlobalPreferencesContextType = {
     per_page_values: screenPreferences.per_page_values,
     preferences,

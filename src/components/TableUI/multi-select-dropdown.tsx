@@ -4,18 +4,8 @@ import * as React from "react"
 import { useDebounce } from "use-debounce"
 import { MultiSelectDropdownUI } from "./multi-select-dropdown-ui"
 import { fetchDropDownData } from "@/Services/Pages/User/TableServices"
-
-interface Option {
-  value: string
-  label: string
-}
-
-interface MultiSelectProps {
-  placeholder?: string
-  className?: string
-  onChange: (values: Option[]) => void
-  value?: Option[]
-}
+import { Option } from "@/Types/common"
+import { MultiSelectProps } from "@/Types/Table/lazyLoadDropDown"
 
 export function MultiSelectLazyDropdown({
   placeholder = "Select options",

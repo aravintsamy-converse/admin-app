@@ -6,25 +6,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
-
-interface Option {
-  value: string
-  label: string
-}
-
-interface MultiSelectDropdownUIProps {
-  placeholder?: string
-  className?: string
-  value?: Option[]
-  options: Option[]
-  loading: boolean
-  commandListRef: React.RefObject<HTMLDivElement | null>
-  onSearchChange: (value: string) => void
-  onSelect: (option: Option) => void
-  onRemove: (option: Option) => void
-  open: boolean
-  onOpenChange: (open: boolean) => void
-}
+import { MultiSelectDropdownUIProps } from "@/Types/Table/lazyLoadDropDown"
 
 export function MultiSelectDropdownUI({
   placeholder = "Select options",

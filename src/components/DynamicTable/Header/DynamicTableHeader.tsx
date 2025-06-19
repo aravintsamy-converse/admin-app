@@ -3,26 +3,13 @@ import { MetricIcon, SquarHamburgerIcon } from '@/components/client/icons/dynami
 import CurrentViewFilterDetails from '@/components/DynamicTable/CurrentViewFilterDetails'
 import CreateIcon from '@/TableIcon/commonIcons/create'
 import CustomPreferencePopup from '@/components/DynamicTable/Header/CustomPreferencePopup'
-import { TableData } from '@/Types/Table/tableTypes'
 import { useDispatch, useSelector } from 'react-redux';
 import type { RootState } from '@/Store/Store';
 import { togglePopover } from '@/Store/Slices/metricPopoverSlice';
 import { ViewSelect } from '@/components/DynamicTable/Header/ViewSelect'
+import { DynamicTableHeaderProps } from '@/Types/Table/TableHeader/header'
 
-
-interface DynamicTableBodyProps {
-  viewOptions: TableData['view_options'];
-  selectedView: string;
-  onSelectedViewChange: (view: string) => void;
-  defaultView: string;
-  onDefaultViewChange: (view: string) => void;
-  open: boolean;
-  onOpenChange: (open: boolean) => void;
-
-}
-
-const DynamicTableHeader = ({ viewOptions, selectedView, onSelectedViewChange, defaultView, onDefaultViewChange, open, onOpenChange }: DynamicTableBodyProps) => {
- console.log("🚀 ~ DynamicTableHeader ~ viewOptions:", viewOptions)
+const DynamicTableHeader = ({ viewOptions, selectedView, onSelectedViewChange, defaultView, onDefaultViewChange, open, onOpenChange }: DynamicTableHeaderProps) => {
  const dispatch = useDispatch();
  const metricPopOverOpen = useSelector((state: RootState) => state.popover.isOpen); // 🆕 use popover state from Redux store
 

@@ -2,7 +2,6 @@
 
 import { ChevronDown } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger } from "@/components/ui/select";
-import type { TableMetadata } from "@/Types/Table/tableTypes";
 import {
   Tooltip,
   TooltipContent,
@@ -15,16 +14,7 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import Image from "next/image";
 import { PinIcon } from "@/components/client/icons/dynamicForm/AllDynamicFormIcons";
-
-interface ViewSelectProps {
-  viewOptions: TableMetadata["view_options"];
-  selectedView: string;
-  onSelectedViewChange: (view: string) => void;
-  defaultView: string;
-  onDefaultViewChange: (view: string) => void;
-  open: boolean;
-  onOpenChange: (open: boolean) => void;
-}
+import { ViewSelectProps } from "@/Types/Table/TableHeader/viewSelect";
 
 export function ViewSelect({
   viewOptions,

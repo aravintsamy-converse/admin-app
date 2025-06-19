@@ -6,9 +6,6 @@ import configureStore from 'redux-mock-store';
 import DynamicTableHeader from '@/components/DynamicTable/Header/DynamicTableHeader';
 import type { TableData } from '@/Types/Table/tableTypes';
 import userEvent from '@testing-library/user-event';
-import { TableProvider } from "@/app/context/TableContext";
-import { GlobalPreferencesProvider } from "@/app/context/GlobalPreferencesContext";
-
 
 // Mock Redux slice state
 const mockStore = configureStore([]);
@@ -39,9 +36,14 @@ const mockViewOptions: TableData["view_options"] = [
   },
 ];
 
-jest.mock('@/components/DynamicTable/Header/CustomPreferencePopup', () => () => (
-  <div data-testid="mock-custom-preference-popup">Mock Popup</div>
-));
+jest.mock('@/components/DynamicTable/Header/CustomPreferencePopup', () => {
+  const MockCustomPreferencePopup = () => (
+    <div data-testid="mock-custom-preference-popup">Mock Popup</div>
+  );
+  MockCustomPreferencePopup.displayName = 'MockCustomPreferencePopup';
+  return MockCustomPreferencePopup;
+});
+
 
 const setup = (overrides = {}) => {
   const store = mockStore(initialState);

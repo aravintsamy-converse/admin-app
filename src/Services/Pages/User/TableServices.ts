@@ -94,6 +94,7 @@ export const updateView = async (url: string, view: string) => {
 // }
 
 export async function fetchMetaData(view?: string): Promise<TableMetadata> {
+  console.log("🚀 ~ fetchMetaData ~ view:", view)
   try {
     // Simulating an API response using the mock data
     return metaData.data;

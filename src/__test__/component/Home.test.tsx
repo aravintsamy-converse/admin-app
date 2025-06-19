@@ -1,10 +1,7 @@
-// __tests__/Home.test.tsx
-
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Home from '@/components/User/Home';
 import '@testing-library/jest-dom';
-
 // // Optionally mock the dropdown components
 jest.mock('@/components/TableUI/multi-select-dropdown', () => ({
   MultiSelectLazyDropdown:  ({ placeholder}: any) => (
@@ -21,9 +18,7 @@ jest.mock('@/components/TableUI/single-select-lazy-dropdown', () => ({
 describe('Home Component', () => {
   test('renders correctly with all UI elements', () => {
     render(<Home />);
-    // Heading check
     expect(screen.getByText('Multi-Select Dropdown Example')).toBeInTheDocument();
-    // Description text
     expect(screen.getByText('Select multiple options from the dropdown below:')).toBeInTheDocument();
   });
 });

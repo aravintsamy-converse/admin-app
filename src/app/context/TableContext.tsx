@@ -3,10 +3,7 @@
 import { TableContextType } from "@/Types/Table/tableTypes";
 import { createContext, useContext,useState, ReactNode} from "react";
 
-
-
 const TableContext = createContext<TableContextType | undefined>(undefined);
-
 export const TableProvider = ({ children }: { children: ReactNode }) => {
   const [pageIndex, setPageIndex] = useState(0);
 

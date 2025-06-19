@@ -1,13 +1,9 @@
 "use client"
 
 import { useState } from "react"
-import { MultiSelectLazyDropdown } from "../TableUI/multi-select-dropdown"
-import { SingleSelectLazyDropdown } from "../TableUI/single-select-lazy-dropdown"
-
-interface Option {
-  value: string
-  label: string
-}
+import { MultiSelectLazyDropdown } from "@/components/TableUI/multi-select-dropdown"
+import { SingleSelectLazyDropdown } from "@/components/TableUI/single-select-lazy-dropdown"
+import { Option } from "@/Types/common"
 
 export default function Home() {
   const [selectedOptions, setSelectedOptions] = useState<Option[]>([])

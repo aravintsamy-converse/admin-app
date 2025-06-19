@@ -32,8 +32,7 @@ type ItemType = {
 
 
 export default function DynamicTableBody({
-  metadata,
-  onRefetch
+  metadata
 }: DynamicTableBodyProps) {
   const screenSize = useScreenSize();
   const [editState, setEditState] = useState<EditState | null>(null);
@@ -366,8 +365,6 @@ export default function DynamicTableBody({
       await updateFavoriteStatus(newState);
     } catch (error) {
       console.error("Error updating favorite status:", error);
-    } finally {
-      onRefetch();
     }
   };
 
@@ -378,7 +375,6 @@ export default function DynamicTableBody({
           metadata={metadata}
           onFavoriteToggle={handleFavoriteToggle}
           fetchDataFn={fetchDataFn}
-          onRefetch={onRefetch}
         />
       </TableProvider>
   );

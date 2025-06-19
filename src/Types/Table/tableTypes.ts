@@ -4,7 +4,6 @@ import { Row, Table } from "@tanstack/react-table";
 
 export interface DynamicTableBodyProps {
   metadata: TableData;
-  onRefetch: () => void;
 }
 
 
@@ -114,6 +113,10 @@ export type TableMetadata = {
   columnData: any
 };
 
+export type DynamicTableContainerProps = {
+  metavalue: TableMetadata;
+};
+
 export type TableData = any;
 
 export interface DataTableProps<TData, TValue> {
@@ -121,7 +124,6 @@ export interface DataTableProps<TData, TValue> {
   metadata: TableMetadata
   onFavoriteToggle?: (newState: boolean) => Promise<void>
   fetchDataFn:boolean// Corrected to accept fetchData function
-  onRefetch: () => void;
 }
 
 export interface CustomTableMeta extends TableMeta<TableData> {

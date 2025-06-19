@@ -1,4 +1,3 @@
-// app/user-table/page.tsx
 import { fetchMetaData } from "@/Services/Pages/User/TableServices";
 import DynamicTableContainer from "@/components/DynamicTable/DynamicTableContainer";
 import { TableProvider } from "@/app/context/TableContext";
@@ -9,7 +8,7 @@ export default async function UserTablePage() {
   let metavalue: TableMetadata;
 
   try {
-    metavalue = await fetchMetaData(); // ✅ server-side fetch
+    metavalue = await fetchMetaData();
   } catch (error) {
     console.error("Error fetching metadata:", error);
     return <div>Error loading metadata</div>;
