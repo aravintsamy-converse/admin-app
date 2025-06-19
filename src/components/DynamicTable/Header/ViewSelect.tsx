@@ -63,10 +63,10 @@ export function ViewSelect({
   };
 
   const selectedViewLabel =
-    viewOptions.find(option => option.value === selectedView)?.label || selectedView;
+    viewOptions.find(option => option.value === selectedView)?.label;
 
   const pendingViewLabel =
-    viewOptions.find(option => option.value === pendingDefaultView)?.label || pendingDefaultView;
+    viewOptions.find(option => option.value === pendingDefaultView)?.label;
 
   return (
     <TooltipProvider>
@@ -74,7 +74,7 @@ export function ViewSelect({
         <Select
           open={open}
           onOpenChange={onOpenChange}
-          value={selectedView || ""}
+          value={selectedView}
           onValueChange={handleViewChange}
         >
           <SelectTrigger
@@ -86,7 +86,7 @@ export function ViewSelect({
           >
             <div className="flex flex-1 justify-center items-center text-start text-selectsecondaryforeground pl-[1px]">
               <TruncateTooltip
-                text={selectedViewLabel || "Role Type"}
+                text={selectedViewLabel || "Select a view"}
                 className="text-start w-[120px] md:min-w-[143px] md:max-w-[150px] text-nowrap truncate"
               />
             </div>
@@ -119,7 +119,7 @@ export function ViewSelect({
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <div
-                      onClick={() => handlePinChange(String(option.value))}
+                      data-testid={`pin-icon-${option.value}`} onClick={() => handlePinChange(String(option.value))}
                       className={`transition-opacity hover:text-primary ml-8 ${defaultView === String(option.value)
                         ? "opacity-100 text-primary"
                         : "opacity-0 group-hover:opacity-100 text-infoIcon"

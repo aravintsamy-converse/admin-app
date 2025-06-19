@@ -92,7 +92,7 @@ export interface ColumnData {
 
 export type TableMetadata = {
   view_options: 
-    Array<{ label: string; value: string; default: boolean; order: number }>;
+    Array<{ label: string; value: string; is_default: boolean; order: number }>;
   form_action_url: Array<{
     create?: formActionUrlType;
     edit?: formActionUrlType;
