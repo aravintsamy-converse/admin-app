@@ -64,7 +64,7 @@ export default function DynamicTableContainer({
         }`}
       >
         <DynamicTableHeader
-          metadata={metadata}
+          viewOptions={metadata.view_options}
           selectedView={selectedView}
           onSelectedViewChange={setSelectedView}
           defaultView={defaultView}

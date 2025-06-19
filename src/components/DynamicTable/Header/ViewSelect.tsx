@@ -17,7 +17,7 @@ import Image from "next/image";
 import { PinIcon } from "@/components/client/icons/dynamicForm/AllDynamicFormIcons";
 
 interface ViewSelectProps {
-  metadata: TableMetadata;
+  viewOptions: TableMetadata["view_options"];
   selectedView: string;
   onSelectedViewChange: (view: string) => void;
   defaultView: string;
@@ -27,7 +27,7 @@ interface ViewSelectProps {
 }
 
 export function ViewSelect({
-  metadata,
+  viewOptions,
   selectedView,
   onSelectedViewChange,
   defaultView,
@@ -63,10 +63,10 @@ export function ViewSelect({
   };
 
   const selectedViewLabel =
-    metadata.view_options.find(option => option.value === selectedView)?.label || selectedView;
+    viewOptions.find(option => option.value === selectedView)?.label || selectedView;
 
   const pendingViewLabel =
-    metadata.view_options.find(option => option.value === pendingDefaultView)?.label || pendingDefaultView;
+    viewOptions.find(option => option.value === pendingDefaultView)?.label || pendingDefaultView;
 
   return (
     <TooltipProvider>
@@ -95,7 +95,7 @@ export function ViewSelect({
             </span>
           </SelectTrigger>
           <SelectContent className="min-w-[160px] max-w-[280px] md:min-w-[295px] md:max-w-[395px] left-3 top-[-2px] border-0 rounded-[2px] bg-background shadow-viewboxshadow">
-            {metadata.view_options?.sort((a, b) => a.order - b.order).map((option) => (
+            {viewOptions?.sort((a, b) => a.order - b.order).map((option) => (
               <div
                 key={option.value}
                 className={`group flex w-full items-center justify-between pl-2 pr-3.5 rounded-[4px] cursor-pointer ${selectedView === String(option.value)

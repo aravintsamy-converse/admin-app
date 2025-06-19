@@ -11,7 +11,7 @@ import { ViewSelect } from '@/components/DynamicTable/Header/ViewSelect'
 
 
 interface DynamicTableBodyProps {
-  metadata: TableData;
+  viewOptions: TableData['view_options'];
   selectedView: string;
   onSelectedViewChange: (view: string) => void;
   defaultView: string;
@@ -21,7 +21,7 @@ interface DynamicTableBodyProps {
 
 }
 
-const DynamicTableHeader = ({ metadata, selectedView, onSelectedViewChange, defaultView, onDefaultViewChange, open, onOpenChange }: DynamicTableBodyProps) => {
+const DynamicTableHeader = ({ viewOptions, selectedView, onSelectedViewChange, defaultView, onDefaultViewChange, open, onOpenChange }: DynamicTableBodyProps) => {
  const dispatch = useDispatch();
  const metricPopOverOpen = useSelector((state: RootState) => state.popover.isOpen); // 🆕 use popover state from Redux store
 
@@ -38,7 +38,7 @@ const DynamicTableHeader = ({ metadata, selectedView, onSelectedViewChange, defa
         <div className="rounded-tr-md items-center flex  w-full">
           <div className="flex items-center p-1">
              <ViewSelect
-              metadata={metadata}
+              viewOptions={viewOptions}
               selectedView={selectedView}
               onSelectedViewChange={onSelectedViewChange}
               defaultView={defaultView}
