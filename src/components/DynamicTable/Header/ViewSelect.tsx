@@ -105,12 +105,15 @@ export function ViewSelect({
               >
                 <SelectItem
                   value={option.value}
-                  className={`${selectedView === String(option.value)
+                  className={`${selectedView === (option.value)
                     ? "text-primary"
                     : "text-accent-foreground"
-                    } text-[14px] font-[400] w-full py-[3px] group-hover:text-primary text-nowrap truncate focus:bg-transparent focus:font-[400]`}
+                    } text-[14px] font-[400] w-full py-[3px] group-hover:text-primary  text-nowrap truncate focus:bg-transparent focus:font-[400]`}
                 >
-                  <TruncateTooltip text={option.label} className="w-[180px] md:min-w-[150px] md:max-w-[250px] text-start" />
+                  <TruncateTooltip text={option.label} className={`${selectedView === (option.value)
+                    ? "text-primary"
+                    : "text-accent-foreground"
+                    } w-[180px]  md:min-w-[150px] md:max-w-[250px] text-start`} />
                 </SelectItem>
 
                 <Tooltip>
