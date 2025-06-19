@@ -62,7 +62,7 @@ const metrics = [
   },
 ]
 
-export default function DashboardCards() {
+export default function MetricCards() {
 
   return (
     <div >

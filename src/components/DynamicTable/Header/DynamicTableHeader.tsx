@@ -22,6 +22,7 @@ interface DynamicTableBodyProps {
 }
 
 const DynamicTableHeader = ({ viewOptions, selectedView, onSelectedViewChange, defaultView, onDefaultViewChange, open, onOpenChange }: DynamicTableBodyProps) => {
+ console.log("🚀 ~ DynamicTableHeader ~ viewOptions:", viewOptions)
  const dispatch = useDispatch();
  const metricPopOverOpen = useSelector((state: RootState) => state.popover.isOpen); // 🆕 use popover state from Redux store
 
@@ -51,7 +52,7 @@ const DynamicTableHeader = ({ viewOptions, selectedView, onSelectedViewChange, d
         </div>
       </div>
       <div className="flex items-center justify-end  pr-2 md:pr-[15px]">
-        <button onClick={toggleMetricPopOver} className={`pb-[6px] pt-[7px] hidden md:flex pl-[6px] pr-[4px]  items-center justify-center mr-3 text-nowrap bg-background text-primary hover:text-primary-foreground hover:bg-primary text-[18px] font-[600] rounded-[4px] cursor-pointer transition-all duration-300 shadow-primaryButtonActive border border-metricborder hover:border-transparent
+        <button data-testid="metric-button" onClick={toggleMetricPopOver} className={`pb-[6px] pt-[7px] hidden md:flex pl-[6px] pr-[4px]  items-center justify-center mr-3 text-nowrap bg-background text-primary hover:text-primary-foreground hover:bg-primary text-[18px] font-[600] rounded-[4px] cursor-pointer transition-all duration-300 shadow-primaryButtonActive border border-metricborder hover:border-transparent
           ${metricPopOverOpen ? 'text-primary-foreground bg-primary border-transparent' : ''} 
           `}>
           <MetricIcon />

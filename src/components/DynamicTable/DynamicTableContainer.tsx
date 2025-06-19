@@ -5,7 +5,7 @@ import { TableMetadata } from "@/Types/Table/tableTypes";
 import { fetchMetaData } from "@/Services/Pages/User/TableServices";
 import { useSelector } from "react-redux";
 import { RootState } from "@/Store/Store";
-import DashboardCards from "./dashboard-cards";
+import MetricCards from "@/components/DynamicTable/Header/MetricCards";
 import DynamicTableHeader from "./Header/DynamicTableHeader";
 
 type DynamicTableContainerProps = {
@@ -88,8 +88,7 @@ export default function DynamicTableContainer({
             transitionTimingFunction: "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
           }}
         >
-          
-            <DashboardCards />
+            <MetricCards />
         </div>
 
         {/* Spacer div to push table down when dashboard is open */}
