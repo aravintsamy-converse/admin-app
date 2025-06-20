@@ -60,7 +60,7 @@ export const metaData = {
         "field_name": "user_name",
         "field_label": "User Name",
         "placeholder": "Search by Name",
-        "order": 1
+        "order": 3
       },
       {
         "id": "4f45df33-ae14-4455-8477-1d8e07f2dc34f",
@@ -84,7 +84,7 @@ export const metaData = {
         "id": "8454d54ed1-ae14-4455-8477-1d8e07f2454t",
         "filter_type": "MappedSearch",
         "placeholder": "Select Column",
-        "order": 3,
+        "order": 1,
         "options": [
           {
             "label": "User Name",

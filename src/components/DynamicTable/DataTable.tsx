@@ -90,7 +90,7 @@ const staticTableData = [
   }
 ]
 
-export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, fetchDataFn}: DataTableProps<TData, TValue>) {
+export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, fetchDataFn }: DataTableProps<TData, TValue>) {
 
   const [data, setData] = useState<TData[]>(staticTableData as TData[]);
   const bulkActionsData: BulkAction[] = metadata.bulk_actions;
@@ -115,7 +115,7 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
   const rowHeightClass = rowHeight[preferences.density] || rowHeight.standard;
   const [isFavorite, setIsFavorite] = useState(metadata.favorite_screens);
   const actionUrl = metadata.table_actions_url;
-  
+
   const [filterValues, setFilterValues] = useState<Record<string, string>>({});
   const [appliedFilterValues, setAppliedFilterValues] = useState<Record<string, string>>({});
   const [hoveredHeaderId, setHoveredHeaderId] = useState<string | null>(null);
@@ -229,8 +229,6 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
         if (Array.isArray(filter.value)) return filter.value.length > 0;
         return filter.value !== "";
       });
-      console.log("🚀 ~ quickFilter ~ quickFilter:", quickFilter)
-
       const params: ApiQueryParams = {
         view: selectedView,
         columnFilter: columnFilters.filters.map((filter) => ({
@@ -303,147 +301,201 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
   return (
 
 
-       <div className="w-full tanstack-table">
-        <div className="w-full h-full rounded-sm bg-white">
-          <div className="w-full bg-white py-4 grid grid-cols-2 md:grid-cols-1 gap-y-1 lg:grid-cols-[50%,50%] items-center">
-            <CurrentColumnFilters />
-            <div className="w-full flex items-center gap-4 place-content-end">
-              <div className="cursor-pointer" onClick={handleFavoriteClick}>
-                {isFavorite ? (
-                  <FaHeart className="text-[20px] text-[#FA5669]" />
-                ) : (
-                  <FaRegHeart className="text-[20px] text-[#889ABC]" />
-                )}
-              </div>
-              <QuickFilters
-                quickFilters={metadata.quick_filters}
-                filterValues={filterValues}
-                onFilterChange={handleFilterChange}
-                onApplyFilters={applyFilters}
-                onResetFilters={resetFilters}
-                onImmediateFilterChange={handleImmediateFilterChange}
-              />
+    <div className="w-full tanstack-table">
+      <div className="w-full h-full rounded-sm bg-white">
+        <div className="w-full bg-white py-4 grid grid-cols-2 md:grid-cols-1 gap-y-1 lg:grid-cols-[50%,50%] items-center">
+          <CurrentColumnFilters />
+          <div className="w-full flex items-center gap-4 place-content-end">
+            <div className="cursor-pointer" onClick={handleFavoriteClick}>
+              {isFavorite ? (
+                <FaHeart className="text-[20px] text-[#FA5669]" />
+              ) : (
+                <FaRegHeart className="text-[20px] text-[#889ABC]" />
+              )}
             </div>
+            <QuickFilters
+              quickFilters={metadata.quick_filters}
+              filterValues={filterValues}
+              onFilterChange={handleFilterChange}
+              onApplyFilters={applyFilters}
+              onResetFilters={resetFilters}
+              onImmediateFilterChange={handleImmediateFilterChange}
+            />
           </div>
-          <div className="w-full h-full">
-            <div className="relative">
-              <div className="overflow-x-auto"> 
-                {/* default old table min-h-[680px] max-h-[680px] */}
-                <div className={`${metricPopOverOpen ? "min-h-[300px] max-h-[300px]" : "min-h-[300px] max-h-[300px]"} custom-scrollbar overflow-y-auto  font-[600] border rounded-tl-[4px] rounded-tr-[4px] bg-[#FDFDFF] border-1 border-[#EEEEEE]`}>
-                  <Table style={{ width: table.getTotalSize() }} className="w-full border-b border-r bg-[#FDFDFF] border-[#EEEEEE]">
-                    <TableHeader className="sticky top-0 bg-white z-10 font-[600]">
-                      {table.getHeaderGroups().map((headerGroup) => (
-                        <TableHeaderRow key={headerGroup.id} className="bg-white h-[38px]">
-                          {headerGroup.headers.map((header) => {
-                            const isActionColumn = header.id === "action";
-                            const isMoreActionColumn = header.id === "more_action";
+        </div>
+        <div className="w-full h-full">
+          <div className="relative">
+            <div className="overflow-x-auto">
+              {/* default old table min-h-[680px] max-h-[680px] */}
+              <div className={`${metricPopOverOpen ? "min-h-[300px] max-h-[300px]" : "min-h-[300px] max-h-[300px]"} custom-scrollbar overflow-y-auto  font-[600] border rounded-tl-[4px] rounded-tr-[4px] bg-[#FDFDFF] border-1 border-[#EEEEEE]`}>
+                <Table style={{ width: table.getTotalSize() }} className="w-full border-b border-r bg-[#FDFDFF] border-[#EEEEEE]">
+                  <TableHeader className="sticky top-0 bg-white z-10 font-[600]">
+                    {table.getHeaderGroups().map((headerGroup) => (
+                      <TableHeaderRow key={headerGroup.id} className="bg-white h-[38px]">
+                        {headerGroup.headers.map((header) => {
+                          const isActionColumn = header.id === "action";
+                          const isMoreActionColumn = header.id === "more_action";
+                          return (
+                            <TableHead
+                              key={header.id}
+                              className={
+                                isActionColumn
+                                  ? "sticky left-0 bg-white z-20 w-16 pl-4"
+                                  : isMoreActionColumn
+                                    ? "sticky right-0 bg-white z-20 w-14 pl-4"
+                                    : "relative border-0"
+                              }
+                              style={
+                                isActionColumn
+                                  ? { position: "sticky", left: 0, zIndex: 20, boxShadow: "1px 0 0 0 #EEEEEE" }
+                                  : isMoreActionColumn
+                                    ? { position: "sticky", right: 0, zIndex: 20, boxShadow: "1px 0 0 0 #EEEEEE" }
+                                    : { width: header.getSize(), position: "sticky", top: 0, zIndex: 10 }
+                              }
+                            >
+                              <div>{flexRender(header.column.columnDef.header, header.getContext())}</div>
+                              {!isActionColumn && !isMoreActionColumn && header.column.getCanResize() && (
+                                <div
+                                  onMouseDown={header.getResizeHandler()}
+                                  onTouchStart={header.getResizeHandler()}
+                                  onMouseEnter={() => setHoveredHeaderId(header.id)}
+                                  onMouseLeave={() => setHoveredHeaderId(null)}
+                                  className={`absolute right-0 top-0 h-full w-2 cursor-col-resize select-none touch-none ${header.column.getIsResizing()
+                                    ? "border-r border-primary hover:border-primary"
+                                    : "border-r border-[#E6E9F2] hover:border-primary"
+                                    }`}
+                                >
+                                  {(header.column.getIsResizing() || hoveredHeaderId === header.id) && (
+                                    <div className="absolute right-[18px] top-0 h-full w-2 rotate-90">
+                                      <RxDragHandleDots2 className="text-[#889ABC]" />
+                                    </div>
+                                  )}
+                                </div>
+                              )}
+                            </TableHead>
+                          );
+                        })}
+                      </TableHeaderRow>
+                    ))}
+                  </TableHeader>
+                  <TableBody>
+                    {table.getRowModel().rows?.length ? (
+                      table.getRowModel().rows.map((row) => (
+                        <TableRow
+                          key={row.id}
+                          data-state={row.getIsSelected() && "selected"}
+                          className={`${rowHeightClass} transition-transform duration-200 ${hoveredRowId === row.id ? "translate-x-[6px]" : ""}`}
+                        >
+                          {row.getVisibleCells().map((cell) => {
+                            const isActionColumn = cell.column.id === "action";
+                            const isMoreActionColumn = cell.column.id === "more_action";
                             return (
-                              <TableHead
-                                key={header.id}
+                              <TableCell
+                                key={cell.id}
                                 className={
                                   isActionColumn
-                                    ? "sticky left-0 bg-white z-20 w-16 pl-4"
+                                    ? "sticky left-0 bg-white pl-4"
                                     : isMoreActionColumn
-                                      ? "sticky right-0 bg-white z-20 w-14 pl-4"
-                                      : "relative border-0"
+                                      ? "sticky right-0 bg-white pl-4"
+                                      : "text-[#555F7E] font-[500] text-[15px]"
                                 }
                                 style={
                                   isActionColumn
-                                    ? { position: "sticky", left: 0, zIndex: 20, boxShadow: "1px 0 0 0 #EEEEEE" }
+                                    ? { position: "sticky", left: 0, zIndex: 1 }
                                     : isMoreActionColumn
-                                      ? { position: "sticky", right: 0, zIndex: 20, boxShadow: "1px 0 0 0 #EEEEEE" }
-                                      : { width: header.getSize(), position: "sticky", top: 0, zIndex: 10 }
+                                      ? { position: "sticky", right: 0, zIndex: 1 }
+                                      : { width: cell.column.getSize() }
                                 }
                               >
-                                <div>{flexRender(header.column.columnDef.header, header.getContext())}</div>
-                                {!isActionColumn && !isMoreActionColumn && header.column.getCanResize() && (
-                                  <div
-                                    onMouseDown={header.getResizeHandler()}
-                                    onTouchStart={header.getResizeHandler()}
-                                    onMouseEnter={() => setHoveredHeaderId(header.id)}
-                                    onMouseLeave={() => setHoveredHeaderId(null)}
-                                    className={`absolute right-0 top-0 h-full w-2 cursor-col-resize select-none touch-none ${header.column.getIsResizing()
-                                      ? "border-r border-primary hover:border-primary"
-                                      : "border-r border-[#E6E9F2] hover:border-primary"
-                                      }`}
-                                  >
-                                    {(header.column.getIsResizing() || hoveredHeaderId === header.id) && (
-                                      <div className="absolute right-[18px] top-0 h-full w-2 rotate-90">
-                                        <RxDragHandleDots2 className="text-[#889ABC]" />
-                                      </div>
-                                    )}
-                                  </div>
-                                )}
-                              </TableHead>
+                                {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                              </TableCell>
                             );
                           })}
-                        </TableHeaderRow>
-                      ))}
-                    </TableHeader>
-                    <TableBody>
-                      {table.getRowModel().rows?.length ? (
-                        table.getRowModel().rows.map((row) => (
-                          <TableRow
-                            key={row.id}
-                            data-state={row.getIsSelected() && "selected"}
-                            className={`${rowHeightClass} transition-transform duration-200 ${hoveredRowId === row.id ? "translate-x-[6px]" : ""}`}
-                          >
-                            {row.getVisibleCells().map((cell) => {
-                              const isActionColumn = cell.column.id === "action";
-                              const isMoreActionColumn = cell.column.id === "more_action";
-                              return (
-                                <TableCell
-                                  key={cell.id}
-                                  className={
-                                    isActionColumn
-                                      ? "sticky left-0 bg-white pl-4"
-                                      : isMoreActionColumn
-                                        ? "sticky right-0 bg-white pl-4"
-                                        : "text-[#555F7E] font-[500] text-[15px]"
-                                  }
-                                  style={
-                                    isActionColumn
-                                      ? { position: "sticky", left: 0, zIndex: 1 }
-                                      : isMoreActionColumn
-                                        ? { position: "sticky", right: 0, zIndex: 1 }
-                                        : { width: cell.column.getSize() }
-                                  }
-                                >
-                                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                                </TableCell>
-                              );
-                            })}
-                          </TableRow>
-                        ))
-                      ) : (
-                        <TableRow>
-                          <TableCell colSpan={columns.length} className="h-24 text-center">
-                            No results.
-                          </TableCell>
                         </TableRow>
-                      )}
-                    </TableBody>
-                  </Table>
-                </div>
+                      ))
+                    ) : (
+                      <TableRow>
+                        <TableCell colSpan={columns.length} className="h-24 text-center">
+                          No results.
+                        </TableCell>
+                      </TableRow>
+                    )}
+                  </TableBody>
+                </Table>
               </div>
             </div>
-            <div className="flex flex-col border border-[#F0F0F0] rounded-bl-[5px] rounded-br-[5px] xl:flex-row justify-between xl:items-center md:items-start lg:px-3.5">
-              <div className="flex items-center gap-3 w-full sm:w-auto mt-2 md:mt-0 md:mb-0 ">
+          </div>
+          <div className="flex flex-col border border-[#F0F0F0] rounded-bl-[5px] rounded-br-[5px] xl:flex-row justify-between xl:items-center md:items-start lg:px-3.5">
+            <div className="flex items-center gap-3 w-full sm:w-auto mt-2 md:mt-0 md:mb-0 ">
+              <Select
+                value={seletedBulkAction || ""}
+                onValueChange={(value) => {
+                  setSelectedBulkAction(value);
+                }}
+                onOpenChange={setIsBulkSelectOpen}
+              >
+                <SelectTrigger
+                  className={`w-full h-9  sm:w-[200px] rounded-sm md:w-[300px] bg-white font-[600] border ${seletedBulkAction ? "text-[#81868C] text-[15px]" : "text-[#ADADAD] text-[16px]"
+                    }`}
+                >
+                  <div className="flex items-center justify-between w-full">
+                    <SelectValue placeholder="Bulk actions" className="" />
+                    {isBulkSelectOpen ? (
+                      <ChevronUp className="h-4 w-4 text-[#81868C]" />
+                    ) : (
+                      <ChevronDown className="h-4 w-4 text-[#81868C]" />
+                    )}
+                  </div>
+                </SelectTrigger>
+                <SelectContent
+                  side="top"
+                  className="border-0 bg-white shadow-[0px_0px_20px_0px_#C2D1EF] min-w-[200px] sm:min-w-[300px] text-[16px]  font-[600]"
+                >
+                  {bulkActionsData.map((action) => (
+                    <SelectItem
+                      key={action.value}
+                      value={action.value}
+                      className="text-muted-foreground text-[16px] hover:bg-accent cursor-pointer "
+                    >
+                      {action.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <button
+                className={`${!seletedBulkAction || selectedRowIds.length === 0
+                  ? "pointer-events-none opacity-50"
+                  : "hover:shadow-[0px_4px_6px_rgba(29,87,199,0.28)]"
+                  } px-5 py-1.5 flex items-center gap-2 justify-center text-primary bg-white text-[15px] font-[600] rounded-[4px] cursor-pointer transition-all duration-300`}
+                onClick={() => {
+                  if (seletedBulkAction && selectedRowIds.length > 0) {
+                    handleBulkAction(seletedBulkAction);
+                  }
+                }}
+                disabled={!seletedBulkAction || selectedRowIds.length === 0}
+              >
+                Apply
+              </button>
+            </div>
+            <div className="flex flex-col sm:flex-row items-center  justify-end space-y-4 sm:space-y-0 sm:space-x-2 py-4 sm:px-7 xl:px-4 text-[#889ABC] text-[16px]">
+              <div className="flex items-center gap-2 w-full sm:w-auto justify-center sm:justify-start">
+                <p className="text-[16px] font-[600] text-[#889ABC] hidden lg:flex">Per page</p>
                 <Select
-                  value={seletedBulkAction || ""}
+                  value={`${pageSize}`}
                   onValueChange={(value) => {
-                    setSelectedBulkAction(value);
+                    table.setPageSize(Number(value));
+                    setPageSize(Number(value));
                   }}
-                  onOpenChange={setIsBulkSelectOpen}
+                  onOpenChange={setIsPageSelectOpen}
                 >
                   <SelectTrigger
-                    className={`w-full h-9  sm:w-[200px] rounded-sm md:w-[300px] bg-white font-[600] border ${seletedBulkAction ? "text-[#81868C] text-[15px]" : "text-[#ADADAD] text-[16px]"
-                      }`}
+                    className={`rounded-[4px] ${isPageSelectOpen ? "text-[#ffffff] bg-primary" : "text-primary bg-white"
+                      } h-[32px]  font-[500] w-[60px] text-[15px] border-none shadow-[2px_2px_5px_0px_#1D57C747] hover:shadow-[2px_2px_5px_0px_#1D57C747] border border-[#1D57C747]`}
                   >
                     <div className="flex items-center justify-between w-full">
-                      <SelectValue placeholder="Bulk actions" className="" />
-                      {isBulkSelectOpen ? (
-                        <ChevronUp className="h-4 w-4 text-[#81868C]" />
+                      <SelectValue placeholder={pageSize} />
+                      {isPageSelectOpen ? (
+                        <ChevronUp className="h-4 w-4 text-[#ffffff]" />
                       ) : (
                         <ChevronDown className="h-4 w-4 text-[#81868C]" />
                       )}
@@ -451,146 +503,91 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
                   </SelectTrigger>
                   <SelectContent
                     side="top"
-                    className="border-0 bg-white shadow-[0px_0px_20px_0px_#C2D1EF] min-w-[200px] sm:min-w-[300px] text-[16px]  font-[600]"
+                    className="border-0 bg-white shadow-[0px_0px_20px_0px_#C2D1EF] font-[15px] w-[var(--radix-select-trigger-width)]"
                   >
-                    {bulkActionsData.map((action) => (
-                      <SelectItem
-                        key={action.value}
-                        value={action.value}
-                        className="text-muted-foreground text-[16px] hover:bg-accent cursor-pointer "
-                      >
-                        {action.label}
+                    {per_page_values.map((size) => (
+                      <SelectItem key={size.value} value={`${size.value}`}>
+                        {size.value}
                       </SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
-                <button
-                  className={`${!seletedBulkAction || selectedRowIds.length === 0
-                    ? "pointer-events-none opacity-50"
-                    : "hover:shadow-[0px_4px_6px_rgba(29,87,199,0.28)]"
-                    } px-5 py-1.5 flex items-center gap-2 justify-center text-primary bg-white text-[15px] font-[600] rounded-[4px] cursor-pointer transition-all duration-300`}
-                  onClick={() => {
-                    if (seletedBulkAction && selectedRowIds.length > 0) {
-                      handleBulkAction(seletedBulkAction);
-                    }
-                  }}
-                  disabled={!seletedBulkAction || selectedRowIds.length === 0}
-                >
-                  Apply
-                </button>
+                <div className="flex px-2 sm:px-4 xl:px-0 items-center justify-center text-[16px] sm:text-[16px] font-[600] text-[#889ABC]">
+                  {`${pageIndex * pageSize + 1}-${Math.min((pageIndex + 1) * pageSize, totalRows)} of ${totalRows}`}
+                </div>
               </div>
-              <div className="flex flex-col sm:flex-row items-center  justify-end space-y-4 sm:space-y-0 sm:space-x-2 py-4 sm:px-7 xl:px-4 text-[#889ABC] text-[16px]">
-                <div className="flex items-center gap-2 w-full sm:w-auto justify-center sm:justify-start">
-                  <p className="text-[16px] font-[600] text-[#889ABC] hidden lg:flex">Per page</p>
-                  <Select
-                    value={`${pageSize}`}
-                    onValueChange={(value) => {
-                      table.setPageSize(Number(value));
-                      setPageSize(Number(value));
-                    }}
-                    onOpenChange={setIsPageSelectOpen}
-                  >
-                    <SelectTrigger
-                      className={`rounded-[4px] ${isPageSelectOpen ? "text-[#ffffff] bg-primary" : "text-primary bg-white"
-                        } h-[32px]  font-[500] w-[60px] text-[15px] border-none shadow-[2px_2px_5px_0px_#1D57C747] hover:shadow-[2px_2px_5px_0px_#1D57C747] border border-[#1D57C747]`}
-                    >
-                      <div className="flex items-center justify-between w-full">
-                        <SelectValue placeholder={pageSize} />
-                        {isPageSelectOpen ? (
-                          <ChevronUp className="h-4 w-4 text-[#ffffff]" />
-                        ) : (
-                          <ChevronDown className="h-4 w-4 text-[#81868C]" />
-                        )}
-                      </div>
-                    </SelectTrigger>
-                    <SelectContent
-                      side="top"
-                      className="border-0 bg-white shadow-[0px_0px_20px_0px_#C2D1EF] font-[15px] w-[var(--radix-select-trigger-width)]"
-                    >
-                      {per_page_values.map((size) => (
-                        <SelectItem key={size.value} value={`${size.value}`}>
-                          {size.value}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  <div className="flex px-2 sm:px-4 xl:px-0 items-center justify-center text-[16px] sm:text-[16px] font-[600] text-[#889ABC]">
-                    {`${pageIndex * pageSize + 1}-${Math.min((pageIndex + 1) * pageSize, totalRows)} of ${totalRows}`}
-                  </div>
-                </div>
-                <div className="flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-2 w-full sm:w-auto">
-                  <div className="flex items-center space-x-1 sm:space-x-2 px-1">
-                    <Button
-                      variant="outline"
-                      className="h-8 w-8 p-0 hidden lg:flex"
-                      onClick={() => setPageIndex(0)}
-                      disabled={pageIndex === 0}
-                      aria-label="Go to first page"
-                    >
-                      <FaAngleDoubleLeft className="h-4 w-4" />
-                    </Button>
-                    <Button
-                      variant="outline"
-                      className="h-8 w-8 p-0"
-                      onClick={() => setPageIndex(Math.max(0, pageIndex - 1))}
-                      disabled={pageIndex === 0}
-                      aria-label="Go to previous page"
-                    >
-                      <RiArrowDropLeftLine className="h-7 w-7" />
-                    </Button>
-                    <Button
-                      variant="outline"
-                      className="h-8 w-8 p-0"
-                      onClick={() => setPageIndex(Math.min(Math.ceil(totalRows / pageSize) - 1, pageIndex + 1))}
-                      disabled={pageIndex >= Math.ceil(totalRows / pageSize) - 1}
-                      aria-label="Go to next page"
-                    >
-                      <RiArrowDropRightLine className="h-7 w-7" />
-                    </Button>
-                    <Button
-                      variant="outline"
-                      className="h-[32px] w-[32px] p-0 hidden lg:flex"
-                      onClick={() => setPageIndex(Math.ceil(totalRows / pageSize) - 1)}
-                      disabled={pageIndex >= Math.ceil(totalRows / pageSize) - 1}
-                      aria-label="Go to last page"
-                    >
-                      <FaAngleDoubleRight className="h-4 w-4 text-[#889ABC] font-[600]" />
-                    </Button>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-2 w-full sm:w-auto justify-center sm:justify-start">
-                  <div className="text-[16px] sm:text-[16px] font-[600] text-[#889ABC] hidden lg:flex">Go to page</div>
-                  <input
-                    type="number"
-                    value={pageInput}
-                    onChange={(e) => {
-                      setPageInput(e.target.value);
-                    }}
-                    className="h-[31px] w-[59px] rounded border border-[#889ABCA6] p-0 text-center text-sm outline-none"
-                    min={1}
-                    max={Math.ceil(totalRows / pageSize)}
-                  />
+              <div className="flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-2 w-full sm:w-auto">
+                <div className="flex items-center space-x-1 sm:space-x-2 px-1">
                   <Button
                     variant="outline"
-                    className="h-[31px] w-[44px] p-0 hover:bg-primary text-primary hover:text-white"
-                    onClick={() => {
-                      const page = pageInput ? Number(pageInput) - 1 : 0;
-                      if (page >= 0 && page < Math.ceil(totalRows / pageSize)) {
-                        setPageIndex(page);
-                      } else {
-                        setPageInput(String(pageIndex + 1));
-                      }
-                    }}
-                    aria-label="Go to page"
+                    className="h-8 w-8 p-0 hidden lg:flex"
+                    onClick={() => setPageIndex(0)}
+                    disabled={pageIndex === 0}
+                    aria-label="Go to first page"
                   >
-                    <span className="text-[15px] font-[500]">Go</span>
+                    <FaAngleDoubleLeft className="h-4 w-4" />
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="h-8 w-8 p-0"
+                    onClick={() => setPageIndex(Math.max(0, pageIndex - 1))}
+                    disabled={pageIndex === 0}
+                    aria-label="Go to previous page"
+                  >
+                    <RiArrowDropLeftLine className="h-7 w-7" />
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="h-8 w-8 p-0"
+                    onClick={() => setPageIndex(Math.min(Math.ceil(totalRows / pageSize) - 1, pageIndex + 1))}
+                    disabled={pageIndex >= Math.ceil(totalRows / pageSize) - 1}
+                    aria-label="Go to next page"
+                  >
+                    <RiArrowDropRightLine className="h-7 w-7" />
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="h-[32px] w-[32px] p-0 hidden lg:flex"
+                    onClick={() => setPageIndex(Math.ceil(totalRows / pageSize) - 1)}
+                    disabled={pageIndex >= Math.ceil(totalRows / pageSize) - 1}
+                    aria-label="Go to last page"
+                  >
+                    <FaAngleDoubleRight className="h-4 w-4 text-[#889ABC] font-[600]" />
                   </Button>
                 </div>
+              </div>
+              <div className="flex items-center space-x-2 w-full sm:w-auto justify-center sm:justify-start">
+                <div className="text-[16px] sm:text-[16px] font-[600] text-[#889ABC] hidden lg:flex">Go to page</div>
+                <input
+                  type="number"
+                  value={pageInput}
+                  onChange={(e) => {
+                    setPageInput(e.target.value);
+                  }}
+                  className="h-[31px] w-[59px] rounded border border-[#889ABCA6] p-0 text-center text-sm outline-none"
+                  min={1}
+                  max={Math.ceil(totalRows / pageSize)}
+                />
+                <Button
+                  variant="outline"
+                  className="h-[31px] w-[44px] p-0 hover:bg-primary text-primary hover:text-white"
+                  onClick={() => {
+                    const page = pageInput ? Number(pageInput) - 1 : 0;
+                    if (page >= 0 && page < Math.ceil(totalRows / pageSize)) {
+                      setPageIndex(page);
+                    } else {
+                      setPageInput(String(pageIndex + 1));
+                    }
+                  }}
+                  aria-label="Go to page"
+                >
+                  <span className="text-[15px] font-[500]">Go</span>
+                </Button>
               </div>
             </div>
           </div>
         </div>
-      </div> 
-    
+      </div>
+    </div>
   );
 } 
