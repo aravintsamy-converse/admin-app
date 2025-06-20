@@ -24,8 +24,7 @@ export function DesktopFilters({
         <div key={filter.id} className="w-full">
           <FilterRenderer
             filter={filter}
-            fieldName={filter.field_name}
-            inputFields={filter.input_field}
+            fieldName={filter.field_name || ""}
             filterValues={filterValues}
             onFilterChange={onFilterChange}
           />
@@ -46,11 +45,10 @@ export function DesktopFilters({
               {hiddenFilters.map((filter) => (
                 <div key={filter.id}>
                   <FilterRenderer
-                    filter={filter}
-                    fieldName={filter.field_name}
-                    inputFields={filter.input_field}
-                    filterValues={filterValues}
-                    onFilterChange={onFilterChange}
+                   filter={filter}
+                   fieldName={filter.field_name || ""}
+                   filterValues={filterValues}
+                   onFilterChange={onFilterChange}
                   />
                 </div>
               ))}

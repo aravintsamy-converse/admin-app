@@ -1,4 +1,4 @@
-import { ColumnDef, ColumnMeta } from "@tanstack/react-table"
+import { ColumnDef, ColumnMeta } from "@tanstack/react-table";
 import { TableMeta } from "@tanstack/react-table";
 import { Row, Table } from "@tanstack/react-table";
 
@@ -6,12 +6,11 @@ export interface DynamicTableBodyProps {
   metadata: TableData;
 }
 
-
 export type formActionUrlType = {
-  form_id: string,
-  form_url: string,
-  form_name: string,
-}
+  form_id: string;
+  form_url: string;
+  form_name: string;
+};
 
 export interface MoreActionCellProps {
   row: Row<TableData>;
@@ -20,21 +19,17 @@ export interface MoreActionCellProps {
 }
 
 export type QuickFiltersType = Array<{
-  filter_type?: string;
-  type?: string;
-  field_type?: string;
   id: string;
-  field_name: string;
-  field_label: string;
-  input_field: Array<{
-    placeholder: string;
-    label_icon?: boolean;
-    options?: Array<{
-      label: string;
-      value: string;
-      icon?: string;
-      color?: string;
-    }>;
+  filter_type: string;
+  field_name?: string;
+  field_label?: string;
+  placeholder?: string;
+  order: number;
+  is_lazyload?: boolean;
+  records_limit?: number;
+  options?: Array<{
+    label: string;
+    value: string;
   }>;
 }>;
 
@@ -76,7 +71,7 @@ export interface IconProps {
 export interface ColumnData {
   column_data_id: string;
   columnName: string;
-  columnType: string ;
+  columnType: string;
   type?: string;
   headerName: string;
   associatedKey?: string;
@@ -86,12 +81,16 @@ export interface ColumnData {
   isResizing: boolean;
   size: number;
   inLineEditing: boolean;
-  options?:{ label: string; value: string }[]
+  options?: { label: string; value: string }[];
 }
 
 export type TableMetadata = {
-  view_options: 
-    Array<{ label: string; value: string; is_default: boolean; order: number }>;
+  view_options: Array<{
+    label: string;
+    value: string;
+    is_default: boolean;
+    order: number;
+  }>;
   form_action_url: Array<{
     create?: formActionUrlType;
     edit?: formActionUrlType;
@@ -107,10 +106,10 @@ export type TableMetadata = {
     more_action: string;
   };
   favorite_screens: boolean;
-  QuickFilters: QuickFiltersType;
+  quick_filters: QuickFiltersType;
   bulk_actions: Array<{ label: string; value: string }>;
   more_actions: Array<{ label: string; value: string }>;
-  columnData: any
+  columnData: any;
 };
 
 export type DynamicTableContainerProps = {
@@ -120,10 +119,10 @@ export type DynamicTableContainerProps = {
 export type TableData = any;
 
 export interface DataTableProps<TData, TValue> {
-  columns: ColumnDef<TData, TValue>[]
-  metadata: TableMetadata
-  onFavoriteToggle?: (newState: boolean) => Promise<void>
-  fetchDataFn:boolean// Corrected to accept fetchData function
+  columns: ColumnDef<TData, TValue>[];
+  metadata: TableMetadata;
+  onFavoriteToggle?: (newState: boolean) => Promise<void>;
+  fetchDataFn: boolean; // Corrected to accept fetchData function
 }
 
 export interface CustomTableMeta extends TableMeta<TableData> {
@@ -132,21 +131,22 @@ export interface CustomTableMeta extends TableMeta<TableData> {
   onMoreAction?: (action: string, rowId: string) => void;
 }
 
-export interface CustomColumnMeta<TData, TValue> extends ColumnMeta<TData, TValue> {
+export interface CustomColumnMeta<TData, TValue>
+  extends ColumnMeta<TData, TValue> {
   isActionColumn?: boolean;
   isMoreActionColumn?: boolean;
 }
 
 export interface SortingParams {
-  value: string
-  order: "ASC" | "DESC"
+  value: string;
+  order: "ASC" | "DESC";
 }
 
 export interface ColumnFilter {
   columnName: string;
   columnType: string;
   condition: string;
-  value?:any;
+  value?: any;
 }
 
 export interface ColumnFiltersState {
@@ -163,38 +163,38 @@ export interface ApiQueryParams {
     quickFilter?: {
       name: string;
       value: any;
-    }[]
+    }[];
   };
 }
 
 export interface ApiResponse<T> {
-  data: T[]
-  totalCount: number
-  page: number
-  pageSize: number
+  data: T[];
+  totalCount: number;
+  page: number;
+  pageSize: number;
 }
 
 export interface BulkAction {
-  label: string
-  value: string
+  label: string;
+  value: string;
 }
 
 export interface BulkActionApi {
-  status: string
-  userIds: string[]
+  status: string;
+  userIds: string[];
 }
 
 // types for sortable headder componennet
 export interface SortableHeaderProps {
-  column: any
-  title: string
+  column: any;
+  title: string;
 }
 
 export interface NonSortableHeaderProps {
-  title: string
+  title: string;
 }
 
- export interface TableContextType {
+export interface TableContextType {
   pageIndex: number;
   setPageIndex: (index: number) => void;
 }
@@ -202,7 +202,6 @@ export interface NonSortableHeaderProps {
 export interface FilterRendererProps {
   filter: QuickFiltersType[number];
   fieldName: string;
-  inputFields: { placeholder: string; options?: { value: string; label: string; icon?: string; color?: string }[] }[];
   filterValues: Record<string, string>;
   onFilterChange: (fieldName: string, value: string) => void;
 }

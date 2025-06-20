@@ -31,7 +31,7 @@ export function QuickFilters({
   const isSingleSimpleFilter =
     quickFilters.length === 1 &&
     !(
-      (quickFilters[0].filter_type === "Dropdown" && quickFilters[0].type === "multi") ||
+      (quickFilters[0].filter_type === "Dropdown") ||
       quickFilters[0].filter_type === "DateRange" ||
       quickFilters[0].filter_type === "DateTimeRange" ||
       quickFilters[0].filter_type === "String" ||

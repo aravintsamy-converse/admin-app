@@ -48,11 +48,10 @@ export function MobileFilters({
             {quickFilters.map((filter) => (
               <div key={filter.id}>
                 <FilterRenderer
-                  filter={filter}
-                  fieldName={filter.field_name}
-                  inputFields={filter.input_field}
-                  filterValues={filterValues}
-                  onFilterChange={onFilterChange}
+                 filter={filter}
+                 fieldName={filter.field_name || ""}
+                 filterValues={filterValues}
+                 onFilterChange={onFilterChange}
                 />
               </div>
             ))}

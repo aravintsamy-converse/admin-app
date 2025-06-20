@@ -210,26 +210,17 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
   const fetchData = useCallback(async () => {
     try {
       const filterMap = new Map<string, { name: string; value: string | string[] }>();
-      metadata.QuickFilters.forEach((filter) => {
+      metadata.quick_filters.forEach((filter) => {
         const fieldName = filter.field_name;
-        if (filter.filter_type === "Dropdown" && filter.type === "multi") {
-          const value = appliedFilterValues[fieldName];
+        if (filter.filter_type === "Dropdown") {
+          const value = appliedFilterValues[fieldName as string];
           if (value) {
-            filterMap.set(fieldName, { name: fieldName, value: value.split(",").filter(Boolean) });
-          }
-        } else if (filter.filter_type === "DateRange" || filter.filter_type === "DateTimeRange") {
-          const fromKey = `${fieldName}_from`;
-          const toKey = `${fieldName}_to`;
-          const fromValue = appliedFilterValues[fromKey];
-          const toValue = appliedFilterValues[toKey];
-          const rangeValue = [fromValue, toValue].filter(Boolean);
-          if (rangeValue.length > 0) {
-            filterMap.set(fieldName, { name: fieldName, value: rangeValue });
+            filterMap.set(fieldName as string, { name: fieldName as string, value: value.split(",").filter(Boolean) });
           }
         } else {
-          const value = appliedFilterValues[fieldName];
+          const value = appliedFilterValues[fieldName as string];
           if (value) {
-            filterMap.set(fieldName, { name: fieldName, value });
+            filterMap.set(fieldName as string, { name: fieldName as string, value });
           }
         }
       });
@@ -238,6 +229,7 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
         if (Array.isArray(filter.value)) return filter.value.length > 0;
         return filter.value !== "";
       });
+      console.log("🚀 ~ quickFilter ~ quickFilter:", quickFilter)
 
       const params: ApiQueryParams = {
         view: selectedView,
@@ -324,7 +316,7 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
                 )}
               </div>
               <QuickFilters
-                quickFilters={metadata.QuickFilters}
+                quickFilters={metadata.quick_filters}
                 filterValues={filterValues}
                 onFilterChange={handleFilterChange}
                 onApplyFilters={applyFilters}
