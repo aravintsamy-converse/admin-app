@@ -3,28 +3,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ViewSelect } from '@/components/DynamicTable/Header/ViewSelect';
-import type { TableMetadata } from '@/Types/Table/tableTypes';
-
-const mockViewOptions: TableMetadata["view_options"] = [
-  {
-    value: "f5ad065e-92a2-4725-b626-6d44bbb2f58f",
-    label: "Default",
-    order: 1,
-    is_default: true,
-  },
-  {
-    value: "er434-92a2-4725-b626-6d44bbb2f58f",
-    label: "Non-Experied products",
-    order: 2,
-    is_default: false,
-  },
-  {
-    value: "45dfd65e-92a2-4725-b626-6d44bbb2f445f",
-    label: "Out of Stock products only including Experied",
-    order: 3,
-    is_default: false,
-  },
-];
+import { mockViewOptions } from '@/ __mocks__/viewMocks';
 
 const setup = (overrides = {}) => {
   const props = {
