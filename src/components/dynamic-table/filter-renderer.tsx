@@ -1,7 +1,7 @@
 "use client";
 
 import { Search } from "lucide-react";
-import { Input } from "@/components/TableUI/input";
+import { Input } from "@/components/table-ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ChevronDown } from "lucide-react";
 import { FaLock, FaUnlock } from "react-icons/fa";
@@ -13,7 +13,7 @@ import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFnsV3";
 import { format, isValid } from "date-fns";
 import { LuCalendarDays } from "react-icons/lu";
-import { MultiSelectDropdown } from "@/components/TableUI/multiSelectDropdown";
+import { MultiSelectDropdown } from "@/components/table-ui/multiSelectDropdown";
 import { FilterRendererProps, IconProps } from "@/Types/Table/tableTypes";
 
 const iconMap: Record<string, React.ComponentType<IconProps>> = {
@@ -32,7 +32,7 @@ export function FilterRenderer({ filter, fieldName, filterValues, onFilterChange
           type="text"
           placeholder={filter.placeholder}
           value={filterValues[fieldName] || ""}
-          onChange={(e) => onFilterChange(filter.field_name || "" , e.target.value)}
+          onChange={(e) => onFilterChange(filter.field_name || "", e.target.value)}
           className="pl-10 py-2.5 h-10 font-[500] rounded-[8px] text-[13px] bg-[#F6F7FB] border-0 text-[#778294] placeholder:[#778294] focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-[#1D57C7] focus-visible:ring-offset-0"
         />
       </div>
@@ -50,7 +50,7 @@ export function FilterRenderer({ filter, fieldName, filterValues, onFilterChange
         />
       </div>
     );
-  }  else if (filter.filter_type === "Dropdown") {
+  } else if (filter.filter_type === "Dropdown") {
     return (
       <MultiSelectDropdown
         options={filter.options || []}
@@ -63,7 +63,7 @@ export function FilterRenderer({ filter, fieldName, filterValues, onFilterChange
         iconMap={iconMap}
       />
     );
-  }  else if (filter.filter_type === "MappedSearch") {
+  } else if (filter.filter_type === "MappedSearch") {
     return (
       <div className="relative w-full">
         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#778294]" size={14} />
@@ -76,6 +76,6 @@ export function FilterRenderer({ filter, fieldName, filterValues, onFilterChange
         />
       </div>
     );
-  }       
+  }
   return null;
 }

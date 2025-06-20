@@ -2,8 +2,8 @@
 
 import * as React from "react";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
-import { Input } from "@/components/TableUI/input";
-import { Switch } from "@/components/TableUI/switch";
+import { Input } from "@/components/table-ui/input";
+import { Switch } from "@/components/table-ui/switch";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFnsV3";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
@@ -11,7 +11,7 @@ import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import { format, isValid } from "date-fns";
 import { LuCalendarDays, LuCheck, LuX } from "react-icons/lu";
 import { cn } from "@/lib/utils";
-import { MultiSelectDropdown } from "@/components/TableUI/multiSelectDropdown";
+import { MultiSelectDropdown } from "@/components/table-ui/multiSelectDropdown";
 import { InlineEditInputProps, EditState } from "@/Types/Table/tableTypes";
 
 export const InlineEditInput = ({

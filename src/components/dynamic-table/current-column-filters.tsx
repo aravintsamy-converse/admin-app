@@ -4,11 +4,11 @@ import { RootState } from '@/Store/Store';
 import { useSelector, useDispatch } from 'react-redux';
 import { X, Filter } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/TableUI/badge';
+import { Badge } from '@/components/table-ui/badge';
 import { format } from 'date-fns';
 import { removeColumnFilter, clearAllFilters } from '@/Store/Slices/columnFiltersSlice';
 import * as Popover from '@radix-ui/react-popover';
-import useScreenSize from '@/components/TableUI/screenSize';
+import useScreenSize from '@/components/table-ui/screenSize';
 import { ColumnFilter } from '@/Types/Table/tableTypes';
 
 const CurrentColumnFilters = () => {
@@ -17,11 +17,11 @@ const CurrentColumnFilters = () => {
   const screenSize = useScreenSize();
 
   // Determine max visible filters based on screen size
-  const maxVisibleFilters = screenSize === "2xl" ? 2 : 
-                          screenSize === "xl" ? 1 : 
-                          screenSize === "lg" ? 1 : 
-                          screenSize === "md" ? 1 : 0;
-  
+  const maxVisibleFilters = screenSize === "2xl" ? 2 :
+    screenSize === "xl" ? 1 :
+      screenSize === "lg" ? 1 :
+        screenSize === "md" ? 1 : 0;
+
   const visibleFilters = columnFilters.slice(0, Math.min(maxVisibleFilters, columnFilters.length));
   const hiddenFilters = columnFilters.slice(maxVisibleFilters);
 
@@ -180,7 +180,7 @@ const CurrentColumnFilters = () => {
           <Popover.Content
             className="ml-4 md:ml-56 mt-6 p-4 z-50 w-auto bg-white rounded-[4px] shadow-[0px_0px_20px_0px_#C2D1EF]"
           >
-          <div className="absolute top-2   border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent border-r-[20px] rotate-90 border-r-white"></div>
+            <div className="absolute top-2   border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent border-r-[20px] rotate-90 border-r-white"></div>
             <div className="flex flex-col gap-2">
               {hiddenFilters.map((filter, index) => renderFilterBadge(filter, index))}
               <Button

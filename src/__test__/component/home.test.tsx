@@ -1,10 +1,10 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Home from '@/components/User/Home';
+import Home from '@/components/user/home';
 import '@testing-library/jest-dom';
 // // Optionally mock the dropdown components
 jest.mock('@/components/TableUI/multi-select-dropdown', () => ({
-  MultiSelectLazyDropdown:  ({ placeholder}: any) => (
+  MultiSelectLazyDropdown: ({ placeholder }: any) => (
     <div data-testid="multi-select">{placeholder}</div>
   ),
 }));

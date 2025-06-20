@@ -1,7 +1,7 @@
 import React from 'react';
-import { render, screen} from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { MultiSelectDropdownUI } from '@/components/TableUI/multi-select-dropdown-ui';
+import { MultiSelectDropdownUI } from '@/components/table-ui/multi-select-dropdown-ui';
 
 const mockOptions: { value: string; label: string }[] = [
   { value: '1', label: 'Option 1' },
@@ -140,7 +140,7 @@ describe('MultiSelectDropdownUI default props', () => {
 
   });
 
-/* eslint-disable @typescript-eslint/no-unused-vars */
+  /* eslint-disable @typescript-eslint/no-unused-vars */
   it('uses default placeholder when `placeholder` is not provided', () => {
     const { placeholder, ...defaultPropsWithoutPlaceholder } = defaultProps;
 

@@ -2,7 +2,7 @@
 
 import * as Popover from "@radix-ui/react-popover";
 import { BsFilterLeft } from "react-icons/bs";
-import { FilterRenderer } from "@/components/DynamicTable/FilterRenderer";
+import { FilterRenderer } from "@/components/dynamic-table/filter-renderer";
 import { DesktopFiltersProps } from "@/Types/Table/tableTypes";
 import { X } from "lucide-react";
 
@@ -45,10 +45,10 @@ export function DesktopFilters({
               {hiddenFilters.map((filter) => (
                 <div key={filter.id}>
                   <FilterRenderer
-                   filter={filter}
-                   fieldName={filter.field_name || ""}
-                   filterValues={filterValues}
-                   onFilterChange={onFilterChange}
+                    filter={filter}
+                    fieldName={filter.field_name || ""}
+                    filterValues={filterValues}
+                    onFilterChange={onFilterChange}
                   />
                 </div>
               ))}

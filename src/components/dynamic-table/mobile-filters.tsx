@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { BsFilterLeft } from "react-icons/bs";
-import { FilterRenderer } from "@/components/DynamicTable/FilterRenderer";
+import { FilterRenderer } from "@/components/dynamic-table/filter-renderer";
 import { MobileFiltersProps } from "@/Types/Table/tableTypes";
 import { X } from "lucide-react";
 
@@ -48,10 +48,10 @@ export function MobileFilters({
             {quickFilters.map((filter) => (
               <div key={filter.id}>
                 <FilterRenderer
-                 filter={filter}
-                 fieldName={filter.field_name || ""}
-                 filterValues={filterValues}
-                 onFilterChange={onFilterChange}
+                  filter={filter}
+                  fieldName={filter.field_name || ""}
+                  filterValues={filterValues}
+                  onFilterChange={onFilterChange}
                 />
               </div>
             ))}

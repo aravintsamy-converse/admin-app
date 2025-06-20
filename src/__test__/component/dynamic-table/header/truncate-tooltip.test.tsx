@@ -1,13 +1,13 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { TruncateTooltip } from '@/components/DynamicTable/TruncateTooltip';
+import { TruncateTooltip } from '@/components/dynamic-table/truncate-tooltip';
 
 describe('TruncateTooltip', () => {
   it('renders the tooltip when text is overflowing', () => {
     render(<TruncateTooltip text="This is a very long text to test overflow behavior" />);
 
     const span = screen.getByText(/This is a very long text/i);
-    
+
     // Mock DOM measurements
     Object.defineProperty(span, 'scrollWidth', {
       configurable: true,

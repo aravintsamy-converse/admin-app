@@ -1,9 +1,9 @@
 "use client";
 
-import { useMemo, useState, useEffect} from "react";
+import { useMemo, useState, useEffect } from "react";
 import type { ColumnDef } from "@tanstack/react-table";
 import { MdDeleteOutline, MdOutlineEdit } from "react-icons/md";
-import { DataTable } from "@/components/DynamicTable/DataTable";
+import { DataTable } from "@/components/dynamic-table/data-table";
 import LockIcon from "@/TableIcon/commonIcons/lock";
 import UnLockIcon from "@/TableIcon/commonIcons/unLock";
 import { ActiveUser } from "@/TableIcon/commonIcons/activeUser";
@@ -11,19 +11,19 @@ import InactiveUser from "@/TableIcon/commonIcons/inactiveUser";
 import LockUserIcon from "@/TableIcon/commonIcons/lockUser";
 import ResetPasswordIcon from "@/TableIcon/commonIcons/resetPassword";
 import RoleMappingIcon from "@/TableIcon/commonIcons/roleMapping";
-import SortableHeader from "@/components/DynamicTable/SortableHeader";
+import SortableHeader from "@/components/dynamic-table/sortable-header";
 import { CustomTableMeta, CustomColumnMeta, DynamicTableBodyProps, EditState, ColumnData } from "@/Types/Table/tableTypes";
-import ColumnFilters from "@/components/DynamicTable/ColumnFilters";
+import ColumnFilters from "@/components/dynamic-table/column-filters";
 import { updateFavoriteStatus, updateCellData } from "@/Services/Pages/User/TableServices";
 import { formateDateTime } from "@/Services/Pages/dateTimeFormater";
 import { TableData } from "@/Types/Table/tableTypes";
-import NonSortableHeader from "@/components/DynamicTable/NonSortableHeader";
-import CustomPreferencePopup from "@/components/DynamicTable/Header/CustomPreferencePopup";
+import NonSortableHeader from "@/components/dynamic-table/non-sortable-header";
+import CustomPreferencePopup from "@/components/dynamic-table/header/custom-preference-popup";
 import { TableProvider } from "@/app/context/TableContext";
-import { Checkbox } from "@/components/TableUI/checkbox";
-import { InlineEditInput } from "@/components/DynamicTable/InlineEditInputs";
-import { MoreActionCell } from "@/components/DynamicTable/MoreActionCell";
-import useScreenSize from "@/components/TableUI/screenSize";
+import { Checkbox } from "@/components/table-ui/checkbox";
+import { InlineEditInput } from "@/components/dynamic-table/inline-edit-inputs";
+import { MoreActionCell } from "@/components/dynamic-table/more-action-cell";
+import useScreenSize from "@/components/table-ui/screenSize";
 
 type ItemType = {
   id: string;
@@ -172,7 +172,7 @@ export default function DynamicTableBody({
               }
               return (
                 <div
-                  onClick={() => col.inLineEditing && setEditState({ rowId: row.id, columnName: col.columnName, value: items.map((item : ItemType) => item.id) })}
+                  onClick={() => col.inLineEditing && setEditState({ rowId: row.id, columnName: col.columnName, value: items.map((item: ItemType) => item.id) })}
                   className="cursor-pointer rounded-[4px] px-2 text-nowrap w-[200px] truncate  hover:border hover:border-[#E5E7EB] hover:px-2 hover:py-1"
                 >
                   {Array.isArray(items) ? items.map((item) => item[associatedKey]).join(", ") : "-"}
@@ -369,13 +369,13 @@ export default function DynamicTableBody({
   };
 
   return (
-      <TableProvider>
-        <DataTable
-          columns={columns}
-          metadata={metadata}
-          onFavoriteToggle={handleFavoriteToggle}
-          fetchDataFn={fetchDataFn}
-        />
-      </TableProvider>
+    <TableProvider>
+      <DataTable
+        columns={columns}
+        metadata={metadata}
+        onFavoriteToggle={handleFavoriteToggle}
+        fetchDataFn={fetchDataFn}
+      />
+    </TableProvider>
   );
 }

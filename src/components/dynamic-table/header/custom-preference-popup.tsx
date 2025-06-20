@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Label } from "@/components/TableUI/label";
-import { RadioGroup, RadioGroupItem } from "@/components/TableUI/radioGroup";
+import { Label } from "@/components/table-ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/table-ui/radioGroup";
 import { FrameIcon, StandardResposiveIcon } from '@/TableIcon/commonIcons/columnRezing';
 import { DisableIcon, EnableIcon } from '@/TableIcon/commonIcons/dataWrap';
 import { CompactDensityIcon, ComfortableDensityIcon, StandardtDensityIcon } from '@/TableIcon/commonIcons/rowDensity';

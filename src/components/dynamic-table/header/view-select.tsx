@@ -7,8 +7,8 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '@/components/ui/tootipWrapper';
-import { TruncateTooltip } from "@/components/DynamicTable/TruncateTooltip";
+} from '@/components/ui/tootip-wrapper';
+import { TruncateTooltip } from "@/components/dynamic-table/truncate-tooltip";
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
@@ -34,7 +34,7 @@ export function ViewSelect({
 
   const handlePinChange = async (value: string) => {
     if (defaultView === value) return;
-    
+
     setPendingDefaultView(value);
     setDialogOpen(true);
   };
@@ -115,7 +115,7 @@ export function ViewSelect({
                         : "opacity-0 group-hover:opacity-100 text-infoIcon"
                         }`}
                     >
-                      <PinIcon/>
+                      <PinIcon />
                     </div>
                   </TooltipTrigger>
                   <TooltipContent>
@@ -151,7 +151,7 @@ export function ViewSelect({
             <Button variant="outline" className="border-0 leading-[21.6px] tracking-[0] focus-visible:outline-none text-[14px] font-[500] rounded-[4px] focus-visible:ring-0  shadow-none hover:bg-transparent  text-primary hover:text-primary hover:font-[600]" onClick={handleCancelDefault}>
               Cancel
             </Button>
-            <Button  onClick={handleConfirmDefault} className=" flex items-center justify-center  leading-[21.6px] tracking-[0] text-[14px] font-[500] rounded-[4px] w-[119px] h-[36px] hover:text-primary border hover:bg-background hover:border-primary shadow-none ">
+            <Button onClick={handleConfirmDefault} className=" flex items-center justify-center  leading-[21.6px] tracking-[0] text-[14px] font-[500] rounded-[4px] w-[119px] h-[36px] hover:text-primary border hover:bg-background hover:border-primary shadow-none ">
               Set Default
             </Button>
           </DialogFooter>

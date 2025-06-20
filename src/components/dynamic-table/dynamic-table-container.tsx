@@ -5,9 +5,9 @@ import { DynamicTableContainerProps, TableMetadata } from "@/Types/Table/tableTy
 import { fetchMetaData } from "@/Services/Pages/User/TableServices";
 import { useSelector } from "react-redux";
 import { RootState } from "@/Store/Store";
-import MetricCards from "@/components/DynamicTable/Header/MetricCards";
-import DynamicTableHeader from "./Header/DynamicTableHeader";
-import DynamicTableBody from "./DynamicTableBody";
+import MetricCards from "@/components/dynamic-table/header/metric-cards";
+import DynamicTableHeader from "@/components/dynamic-table/header/dynamic-table-header";
+import DynamicTableBody from "@/components/dynamic-table/dynamic-table-body";
 
 export default function DynamicTableContainer({
   metavalue

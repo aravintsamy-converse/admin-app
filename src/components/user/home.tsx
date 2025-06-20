@@ -1,8 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import { MultiSelectLazyDropdown } from "@/components/TableUI/multi-select-dropdown"
-import { SingleSelectLazyDropdown } from "@/components/TableUI/single-select-lazy-dropdown"
+import { MultiSelectLazyDropdown } from "@/components/table-ui/multi-select-dropdown"
+import { SingleSelectLazyDropdown } from "@/components/table-ui/single-select-lazy-dropdown"
 import { Option } from "@/Types/common"
 
 export default function Home() {
@@ -14,9 +14,9 @@ export default function Home() {
       <h1 className="text-2xl font-bold mb-4">Multi-Select Dropdown Example</h1>
       <p className="mb-4">Select multiple options from the dropdown below:</p>
       <div className="w-full grid grid-cols-4 gap-4">
-      <MultiSelectLazyDropdown placeholder="Select options" value={selectedOptions} onChange={setSelectedOptions} />
-      <SingleSelectLazyDropdown placeholder="Select option" value={selectedOption} onChange={setSelectedOption} />
-    </div>
+        <MultiSelectLazyDropdown placeholder="Select options" value={selectedOptions} onChange={setSelectedOptions} />
+        <SingleSelectLazyDropdown placeholder="Select option" value={selectedOption} onChange={setSelectedOption} />
+      </div>
     </div>
   )
 }

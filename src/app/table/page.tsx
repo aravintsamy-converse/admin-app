@@ -1,9 +1,9 @@
-import Home from "@/components/User/Home";
+import Home from "@/components/user/home";
 
 export default function Table() {
   return (
     <>
-     <Home />
+      <Home />
     </>
   );
 }

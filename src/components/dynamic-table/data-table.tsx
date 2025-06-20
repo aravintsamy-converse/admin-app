@@ -12,15 +12,15 @@ import {
   getPaginationRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableHeaderRow, TableRow } from "@/components/DynamicTable/Table";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableHeaderRow, TableRow } from "@/components/dynamic-table/table";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { bulkActionsApi, deleteApi, fetchTableData, moreActionApi } from "@/Services/Pages/User/TableServices";
 import { useSelector } from "react-redux";
 import { RootState } from "@/Store/Store";
 import { useGlobalPreferencesContext } from "@/app/context/GlobalPreferencesContext";
-import { QuickFilters } from "@/components/DynamicTable/QuickFilters";
-import CurrentColumnFilters from "@/components/DynamicTable/CurrentColumnFilters";
+import { QuickFilters } from "@/components/dynamic-table/quick-filters";
+import CurrentColumnFilters from "@/components/dynamic-table/current-column-filters";
 import { useTableContext } from "@/app/context/TableContext";
 import { RxDragHandleDots2 } from "react-icons/rx";
 import type {

@@ -3,7 +3,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import DynamicTableHeader from '@/components/DynamicTable/Header/DynamicTableHeader';
+import DynamicTableHeader from '@/components/dynamic-table/header/dynamic-table-header';
 import userEvent from '@testing-library/user-event';
 import { mockViewOptions } from '@/ __mocks__/view-mocks';
 
@@ -39,7 +39,7 @@ const setup = (overrides = {}) => {
 
   const utils = render(
     <Provider store={store}>
-        <DynamicTableHeader {...props} />
+      <DynamicTableHeader {...props} />
     </Provider>
   );
 
@@ -70,37 +70,37 @@ describe('DynamicTableHeader', () => {
   });
 
   it('renders metric-button without active classes when metricPopOverOpen is false', () => {
-  const { getByTestId } = setup();
+    const { getByTestId } = setup();
 
-  const button = getByTestId('metric-button');
-  expect(button).not.toHaveClass('bg-primary');
-});
+    const button = getByTestId('metric-button');
+    expect(button).not.toHaveClass('bg-primary');
+  });
 
-it('renders metric-button with active classes when metricPopOverOpen is true', () => {
-  const customState = {
-    popover: { isOpen: true },
-  };
+  it('renders metric-button with active classes when metricPopOverOpen is true', () => {
+    const customState = {
+      popover: { isOpen: true },
+    };
 
-  const store = mockStore(customState);
+    const store = mockStore(customState);
 
-  const props = {
-    viewOptions: mockViewOptions,
-    selectedView: mockViewOptions[0].value,
-    defaultView: mockViewOptions[0].value,
-    onSelectedViewChange: jest.fn(),
-    onDefaultViewChange: jest.fn(),
-    open: false,
-    onOpenChange: jest.fn(),
-  };
+    const props = {
+      viewOptions: mockViewOptions,
+      selectedView: mockViewOptions[0].value,
+      defaultView: mockViewOptions[0].value,
+      onSelectedViewChange: jest.fn(),
+      onDefaultViewChange: jest.fn(),
+      open: false,
+      onOpenChange: jest.fn(),
+    };
 
-  render(
-    <Provider store={store}>
-      <DynamicTableHeader {...props} />
-    </Provider>
-  );
+    render(
+      <Provider store={store}>
+        <DynamicTableHeader {...props} />
+      </Provider>
+    );
 
-  const button = screen.getByTestId('metric-button');
-  expect(button).toHaveClass('bg-primary');
-});
+    const button = screen.getByTestId('metric-button');
+    expect(button).toHaveClass('bg-primary');
+  });
 
 });

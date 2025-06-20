@@ -6,7 +6,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tootipWrapper";
+} from "@/components/ui/tootip-wrapper";
 
 interface TruncateTooltipProps {
   text: string;

@@ -1,5 +1,5 @@
 import { fetchMetaData } from "@/Services/Pages/User/TableServices";
-import DynamicTableContainer from "@/components/DynamicTable/DynamicTableContainer";
+import DynamicTableContainer from "@/components/dynamic-table/dynamic-table-container";
 import { TableProvider } from "@/app/context/TableContext";
 import { TableMetadata } from "@/Types/Table/tableTypes";
 

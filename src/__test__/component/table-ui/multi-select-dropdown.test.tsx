@@ -1,9 +1,9 @@
 import React, { act } from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import { MultiSelectLazyDropdown } from "@/components/TableUI/multi-select-dropdown";
+import { MultiSelectLazyDropdown } from "@/components/table-ui/multi-select-dropdown";
 import { fetchDropDownData } from "@/Services/Pages/User/TableServices";
 import userEvent from "@testing-library/user-event";
-import { MultiSelectDropdownUI } from '@/components/TableUI/multi-select-dropdown-ui';
+import { MultiSelectDropdownUI } from '@/components/table-ui/multi-select-dropdown-ui';
 
 jest.mock("@/Services/Pages/User/TableServices", () => ({
   fetchDropDownData: jest.fn(),
@@ -71,8 +71,8 @@ describe("MultiSelectLazyDropdown", () => {
   });
 
   it("renders with default value prop when not provided", () => {
-    render(<MultiSelectLazyDropdown onChange={handleChange}/>);
-    expect( screen.getByText("Select options")).toBeInTheDocument();
+    render(<MultiSelectLazyDropdown onChange={handleChange} />);
+    expect(screen.getByText("Select options")).toBeInTheDocument();
     expect(screen.queryByRole("button", { name: /remove/i })).not.toBeInTheDocument();
   });
 
@@ -305,7 +305,7 @@ describe('MultiSelectDropdownUI default props', () => {
 
   });
 
-/* eslint-disable @typescript-eslint/no-unused-vars */
+  /* eslint-disable @typescript-eslint/no-unused-vars */
   it('uses default placeholder when `placeholder` is not provided', () => {
     const { placeholder, ...defaultPropsWithoutPlaceholder } = defaultProps;
 

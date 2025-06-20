@@ -1,8 +1,8 @@
 import React from 'react';
 import { QuickFiltersProps } from "@/Types/Table/tableTypes";
-import { DesktopFilters } from "@/components/DynamicTable/DesktopFilters";
-import { MobileFilters } from "@/components/DynamicTable/MobileFilters";
-import useScreenSize from "@/components/TableUI/screenSize";
+import { DesktopFilters } from "@/components/dynamic-table/desktop-filters";
+import { MobileFilters } from "@/components/dynamic-table/mobile-filters";
+import useScreenSize from "@/components/table-ui/screenSize";
 
 export function QuickFilters({
   quickFilters,
@@ -38,7 +38,7 @@ export function QuickFilters({
       sortedFilters[0].filter_type === "DateRange" ||
       sortedFilters[0].filter_type === "DateTimeRange" ||
       sortedFilters[0].filter_type === "String" ||
-      sortedFilters[0].filter_type === "Number" 
+      sortedFilters[0].filter_type === "Number"
     );
 
   // Determine max visible filters based on screen size
