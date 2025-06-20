@@ -17,11 +17,11 @@ import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { bulkActionsApi, deleteApi, fetchTableData, moreActionApi } from "@/services/pages/user/table-services";
 import { useSelector } from "react-redux";
-import { RootState } from "@/Store/Store";
-import { useGlobalPreferencesContext } from "@/app/context/GlobalPreferencesContext";
+import { RootState } from "@/store/store";
+import { useGlobalPreferencesContext } from "@/app/context/global-preferences-context";
 import { QuickFilters } from "@/components/dynamic-table/quick-filters";
 import CurrentColumnFilters from "@/components/dynamic-table/current-column-filters";
-import { useTableContext } from "@/app/context/TableContext";
+import { useTableContext } from "@/app/context/table-context";
 import { RxDragHandleDots2 } from "react-icons/rx";
 import type {
   ApiQueryParams,

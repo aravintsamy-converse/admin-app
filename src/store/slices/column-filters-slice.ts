@@ -1,4 +1,4 @@
-import { ColumnFilter, ColumnFiltersState } from '@/Types/Table/tableTypes';
+import { ColumnFilter, ColumnFiltersState } from '@/types/table/table.type';
 import {createSlice, PayloadAction} from '@reduxjs/toolkit'
 
 const initialState: ColumnFiltersState = {

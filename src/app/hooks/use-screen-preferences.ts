@@ -1,5 +1,5 @@
 'use client'
-import { ScreenPreferencesData } from '@/Types/Table/screenPreferences';
+import { ScreenPreferencesData } from '@/types/table/screen-preferences.type';
 import { useState, useEffect } from 'react';
 
 const mockScreenPreferences: ScreenPreferencesData = {

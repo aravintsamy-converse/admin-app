@@ -1,11 +1,11 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState } from "react";
-import { useScreenPreferences } from "../hooks/useScreenPreferences";
+import { useScreenPreferences } from "../hooks/use-screen-preferences";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchFilterData } from "@/Store/Slices/filterDataSlice";
-import { AppDispatch, RootState } from "@/Store/Store";
-import { GlobalPreferencesContextType } from "@/Types/Table/tableTypes";
+import { fetchFilterData } from "@/store/slices/filter-data-slice";
+import { AppDispatch, RootState } from "@/store/store";
+import { GlobalPreferencesContextType } from "@/types/table/table.type";
 
 
 const GlobalPreferencesContext = createContext<GlobalPreferencesContextType | null>(null);

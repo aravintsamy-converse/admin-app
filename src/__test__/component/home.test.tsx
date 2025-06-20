@@ -3,13 +3,13 @@ import { render, screen } from '@testing-library/react';
 import Home from '@/components/user/home';
 import '@testing-library/jest-dom';
 // // Optionally mock the dropdown components
-jest.mock('@/components/TableUI/multi-select-dropdown', () => ({
+jest.mock('@/components/table-ui/multi-select-dropdown', () => ({
   MultiSelectLazyDropdown: ({ placeholder }: any) => (
     <div data-testid="multi-select">{placeholder}</div>
   ),
 }));
 
-jest.mock('@/components/TableUI/single-select-lazy-dropdown', () => ({
+jest.mock('@/components/table-ui/single-select-lazy-dropdown', () => ({
   SingleSelectLazyDropdown: ({ placeholder }: any) => (
     <div data-testid="single-select">{placeholder}</div>
   ),

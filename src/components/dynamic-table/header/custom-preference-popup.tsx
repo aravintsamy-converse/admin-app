@@ -4,12 +4,12 @@ import { RadioGroup, RadioGroupItem } from "@/components/table-ui/radioGroup";
 import { FrameIcon, StandardResposiveIcon } from '@/TableIcon/commonIcons/columnRezing';
 import { DisableIcon, EnableIcon } from '@/TableIcon/commonIcons/dataWrap';
 import { CompactDensityIcon, ComfortableDensityIcon, StandardtDensityIcon } from '@/TableIcon/commonIcons/rowDensity';
-import { useGlobalPreferencesContext } from '@/app/context/GlobalPreferencesContext';
+import { useGlobalPreferencesContext } from '@/app/context/global-preferences-context';
 import { MetricIcon, ThreeDotIconMenu } from '@/components/client/icons/dynamicForm/AllDynamicFormIcons';
 import { FavoriteIcon, UnFavoriteIcon } from '@/TableIcon/commonIcons/manageFavorite';
 import { useDispatch, useSelector } from 'react-redux';
-import type { RootState } from '@/Store/Store';
-import { togglePopover } from '@/Store/Slices/metricPopoverSlice';
+import type { RootState } from '@/store/store';
+import { togglePopover } from '@/store/slices/metric-popover-slice';
 
 const CustomPreferencePopup = () => {
   const { preferences, updatePreferences } = useGlobalPreferencesContext();

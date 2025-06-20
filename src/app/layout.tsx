@@ -4,8 +4,8 @@ import "./globals.css";
 import '@/assets/fonts/inter/inter.css'
 import DynamicLayout from "@/components/client/dynamicForm/DynamicLayout";
 import MainContainer from "@/components/client/server/MainContainer";
-import ReduxProvider from "@/Store/ReduxProvider";
-import { GlobalPreferencesProvider } from "./context/GlobalPreferencesContext";
+import ReduxProvider from "@/store/redux-provider";
+import { GlobalPreferencesProvider } from "./context/global-preferences-context";
 
 export const metadata: Metadata = {
   title: "Admin APP",

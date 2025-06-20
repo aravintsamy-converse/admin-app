@@ -15,7 +15,7 @@ const initialState = {
   },
 };
 
-jest.mock('@/components/DynamicTable/Header/CustomPreferencePopup', () => {
+jest.mock('@/components/dynamic-table/header/custom-preference-popup', () => {
   const MockCustomPreferencePopup = () => (
     <div data-testid="mock-custom-preference-popup">Mock Popup</div>
   );

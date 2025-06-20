@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { DynamicTableContainerProps, TableMetadata } from "@/types/table/table.type";
 import { fetchMetaData } from "@/services/pages/user/table-services";
 import { useSelector } from "react-redux";
-import { RootState } from "@/Store/Store";
+import { RootState } from "@/store/store";
 import MetricCards from "@/components/dynamic-table/header/metric-cards";
 import DynamicTableHeader from "@/components/dynamic-table/header/dynamic-table-header";
 import DynamicTableBody from "@/components/dynamic-table/dynamic-table-body";
@@ -38,7 +38,7 @@ export default function DynamicTableContainer({
       });
     } catch (err) {
       setError((err as Error).message);
-    } 
+    }
   };
 
   useEffect(() => {
@@ -56,9 +56,8 @@ export default function DynamicTableContainer({
   return (
     <div className="h-full overflow-y-hidden rounded-lg relative 2xl:ml-2 bg-background">
       <div
-        className={`px-[2px] py-[2px] transition-all duration-700 ease-in-out ${
-          metricPopOverOpen ? "h-[56px]" : "h-[77px]"
-        }`}
+        className={`px-[2px] py-[2px] transition-all duration-700 ease-in-out ${metricPopOverOpen ? "h-[56px]" : "h-[77px]"
+          }`}
       >
         <DynamicTableHeader
           viewOptions={metadata.view_options}
@@ -75,17 +74,16 @@ export default function DynamicTableContainer({
       <div className="relative bg-formHeaderCardBackground ml-3 mt-2  overflow-visible">
         {/* Dashboard Cards - Floating Overlay */}
         <div
-          className={`absolute inset-x-0  top-2 z-30 transition-all duration-700 ease-in-out transform-gpu ${
-            metricPopOverOpen
-              ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
-              : "opacity-0 -translate-y-8 scale-100 pointer-events-none"
-          }`}
+          className={`absolute inset-x-0  top-2 z-30 transition-all duration-700 ease-in-out transform-gpu ${metricPopOverOpen
+            ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
+            : "opacity-0 -translate-y-8 scale-100 pointer-events-none"
+            }`}
           style={{
             transitionProperty: "opacity, transform",
             transitionTimingFunction: "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
           }}
         >
-            <MetricCards />
+          <MetricCards />
         </div>
 
         {/* Spacer div to push table down when dashboard is open */}

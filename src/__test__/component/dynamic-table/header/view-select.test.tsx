@@ -25,7 +25,7 @@ const setup = (overrides = {}) => {
   };
 };
 
-jest.mock('@/components/DynamicTable/TruncateTooltip', () => ({
+jest.mock('@/components/dynamic-table/truncate-tooltip', () => ({
   TruncateTooltip:  ({ text}: any) => (
     <div data-testid="tooltip">{text}</div>
   ),

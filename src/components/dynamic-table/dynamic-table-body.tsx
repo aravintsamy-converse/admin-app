@@ -19,7 +19,7 @@ import { formateDateTime } from "@/services/pages/date-time-formater";
 import { TableData } from "@/types/table/table.type";
 import NonSortableHeader from "@/components/dynamic-table/non-sortable-header";
 import CustomPreferencePopup from "@/components/dynamic-table/header/custom-preference-popup";
-import { TableProvider } from "@/app/context/TableContext";
+import { TableProvider } from "@/app/context/table-context";
 import { Checkbox } from "@/components/table-ui/checkbox";
 import { InlineEditInput } from "@/components/dynamic-table/inline-edit-inputs";
 import { MoreActionCell } from "@/components/dynamic-table/more-action-cell";

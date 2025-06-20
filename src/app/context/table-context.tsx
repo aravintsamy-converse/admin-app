@@ -1,6 +1,6 @@
 "use client";
 
-import { TableContextType } from "@/Types/Table/tableTypes";
+import { TableContextType } from "@/types/table/table.type";
 import { createContext, useContext,useState, ReactNode} from "react";
 
 const TableContext = createContext<TableContextType | undefined>(undefined);

@@ -4,8 +4,8 @@ import CurrentViewFilterDetails from '@/components/dynamic-table/current-view-fi
 import CreateIcon from '@/TableIcon/commonIcons/create'
 import CustomPreferencePopup from '@/components/dynamic-table/header/custom-preference-popup'
 import { useDispatch, useSelector } from 'react-redux';
-import type { RootState } from '@/Store/Store';
-import { togglePopover } from '@/Store/Slices/metricPopoverSlice';
+import type { RootState } from '@/store/store';
+import { togglePopover } from '@/store/slices/metric-popover-slice';
 import { ViewSelect } from '@/components/dynamic-table/header/view-select';
 import { DynamicTableHeaderProps } from '@/types/table/table-header/header.type'
 

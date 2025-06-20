@@ -11,8 +11,8 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFnsV3";
 import { DateTimePicker } from "@mui/x-date-pickers";
 import { format, parse, isValid } from 'date-fns';
 import { useDispatch, useSelector } from "react-redux";
-import type { RootState } from "@/Store/Store";
-import { setColumnFilter, removeColumnFilter } from "@/Store/Slices/columnFiltersSlice";
+import type { RootState } from "@/store/store";
+import { setColumnFilter, removeColumnFilter } from "@/store/slices/column-filters-slice";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
 import { Input } from "@/components/table-ui/input";
@@ -21,7 +21,7 @@ import { TimeInput } from "@/components/table-ui/time-input";
 import FilterIcon from "@/TableIcon/commonIcons/filterIcon";
 import FilterDotIcon from "@/TableIcon/commonIcons/filterIconDot";
 import { CustomFilterDropdownProps, InputField } from "@/types/table/filter-data.type";
-import { useTableContext } from "@/app/context/TableContext"; // Import useTableContext
+import { useTableContext } from "@/app/context/table-context"; // Import useTableContext
 
 export default function ColumnFilters({ columnType, column_name, options }: CustomFilterDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
