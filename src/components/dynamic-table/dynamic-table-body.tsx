@@ -15,7 +15,7 @@ import SortableHeader from "@/components/dynamic-table/sortable-header";
 import { CustomTableMeta, CustomColumnMeta, DynamicTableBodyProps, EditState, ColumnData } from "@/Types/Table/tableTypes";
 import ColumnFilters from "@/components/dynamic-table/column-filters";
 import { updateFavoriteStatus, updateCellData } from "@/services/pages/user/table-services";
-import { formateDateTime } from "@/services/pages/dateTimeFormater";
+import { formateDateTime } from "@/services/pages/date-time-formater";
 import { TableData } from "@/Types/Table/tableTypes";
 import NonSortableHeader from "@/components/dynamic-table/non-sortable-header";
 import CustomPreferencePopup from "@/components/dynamic-table/header/custom-preference-popup";

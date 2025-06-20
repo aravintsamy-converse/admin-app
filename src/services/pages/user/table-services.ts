@@ -1,7 +1,7 @@
 import { ApiQueryParams, ApiResponse, BulkActionApi, TableData, TableMetadata } from "@/Types/Table/tableTypes";
 import { api } from "@/services/api";
-import { metaData } from "@/mock-data/tableMockDataForUser";
-import { tableData } from "@/mock-data/tableData";
+import { metaData } from "@/mock-data/table-mock-data-for-user";
+import { tableData } from "@/mock-data/table-data";
 
 // Fetch Users API
 export async function fetchTableData(url: string, params: ApiQueryParams): Promise<ApiResponse<TableData>> {

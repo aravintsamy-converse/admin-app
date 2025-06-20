@@ -5,7 +5,7 @@ import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 import { AppSidebar } from './Sidebar'
-import { defaultLayout } from '@/mock-data/DynamicNav'
+import { defaultLayout } from '@/mock-data/dynamic-nav'
 import { SidebarProvider } from '@/components/ui/sidebar'
 
 

@@ -1,4 +1,4 @@
-import { defaultLayout } from "@/mock-data/DynamicNav";
+import { defaultLayout } from "@/mock-data/dynamic-nav";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
