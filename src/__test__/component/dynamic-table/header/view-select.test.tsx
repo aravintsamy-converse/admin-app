@@ -3,7 +3,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ViewSelect } from '@/components/DynamicTable/Header/ViewSelect';
-import { mockViewOptions } from '@/ __mocks__/viewMocks';
+import { mockViewOptions } from '@/ __mocks__/view-mocks';
 
 const setup = (overrides = {}) => {
   const props = {

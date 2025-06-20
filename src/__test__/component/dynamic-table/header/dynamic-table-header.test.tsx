@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import DynamicTableHeader from '@/components/DynamicTable/Header/DynamicTableHeader';
 import userEvent from '@testing-library/user-event';
-import { mockViewOptions } from '@/ __mocks__/viewMocks';
+import { mockViewOptions } from '@/ __mocks__/view-mocks';
 
 // Mock Redux slice state
 const mockStore = configureStore([]);
