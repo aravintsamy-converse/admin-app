@@ -1,4 +1,4 @@
-import { api } from "./Api";
+import { api } from "./api";
 
 export const fetchFilterDataApi = async () => {
   try {

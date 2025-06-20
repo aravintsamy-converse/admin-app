@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { DynamicTableContainerProps, TableMetadata } from "@/Types/Table/tableTypes";
-import { fetchMetaData } from "@/Services/Pages/User/TableServices";
+import { fetchMetaData } from "@/services/pages/user/table-services";
 import { useSelector } from "react-redux";
 import { RootState } from "@/Store/Store";
 import MetricCards from "@/components/dynamic-table/header/metric-cards";

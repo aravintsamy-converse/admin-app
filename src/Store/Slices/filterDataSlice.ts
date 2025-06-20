@@ -1,4 +1,4 @@
-import { fetchFilterDataApi } from "@/Services/filterData";
+import { fetchFilterDataApi } from "@/services/filter-data";
 import { FilterDataState } from "@/Types/Table/filterData";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 

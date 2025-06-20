@@ -12,7 +12,6 @@ export function QuickFilters({
   onResetFilters,
   onImmediateFilterChange,
 }: QuickFiltersProps) {
-  console.log("🚀 ~ quickFilters:", quickFilters);
   const screenSize = useScreenSize();
 
   // Sort quickFilters based on order property

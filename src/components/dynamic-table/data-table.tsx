@@ -15,7 +15,7 @@ import {
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableHeaderRow, TableRow } from "@/components/dynamic-table/table";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { bulkActionsApi, deleteApi, fetchTableData, moreActionApi } from "@/Services/Pages/User/TableServices";
+import { bulkActionsApi, deleteApi, fetchTableData, moreActionApi } from "@/services/pages/user/table-services";
 import { useSelector } from "react-redux";
 import { RootState } from "@/Store/Store";
 import { useGlobalPreferencesContext } from "@/app/context/GlobalPreferencesContext";
