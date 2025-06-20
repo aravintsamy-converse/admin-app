@@ -1,6 +1,6 @@
 import type React from "react"
 import { Button } from "@/components/ui/button"
-import { NonSortableHeaderProps } from "@/Types/Table/tableTypes"
+import { NonSortableHeaderProps } from "@/types/table/table.type"
 
 const NonSortableHeader: React.FC<NonSortableHeaderProps> = ({ title }) => {
 

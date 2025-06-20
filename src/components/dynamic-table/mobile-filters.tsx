@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { BsFilterLeft } from "react-icons/bs";
 import { FilterRenderer } from "@/components/dynamic-table/filter-renderer";
-import { MobileFiltersProps } from "@/Types/Table/tableTypes";
+import { MobileFiltersProps } from "@/types/table/table.type";
 import { X } from "lucide-react";
 
 export function MobileFilters({

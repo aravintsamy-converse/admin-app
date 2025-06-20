@@ -12,7 +12,7 @@ import { format, isValid } from "date-fns";
 import { LuCalendarDays, LuCheck, LuX } from "react-icons/lu";
 import { cn } from "@/lib/utils";
 import { MultiSelectDropdown } from "@/components/table-ui/multiSelectDropdown";
-import { InlineEditInputProps, EditState } from "@/Types/Table/tableTypes";
+import { InlineEditInputProps, EditState } from "@/types/table/table.type";
 
 export const InlineEditInput = ({
   columnType,

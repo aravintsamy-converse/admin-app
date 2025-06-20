@@ -1,11 +1,11 @@
 import React, { act } from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { MultiSelectLazyDropdown } from "@/components/table-ui/multi-select-dropdown";
-import { fetchDropDownData } from "@/Services/Pages/User/TableServices";
+import { fetchDropDownData } from "@/services/pages/user/table-services";
 import userEvent from "@testing-library/user-event";
 import { MultiSelectDropdownUI } from '@/components/table-ui/multi-select-dropdown-ui';
 
-jest.mock("@/Services/Pages/User/TableServices", () => ({
+jest.mock("@/services/pages/user/table-services", () => ({
   fetchDropDownData: jest.fn(),
 }));
 

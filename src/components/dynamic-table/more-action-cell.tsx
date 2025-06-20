@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { BsThreeDots } from "react-icons/bs";
-import { CustomTableMeta, MoreActionCellProps } from "@/Types/Table/tableTypes";
+import { CustomTableMeta, MoreActionCellProps } from "@/types/table/table.type";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/table-ui/popover";
 
 export function MoreActionCell({ row, table, moreActions }: MoreActionCellProps) {

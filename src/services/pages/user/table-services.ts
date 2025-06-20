@@ -1,4 +1,4 @@
-import { ApiQueryParams, ApiResponse, BulkActionApi, TableData, TableMetadata } from "@/Types/Table/tableTypes";
+import { ApiQueryParams, ApiResponse, BulkActionApi, TableData, TableMetadata } from "@/types/table/table.type";
 import { api } from "@/services/api";
 import { metaData } from "@/mock-data/table-mock-data-for-user";
 import { tableData } from "@/mock-data/table-data";

@@ -1,4 +1,3 @@
-// useIsMobile.test.tsx
 import React from "react"
 import { render, screen, act, waitFor } from "@testing-library/react"
 import { useIsMobile } from "@/hooks/use-mobile"

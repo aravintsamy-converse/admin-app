@@ -1,5 +1,5 @@
 import { fetchFilterDataApi } from "@/services/filter-data";
-import { FilterDataState } from "@/Types/Table/filterData";
+import { FilterDataState } from "@/types/table/filter-data.type";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 // Async thunk to fetch filter data

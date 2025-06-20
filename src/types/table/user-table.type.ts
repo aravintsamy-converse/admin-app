@@ -1,4 +1,4 @@
-import { BulkAction } from "./tableTypes"
+import { BulkAction } from "./table.type"
 import { RiUserSettingsLine } from 'react-icons/ri';
 import { GrDocumentUser } from 'react-icons/gr';
 import { FaLock, FaUnlock } from "react-icons/fa"

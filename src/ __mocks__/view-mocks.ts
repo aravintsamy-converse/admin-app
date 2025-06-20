@@ -1,4 +1,4 @@
-import type { TableData } from '@/Types/Table/tableTypes';
+import type { TableData } from '@/types/table/table.type';
 
 export const mockViewOptions: TableData["view_options"] = [
   {

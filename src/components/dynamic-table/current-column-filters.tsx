@@ -9,7 +9,7 @@ import { format } from 'date-fns';
 import { removeColumnFilter, clearAllFilters } from '@/Store/Slices/columnFiltersSlice';
 import * as Popover from '@radix-ui/react-popover';
 import useScreenSize from '@/components/table-ui/screenSize';
-import { ColumnFilter } from '@/Types/Table/tableTypes';
+import { ColumnFilter } from '@/types/table/table.type';
 
 const CurrentColumnFilters = () => {
   const dispatch = useDispatch();
@@ -163,7 +163,7 @@ const CurrentColumnFilters = () => {
 
   return (
     <div className="w-full flex flex-wrap gap-2 text-[14px] items-center">
-      {visibleFilters.map((filter, index) => renderFilterBadge(filter, index))}
+      {visibleFilters.map((filter: ColumnFilter, index: number) => renderFilterBadge(filter, index))}
 
       {hiddenFilters.length > 0 && (
         <Popover.Root>
@@ -182,7 +182,7 @@ const CurrentColumnFilters = () => {
           >
             <div className="absolute top-2   border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent border-r-[20px] rotate-90 border-r-white"></div>
             <div className="flex flex-col gap-2">
-              {hiddenFilters.map((filter, index) => renderFilterBadge(filter, index))}
+              {hiddenFilters.map((filter : ColumnFilter, index: number) => renderFilterBadge(filter, index))}
               <Button
                 variant="outline"
                 className="text-[#1D57C7] font-[500] border-0 hover:bg-transparent text-[14px] hover:text-[#1D57C7] p-0 h-auto mt-2"

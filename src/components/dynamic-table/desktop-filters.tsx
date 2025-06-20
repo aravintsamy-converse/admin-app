@@ -3,7 +3,7 @@
 import * as Popover from "@radix-ui/react-popover";
 import { BsFilterLeft } from "react-icons/bs";
 import { FilterRenderer } from "@/components/dynamic-table/filter-renderer";
-import { DesktopFiltersProps } from "@/Types/Table/tableTypes";
+import { DesktopFiltersProps } from "@/types/table/table.type";
 import { X } from "lucide-react";
 
 export function DesktopFilters({

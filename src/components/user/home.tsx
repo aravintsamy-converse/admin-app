@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { MultiSelectLazyDropdown } from "@/components/table-ui/multi-select-dropdown"
 import { SingleSelectLazyDropdown } from "@/components/table-ui/single-select-lazy-dropdown"
-import { Option } from "@/Types/common"
+import { Option } from "@/types/common.type"
 
 export default function Home() {
   const [selectedOptions, setSelectedOptions] = useState<Option[]>([])

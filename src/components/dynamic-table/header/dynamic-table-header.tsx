@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import type { RootState } from '@/Store/Store';
 import { togglePopover } from '@/Store/Slices/metricPopoverSlice';
 import { ViewSelect } from '@/components/dynamic-table/header/view-select';
-import { DynamicTableHeaderProps } from '@/Types/Table/TableHeader/header'
+import { DynamicTableHeaderProps } from '@/types/table/table-header/header.type'
 
 const DynamicTableHeader = ({ viewOptions, selectedView, onSelectedViewChange, defaultView, onDefaultViewChange, open, onOpenChange }: DynamicTableHeaderProps) => {
   const dispatch = useDispatch();

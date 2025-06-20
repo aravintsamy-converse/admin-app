@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { DynamicTableContainerProps, TableMetadata } from "@/Types/Table/tableTypes";
+import { DynamicTableContainerProps, TableMetadata } from "@/types/table/table.type";
 import { fetchMetaData } from "@/services/pages/user/table-services";
 import { useSelector } from "react-redux";
 import { RootState } from "@/Store/Store";

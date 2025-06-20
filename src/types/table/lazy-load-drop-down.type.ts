@@ -1,4 +1,4 @@
-import { Option } from "@/Types/common"
+import { Option } from "@/types/common.type"
 
 export interface MultiSelectDropdownUIProps {
   placeholder?: string

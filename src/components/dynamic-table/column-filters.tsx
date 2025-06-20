@@ -17,10 +17,10 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { cn } from "@/lib/utils";
 import { Input } from "@/components/table-ui/input";
 import { MultiSelectDropdown } from "@/components/table-ui/multiSelectDropdown";
-import { TimeInput } from "@/components/table-ui/timeInput";
+import { TimeInput } from "@/components/table-ui/time-input";
 import FilterIcon from "@/TableIcon/commonIcons/filterIcon";
 import FilterDotIcon from "@/TableIcon/commonIcons/filterIconDot";
-import { CustomFilterDropdownProps, InputField } from "@/Types/Table/filterData";
+import { CustomFilterDropdownProps, InputField } from "@/types/table/filter-data.type";
 import { useTableContext } from "@/app/context/TableContext"; // Import useTableContext
 
 export default function ColumnFilters({ columnType, column_name, options }: CustomFilterDropdownProps) {
@@ -31,7 +31,7 @@ export default function ColumnFilters({ columnType, column_name, options }: Cust
   const filterData = useSelector((state: RootState) => state.filterData.data);
   const dispatch = useDispatch();
   const currentFilter = useSelector((state: RootState) =>
-    state.columnFilters.filters.find((f) => f.columnName === column_name),
+    state.columnFilters.filters.find((f: any) => f.columnName === column_name),
   );
   const columnFilterData = filterData.find((data) => data.columnType === columnType)?.conditions || [];
   const multiDropdownOptions = options || [];

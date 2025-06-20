@@ -5,7 +5,7 @@ import { Clock } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Popover, PopoverContent, PopoverTrigger } from "./popover"
 import { Button } from "@/components/ui/button"
-import { TimeInputProps } from "@/Types/Table/shadcnComponentInterface"
+import { TimeInputProps } from "@/types/table/shadcn-component-interface.type"
 
 export function TimeInput({ value, onChange, placeholder = "Select time", className }: TimeInputProps) {
   const [open, setOpen] = React.useState(false)

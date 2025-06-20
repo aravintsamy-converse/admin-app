@@ -1,4 +1,4 @@
-import { TableMetadata } from "@/Types/Table/tableTypes";
+import { TableMetadata } from "@/types/table/table.type";
 
 export interface ViewSelectProps {
   viewOptions: TableMetadata["view_options"];

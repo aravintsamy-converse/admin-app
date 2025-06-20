@@ -31,7 +31,7 @@ import type {
   DataTableProps,
   SortingParams,
   TableData,
-} from "@/Types/Table/tableTypes";
+} from "@/types/table/table.type";
 
 const staticTableData = [
   {
@@ -231,7 +231,7 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
       });
       const params: ApiQueryParams = {
         view: selectedView,
-        columnFilter: columnFilters.filters.map((filter) => ({
+        columnFilter: columnFilters.filters.map((filter: any) => ({
           columnName: filter.columnName,
           columnType: filter.columnType,
           condition: filter.condition,
@@ -505,7 +505,7 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
                     side="top"
                     className="border-0 bg-white shadow-[0px_0px_20px_0px_#C2D1EF] font-[15px] w-[var(--radix-select-trigger-width)]"
                   >
-                    {per_page_values.map((size) => (
+                    {per_page_values.map((size: { value: number }) => (
                       <SelectItem key={size.value} value={`${size.value}`}>
                         {size.value}
                       </SelectItem>

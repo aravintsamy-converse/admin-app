@@ -14,7 +14,7 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import Image from "next/image";
 import { PinIcon } from "@/components/client/icons/dynamicForm/AllDynamicFormIcons";
-import { ViewSelectProps } from "@/Types/Table/TableHeader/viewSelect";
+import { ViewSelectProps } from "@/types/table/table-header/view-select.type";
 
 export function ViewSelect({
   viewOptions,

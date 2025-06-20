@@ -1,4 +1,4 @@
-import { TableData } from "@/Types/Table/tableTypes";
+import { TableData } from "@/types/table/table.type";
 
 export interface DynamicTableHeaderProps {
   viewOptions: TableData['view_options'];

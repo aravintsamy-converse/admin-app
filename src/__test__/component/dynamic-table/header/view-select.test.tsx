@@ -2,7 +2,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { ViewSelect } from '@/components/DynamicTable/Header/ViewSelect';
+import { ViewSelect } from '@/components/dynamic-table/header/view-select';
 import { mockViewOptions } from '@/ __mocks__/view-mocks';
 
 const setup = (overrides = {}) => {

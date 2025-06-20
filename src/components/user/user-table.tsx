@@ -1,7 +1,7 @@
 import { fetchMetaData } from "@/services/pages/user/table-services";
 import DynamicTableContainer from "@/components/dynamic-table/dynamic-table-container";
 import { TableProvider } from "@/app/context/TableContext";
-import { TableMetadata } from "@/Types/Table/tableTypes";
+import { TableMetadata } from "@/types/table/table.type";
 
 // this is a server component by default
 export default async function UserTablePage() {

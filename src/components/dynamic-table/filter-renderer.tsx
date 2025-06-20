@@ -14,7 +14,7 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFnsV3";
 import { format, isValid } from "date-fns";
 import { LuCalendarDays } from "react-icons/lu";
 import { MultiSelectDropdown } from "@/components/table-ui/multiSelectDropdown";
-import { FilterRendererProps, IconProps } from "@/Types/Table/tableTypes";
+import { FilterRendererProps, IconProps } from "@/types/table/table.type";
 
 const iconMap: Record<string, React.ComponentType<IconProps>> = {
   FaLock: FaLock,

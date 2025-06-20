@@ -1,7 +1,7 @@
 import type React from "react"
 import { ChevronsUpDown } from "lucide-react"
 import { FaLongArrowAltDown, FaLongArrowAltUp } from "react-icons/fa"
-import { SortableHeaderProps } from "@/Types/Table/tableTypes"
+import { SortableHeaderProps } from "@/types/table/table.type"
 
 const SortableHeader: React.FC<SortableHeaderProps> = ({ column, title }) => {
   const isSorted = column.getIsSorted()
