@@ -7,7 +7,7 @@ import { DataTable } from "@/components/dynamic-table/data-table";
 import SortableHeader from "@/components/dynamic-table/sortable-header";
 import { CustomTableMeta, CustomColumnMeta, DynamicTableBodyProps, EditState, ColumnData } from "@/types/table/table.type";
 import ColumnFilters from "@/components/dynamic-table/column-filters";
-import { updateFavoriteStatus, updateCellData } from "@/services/pages/user/table-services";
+import { updateCellData } from "@/services/pages/user/table-services";
 import { formateDateTime } from "@/services/pages/date-time-formater";
 import { TableData } from "@/types/table/table.type";
 import NonSortableHeader from "@/components/dynamic-table/non-sortable-header";
@@ -355,14 +355,6 @@ export default function DynamicTableBody({
       setFetchDataFn((prev) => !prev);
     }
   };
-
-  // const handleFavoriteToggle = async (newState: boolean) => {
-  //   try {
-  //     await updateFavoriteStatus(newState);
-  //   } catch (error) {
-  //     console.error("Error updating favorite status:", error);
-  //   }
-  // };
 
   return (
     <TableProvider>

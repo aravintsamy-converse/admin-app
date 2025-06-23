@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
-import { FaAngleDoubleLeft, FaAngleDoubleRight, FaHeart, FaRegHeart } from "react-icons/fa";
+import { FaAngleDoubleLeft, FaAngleDoubleRight } from "react-icons/fa";
 import { RiArrowDropLeftLine, RiArrowDropRightLine } from "react-icons/ri";
 import {
   type SortingState,
@@ -113,7 +113,6 @@ export function DataTable<TData, TValue>({ columns, metadata, fetchDataFn }: Dat
     comfortable: "h-[48px]",
   };
   const rowHeightClass = rowHeight[preferences.density] || rowHeight.standard;
-  const [isFavorite, setIsFavorite] = useState(metadata.favorite_screens);
   const actionUrl = metadata.table_actions_url;
 
   const [filterValues, setFilterValues] = useState<Record<string, string>>({});
@@ -170,7 +169,6 @@ export function DataTable<TData, TValue>({ columns, metadata, fetchDataFn }: Dat
       onMoreAction: handleMoreAction,
       setHoveredRowId,
     } as CustomTableMeta,
-    // Override getValue for columns to handle nested properties
   });
 
   const selectedRowIds = table.getSelectedRowModel().rows.map((row) => (row.original as TableData).id);
@@ -181,11 +179,6 @@ export function DataTable<TData, TValue>({ columns, metadata, fetchDataFn }: Dat
       order: sort.desc ? "DESC" : "ASC",
     }));
   }, []);
-
-
-  useEffect(() => {
-    setIsFavorite(metadata.favorite_screens);
-  }, [metadata.favorite_screens]);
 
   useEffect(() => {
     if (!preferences.columnResizable) {

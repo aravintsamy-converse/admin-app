@@ -87,6 +87,7 @@ export function AppSidebar({
   const [sheetItem, setSheetItem] = useState<NavItem | null>(null)
   const [activePath, setActivePath] = useState<string[]>([])
   const [isSearchDialogOpen, setIsSearchDialogOpen] = useState<boolean>(false)
+  console.log("🚀 ~ isSearchDialogOpen:", isSearchDialogOpen)
   const { toggleSidebar } = useSidebar()
   function openSheetForItem(item: NavItem) {
     if (item.title === 'Search') {
