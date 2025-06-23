@@ -69,9 +69,7 @@ export default function DynamicTableContainer({
         />
       </div>
 
-      {/* Main Container with Relative Positioning for Layered Animation */}
       <div className="relative bg-formHeaderCardBackground ml-3 mt-2  overflow-visible">
-        {/* Dashboard Cards - Floating Overlay */}
         <div
           className={`absolute inset-x-0  top-2 z-30 transition-all duration-700 ease-in-out transform-gpu ${metricPopOverOpen
             ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
@@ -85,7 +83,6 @@ export default function DynamicTableContainer({
           <MetricCards />
         </div>
 
-        {/* Spacer div to push table down when dashboard is open */}
         <div
           className={`transition-all duration-700 ease-in-out ${metricPopOverOpen ? "h-[180px]" : "h-0"}`}
           style={{

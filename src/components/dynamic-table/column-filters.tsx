@@ -19,7 +19,7 @@ import { Input } from "@/components/table-ui/input";
 import { MultiSelectDropdown } from "@/components/table-ui/multi-select-dropdown";
 import { TimeInput } from "@/components/table-ui/time-input";
 import { CustomFilterDropdownProps, InputField } from "@/types/table/filter-data.type";
-import { useTableContext } from "@/app/context/table-context"; // Import useTableContext
+import { useTableContext } from "@/app/context/table-context";
 import { FilterDotIcon, FilterIcon } from "@/components/client/icons/table/preference-popover";
 
 export default function ColumnFilters({ columnType, column_name, options }: CustomFilterDropdownProps) {
@@ -34,7 +34,7 @@ export default function ColumnFilters({ columnType, column_name, options }: Cust
   );
   const columnFilterData = filterData.find((data) => data.columnType === columnType)?.conditions || [];
   const multiDropdownOptions = options || [];
-  const { setPageIndex } = useTableContext(); // Use context for setPageIndex
+  const { setPageIndex } = useTableContext();
 
   useEffect(() => {
     if (currentFilter) {
@@ -42,10 +42,8 @@ export default function ColumnFilters({ columnType, column_name, options }: Cust
       if (conditionData) {
         const inputFieldCount = conditionData.inputField.length;
         if (inputFieldCount === 1) {
-          // Single input field (e.g., multiDropdown): wrap the value in an array
           setInputValues([currentFilter.value]);
         } else {
-          // Multiple input fields (e.g., "Is Between"): use the value as-is
           setInputValues(currentFilter.value);
         }
       }

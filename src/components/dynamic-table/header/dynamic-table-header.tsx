@@ -1,4 +1,5 @@
-import React from 'react'
+'use client'
+
 import { MetricIcon, SquarHamburgerIcon } from '@/components/client/icons/dynamic/all-dynamic-form-icons'
 import CurrentViewFilterDetails from '@/components/dynamic-table/current-view-filter-details'
 import CustomPreferencePopup from '@/components/dynamic-table/header/custom-preference-popup'
@@ -11,7 +12,7 @@ import { CreateIcon } from '@/components/client/icons/table/header';
 
 const DynamicTableHeader = ({ viewOptions, selectedView, onSelectedViewChange, defaultView, onDefaultViewChange, open, onOpenChange }: DynamicTableHeaderProps) => {
   const dispatch = useDispatch();
-  const metricPopOverOpen = useSelector((state: RootState) => state.popover.isOpen); // 🆕 use popover state from Redux store
+  const metricPopOverOpen = useSelector((state: RootState) => state.popover.isOpen);
 
   const toggleMetricPopOver = () => {
     dispatch(togglePopover());

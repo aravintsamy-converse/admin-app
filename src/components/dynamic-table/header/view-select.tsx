@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger } from "@/components/ui/select";
 import {
@@ -11,11 +13,9 @@ import {
 import { TruncateTooltip } from "@/components/dynamic-table/truncate-tooltip";
 import { Dialog, DialogClose, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
-import Image from "next/image";
+import { ProfileCloseIcon } from "@/components/client/icons/general";
 import { PinIcon } from "@/components/client/icons/dynamic/all-dynamic-form-icons";
 import { ViewSelectProps } from "@/types/table/table-header/view-select.type";
-import { ProfileCloseIcon } from "@/components/client/icons/general";
 
 export function ViewSelect({
   viewOptions,

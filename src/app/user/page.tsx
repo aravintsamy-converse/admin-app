@@ -1,5 +1,5 @@
-import UserTable from '@/components/user/user-table'
 import React from 'react'
+import UserTable from '@/components/user/user-table'
 
 const page = () => {
   return (
