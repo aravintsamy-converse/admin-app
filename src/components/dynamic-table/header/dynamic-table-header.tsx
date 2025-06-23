@@ -24,7 +24,7 @@ const DynamicTableHeader = ({ viewOptions, selectedView, onSelectedViewChange, d
           <SquarHamburgerIcon />
         </div>
         <div className="rounded-tr-md items-center flex  w-full">
-          <div className="flex items-center p-1">
+          <div className="flex items-center md:p-1">
             <ViewSelect
               viewOptions={viewOptions}
               selectedView={selectedView}
@@ -44,7 +44,7 @@ const DynamicTableHeader = ({ viewOptions, selectedView, onSelectedViewChange, d
           `}>
           <MetricIcon />
         </button>
-        <button className="w-[117px] h-[35px]  flex items-center  justify-center mr-[6px] bg-primary text-[#ffffff] hover:text-primary hover:bg-background text-[14px] font-[500] leading-[21.6px] rounded-[4px] cursor-pointer transition-all duration-300 !shadow-primaryButtonActive hover:shadow-primaryButtonActive">
+        <button className="w-[80px] md:w-[117px] h-[32px] md:h-[35px]  flex items-center  justify-center mr-[6px] bg-primary text-[#ffffff] hover:text-primary hover:bg-background text-[14px] font-[500] leading-[21.6px] rounded-[4px] cursor-pointer transition-all duration-300 !shadow-primaryButtonActive hover:shadow-primaryButtonActive">
           <CreateIcon /><span className="ml-2">Create</span>
         </button>
         <div>
