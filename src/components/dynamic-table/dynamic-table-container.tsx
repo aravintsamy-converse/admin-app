@@ -7,7 +7,6 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 import MetricCards from "@/components/dynamic-table/header/metric-cards";
 import DynamicTableHeader from "@/components/dynamic-table/header/dynamic-table-header";
-import DynamicTableBody from "@/components/dynamic-table/dynamic-table-body";
 
 export default function DynamicTableContainer({
   metavalue
@@ -95,9 +94,9 @@ export default function DynamicTableContainer({
         />
 
         {/* Dynamic Table Body */}
-        <div className="relative z-10">
+        {/* <div className="relative z-10">
           <DynamicTableBody metadata={metadata} />
-        </div>
+        </div> */}
       </div>
     </div>
   );

@@ -2,10 +2,10 @@
 
 import * as React from "react"
 import { useDebounce } from "use-debounce"
-import { fetchDropDownData } from "@/Services/Pages/User/TableServices"
+import { fetchDropDownData } from "@/services/pages/user/table-services"
 import { SingleSelectLazyDropdownUI } from "./single-select-lazy-dropdown-ui"
-import { Option } from "@/Types/common"
-import { SingleSelectProps } from "@/Types/Table/lazyLoadDropDown"
+import { Option } from "@/types/common.type"
+import { SingleSelectProps } from "@/types/table/lazy-load-dropdown.type"
 
 export function SingleSelectLazyDropdown({
   placeholder = "Select option",
