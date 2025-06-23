@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { MultiSelectLazyDropdown } from "@/components/table-ui/multi-select-dropdown"
+import { MultiSelectLazyDropdown } from "@/components/table-ui/multi-select-lazyload-dropdown"
 import { SingleSelectLazyDropdown } from "@/components/table-ui/single-select-lazy-dropdown"
 import { Option } from "@/types/common.type"
 

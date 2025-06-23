@@ -5,7 +5,7 @@ import { Input } from "@/components/table-ui/input";
 import { FaLock, FaUnlock } from "react-icons/fa";
 import { RiUserSettingsLine } from "react-icons/ri";
 import { GrDocumentUser } from "react-icons/gr";
-import { MultiSelectDropdown } from "@/components/table-ui/multiSelectDropdown";
+import { MultiSelectDropdown } from "@/components/table-ui/multi-select-dropdown";
 import { FilterRendererProps, IconProps } from "@/types/table/table.type";
 
 const iconMap: Record<string, React.ComponentType<IconProps>> = {

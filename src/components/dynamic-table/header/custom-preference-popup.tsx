@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Label } from "@/components/table-ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/table-ui/radioGroup";
+import { RadioGroup, RadioGroupItem } from "@/components/table-ui/radio-group";
 import { FrameIcon, StandardResposiveIcon } from '@/components/client/icons/table/preference-popover';
 import { DisableIcon, EnableIcon } from '@/components/client/icons/table/preference-popover';
 import { useGlobalPreferencesContext } from '@/app/context/global-preferences-context';

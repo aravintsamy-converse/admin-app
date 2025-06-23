@@ -16,7 +16,7 @@ import { setColumnFilter, removeColumnFilter } from "@/store/slices/column-filte
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
 import { Input } from "@/components/table-ui/input";
-import { MultiSelectDropdown } from "@/components/table-ui/multiSelectDropdown";
+import { MultiSelectDropdown } from "@/components/table-ui/multi-select-dropdown";
 import { TimeInput } from "@/components/table-ui/time-input";
 import { CustomFilterDropdownProps, InputField } from "@/types/table/filter-data.type";
 import { useTableContext } from "@/app/context/table-context"; // Import useTableContext

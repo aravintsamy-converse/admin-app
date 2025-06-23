@@ -6,7 +6,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
-import { MultiSelectDropdownUIProps } from "@/Types/Table/lazyLoadDropDown"
+import { MultiSelectDropdownUIProps } from "@/types/table/lazy-load-dropdown.type"
 
 export function MultiSelectDropdownUI({
   placeholder = "Select options",

@@ -16,7 +16,7 @@ import { TableProvider } from "@/app/context/table-context";
 import { Checkbox } from "@/components/table-ui/checkbox";
 import { InlineEditInput } from "@/components/dynamic-table/inline-edit-inputs";
 import { MoreActionCell } from "@/components/dynamic-table/more-action-cell";
-import useScreenSize from "@/components/table-ui/screenSize";
+import useScreenSize from "@/components/table-ui/screen-size";
 import { ActiveUser } from "@/components/client/icons/table/preference-popover";
 import { InactiveUser, LockIcon, LockUserIcon } from "@/components/client/icons/table/common";
 import { ResetPasswordIcon, RoleMappingIcon, UnLockIcon } from "@/components/client/icons/table/body";

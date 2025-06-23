@@ -1,6 +1,6 @@
 import React, { act } from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import { MultiSelectLazyDropdown } from "@/components/table-ui/multi-select-dropdown";
+import { MultiSelectLazyDropdown } from "@/components/table-ui/multi-select-lazyload-dropdown";
 import { fetchDropDownData } from "@/services/pages/user/table-services";
 import userEvent from "@testing-library/user-event";
 import { MultiSelectDropdownUI } from '@/components/table-ui/multi-select-dropdown-ui';

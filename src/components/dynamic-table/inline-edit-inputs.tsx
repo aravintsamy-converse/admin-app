@@ -10,7 +10,7 @@ import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import { format, isValid } from "date-fns";
 import { LuCalendarDays, LuCheck, LuX } from "react-icons/lu";
 import { cn } from "@/lib/utils";
-import { MultiSelectDropdown } from "@/components/table-ui/multiSelectDropdown";
+import { MultiSelectDropdown } from "@/components/table-ui/multi-select-dropdown";
 import { InlineEditInputProps, EditState } from "@/types/table/table.type";
 import { useEffect, useState } from "react";
 

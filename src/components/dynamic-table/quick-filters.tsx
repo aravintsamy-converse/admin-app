@@ -2,7 +2,7 @@ import React from 'react';
 import { QuickFiltersProps } from "@/types/table/table.type";
 import { DesktopFilters } from "@/components/dynamic-table/desktop-filters";
 import { MobileFilters } from "@/components/dynamic-table/mobile-filters";
-import useScreenSize from "@/components/table-ui/screenSize";
+import useScreenSize from "@/components/table-ui/screen-size";
 
 export function QuickFilters({
   quickFilters,

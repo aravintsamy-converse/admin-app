@@ -1,165 +1,162 @@
-"use client"
+import { Checkbox } from "./checkbox";
+import { Button } from "@/components/ui/button";
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+} from "@/components/ui/command";
+import { Popover, PopoverContent, PopoverTrigger } from "./popover";
+import { cn } from "@/lib/utils";
+import { ChevronDown } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
-import * as React from "react"
-import { useDebounce } from "use-debounce"
-import { MultiSelectDropdownUI } from "./multi-select-dropdown-ui"
-import { fetchDropDownData } from "@/services/pages/user/table-services"
-import { Option } from "@/types/common.type"
-import { MultiSelectProps } from "@/types/table/lazy-load-dropdown.type"
+export interface MultiSelectDropdownProps {
+  options: { label: string; value: string; icon?: string; color?: string }[];
+  selectedValues: string[];
+  onSelect: (values: string[]) => void;
+  onSearch?: (query: string) => void; // New prop for search
+  onLoadMore?: () => void; // New prop for infinite scroll
+  placeholder?: string;
+  height?: number;
+  triggerClassName?: string;
+  itemClassName?: string;
+  iconMap?: Record<string, React.ComponentType<any>>;
+}
 
-export function MultiSelectLazyDropdown({
-  placeholder = "Select options",
-  className,
-  onChange,
-  value = [],
-}: MultiSelectProps) {
-  const [open, setOpen] = React.useState(false)
-  const [options, setOptions] = React.useState<Option[]>([])
-  const [loading, setLoading] = React.useState(false)
-  const [query, setQuery] = React.useState("")
-  const [debouncedQuery] = useDebounce(query, 700)
-  const [page, setPage] = React.useState(1)
-  const [totalRecords, setTotalRecords] = React.useState(0)
-  const commandListRef = React.useRef<HTMLDivElement | null>(null)
+export function MultiSelectDropdown({
+  options,
+  selectedValues,
+  onSelect,
+  onSearch,
+  onLoadMore,
+  placeholder = "Select options...",
+  height = 8,
+  triggerClassName = "",
+  itemClassName = "",
+  iconMap = {},
+}: MultiSelectDropdownProps) {
+  const [open, setOpen] = useState(false);
+  const labelMap = new Map(options.map((option) => [option.value, option.label]));
+  const sentinelRef = useRef<HTMLDivElement>(null);
 
-  const recordLimit = 10
-  const hasMore = page < Math.ceil(totalRecords / recordLimit)
+  // Handle search input
+  const handleSearchInput = (value: string) => {
+    onSearch?.(value);
+  };
 
-  // Fetch API function
-  const fetchOptions = React.useCallback(
-    async (searchQuery: string, pageNum: number, append?: boolean) => {
-      try {
-        setLoading(true)
-        const params: any = {
-          search: searchQuery,
-          page: pageNum,
-          record_limit: recordLimit,
+  // Handle selection
+  const handleSelect = (value: string) => {
+    const newValues = selectedValues.includes(value)
+      ? selectedValues.filter((v) => v !== value)
+      : [...selectedValues, value];
+    onSelect(newValues);
+  };
+
+  // Intersection Observer for infinite scroll
+  useEffect(() => {
+    if (!onLoadMore || !sentinelRef.current) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          onLoadMore();
         }
-        const queryString = new URLSearchParams(params).toString()
-        const response = await fetchDropDownData(queryString)
+      },
+      { threshold: 0.1 }
+    );
 
-        const newOptions = response.options.map((item: { value: string; label: string }) => ({
-          value: item.value,
-          label: item.label,
-        }))
+    observer.observe(sentinelRef.current);
 
-        if (append) {
-          setOptions((prev) => {
-            const existing = new Set(prev.map((o) => o.value))
-            const unique = newOptions.filter((opt: Option) => !existing.has(opt.value))
-            return [...prev, ...unique]
-          })
-        } else {
-          setOptions(newOptions)
-        }
-
-        if (pageNum === 1) {
-          setTotalRecords(response.total_records)
-        }
-      } catch (err) {
-        console.error("Dropdown fetch error:", err)
-      } finally {
-        setLoading(false)
-      }
-    },
-    []
-  )
-  
-  React.useEffect(() => {
-    if (open && query !== "") {
-      setQuery("") // Reset search input
-      setPage(1)   // Reset page
-      fetchOptions("", 1, false) // Fetch with empty query
-    }
-  }, [open])
-
-  // When query changes, reset page + options
-  React.useEffect(() => {
-    setPage(1)
-    fetchOptions(debouncedQuery, 1, false)
-  }, [debouncedQuery, fetchOptions])
-
-  // Scroll handler
-  const handleScroll = React.useCallback(() => {
-    if (!commandListRef.current || loading || !hasMore) return
-
-    const { scrollTop, scrollHeight, clientHeight } = commandListRef.current
-    const isNearBottom = scrollHeight - scrollTop - clientHeight < 50
-
-    if (isNearBottom) {
-      const nextPage = page + 1
-      setPage(nextPage)
-      fetchOptions(debouncedQuery, nextPage, true)
-    }
-  }, [page, loading, hasMore, debouncedQuery, fetchOptions])
-
-  // Attach scroll listener once dropdown is open and ref is available
-  React.useEffect(() => {
-    if (!open) return
-  
-    let observer: MutationObserver | null = null
-  
-    const attachScrollListener = () => {
-      const el = commandListRef.current
-      if (el) {
-        el.removeEventListener("scroll", handleScroll) // Clean before re-adding
-        el.addEventListener("scroll", handleScroll)
-        return true
-      }
-      return false
-    }
-  
-    // Try attaching immediately if the ref is already available
-    const isAttached = attachScrollListener()
-  
-    // If not available yet, observe the DOM
-    if (!isAttached) {
-      observer = new MutationObserver(() => {
-        if (attachScrollListener() && observer) {
-          observer.disconnect()
-        }
-      })
-      observer.observe(document.body, { childList: true, subtree: true })
-    }
-  
     return () => {
-      if (observer) observer.disconnect()
-      const el = commandListRef.current
-      if (el) {
-        el.removeEventListener("scroll", handleScroll)
-      }
-    }
-  }, [open, handleScroll])
-  
-
-
-  const handleSearchChange = (val: string) => setQuery(val)
-
-  const handleSelect = (option: Option) => {
-    onChange(
-      value.some((item) => item.value === option.value)
-        ? value.filter((item) => item.value !== option.value)
-        : [...value, option]
-    )
-  }
-
-  const handleRemove = (option: Option) => {
-    onChange(value.filter((item) => item.value !== option.value))
-  }
+      if (sentinelRef.current) observer.unobserve(sentinelRef.current);
+    };
+  }, [onLoadMore]);
 
   return (
-    <MultiSelectDropdownUI
-      placeholder={placeholder}
-      className={className}
-      value={value}
-      options={options}
-      loading={loading}
-      commandListRef={commandListRef}
-      onSearchChange={handleSearchChange}
-      onSelect={handleSelect}
-      onRemove={handleRemove}
-      open={open}
-      onOpenChange={setOpen}
-    />
-  )
+    <Popover open={open} onOpenChange={setOpen}>
+      <PopoverTrigger asChild>
+        <Button
+          variant="outline"
+          role="combobox"
+          aria-expanded={open}
+          className={cn(
+            "w-full justify-between bg-white hover:bg-white text-[14px] border rounded-[4px] text-[#81868C] hover:text-[#81868C] focus:outline-none focus:ring-0 focus:ring-[#1D57C7] focus:border-[#1D57C7]",
+            `h-${height}`,
+            triggerClassName
+          )}
+        >
+          <span className={cn("truncate", !selectedValues.length && "text-[#81868C]")}>
+            {selectedValues.length > 0
+              ? options
+                  .filter((option) => selectedValues.includes(option.value))
+                  .map((option) => option.label)
+                  .join(", ")
+              : placeholder}
+          </span>
+          <ChevronDown className="ml-2 h-4 w-4 shrink-0" />
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent className="w-[var(--radix-popover-trigger-width)] border-0 p-0 filter-popover-content shadow-[0px_0px_10px_0px_#1D57C733]">
+        <Command
+          filter={(value, search) => {
+            const label = labelMap.get(value);
+            return label?.toLowerCase().includes(search.toLowerCase()) ? 1 : 0;
+          }}
+        >
+          <CommandInput
+            placeholder="Search options..."
+            className="h-9 text-[#81868C]"
+            onValueChange={handleSearchInput} // Pass search query to parent
+          />
+          <CommandEmpty>No option found.</CommandEmpty>
+          <CommandGroup className="max-h-[200px] overflow-y-auto">
+            {options.map((option) => {
+              const isSelected = selectedValues.includes(option.value);
+              const IconComponent = option.icon && iconMap[option.icon] ? iconMap[option.icon] : null;
+
+              return (
+                <CommandItem
+                  key={option.value}
+                  value={option.value}
+                  onSelect={() => handleSelect(option.value)}
+                  className={cn(
+                    "group cursor-pointer hover:bg-[#1D57C712]",
+                    isSelected && "text-[#1D57C7]",
+                    itemClassName
+                  )}
+                >
+                  <div className="flex items-center gap-2 w-full">
+                    <Checkbox
+                      checked={isSelected}
+                      className="rounded-[3px] h-4 w-4 border-2 border-[#FFFFFF] bg-white shadow-[2px_2px_5px_0px_#1D57C747] data-[state=checked]:bg-[#1D57C7] data-[state=checked]:border-[#1D57C7]"
+                    />
+                    {IconComponent && (
+                      <IconComponent
+                        style={{ color: option.color }}
+                        className="h-4 w-4 group-hover:text-[#81868C]"
+                      />
+                    )}
+                    <span
+                      className={cn(
+                        "flex-1",
+                        isSelected ? "text-[#1D57C7]" : "text-[#81868C]",
+                        "group-hover:text-[#1D57C7]"
+                      )}
+                    >
+                      {option.label}
+                    </span>
+                  </div>
+                </CommandItem>
+              );
+            })}
+            {onLoadMore && (
+              <div ref={sentinelRef} className="h-1" /> // Sentinel for infinite scroll
+            )}
+          </CommandGroup>
+        </Command>
+      </PopoverContent>
+    </Popover>
+  );
 }

@@ -8,7 +8,7 @@ import { Badge } from '@/components/table-ui/badge';
 import { format } from 'date-fns';
 import { removeColumnFilter, clearAllFilters } from '@/store/slices/column-filters-slice';
 import * as Popover from '@radix-ui/react-popover';
-import useScreenSize from '@/components/table-ui/screenSize';
+import useScreenSize from '@/components/table-ui/screen-size';
 import { ColumnFilter } from '@/types/table/table.type';
 
 const CurrentColumnFilters = () => {
