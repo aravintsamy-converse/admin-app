@@ -42,7 +42,7 @@ import MenuIcon, {
   UserIcon,
   NavTrigger,
   NavItem,
-} from '../icons/dynamicForm/AllDynamicFormIcons'
+} from '../icons/dynamic/all-dynamic-form-icons'
 import Image from 'next/image'
 import { SearchCommand } from './SearchCommand'
 
@@ -144,11 +144,10 @@ export function AppSidebar({
                 <CollapsibleTrigger asChild>
                   <div
                     id={item.title}
-                    className={` flex items-center  p-1 rounded  cursor-pointer group  ${
-                      isActive
-                        ? 'text-primary font-semibold hover:bg-transparent'
-                        : 'hover:text-primary hover:bg-transparent '
-                    }`}
+                    className={` flex items-center  p-1 rounded  cursor-pointer group  ${isActive
+                      ? 'text-primary font-semibold hover:bg-transparent'
+                      : 'hover:text-primary hover:bg-transparent '
+                      }`}
                     onClick={() => handleSelect(newPath)}
                   >
                     {IconComp && <IconComp width={18} height={18} />}
@@ -187,11 +186,10 @@ export function AppSidebar({
                 setCurrentActivePath(newPath)
                 if (item.url) window.location.href = item.url
               }}
-              className={`flex items-center gap-2 p-1 rounded cursor-pointer group ${
-                isActive
-                  ? 'text-primary font-medium hover:bg-transparent'
-                  : 'hover:text-primary hover:font-medium  hover:bg-transparent'
-              }`}
+              className={`flex items-center gap-2 p-1 rounded cursor-pointer group ${isActive
+                ? 'text-primary font-medium hover:bg-transparent'
+                : 'hover:text-primary hover:font-medium  hover:bg-transparent'
+                }`}
             >
               {IconComp && <IconComp width={18} height={18} />}
               <span
@@ -236,11 +234,10 @@ export function AppSidebar({
           <SidebarMenuItem key={`${item.title}-${level}`}>
             <SidebarMenuButton
               tooltip={navSettings.tooltip ? item.title : ''}
-              className={`flex gap-[10px] items-center min-w-full cursor-pointer group ${
-                isActive
-                  ? ' text-primary font-semibold hover:bg-transparent '
-                  : 'hover:text-primary  hover:font-medium hover:bg-transparent'
-              }`}
+              className={`flex gap-[10px] items-center min-w-full cursor-pointer group ${isActive
+                ? ' text-primary font-semibold hover:bg-transparent '
+                : 'hover:text-primary  hover:font-medium hover:bg-transparent'
+                }`}
               onClick={() => {
                 openSheetForItem(item)
                 handleSelect(newPath)
@@ -284,11 +281,10 @@ export function AppSidebar({
             <CollapsibleTrigger asChild>
               <SidebarMenuButton
                 tooltip={navSettings.tooltip ? item.title : ''}
-                className={`flex gap-[10px] items-center min-w-full cursor-pointer ${
-                  isActive
-                    ? ' text-primary font-semibold hover:bg-transparent '
-                    : 'hover:text-primary  hover:font-medium hover:bg-transparent'
-                }`}
+                className={`flex gap-[10px] items-center min-w-full cursor-pointer ${isActive
+                  ? ' text-primary font-semibold hover:bg-transparent '
+                  : 'hover:text-primary  hover:font-medium hover:bg-transparent'
+                  }`}
                 onClick={() => {
                   if (hasChildren || item.title == 'Search') {
                     openSheetForItem(item)
@@ -355,11 +351,10 @@ export function AppSidebar({
             <CollapsibleTrigger asChild>
               <SidebarMenuButton
                 tooltip={navSettings.tooltip ? item.title : ''}
-                className={`flex gap-[10px] items-center min-w-full cursor-pointer  group ${
-                  isActive
-                    ? 'text-primary font-semibold hover:bg-transparent'
-                    : 'hover:text-primary  hover:font-medium hover:bg-transparent   group-hover/menu-button:font-medium   group-hover/menu-button:text-primary'
-                }`}
+                className={`flex gap-[10px] items-center min-w-full cursor-pointer  group ${isActive
+                  ? 'text-primary font-semibold hover:bg-transparent'
+                  : 'hover:text-primary  hover:font-medium hover:bg-transparent   group-hover/menu-button:font-medium   group-hover/menu-button:text-primary'
+                  }`}
                 onClick={() => {
                   if (item.title === 'Search') {
                     openSheetForItem(item)
@@ -456,9 +451,8 @@ export function AppSidebar({
             )}
           <SidebarTrigger className="hover:bg-transparent group/header">
             <span
-              className={`transform hover:bg-transparent ${
-                navSettings.isNavOpen ? 'rotate-180' : 'rotate-0'
-              }`}
+              className={`transform hover:bg-transparent ${navSettings.isNavOpen ? 'rotate-180' : 'rotate-0'
+                }`}
             >
               <NavTrigger />
             </span>

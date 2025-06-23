@@ -1,15 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Label } from "@/components/table-ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/table-ui/radioGroup";
-import { FrameIcon, StandardResposiveIcon } from '@/TableIcon/commonIcons/columnRezing';
-import { DisableIcon, EnableIcon } from '@/TableIcon/commonIcons/dataWrap';
-import { CompactDensityIcon, ComfortableDensityIcon, StandardtDensityIcon } from '@/TableIcon/commonIcons/rowDensity';
+import { FrameIcon, StandardResposiveIcon } from '@/components/client/icons/table/preference-popover';
+import { DisableIcon, EnableIcon } from '@/components/client/icons/table/preference-popover';
 import { useGlobalPreferencesContext } from '@/app/context/global-preferences-context';
-import { MetricIcon, ThreeDotIconMenu } from '@/components/client/icons/dynamicForm/AllDynamicFormIcons';
-import { FavoriteIcon, UnFavoriteIcon } from '@/TableIcon/commonIcons/manageFavorite';
+import { MetricIcon, ThreeDotIconMenu } from '@/components/client/icons/dynamic/all-dynamic-form-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import type { RootState } from '@/store/store';
 import { togglePopover } from '@/store/slices/metric-popover-slice';
+import { ComfortableDensityIcon, CompactDensityIcon, FavoriteIcon, StandardtDensityIcon, UnFavoriteIcon } from '@/components/client/icons/table/header';
 
 const CustomPreferencePopup = () => {
   const { preferences, updatePreferences } = useGlobalPreferencesContext();

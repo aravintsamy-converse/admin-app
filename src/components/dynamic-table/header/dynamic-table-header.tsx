@@ -1,13 +1,13 @@
 import React from 'react'
-import { MetricIcon, SquarHamburgerIcon } from '@/components/client/icons/dynamicForm/AllDynamicFormIcons'
+import { MetricIcon, SquarHamburgerIcon } from '@/components/client/icons/dynamic/all-dynamic-form-icons'
 import CurrentViewFilterDetails from '@/components/dynamic-table/current-view-filter-details'
-import CreateIcon from '@/TableIcon/commonIcons/create'
 import CustomPreferencePopup from '@/components/dynamic-table/header/custom-preference-popup'
 import { useDispatch, useSelector } from 'react-redux';
 import type { RootState } from '@/store/store';
 import { togglePopover } from '@/store/slices/metric-popover-slice';
 import { ViewSelect } from '@/components/dynamic-table/header/view-select';
 import { DynamicTableHeaderProps } from '@/types/table/table-header/header.type'
+import { CreateIcon } from '@/components/client/icons/table/header';
 
 const DynamicTableHeader = ({ viewOptions, selectedView, onSelectedViewChange, defaultView, onDefaultViewChange, open, onOpenChange }: DynamicTableHeaderProps) => {
   const dispatch = useDispatch();

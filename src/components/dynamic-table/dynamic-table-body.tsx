@@ -4,13 +4,6 @@ import { useMemo, useState, useEffect } from "react";
 import type { ColumnDef } from "@tanstack/react-table";
 import { MdDeleteOutline, MdOutlineEdit } from "react-icons/md";
 import { DataTable } from "@/components/dynamic-table/data-table";
-import LockIcon from "@/TableIcon/commonIcons/lock";
-import UnLockIcon from "@/TableIcon/commonIcons/unLock";
-import { ActiveUser } from "@/TableIcon/commonIcons/activeUser";
-import InactiveUser from "@/TableIcon/commonIcons/inactiveUser";
-import LockUserIcon from "@/TableIcon/commonIcons/lockUser";
-import ResetPasswordIcon from "@/TableIcon/commonIcons/resetPassword";
-import RoleMappingIcon from "@/TableIcon/commonIcons/roleMapping";
 import SortableHeader from "@/components/dynamic-table/sortable-header";
 import { CustomTableMeta, CustomColumnMeta, DynamicTableBodyProps, EditState, ColumnData } from "@/types/table/table.type";
 import ColumnFilters from "@/components/dynamic-table/column-filters";
@@ -24,6 +17,9 @@ import { Checkbox } from "@/components/table-ui/checkbox";
 import { InlineEditInput } from "@/components/dynamic-table/inline-edit-inputs";
 import { MoreActionCell } from "@/components/dynamic-table/more-action-cell";
 import useScreenSize from "@/components/table-ui/screenSize";
+import { ActiveUser } from "@/components/client/icons/table/preference-popover";
+import { InactiveUser, LockIcon, LockUserIcon } from "@/components/client/icons/table/common";
+import { ResetPasswordIcon, RoleMappingIcon, UnLockIcon } from "@/components/client/icons/table/body";
 
 type ItemType = {
   id: string;

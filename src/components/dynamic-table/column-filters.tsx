@@ -18,10 +18,9 @@ import { cn } from "@/lib/utils";
 import { Input } from "@/components/table-ui/input";
 import { MultiSelectDropdown } from "@/components/table-ui/multiSelectDropdown";
 import { TimeInput } from "@/components/table-ui/time-input";
-import FilterIcon from "@/TableIcon/commonIcons/filterIcon";
-import FilterDotIcon from "@/TableIcon/commonIcons/filterIconDot";
 import { CustomFilterDropdownProps, InputField } from "@/types/table/filter-data.type";
 import { useTableContext } from "@/app/context/table-context"; // Import useTableContext
+import { FilterDotIcon, FilterIcon } from "@/components/client/icons/table/preference-popover";
 
 export default function ColumnFilters({ columnType, column_name, options }: CustomFilterDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);

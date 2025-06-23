@@ -13,7 +13,7 @@ import { Dialog, DialogClose, DialogContent, DialogFooter, DialogHeader, DialogT
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import Image from "next/image";
-import { PinIcon } from "@/components/client/icons/dynamicForm/AllDynamicFormIcons";
+import { PinIcon } from "@/components/client/icons/dynamic/all-dynamic-form-icons";
 import { ViewSelectProps } from "@/types/table/table-header/view-select.type";
 import { ProfileCloseIcon } from "@/components/client/icons/general";
 

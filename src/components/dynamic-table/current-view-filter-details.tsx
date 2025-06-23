@@ -1,29 +1,29 @@
-import FilterIcon from '@/TableIcon/commonIcons/filterIcon';
 import React, { useEffect, useRef, useState } from 'react';
 import { LuCalendarDays } from 'react-icons/lu';
-import { InfoIcon } from '../client/icons/dynamicForm/AllDynamicFormIcons';
+import { InfoIcon } from '../client/icons/dynamic/all-dynamic-form-icons';
+import { FilterIcon } from '@/components/client/icons/table/preference-popover';
 
-   const currentViewFilters = [
-        {
-          "field_name": "User",
-          "filter_type": "String",
-          "condition": "is",
-          "value": "John Doe"
-        },
-        {
-          "field_name": "Last Login",
-          "filter_type": "Date",
-          "condition": "is",
-          "value": "12/12/2020"
-        }
-      ]
+const currentViewFilters = [
+    {
+        "field_name": "User",
+        "filter_type": "String",
+        "condition": "is",
+        "value": "John Doe"
+    },
+    {
+        "field_name": "Last Login",
+        "filter_type": "Date",
+        "condition": "is",
+        "value": "12/12/2020"
+    }
+]
 
-    const exampleFilters = ["Date Range: Last 30 days","Revenue: > $10,000 AND < $50,000", "Status: Active AND (Region: NA OR EU)"]
+const exampleFilters = ["Date Range: Last 30 days", "Revenue: > $10,000 AND < $50,000", "Status: Active AND (Region: NA OR EU)"]
 
 const CurrentViewFilterDetails = () => {
     const [isViewDetailsOpen, setIsViewDetailsOpen] = useState(false);
     const ViewDetailsPopupRef = useRef<HTMLDivElement>(null);
- 
+
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
