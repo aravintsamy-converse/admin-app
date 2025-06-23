@@ -78,7 +78,7 @@ export const metaData = {
         "field_name": "latest_login_at",
         "field_label": "Last Login",
         "placeholder": "Select Date Range",
-        "order": 4
+        "order": 5
       },
       {
         "id": "8454d54ed1-ae14-4455-8477-1d8e07f2454t",
@@ -99,7 +99,17 @@ export const metaData = {
             "value": "user_email"
           }
         ]
-      }
+      },
+      {
+        "id": "4f45df33-ae14-4455-8477-1d8e07f2dc34f",
+        "filter_type": "Dropdown",
+        "field_name": "role_type",
+        "field_label": "Role Type",
+        "placeholder": "Select Role Type",
+        "is_lazyload": true,
+        "records_limit": 10,
+        "order": 4
+      },
     ],
     "columnData": [
   {

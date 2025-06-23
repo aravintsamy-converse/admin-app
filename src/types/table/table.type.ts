@@ -121,7 +121,6 @@ export type TableData = any;
 export interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   metadata: TableMetadata;
-  onFavoriteToggle?: (newState: boolean) => Promise<void>;
   fetchDataFn: boolean; // Corrected to accept fetchData function
 }
 

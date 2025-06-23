@@ -76,7 +76,7 @@ export function DesktopFilters({
           </Popover.Content>
         </Popover.Root>
       )}
-      {hiddenFilters.length === 0 && !hideApplyButton && (
+      {/* {hiddenFilters.length === 0 && !hideApplyButton && (
         <div className="flex gap-2">
           <button
             onClick={onApplyFilters}
@@ -104,7 +104,7 @@ export function DesktopFilters({
         >
           <X size={18} />
         </button>
-      )}
+      )} */}
     </div>
   );
 }

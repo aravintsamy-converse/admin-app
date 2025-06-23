@@ -41,7 +41,7 @@ export function QuickFilters({
     );
 
   // Determine max visible filters based on screen size
-  const maxVisibleFilters = screenSize === "2xl" ? 3 : (screenSize === "xl" || screenSize === "lg") ? 2 : screenSize === "md" ? 1 : 0;
+  const maxVisibleFilters = screenSize === "2xl" ? 4 : (screenSize === "xl" || screenSize === "lg") ? 3 : screenSize === "md" ? 2 : 0;
   const visibleFilters = sortedFilters.slice(0, Math.min(maxVisibleFilters, sortedFilters.length));
   const hiddenFilters = sortedFilters.slice(maxVisibleFilters);
 

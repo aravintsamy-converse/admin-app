@@ -90,7 +90,7 @@ const staticTableData = [
   }
 ]
 
-export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, fetchDataFn }: DataTableProps<TData, TValue>) {
+export function DataTable<TData, TValue>({ columns, metadata, fetchDataFn }: DataTableProps<TData, TValue>) {
 
   const [data, setData] = useState<TData[]>(staticTableData as TData[]);
   const bulkActionsData: BulkAction[] = metadata.bulk_actions;
@@ -186,19 +186,6 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
   useEffect(() => {
     setIsFavorite(metadata.favorite_screens);
   }, [metadata.favorite_screens]);
-
-  const handleFavoriteClick = async () => {
-    const newState = !isFavorite;
-    setIsFavorite(newState);
-    try {
-      if (onFavoriteToggle) {
-        await onFavoriteToggle(newState);
-      }
-    } catch (error) {
-      console.error("Failed to update favorite:", error);
-      setIsFavorite(!newState);
-    }
-  };
 
   useEffect(() => {
     if (!preferences.columnResizable) {
@@ -303,16 +290,9 @@ export function DataTable<TData, TValue>({ columns, metadata, onFavoriteToggle, 
 
     <div className="w-full tanstack-table">
       <div className="w-full h-full rounded-sm bg-white">
-        <div className="w-full bg-white py-4 grid grid-cols-2 md:grid-cols-1 gap-y-1 lg:grid-cols-[50%,50%] items-center">
+        <div className="w-full bg-white py-1 grid grid-cols-2 md:grid-cols-1 gap-y-1 lg:grid-cols-[30.8%,69.2%] items-center">
           <CurrentColumnFilters />
           <div className="w-full flex items-center gap-4 place-content-end">
-            <div className="cursor-pointer" onClick={handleFavoriteClick}>
-              {isFavorite ? (
-                <FaHeart className="text-[20px] text-[#FA5669]" />
-              ) : (
-                <FaRegHeart className="text-[20px] text-[#889ABC]" />
-              )}
-            </div>
             <QuickFilters
               quickFilters={metadata.quick_filters}
               filterValues={filterValues}

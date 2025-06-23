@@ -356,20 +356,19 @@ export default function DynamicTableBody({
     }
   };
 
-  const handleFavoriteToggle = async (newState: boolean) => {
-    try {
-      await updateFavoriteStatus(newState);
-    } catch (error) {
-      console.error("Error updating favorite status:", error);
-    }
-  };
+  // const handleFavoriteToggle = async (newState: boolean) => {
+  //   try {
+  //     await updateFavoriteStatus(newState);
+  //   } catch (error) {
+  //     console.error("Error updating favorite status:", error);
+  //   }
+  // };
 
   return (
     <TableProvider>
       <DataTable
         columns={columns}
         metadata={metadata}
-        onFavoriteToggle={handleFavoriteToggle}
         fetchDataFn={fetchDataFn}
       />
     </TableProvider>
