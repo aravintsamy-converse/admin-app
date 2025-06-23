@@ -9,12 +9,13 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tootip-wrapper';
 import { TruncateTooltip } from "@/components/dynamic-table/truncate-tooltip";
-import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogClose, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import Image from "next/image";
 import { PinIcon } from "@/components/client/icons/dynamicForm/AllDynamicFormIcons";
 import { ViewSelectProps } from "@/types/table/table-header/view-select.type";
+import { ProfileCloseIcon } from "@/components/client/icons/general";
 
 export function ViewSelect({
   viewOptions,
@@ -133,6 +134,9 @@ export function ViewSelect({
       </div>
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen} >
         <DialogContent className=" max-w-[620px]  px-[36px] pt-[17px] pb-[20px] !rounded-[12px] bg-background !shadow-none">
+          <DialogClose className="absolute group right-[19px] top-[20px] focus-visible:outline-none">
+            <ProfileCloseIcon />
+          </DialogClose>
           <DialogHeader className="text-center">
             <DialogTitle className="!text-[18px] font-[600] text-primary leading-[21.6px] tracking-[0]">Default List Change</DialogTitle>
             <div className="flex items-center gap-x-5 pt-[9px] pl-[1px]">
@@ -142,16 +146,16 @@ export function ViewSelect({
                 width={39}
                 height={39}
               />
-              <div className="text-[16px] font-[500] text-popover-foreground leading-[21.6px] tracking-[0]">
+              <div className="text-[16px] font-[500] text-popover-foreground !leading-[21.6px] tracking-[0]">
                 Do you really want to change your default list to <br />“{pendingViewLabel}”?
               </div>
             </div>
           </DialogHeader>
-          <DialogFooter className="pt-[5px] pr-[1px]">
-            <Button variant="outline" className="border-0 leading-[21.6px] tracking-[0] focus-visible:outline-none text-[14px] font-[500] rounded-[4px] focus-visible:ring-0  shadow-none hover:bg-transparent  text-primary hover:text-primary hover:font-[600]" onClick={handleCancelDefault}>
+          <DialogFooter className="pt-[6px] pr-[2px]">
+            <Button variant="outline" className="border-0 pt-[7px] leading-[21.6px] tracking-[0] focus-visible:outline-none text-[14px] font-[500] rounded-[4px] focus-visible:ring-0  shadow-none hover:bg-transparent  text-primary hover:text-primary hover:font-[600]" onClick={handleCancelDefault}>
               Cancel
             </Button>
-            <Button onClick={handleConfirmDefault} className=" flex items-center justify-center  leading-[21.6px] tracking-[0] text-[14px] font-[500] rounded-[4px] w-[119px] h-[36px] hover:text-primary border hover:bg-background hover:border-primary shadow-none ">
+            <Button onClick={handleConfirmDefault} className=" h-[35px] w-[117px] pt-[7px] rounded-[5px] font-medium text-[14px] leading-[21.6px] tracking-[0] hover:text-primary hover:border hover:bg-background hover:border-primary shadow-none">
               Set Default
             </Button>
           </DialogFooter>
