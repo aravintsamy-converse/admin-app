@@ -39,7 +39,7 @@ const CurrentViewFilterDetails = () => {
 
     return (
         <div className="relative" ref={ViewDetailsPopupRef}>
-            <div className={`${isViewDetailsOpen ? 'text-primary' : 'text-infoIcon'}  text-[24px] pl-[2px] hover:text-primary cursor-pointer`}
+            <div className={`${isViewDetailsOpen ? 'text-primary' : 'text-infoIcon'}  text-[24px] md:pl-[2px] hover:text-primary cursor-pointer`}
                 onClick={() => setIsViewDetailsOpen(!isViewDetailsOpen)}>
                 <InfoIcon />
             </div>

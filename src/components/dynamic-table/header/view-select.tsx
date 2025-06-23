@@ -85,7 +85,7 @@ export function ViewSelect({
               <ChevronDown className="h-3.5 w-3.5 text-[#889ABC]" />
             </span>
           </SelectTrigger>
-          <SelectContent className="min-w-[160px] max-w-[240px] md:min-w-[295px] md:max-w-[395px] left-3 top-[-2px] border-0 rounded-[2px] bg-background shadow-viewboxshadow">
+          <SelectContent className="min-w-[166px] max-w-[240px] md:min-w-[295px] md:max-w-[395px] left-3 top-[-2px] border-0 rounded-[2px] bg-background shadow-viewboxshadow">
             {viewOptions?.sort((a, b) => a.order - b.order).map((option) => (
               <div
                 key={option.value}
@@ -104,7 +104,7 @@ export function ViewSelect({
                   <TruncateTooltip text={option.label} className={`${selectedView === (option.value)
                     ? "text-primary"
                     : "text-accent-foreground"
-                    } w-[180px]  md:min-w-[150px] md:max-w-[250px] text-start`} />
+                    } w-[160px]  md:min-w-[200px] md:max-w-[250px] text-start`} />
                 </SelectItem>
 
                 <Tooltip>
