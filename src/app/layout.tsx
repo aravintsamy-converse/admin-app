@@ -2,7 +2,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import '@/assets/fonts/inter/inter.css'
-import DynamicLayout from "@/components/client/dynamicForm/DynamicLayout";
+import DynamicLayout from "@/components/client/dynamicForm/dynamic-layout";
 import MainContainer from "@/components/client/server/MainContainer";
 import ReduxProvider from "@/store/redux-provider";
 import { GlobalPreferencesProvider } from "./context/global-preferences-context";

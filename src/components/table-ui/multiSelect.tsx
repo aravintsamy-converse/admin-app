@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import { Checkbox } from "./checkbox";
 import { Button } from "@/components/ui/button";
 import {
@@ -13,7 +12,8 @@ import {
 import { Popover, PopoverContent, PopoverTrigger } from "./popover";
 import { cn } from "@/lib/utils";
 import { ChevronDown } from "lucide-react";
-import { MultiSelectDropdownProps } from "@/Types/Table/shadcnComponentInterface";
+import { MultiSelectDropdownProps } from "@/types/table/shadcn-component-interface.type";
+import { useState } from "react";
 
 export function MultiSelectDropdown({
   options,
@@ -21,7 +21,7 @@ export function MultiSelectDropdown({
   onSelect,
   placeholder = "Select options...",
 }: MultiSelectDropdownProps) {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const labelMap = new Map(options.map(option => [option.value, option.label]));
 
   const handleSelect = (value: string) => {

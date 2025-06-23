@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Checkbox } from "./checkbox";
 import { Button } from "@/components/ui/button";
 import {
@@ -11,6 +10,7 @@ import {
 import { Popover, PopoverContent, PopoverTrigger } from "./popover";
 import { cn } from "@/lib/utils";
 import { ChevronDown } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 export interface MultiSelectDropdownProps {
   options: { label: string; value: string; icon?: string; color?: string }[];
@@ -37,9 +37,9 @@ export function MultiSelectDropdown({
   itemClassName = "",
   iconMap = {},
 }: MultiSelectDropdownProps) {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const labelMap = new Map(options.map((option) => [option.value, option.label]));
-  const sentinelRef = React.useRef<HTMLDivElement>(null);
+  const sentinelRef = useRef<HTMLDivElement>(null);
 
   // Handle search input
   const handleSearchInput = (value: string) => {
@@ -55,7 +55,7 @@ export function MultiSelectDropdown({
   };
 
   // Intersection Observer for infinite scroll
-  React.useEffect(() => {
+  useEffect(() => {
     if (!onLoadMore || !sentinelRef.current) return;
 
     const observer = new IntersectionObserver(

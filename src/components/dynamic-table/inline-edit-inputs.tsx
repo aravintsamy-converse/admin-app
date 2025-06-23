@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
 import { Input } from "@/components/table-ui/input";
 import { Switch } from "@/components/table-ui/switch";
@@ -13,6 +12,7 @@ import { LuCalendarDays, LuCheck, LuX } from "react-icons/lu";
 import { cn } from "@/lib/utils";
 import { MultiSelectDropdown } from "@/components/table-ui/multiSelectDropdown";
 import { InlineEditInputProps, EditState } from "@/types/table/table.type";
+import { useEffect, useState } from "react";
 
 export const InlineEditInput = ({
   columnType,
@@ -23,14 +23,14 @@ export const InlineEditInput = ({
   onClose,
   options = [],
 }: InlineEditInputProps) => {
-  const [currentEditState, setCurrentEditState] = React.useState<EditState>({
+  const [currentEditState, setCurrentEditState] = useState<EditState>({
     rowId: editState.rowId,
     columnName: editState.columnName,
     value: value,
   });
 
   // Initialize currentEditState based on value prop
-  React.useEffect(() => {
+  useEffect(() => {
     setCurrentEditState({
       rowId: editState.rowId,
       columnName: editState.columnName,

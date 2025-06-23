@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-
 import { AppSidebar } from './Sidebar'
 import { defaultLayout } from '@/mock-data/dynamic-nav'
 import { SidebarProvider } from '@/components/ui/sidebar'
@@ -11,10 +10,7 @@ import { SidebarProvider } from '@/components/ui/sidebar'
 
 export default function DynamicLayout() {
 
-
   const [layout, setLayout] = useState(defaultLayout)
-
-
   const toggleNav = () => {
     setLayout((prev) => ({
       ...prev,

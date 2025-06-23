@@ -44,7 +44,6 @@ import MenuIcon, {
   NavItem,
 } from '../icons/dynamic/all-dynamic-form-icons'
 import Image from 'next/image'
-import { SearchCommand } from './SearchCommand'
 
 const iconMap: Record<string, React.FC<any>> = {
   MenuIcon,
@@ -492,13 +491,6 @@ export function AppSidebar({
           </div>
         </SheetContent>
       </Sheet>
-
-      <SearchCommand
-        open={isSearchDialogOpen}
-        onOpenChange={setIsSearchDialogOpen}
-        navItems={items}
-        navSettings={navSettings}
-      />
     </>
   )
 }
