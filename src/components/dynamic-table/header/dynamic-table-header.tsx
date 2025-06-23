@@ -18,7 +18,7 @@ const DynamicTableHeader = ({ viewOptions, selectedView, onSelectedViewChange, d
   };
 
   return (
-    <div className="grid grid-cols-2 h-full items-center border-b border-formheaderborder bg-mainbackground rounded-tl-sm">
+    <div className="grid grid-cols-2 h-full items-center border-b border-formHeaderBorder bg-mainbackground rounded-tl-sm">
       <div className="flex h-full">
         <div className="p-3 md:pl-[21px] md:pr-[20px]  !bg-formHeaderCardBackground text-selectsecondaryforeground rounded-tl-sm flex items-center justify-center ">
           <SquarHamburgerIcon />

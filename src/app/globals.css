@@ -53,8 +53,6 @@ body {
     --secondary-foreground: 240 5.9% 10%;  /* t secondary ext color */
     --muted: 240, 100%, 99%;  /*Placeholder  Background  color */
     --muted-foreground: 0, 0%, 68%, 1;  /* placholder  text color */
-    /* --accent: 220, 75%, 45%, 0.04;  Hover baground color */
-    /* --accent-foreground: 220, 75%, 45%;  Hover  text color */
     --destructive: 0 84.2% 60.2%;  /* Error Button  text color */
     --destructive-foreground: 0 0% 98%;  /* Error Button text color */
     --border: 240 5.9% 90%;  /* Border  color */
@@ -76,7 +74,7 @@ body {
     --sidebar-foreground: 240 5.3% 26.1%;  /* side bar  text color */
     --sidebar-primary: 240 5.9% 10%;  /* side bar button  color */
     --sidebar-primary-foreground: 0 0% 98%;  /* side bar button text color */
-    --sidebar-accent: 240 4.8% 95.9%;  /* side bar hover background color  */
+    --sidebar-accent: 206, 28%, 95%, 1;  /* side bar hover background color  */
     --sidebar-accent-foreground: 240 5.9% 10%;  /* side bar hover background  text color */
     --sidebar-border: 220 13% 91%;  /* side bar border color */
     --sidebar-ring: 217.2 91.2% 59.8%;  /*side bar foucs Visible outline color */
@@ -108,19 +106,14 @@ body {
     --dropdown-hover-background: 0, 0%, 5%, 1; /* hover background color */
     --dropdown-background: 0, 0%, 9%, 1; /* dropdown background color */
 
-    /* --background: 240 10% 3.9%; */
     --card: 240 10% 3.9%;
     --card-foreground: 0 0% 98%;
     --popover: 240 10% 3.9%;
     --popover-foreground: 0 0% 98%;
-    /* --primary: 0 0% 98%; */
-    /* --primary-foreground: 240 5.9% 10%; */
     --secondary: 240 3.7% 15.9%;
     --secondary-foreground: 0 0% 98%;
     --muted: 240 3.7% 15.9%;
     --muted-foreground: 240 5% 64.9%;
-    /* --accent: 240 3.7% 15.9%; */
-    /* --accent-foreground: 0 0% 98%; */
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
     --border: 240 3.7% 15.9%;

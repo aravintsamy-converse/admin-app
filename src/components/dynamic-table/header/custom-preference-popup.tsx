@@ -51,9 +51,9 @@ const CustomPreferencePopup = () => {
         </div>
       </button>
       {isTableCustomPopup && (
-        <div className="absolute z-40 right-[7px]  w-[219px] top-[59px] text-popoverheaderforeground mt-1 bg-background rounded-[4px] shadow-viewboxshadow">
+        <div className="absolute z-40 right-[7px]  w-[219px] top-[59px] text-popoverHeaderForeground mt-1 bg-background rounded-[4px] shadow-viewboxshadow">
           <div className="absolute -top-2 right-0 md:right-2 border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent border-r-[20px] rotate-90 border-r-background"></div>
-          <div className="pt-1 pb-3.5 px-4 text-popoverheaderforeground space-y-2">
+          <div className="pt-1 pb-3.5 px-4 text-popoverHeaderForeground space-y-2">
             <div>
               <button onClick={toggleMetricPopOver} className={`pb-[6px] pt-[7px] md:hidden pl-[6px] pr-[4px]  items-center justify-center mr-3 text-nowrap bg-background text-primary hover:text-primary-foreground hover:bg-primary text-[18px] font-[600] rounded-[4px] cursor-pointer transition-all duration-300 shadow-primaryButtonActive border border-metricborder hover:border-transparent
                         ${metricPopOverOpen ? 'text-primary-foreground bg-primary border-transparent' : ''} 
@@ -63,7 +63,7 @@ const CustomPreferencePopup = () => {
             </div>
             {/* Column Scaling */}
             <div>
-              <h2 className="text-[16px] font-[700] text-popoverheaderforeground mb-2">Column Scaling</h2>
+              <h2 className="text-[16px] font-[700] text-popoverHeaderForeground mb-2">Column Scaling</h2>
               <RadioGroup
                 value={preferences.columnResizable ? "true" : "false"}
                 onValueChange={(value) => handleUpdatePreferences({ columnResizable: value === "true" })}
@@ -72,7 +72,7 @@ const CustomPreferencePopup = () => {
                   <RadioGroupItem
                     value="true"
                     id="responsive"
-                    className="h-[18px] w-[18px] border border-popoverradioforground shadow-[0px_0px_2.5px_0px_#1D57C7] data-[state=checked]:border-[#1D57C7]"
+                    className="h-[18px] w-[18px] border border-popoverRadioForground shadow-[0px_0px_2.5px_0px_#1D57C7] data-[state=checked]:border-[#1D57C7]"
                   />
                   <Label htmlFor="responsive" className="flex items-center space-x-2 text-[15px] text-popoversecondaryforground font-[400] cursor-pointer">
                     <FrameIcon />
@@ -83,7 +83,7 @@ const CustomPreferencePopup = () => {
                   <RadioGroupItem
                     value="false"
                     id="standard-width"
-                    className="h-[18px] w-[18px] border border-popoverradioforground shadow-[0px_0px_2.5px_0px_#1D57C7] data-[state=checked]:border-[#1D57C7]"
+                    className="h-[18px] w-[18px] border border-popoverRadioForground shadow-[0px_0px_2.5px_0px_#1D57C7] data-[state=checked]:border-[#1D57C7]"
                   />
                   <Label htmlFor="standard-width" className="flex items-center space-x-2 text-[15px] text-popoversecondaryforground font-[400] cursor-pointer">
                     <StandardResposiveIcon />
@@ -95,7 +95,7 @@ const CustomPreferencePopup = () => {
 
             {/* Row Density */}
             <div>
-              <h2 className="text-[16px] font-[700] text-popoverheaderforeground mb-2">Row Density</h2>
+              <h2 className="text-[16px] font-[700] text-popoverHeaderForeground mb-2">Row Density</h2>
               <RadioGroup
                 value={preferences.density}
                 onValueChange={(value) => handleUpdatePreferences({ density: value })}
@@ -104,7 +104,7 @@ const CustomPreferencePopup = () => {
                   <RadioGroupItem
                     value="compact"
                     id="compact"
-                    className="h-[18px] w-[18px] border border-popoverradioforground shadow-[0px_0px_2.5px_0px_#1D57C7] data-[state=checked]:border-[#1D57C7]"
+                    className="h-[18px] w-[18px] border border-popoverRadioForground shadow-[0px_0px_2.5px_0px_#1D57C7] data-[state=checked]:border-[#1D57C7]"
                   />
                   <Label htmlFor="compact" className="flex items-center space-x-2 text-[15px] text-popoversecondaryforground font-[400] cursor-pointer">
                     <CompactDensityIcon />
@@ -115,7 +115,7 @@ const CustomPreferencePopup = () => {
                   <RadioGroupItem
                     value="standard"
                     id="standard-density"
-                    className="h-[18px] w-[18px] border border-popoverradioforground shadow-[0px_0px_2.5px_0px_#1D57C7] data-[state=checked]:border-[#1D57C7]"
+                    className="h-[18px] w-[18px] border border-popoverRadioForground shadow-[0px_0px_2.5px_0px_#1D57C7] data-[state=checked]:border-[#1D57C7]"
                   />
                   <Label htmlFor="standard-density" className="flex items-center space-x-2 text-[15px] text-popoversecondaryforground font-[400] cursor-pointer">
                     <StandardtDensityIcon />
@@ -126,7 +126,7 @@ const CustomPreferencePopup = () => {
                   <RadioGroupItem
                     value="comfortable"
                     id="comfortable"
-                    className="h-[18px] w-[18px] border border-popoverradioforground shadow-[0px_0px_2.5px_0px_#1D57C7] data-[state=checked]:border-[#1D57C7]"
+                    className="h-[18px] w-[18px] border border-popoverRadioForground shadow-[0px_0px_2.5px_0px_#1D57C7] data-[state=checked]:border-[#1D57C7]"
                   />
                   <Label htmlFor="comfortable" className="flex items-center space-x-2 text-[15px] text-popoversecondaryforground font-[400] cursor-pointer">
                     <ComfortableDensityIcon />
@@ -138,7 +138,7 @@ const CustomPreferencePopup = () => {
 
             {/* Data Wrap */}
             <div>
-              <h2 className="text-[16px] font-[700] text-popoverheaderforeground mb-2">Data Wrap</h2>
+              <h2 className="text-[16px] font-[700] text-popoverHeaderForeground mb-2">Data Wrap</h2>
               <RadioGroup
                 value={preferences.dataWrap ? "true" : "false"}
                 onValueChange={(value) => handleUpdatePreferences({ dataWrap: value === "true" })}
@@ -147,7 +147,7 @@ const CustomPreferencePopup = () => {
                   <RadioGroupItem
                     value="true"
                     id="enable"
-                    className="h-[18px] w-[18px] border border-popoverradioforground shadow-[0px_0px_2.5px_0px_#1D57C7] data-[state=checked]:border-[#1D57C7]"
+                    className="h-[18px] w-[18px] border border-popoverRadioForground shadow-[0px_0px_2.5px_0px_#1D57C7] data-[state=checked]:border-[#1D57C7]"
                   />
                   <Label htmlFor="enable" className="flex items-center space-x-2 text-[15px] text-popoversecondaryforground font-[400] cursor-pointer">
                     <EnableIcon />
@@ -158,7 +158,7 @@ const CustomPreferencePopup = () => {
                   <RadioGroupItem
                     value="false"
                     id="disable"
-                    className="h-[18px] w-[18px] border border-popoverradioforground shadow-[0px_0px_2.5px_0px_#1D57C7] data-[state=checked]:border-[#1D57C7]"
+                    className="h-[18px] w-[18px] border border-popoverRadioForground shadow-[0px_0px_2.5px_0px_#1D57C7] data-[state=checked]:border-[#1D57C7]"
                   />
                   <Label htmlFor="disable" className="flex items-center space-x-2 text-[15px] text-popoversecondaryforground font-[400] cursor-pointer">
                     <DisableIcon />
@@ -169,7 +169,7 @@ const CustomPreferencePopup = () => {
             </div>
             {/* favorites */}
             <div>
-              <h2 className="text-[16px] font-[700] text-popoverheaderforeground mb-2">Mark as Favorite</h2>
+              <h2 className="text-[16px] font-[700] text-popoverHeaderForeground mb-2">Mark as Favorite</h2>
               <RadioGroup
                 value={preferences.dataWrap ? "true" : "false"}
                 onValueChange={(value) => handleUpdatePreferences({ dataWrap: value === "true" })}
@@ -178,7 +178,7 @@ const CustomPreferencePopup = () => {
                   <RadioGroupItem
                     value="true"
                     id="enable"
-                    className="h-[18px] w-[18px] border border-popoverradioforground shadow-[0px_0px_2.5px_0px_#1D57C7] data-[state=checked]:border-[#1D57C7]"
+                    className="h-[18px] w-[18px] border border-popoverRadioForground shadow-[0px_0px_2.5px_0px_#1D57C7] data-[state=checked]:border-[#1D57C7]"
                   />
                   <Label htmlFor="enable" className="flex items-center space-x-2 text-[15px] text-popoversecondaryforground font-[400] cursor-pointer">
                     <FavoriteIcon />
@@ -189,7 +189,7 @@ const CustomPreferencePopup = () => {
                   <RadioGroupItem
                     value="false"
                     id="disable"
-                    className="h-[18px] w-[18px] border !border-popoverradioforground shadow-[0px_0px_2.5px_0px_#1D57C7] data-[state=checked]:border-[#1D57C7]"
+                    className="h-[18px] w-[18px] border !border-popoverRadioForground shadow-[0px_0px_2.5px_0px_#1D57C7] data-[state=checked]:border-[#1D57C7]"
                   />
                   <Label htmlFor="disable" className="flex items-center space-x-2 text-[15px] text-popoversecondaryforground font-[400] cursor-pointer">
                     <UnFavoriteIcon />
