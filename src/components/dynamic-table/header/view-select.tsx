@@ -133,7 +133,7 @@ export function ViewSelect({
         </Select>
       </div>
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen} >
-        <DialogContent className=" max-w-[620px]  px-[36px] pt-[17px] pb-[20px] !rounded-[12px] bg-background !shadow-none">
+        <DialogContent className=" max-w-[620px]  px-[36px] pt-[16px] pb-[19px] !rounded-[12px] bg-background !shadow-none">
           <DialogClose className="absolute group right-[19px] top-[20px] focus-visible:outline-none">
             <ProfileCloseIcon />
           </DialogClose>
