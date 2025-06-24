@@ -116,6 +116,7 @@ export function DataTable<TData, TValue>({ columns, metadata, fetchDataFn }: Dat
   const actionUrl = metadata.table_actions_url;
 
   const [filterValues, setFilterValues] = useState<Record<string, string>>({});
+  console.log("🚀 ~ filterValues:", filterValues)
   const [appliedFilterValues, setAppliedFilterValues] = useState<Record<string, string>>({});
   const [hoveredHeaderId, setHoveredHeaderId] = useState<string | null>(null);
   const metricPopOverOpen = useSelector((state: RootState) => state.popover.isOpen);
@@ -283,7 +284,7 @@ export function DataTable<TData, TValue>({ columns, metadata, fetchDataFn }: Dat
 
     <div className="w-full tanstack-table">
       <div className="w-full h-full rounded-sm bg-white">
-        <div className="w-full bg-white py-1 grid grid-cols-2 md:grid-cols-1 gap-y-1 lg:grid-cols-[30.8%,69.2%] items-center">
+        <div className="w-full bg-white py-[13px] grid grid-cols-2 md:grid-cols-1 gap-y-1 lg:grid-cols-[30.8%,69.2%] items-center">
           <CurrentColumnFilters />
           <div className="w-full flex items-center gap-4 place-content-end">
             <QuickFilters
@@ -296,11 +297,11 @@ export function DataTable<TData, TValue>({ columns, metadata, fetchDataFn }: Dat
             />
           </div>
         </div>
-        <div className="w-full h-full">
+        <div className="w-full h-full pt-[5px]">
           <div className="relative">
             <div className="overflow-x-auto">
               {/* default old table min-h-[680px] max-h-[680px] */}
-              <div className={`${metricPopOverOpen ? "min-h-[300px] max-h-[300px]" : "min-h-[300px] max-h-[300px]"} custom-scrollbar overflow-y-auto  font-[600] border rounded-tl-[4px] rounded-tr-[4px] bg-[#FDFDFF] border-1 border-[#EEEEEE]`}>
+              <div className={`${metricPopOverOpen ? "min-h-[300px] max-h-[300px]" : "min-h-[678px] max-h-[678px]"} custom-scrollbar overflow-y-auto  font-[600] border rounded-tl-[4px] rounded-tr-[4px] bg-[#FDFDFF] border-1 border-[#EEEEEE]`}>
                 <Table style={{ width: table.getTotalSize() }} className="w-full border-b border-r bg-[#FDFDFF] border-[#EEEEEE]">
                   <TableHeader className="sticky top-0 bg-white z-10 font-[600]">
                     {table.getHeaderGroups().map((headerGroup) => (
@@ -398,7 +399,7 @@ export function DataTable<TData, TValue>({ columns, metadata, fetchDataFn }: Dat
               </div>
             </div>
           </div>
-          <div className="flex flex-col border border-[#F0F0F0] rounded-bl-[5px] rounded-br-[5px] xl:flex-row justify-between xl:items-center md:items-start lg:px-3.5">
+          <div className="flex flex-col  xl:flex-row justify-between xl:items-center md:items-start lg:px-3.5">
             <div className="flex items-center gap-3 w-full sm:w-auto mt-2 md:mt-0 md:mb-0 ">
               <Select
                 value={seletedBulkAction || ""}

@@ -69,7 +69,7 @@ export const metaData = {
         "order": 3
       },
       {
-        "id": "4f45df33-ae14-4455-8477-1d8e07f2dc34f",
+        "id": "4f45df33-ae14-4455-847857-1d8e07f2dc34f",
         "filter_type": "Dropdown",
         "field_name": "role_type",
         "field_label": "Role Type",
@@ -107,8 +107,8 @@ export const metaData = {
         ]
       },
       {
-        "id": "4f45df33-ae14-4455-8477-1d8e07f2dc34f",
-        "filter_type": "Dropdown",
+        "id": "4f45df33-ae14-4455-8477-1d8e0ss7f2dc34f",
+        "filter_type": "Search",
         "field_name": "role_type",
         "field_label": "Role Type",
         "placeholder": "Select Role Type",

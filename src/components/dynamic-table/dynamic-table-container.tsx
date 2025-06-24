@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 import MetricCards from "@/components/dynamic-table/header/metric-cards";
 import DynamicTableHeader from "@/components/dynamic-table/header/dynamic-table-header";
+import DynamicTableBody from "./dynamic-table-body";
 
 export default function DynamicTableContainer({
   metavalue
@@ -69,7 +70,7 @@ export default function DynamicTableContainer({
         />
       </div>
 
-      <div className="relative bg-formHeaderCardBackground ml-3 mt-2  overflow-visible">
+      <div className="relative h-full bg-background overflow-visible">
         <div
           className={`absolute inset-x-0  top-2 z-30 transition-all duration-700 ease-in-out transform-gpu ${metricPopOverOpen
             ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
@@ -91,9 +92,9 @@ export default function DynamicTableContainer({
         />
 
         {/* Dynamic Table Body */}
-        {/* <div className="relative z-10">
+        <div className="relative z-10">
           <DynamicTableBody metadata={metadata} />
-        </div> */}
+        </div>
       </div>
     </div>
   );
