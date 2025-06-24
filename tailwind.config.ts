@@ -63,7 +63,7 @@ export default {
         popoversecondaryforground: 'hsla(var(--popover-secondary-forground))',
         infoIcon: 'hsla(var(--info-icon))',
         formHeaderCardBackground: 'hsla(var(--form-header-card-background))',
-        selectsecondaryforeground: 'hsl(var(--select-secondary-foreground))',
+        selectSecondaryForeground: 'hsl(var(--select-secondary-foreground))',
         dotMenuDeselected: 'hsla(var(--dot-menu-deselected))',
         formcardbackground: 'hsl(var(--form-card-background))',
         accordionTriggerBg: 'var(--accordion-trigger-bg)',

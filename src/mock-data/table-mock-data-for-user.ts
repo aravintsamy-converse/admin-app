@@ -10,13 +10,19 @@ export const metaData = {
       {
         "value": "45dfd65e-92a2-4725-b626-6d44bbb2f445f",
         "label": "Out of Stock products only including Experied",
-        "order": 3,
+        "order": 4,
         "is_default": false
       },
       {
         "value": "er434-92a2-4725-b626-6d44bbb2f58f",
         "label": "Non-Experied products",
         "order": 2,
+        "is_default": false
+      },
+      {
+        "value": "8fd54ed1-ae14-dsdsd-8477-1d8e07f2dcsd4",
+        "label": "User Management",
+        "order": 3,
         "is_default": false
       }
     ],
