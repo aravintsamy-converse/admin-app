@@ -93,16 +93,24 @@ export const metaData = {
         "order": 1,
         "options": [
           {
-            "label": "User Name",
-            "value": "user_name"
+            "label": "Project Name",
+            "value": "project_name"
           },
           {
-            "label": "Role Type",
-            "value": "role_type"
+            "label": "Customer Name",
+            "value": "customer_name"
           },
           {
-            "label": "User Email",
-            "value": "user_email"
+            "label": "Project Status",
+            "value": "project_status"
+          },
+          {
+            "label": "Priority",
+            "value": "priority"
+          },
+          {
+            "label": "Assigned",
+            "value": "assigned"
           }
         ]
       },

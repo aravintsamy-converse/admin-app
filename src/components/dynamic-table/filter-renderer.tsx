@@ -7,6 +7,7 @@ import { RiUserSettingsLine } from "react-icons/ri";
 import { GrDocumentUser } from "react-icons/gr";
 import { MultiSelectDropdown } from "@/components/table-ui/multi-select-dropdown";
 import { FilterRendererProps, IconProps } from "@/types/table/table.type";
+import { MappedDropdown } from "./quick-filters/mapped-dropdown";
 
 const iconMap: Record<string, React.ComponentType<IconProps>> = {
   FaLock: FaLock,
@@ -16,6 +17,11 @@ const iconMap: Record<string, React.ComponentType<IconProps>> = {
 };
 
 export function FilterRenderer({ filter, fieldName, filterValues, onFilterChange }: FilterRendererProps) {
+  
+   const handleSearch = (column: string, query: string) => {
+    console.log(`Searching in column: ${column}, query: ${query}`)
+  }
+
   if (filter.filter_type === "Search") {
     return (
       <div className="relative w-full">
@@ -57,16 +63,12 @@ export function FilterRenderer({ filter, fieldName, filterValues, onFilterChange
     );
   } else if (filter.filter_type === "MappedSearch") {
     return (
-      <div className="relative w-full">
-        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#778294]" size={14} />
-        <Input
-          type="text"
-          placeholder={filter.placeholder}
-          value={filterValues[fieldName] || ""}
-          onChange={(e) => onFilterChange(filter.field_name || "", e.target.value)}
-          className="pl-10 h-[34px] font-[500] rounded-[5px] text-[14px] bg-[#F6F7FB] border text-[#778294] placeholder:[#778294] focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-[#1D57C7] focus-visible:ring-offset-0"
+        <MappedDropdown
+           columns={filter.options || []}
+           placeholder={filter.placeholder}
+           onSearch={handleSearch}
+           className="w-full 2xl:w-[350px] bg-transparent rounded-[5px] h-[35px] font-[400] border text-[14px]"
         />
-      </div>
     );
   }
   return null;

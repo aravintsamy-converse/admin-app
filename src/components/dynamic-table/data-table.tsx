@@ -33,66 +33,9 @@ import type {
   TableData,
 } from "@/types/table/table.type";
 
-const staticTableData = [
-  {
-    "id": "U001",
-    "user_name": "riya",
-    "email": "riya@gmail.com",
-    "first_name": "riya",
-    "last_name": "raana",
-    "is_active": true,
-    "first_login": true,
-    "latest_login_at": "2024-03-21T00:00:00.000Z",
-    "account_locked": false,
-    "roles": [
-      {
-        "id": "R001",
-        "role_name": "Principal Admin"
-      },
-      {
-        "id": "R002",
-        "role_name": "paymnet Admin"
-      }
-    ],
-    "address":
-    {
-      "id": "AD001",
-      "address1": "converse katadipalayam"
-    }
-
-  },
-  {
-    "id": "U002",
-    "user_name": "sam",
-    "email": "sam@gmail.com",
-    "first_name": "sam",
-    "last_name": "mohan",
-    "is_active": false,
-    "first_login": true,
-    "latest_login_at": "2024-02-20T00:00:00.000Z",
-    "account_locked": true,
-    "account_locked_at": null,
-    "roles": [
-      {
-        "id": "R003",
-        "role_name": "dashboard Admin"
-      },
-      {
-        "id": "R002",
-        "role_name": "paymnet Admin"
-      }
-    ],
-    "address":
-    {
-      "id": "AD002",
-      "address1": "converse Venkateshwara"
-    }
-  }
-]
-
 export function DataTable<TData, TValue>({ columns, metadata, fetchDataFn }: DataTableProps<TData, TValue>) {
 
-  const [data, setData] = useState<TData[]>(staticTableData as TData[]);
+  const [data, setData] = useState<TData[]>([] as TData[]);
   const bulkActionsData: BulkAction[] = metadata.bulk_actions;
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
@@ -100,7 +43,7 @@ export function DataTable<TData, TValue>({ columns, metadata, fetchDataFn }: Dat
   const [pageSize, setPageSize] = useState(20);
   const { pageIndex, setPageIndex } = useTableContext();
   const [pageInput, setPageInput] = useState((pageIndex + 1).toString());
-  const [totalRows, setTotalRows] = useState(staticTableData.length);
+  const [totalRows, setTotalRows] = useState(0);
   const [seletedBulkAction, setSelectedBulkAction] = useState<string | null>(null);
   const [isPageSelectOpen, setIsPageSelectOpen] = useState(false);
   const [isBulkSelectOpen, setIsBulkSelectOpen] = useState(false);
@@ -231,9 +174,6 @@ export function DataTable<TData, TValue>({ columns, metadata, fetchDataFn }: Dat
       setPageInput((pageIndex + 1).toString());
     } catch (error) {
       console.log("Error fetching data:", error);
-      // Fallback to static data
-      setData(staticTableData as TData[]);
-      setTotalRows(staticTableData.length);
     }
   }, [pageIndex, pageSize, sorting, columnFilters, appliedFilterValues]);
 
@@ -301,7 +241,7 @@ export function DataTable<TData, TValue>({ columns, metadata, fetchDataFn }: Dat
           <div className="relative">
             <div className="overflow-x-auto">
               {/* default old table min-h-[680px] max-h-[680px] */}
-              <div className={`${metricPopOverOpen ? "min-h-[300px] max-h-[300px]" : "min-h-[678px] max-h-[678px]"} custom-scrollbar overflow-y-auto  font-[600] border rounded-tl-[4px] rounded-tr-[4px] bg-[#FDFDFF] border-1 border-[#EEEEEE]`}>
+              <div className={`${metricPopOverOpen ? "min-h-[300px] max-h-[300px]" : "min-h-[670px] max-h-[670px]"} custom-scrollbar overflow-y-auto  font-[600] border rounded-tl-[4px] rounded-tr-[4px] bg-[#FDFDFF] border-1 border-[#EEEEEE]`}>
                 <Table style={{ width: table.getTotalSize() }} className="w-full border-b border-r bg-[#FDFDFF] border-[#EEEEEE]">
                   <TableHeader className="sticky top-0 bg-white z-10 font-[600]">
                     {table.getHeaderGroups().map((headerGroup) => (

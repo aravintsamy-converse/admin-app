@@ -55,7 +55,7 @@ body {
     --muted-foreground: 0, 0%, 68%, 1;  /* placholder  text color */
     --destructive: 0 84.2% 60.2%;  /* Error Button  text color */
     --destructive-foreground: 0 0% 98%;  /* Error Button text color */
-    --border: 240 5.9% 90%;  /* Border  color */
+    --border: 0, 0%, 94%, 1;  /* Border  color */
     --input: 213, 5%, 53%, 1;  /* Input background */
     --ring: 220, 75%, 45%, 1;  /* Foucs Visible outline color */
     --radius: 0.5rem;  /* Rounded color */
