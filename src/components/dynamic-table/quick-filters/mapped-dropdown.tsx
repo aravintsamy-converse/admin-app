@@ -13,6 +13,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { TruncateTooltip } from "../truncate-tooltip"
+import { DownArrowIcon } from "@/components/client/icons/general"
 
 interface MappedDropdownProps {
   placeholder?: string
@@ -47,15 +48,15 @@ export function MappedDropdown({
     <div className={cn("relative border rounded-[5px] flex items-center justify-center w-full", className)}>
       {/* Column Selector */}
       <Select value={selectedColumn} onValueChange={setSelectedColumn}>
-        <SelectTrigger className="h-full px-3 border-0 shadow-none rounded-none rounded-l-md hover:bg-transparent focus:ring-0 focus:ring-offset-0 w-[180px]">
+        <SelectTrigger className="h-full px-3 border-0 shadow-none rounded-none rounded-l-md hover:bg-transparent focus:ring-0 focus:ring-offset-0 w-[130px]">
           <div className="flex flex-1 w-full  text-start text-selectSecondaryForeground pl-[1px]">
             <TruncateTooltip
-              text={selectedColumn || "Select a view"}
-              className="text-start w-[100px] md:min-w-[143px] md:max-w-[150px] text-nowrap truncate"
+              text={selectedViewLabel || "Select a view"}
+              className="text-start text-[14px] w-[100px] md:min-w-[80px] md:max-w-[80px] text-nowrap truncate"
             />
           </div>
-          <span>
-            <ChevronDown className="h-3.5 w-3.5 text-[#889abcc9]" />
+          <span className="flex items-center justify-center text-arrowIcon">
+            <DownArrowIcon/>
           </span>
         </SelectTrigger>
         <SelectContent className="min-w-[166px] max-w-[240px] md:min-w-[295px] md:max-w-[395px] top-[-2px] border-0 rounded-[2px] bg-background shadow-viewboxshadow">
@@ -68,7 +69,7 @@ export function MappedDropdown({
       </Select>
 
       {/* Search Icon */}
-      <div className="border-r border-gray-300 h-7 flex items-center justify-center">
+      <div className="border-r border h-7 flex items-center justify-center">
       </div>
 
       {/* Search Input */}

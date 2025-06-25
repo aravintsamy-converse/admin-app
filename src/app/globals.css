@@ -56,6 +56,7 @@ body {
     --destructive: 0 84.2% 60.2%;  /* Error Button  text color */
     --destructive-foreground: 0 0% 98%;  /* Error Button text color */
     --border: 0, 0%, 94%, 1;  /* Border  color */
+    --arrow-icon: 213, 5%, 53%, 1; /* Arrow icon color */
     --input: 213, 5%, 53%, 1;  /* Input background */
     --ring: 220, 75%, 45%, 1;  /* Foucs Visible outline color */
     --radius: 0.5rem;  /* Rounded color */
@@ -99,8 +100,8 @@ body {
     --form-header-border: 210, 4%, 11%, 1; /* form header border color */
     --metric-border: 220, 75%, 45%, 0.76; /* metric border color */
     --select-secondary-foreground: 0, 0%, 76%, 1; /* select secondary text d color */
-    --dot-menu-deselected: 0, 0%, 37%, 1;
-
+    --arrow-icon: 0, 0%, 37%, 1; /* Arrow icon color */
+    
     
     
     --dropdown-hover-background: 0, 0%, 5%, 1; /* hover background color */

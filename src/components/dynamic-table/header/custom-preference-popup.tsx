@@ -45,7 +45,7 @@ const CustomPreferencePopup = () => {
         className="relative"
         onClick={() => setIsTableCustomPopup(!isTableCustomPopup)}
       >
-        <div className={`flex items-center justify-center ${isTableCustomPopup ? "text-primary scale-110" : "text-dotMenuDeselected"} hover:scale-110 hover:text-primary`}>
+        <div className={`flex items-center justify-center ${isTableCustomPopup ? "text-primary scale-110" : "text-arrowIcon"} hover:scale-110 hover:text-primary`}>
           <ThreeDotIconMenu />
         </div>
       </button>

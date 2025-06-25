@@ -101,11 +101,11 @@ export const metaData = {
             "value": "customer_name"
           },
           {
-            "label": "Project Status",
+            "label": "Project Status based on task",
             "value": "project_status"
           },
           {
-            "label": "Priority",
+            "label": "Priority Level based on Client Requirement and Task Status",
             "value": "priority"
           },
           {
