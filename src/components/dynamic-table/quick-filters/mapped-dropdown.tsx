@@ -13,7 +13,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { TruncateTooltip } from "../truncate-tooltip"
-import { DownArrowIcon } from "@/components/client/icons/general"
+import { DownArrowIcon, SearchIcon } from "@/components/client/icons/general"
 
 interface MappedDropdownProps {
   placeholder?: string
@@ -28,9 +28,10 @@ export function MappedDropdown({
   onSearch,
   className,
 }: MappedDropdownProps) {
+  const [open, setOpen] = React.useState(true)
   const [selectedColumn, setSelectedColumn] = React.useState<string>(columns?.[0]?.value || "")
   const [searchQuery, setSearchQuery] = React.useState("")
-   const selectedViewLabel =
+  const selectedLabel =
     columns?.find(option => option.value === selectedColumn)?.label;
   const handleSearch = () => {
     if (searchQuery.trim()) {
@@ -46,23 +47,35 @@ export function MappedDropdown({
 
   return (
     <div className={cn("relative border rounded-[5px] flex items-center justify-center w-full", className)}>
-      {/* Column Selector */}
-      <Select value={selectedColumn} onValueChange={setSelectedColumn}>
-        <SelectTrigger className="h-full px-3 border-0 shadow-none rounded-none rounded-l-md hover:bg-transparent focus:ring-0 focus:ring-offset-0 w-[130px]">
-          <div className="flex flex-1 w-full  text-start text-selectSecondaryForeground pl-[1px]">
-            <TruncateTooltip
-              text={selectedViewLabel || "Select a view"}
-              className="text-start text-[14px] w-[100px] md:min-w-[80px] md:max-w-[80px] text-nowrap truncate"
-            />
+      {/* Column Selector h-186 w-301  */}
+      <Select value={selectedColumn} onValueChange={setSelectedColumn}  open={open}
+          onOpenChange={setOpen}>
+        <SelectTrigger className="h-full px-3 border-0 shadow-none rounded-none rounded-l-md hover:bg-transparent focus:ring-0 focus:ring-offset-0 w-[37.5%]">
+          <div className="flex w-full items-center h-full">
+            <div className="flex-1 overflow-hidden text-selectSecondaryForeground flex items-center h-full">
+              <TruncateTooltip
+                text={selectedLabel || ''}
+                className="text-[14px] truncate text-nowrap w-full text-start"
+              />
+            </div>
+            <span className="flex-shrink-0 ml-2 flex items-center justify-center text-arrowIcon h-full">
+              <DownArrowIcon />
+            </span>
           </div>
-          <span className="flex items-center justify-center text-arrowIcon">
-            <DownArrowIcon/>
-          </span>
         </SelectTrigger>
-        <SelectContent className="min-w-[166px] max-w-[240px] md:min-w-[295px] md:max-w-[395px] top-[-2px] border-0 rounded-[2px] bg-background shadow-viewboxshadow">
+        <SelectContent className="w-full p-1.5 top-[2px] border-0 rounded-[2px] bg-background shadow-viewboxshadow">
           {columns?.map((column) => (
-            <SelectItem key={column.value} value={column.value}>
-              {column.label}
+            <SelectItem
+              value={column.value}
+              className={`${selectedColumn === (column.value)
+                ? "text-primary"
+                : "hover:bg-transparent"
+                }  cursor-pointer font-normal w-full  py-[4px] hover:text-primary hover:bg-accent  text-nowrap truncate focus:bg-transparent focus:font-[400]`}
+            >
+              <TruncateTooltip text={column.label} className={`${selectedColumn === (column.value)
+                ? "text-primary"
+                : "text-accent-foreground"
+                } w-[160px] hover:text-primary hover:font-medium md:min-w-[200px] md:max-w-[250px] text-start`} />
             </SelectItem>
           ))}
         </SelectContent>
@@ -80,7 +93,7 @@ export function MappedDropdown({
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           onKeyPress={handleKeyPress}
-          className="border-0 focus-visible:ring-0 shadow-none focus-visible:ring-offset-0 pr-10"
+          className="border-0 text-[14px] font-normal focus-visible:ring-0 shadow-none focus-visible:ring-offset-0 pl-[7px] pr-10"
         />
         <Button
           size="sm"
@@ -92,7 +105,9 @@ export function MappedDropdown({
           {selectedColumn && searchQuery.trim() ? (
             <Check className="h-4 w-4 text-green-600" />
           ) : (
-            <Search className="h-4 w-4" />
+            <span className="flex items-center justify-between text-searchIcon">
+              <SearchIcon />
+            </span>
           )}
         </Button>
       </div>

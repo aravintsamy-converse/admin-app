@@ -65,6 +65,7 @@ export default {
         formHeaderCardBackground: 'hsla(var(--form-header-card-background))',
         selectSecondaryForeground: 'hsl(var(--select-secondary-foreground))',
         arrowIcon: 'hsla(var(--arrow-icon))',
+        searchIcon: 'hsla(var(--search-icon))',
         formcardbackground: 'hsl(var(--form-card-background))',
         accordionTriggerBg: 'var(--accordion-trigger-bg)',
         mainbackground: 'hsl(var(--mainbackground))',
