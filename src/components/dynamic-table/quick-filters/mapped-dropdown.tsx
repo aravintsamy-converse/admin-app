@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Check, ChevronDown, Search } from "lucide-react"
+import { Check } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -28,7 +28,6 @@ export function MappedDropdown({
   onSearch,
   className,
 }: MappedDropdownProps) {
-  const [open, setOpen] = React.useState(true)
   const [selectedColumn, setSelectedColumn] = React.useState<string>(columns?.[0]?.value || "")
   const [searchQuery, setSearchQuery] = React.useState("")
   const selectedLabel =
@@ -48,8 +47,7 @@ export function MappedDropdown({
   return (
     <div className={cn("relative border rounded-[5px] flex items-center justify-center w-full", className)}>
       {/* Column Selector h-186 w-301  */}
-      <Select value={selectedColumn} onValueChange={setSelectedColumn}  open={open}
-          onOpenChange={setOpen}>
+      <Select value={selectedColumn} onValueChange={setSelectedColumn}>
         <SelectTrigger className="h-full px-3 border-0 shadow-none rounded-none rounded-l-md hover:bg-transparent focus:ring-0 focus:ring-offset-0 w-[37.5%]">
           <div className="flex w-full items-center h-full">
             <div className="flex-1 overflow-hidden text-selectSecondaryForeground flex items-center h-full">
@@ -63,20 +61,27 @@ export function MappedDropdown({
             </span>
           </div>
         </SelectTrigger>
-        <SelectContent className="w-full p-1.5 top-[2px] border-0 rounded-[2px] bg-background shadow-viewboxshadow">
+        <SelectContent className="min-w-[166px] max-w-[240px] md:min-w-[295px] md:max-w-[395px] p-1.5 top-[2px] border-0 rounded-[2px] bg-background shadow-viewboxshadow">
           {columns?.map((column) => (
             <SelectItem
+              key={column.value}
               value={column.value}
-              className={`${selectedColumn === (column.value)
+              className={`${selectedColumn === column.value
                 ? "text-primary"
-                : "hover:bg-transparent"
-                }  cursor-pointer font-normal w-full  py-[4px] hover:text-primary hover:bg-accent  text-nowrap truncate focus:bg-transparent focus:font-[400]`}
+                : "text-accent-foreground hover:!bg-accent"
+                } cursor-pointer group font-normal w-full py-[4px] hover:!text-primary focus:bg-transparent focus:font-[400]`}
             >
-              <TruncateTooltip text={column.label} className={`${selectedColumn === (column.value)
-                ? "text-primary"
-                : "text-accent-foreground"
-                } w-[160px] hover:text-primary hover:font-medium md:min-w-[200px] md:max-w-[250px] text-start`} />
+              <div className="w-full max-w-[340px] ">
+                <TruncateTooltip
+                  text={column.label}
+                  className={`${selectedColumn === column.value
+                    ? "text-primary"
+                    : "text-accent-foreground"
+                    } truncate group-hover:!text-primary group-hover:font-medium text-start w-full`}
+                />
+              </div>
             </SelectItem>
+
           ))}
         </SelectContent>
       </Select>
