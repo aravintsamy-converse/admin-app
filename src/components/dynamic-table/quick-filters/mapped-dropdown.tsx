@@ -61,7 +61,7 @@ export function MappedDropdown({
             </span>
           </div>
         </SelectTrigger>
-        <SelectContent className="min-w-[166px] max-w-[240px] md:min-w-[295px] md:max-w-[395px] p-1.5 top-[2px] border-0 rounded-[2px] bg-background shadow-viewboxshadow">
+        <SelectContent className="w-full  p-1.5 top-[2px] border-0 rounded-[2px] bg-background shadow-viewboxshadow">
           {columns?.map((column) => (
             <SelectItem
               key={column.value}
@@ -69,9 +69,9 @@ export function MappedDropdown({
               className={`${selectedColumn === column.value
                 ? "text-primary"
                 : "text-accent-foreground hover:!bg-accent"
-                } cursor-pointer group font-normal w-full py-[4px] hover:!text-primary focus:bg-transparent focus:font-[400]`}
+                } cursor-pointer group font-normal w-full py-[4px]  hover:!text-primary focus:bg-transparent focus:font-[400]`}
             >
-              <div className="w-full max-w-[340px] ">
+              <div className="max-w-[240px]">
                 <TruncateTooltip
                   text={column.label}
                   className={`${selectedColumn === column.value

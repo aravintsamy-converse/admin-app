@@ -16,7 +16,7 @@ interface TruncateTooltipProps {
 export const TruncateTooltip = ({
   text,
   className,
-}: TruncateTooltipProps) => {
+}: TruncateTooltipProps) => { 
   const ref = useRef<HTMLSpanElement | null>(null);
   const [isOverflowing, setIsOverflowing] = useState(false);
 
